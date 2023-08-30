@@ -36,6 +36,33 @@ export class RegistroComponent {
       invalid?.setAttribute('style','top: -20px; left: -35px; color: #ffffff; font-size: 12px; margin-left: 10%;');
     }
   }
+  validsN() {
+    let sN = document.getElementById("sN");
+    if (sN?.innerHTML == "") {
+      sN?.removeAttribute('readonly');
+    }
+  }
+
+  validsA() {
+    let sA = document.getElementById("sA");
+      if (sA?.innerHTML == "") {
+        sA?.removeAttribute('readonly');
+      }
+  }
+
+  invalidsN() {
+    let sN = document.getElementById("sN");
+    if (sN?.innerHTML == "") {
+      sN?.setAttribute('readonly', '');
+    }
+  }
+
+  invalidsA() {
+    let sA = document.getElementById("sA");
+    if (sA?.innerHTML == "") {
+      sA?.setAttribute('readonly', '');
+    }
+  }
   registrar( datos = {
     correo: "",
     primerNombre: "",
