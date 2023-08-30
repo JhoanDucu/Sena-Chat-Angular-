@@ -9,163 +9,45 @@
 </head>
 <body>
     <div id="chat">
-        <header id="cabecera" class="position-relative">
-            <img src="../../assets/img/sena chat.png" id="logo">
-                
-            <div class="w-50">
-                <div class="btn-group dropstart">
-                    <button type="button" class="btn btn-secondary dropdown-toggle bg-transparent border-0" data-bs-toggle="dropdown" aria-expanded="false">
-                    <a><img src="../../assets/img/User.png" id="perfil"></a>
-                    </button>
-                    <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Configuracion</a></li>
-                    <li><a class="dropdown-item" href="#">Cerrar sesion</a></li>
+        <!-- NAV -->
+        <nav class="navbar navbar-expand-lg" style="background: linear-gradient(to right, #81BB81, #0e882d); margin: -2%;">
+            <div class="container-fluid">
+                <img src="../../assets/img/sena chat.png" id="logo">
+                <div class="collapse navbar-collapse" id="navbarScroll">
+                    <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+                    </ul>
+                    <ul class="navbar-nav">
+                        <h4 class="dropdown-menu-end" style="margin-top: 10%;">JuanchoTv</h4>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <img src="../../assets/img/User.png" id="perfil">
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end"> <!-- Usamos "dropdown-menu-end" para alinear a la derecha -->
+                                <li><a class="dropdown-item" href="#">Configuracion</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="#">Salir</a></li>
+                            </ul>
+                        </li>
                     </ul>
                 </div>
-                <h3 class="mx-auto p-2" style="width: 300px; ">ACA QUE MANO</h3>
             </div>
-        </header> 
+        </nav>
+        <!-- NAV -->
 
-        <div id="list-box">
-        <a href=""><div class="rectangulo"> <img src="../../assets/img/Grupo.png" class="grupo"><h2>2558104</h2></div> </a>
-            <!--
-            <a href=""><div class="rectangulo"><img src="img/User.png" class="user"><h2>Participante</h2> </div> </a>
-            <a href=""><div class="rectangulo"><img src="img/User.png" class="user"><h2>Participante</h2> </div> </a>
-            <a href=""><div class="rectangulo"><img src="img/User.png" class="user"><h2>Participante</h2> </div> </a>
-            <a href=""><div class="rectangulo"><img src="img/User.png" class="user"><h2>Participante</h2> </div> </a>
-            <a href=""><div class="rectangulo"><img src="img/User.png" class="user"><h2>Participante</h2> </div> </a>
-            <a href=""><div class="rectangulo"><img src="img/User.png" class="user"><h2>Participante</h2> </div> </a>
-            <a href=""><div class="rectangulo"><img src="img/User.png" class="user"><h2>Participante</h2> </div> </a>
-            <a href=""><div class="rectangulo"> <img src="img/Grupo.png" class="grupo"><h2>2558104</h2></div> </a>
-            <a href=""><div class="rectangulo"> <img src="img/Grupo.png" class="grupo"><h2>2558104</h2></div> </a>
-            <a href=""><div class="rectangulo"> <img src="img/Grupo.png" class="grupo"><h2>2558104</h2></div> </a>
-            <a href=""><div class="rectangulo"> <img src="img/Grupo.png" class="grupo"><h2>2558104</h2></div> </a>
-            <a href=""><div class="rectangulo"> <img src="img/Grupo.png" class="grupo"><h2>2558104</h2></div> </a>  -->
-        </div>
-
-        <div id="informacion">
-            <img src="../../assets/img/Grupo.png" alt="Descripción de la imagen">
-            <div class="texto">
-                <p> 2558104 <br> grupo de heiver </p>
-            </div>
-
-            <button class=" btn-primary w-auto p-3 mb-2 bg-success text-white" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
-                <span>---</span><br>
-                <span>---</span><br>
-                <span>---</span>
-            </button>
-        </div>
-
-        <div class="offcanvas offcanvas-end " id="offcanvasRight" aria-labelledby="offcanvasRightLabel" style="height: 60%;">
-        <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="offcanvasRightLabel">informacion de grupo</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        </div>
-        <div class="offcanvas-body">
-                <span style="font-weight: bold;">instructor:</span><span>Heiver Cuesta</span>
-                <br>
-                <br>
-                <span style="font-weight: bold;">participantes:</span><span>22</span>
-                <br>
-                <br>
-                <br>
-                <br>
-                <div>
-                        <img  src="../../assets/img/User-agregar.png" class="info-agreg" style="width: 90px; height: 80px;"><span>agregar</span>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <button class="btn btn-outline-success" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop" style="border:none">
-                        <img src="../../assets/img/User-y.png" class="info-agreg" style="width: 90px; height: 90px;"><span>eliminar</span>
-                    </button>
-
+        <!--  BARRA INFORMACION CHAT-GRUPO -->
+        <nav class="navbar bg-body-tertiary fixed-top" style="background: linear-gradient(to right, #81BB81, #0e882d); margin: 6%; left: 30%;">
+            <div class="container-fluid">
+                <img src="../../assets/img/Grupo.png" alt="Descripción de la imagen" style="width: 100px; height: 70px; margin: 15px; margin-top: 0.5%;">
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Información del Grupo</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
                 </div>
             </div>
-            </div>
-
-            <div class="offcanvas offcanvas-top" tabindex="-1" id="offcanvasTop" aria-labelledby="offcanvasTopLabel" style="height: 60%; left:79%;">
-                <div class="offcanvas-header">
-                    <h5 class="offcanvas-title" id="offcanvasTopLabel"></h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                </div>
-                <div class="offcanvas-body">
-
-                <img src="../../assets/img/User-y.png" class="info-agreg" style="width: 60px; height: 60px;"> <span>eliminar</span><br><br>
-                
-                <ul class="list-group">
-                    <li class="list-group-item list-group-item-success">';
-                        <img src="../../assets/img/User-y.png" class="info-agreg" style="width: 30px; height: 30px;">
-                    </li>
-                </ul>
-                </div>
-            </div>
-
-        <!-- xx -->
-
-        <div id="chat-box">
-            <div class="mensaje-izquierdo">
-                <span>heiver Cuesta</span>
-                Buenos dias aprendices!! Como les va el dia de hoy?
-                <div class="hora">10:30 AM</div>
-            </div> 
-            <div class="mensaje-izquierdo">
-                <span>heiver Cuesta</span>
-                Buenos dias aprendices!! Como les va el dia de hoy?
-                <div class="hora">10:30 AM</div>
-            </div> 
-            <div class="mensaje-izquierdo">
-                <span>heiver Cuesta</span>
-                Buenos dias aprendices!! Como les va el dia de hoy?
-                <div class="hora">10:30 AM</div>
-            </div> 
-            <div class="mensaje-izquierdo">
-                <span>heiver Cuesta</span>
-                Buenos dias aprendices!! Como les va el dia de hoy?
-                <div class="hora">10:30 AM</div>
-            </div> 
-            <div class="mensaje-izquierdo">
-                <span>heiver Cuesta</span>
-                Buenos dias aprendices!! Como les va el dia de hoy?
-                <div class="hora">10:30 AM</div>
-            </div> 
-
-            <div class="mensaje-izquierdo">
-                <span>Juan  Cardenas</span>
-                Buen dia instructor
-                <div class="hora">10:30 AM</div>
-            </div>
-
-            <div class="mensaje-izquierdo">
-                <span>Juan  Cardenas</span>
-                Buen dia instructor
-                <div class="hora">10:30 AM</div>
-            </div>
-            
-            <div class="mensaje-izquierdo">
-                <span>Jhoan Ducuara</span>
-                Buenos dias
-                <div class="hora">10:30 AM</div>
-            </div>
-
-            <div class="mensaje-derecho">
-                <span></span>
-                Hola, buen dia
-                <div class="hora">10:30 AM</div>
-            </div>               
-            
-            <div id="here">
-                
-            </div>
-        </div>
+        </nav>
         
-        <form id="escribir" method="post" action="">
-            <input type="text" placeholder="Escribir..." name="mensaje">
-            
-            <button type="submit" name="enviar" id="enviar">
-                <img src="../../assets/img/boton enviar.png" width="30px" height="30px">
-            </button>
-        </form>
-    </div>
-</body>
-</html>
+        <!--  BARRA INFORMACION CHAT-GRUPO -->
