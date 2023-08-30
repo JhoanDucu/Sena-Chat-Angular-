@@ -10,7 +10,7 @@ export class LogearService {
   buscarDatos(datos: any){
     return this.http.post(`${this.url}/login`,datos);
   }
-  seleccionarFicha(ficha: any){
-    return this.http.post(`${this.url}ficha.php?n=${ficha}`,JSON.stringify(ficha))
+  seleccionarFicha(ficha: any, numerodoc: any){
+    return this.http.put(`${this.url}/bienvenida/${numerodoc}`,ficha);
   }
 }
