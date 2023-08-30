@@ -2,6 +2,7 @@ const express = require("express")
 const cors = require('cors')
 const mysql = require("mysql")
 const bodyParser = require('body-parser')
+const md5 = require('md5');
 
 const app = express();
 
@@ -38,7 +39,7 @@ app.get('/', (req, res) => {
 
 app.post('/login', (req, res)=>{
    const id = req.body.numerodoc;
-   const query = `SELECT * FROM usuarios WHERE numerodoc = ${id}`;
+   const query = `SELECT * FROM usuarios WHERE numerodoc = ${numerodoc} AND fk_id_tipodoc = ${tipodoc} AND contrasena = '${md5(password)}'`;
     conexion.query(query, (error, resultado) => {
        if (error) return console.error(error.message) 
        if (resultado.length > 0) {
@@ -56,7 +57,7 @@ app.post('/registrar', (req, res) => {
       segundo_nom: req.body.segundoNombre,
       primer_apellido: req.body.primerApellido,
       segundo_apellido: req.body.segundoApellido,
-      contrasena: req.body.contraseña,
+      contrasena: md5(req.body.contraseña),
       nombre_usuario: req.body.nombreUsuario,
       foto: '',
       fk_id_rol: '2',
