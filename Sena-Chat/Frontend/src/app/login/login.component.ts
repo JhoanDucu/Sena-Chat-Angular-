@@ -32,21 +32,39 @@ export class LoginComponent {
       invalid?.setAttribute('style','left: 15%; top: -20px; left: 0; color: #ffffff; font-size: 12px; margin-left: 10%;');
     }
   }
+  
   logear(datos: {
     tipodoc: "",
     numerodoc: "",
     contraseña: ""
-  }){
+  }) {
+    if (datos.tipodoc === "") {
+      console.log("Seleccione el tipo de documento");
+      return;
+    }
+
+    if (datos.numerodoc === "") {
+      console.log("Ingrese el número de documento");
+      return;
+    }
+
     alert("Esperando respuesta...");
     this.loginServicio.buscarDatos(datos).subscribe((respuesta: any) => {
       console.log(respuesta);
-      if (respuesta != 'No existe registro') {
-        console.log(respuesta);
-        this.router.navigate(['chat']);
-        //this.router.navigate(["bienvenida",respuesta['usuario']['numerodoc']]);
+      if (respuesta !== 'No existe registro') {
+        // Hash the entered password using Md5.hashStr()
+        const hashedEnteredPassword = (datos.contraseña);
+
+        // Compare the hashed passwords
+        if (respuesta.contraseña === hashedEnteredPassword) {
+          console.log(respuesta);
+          this.router.navigate(['chat']);
+        } else {
+          console.log('Contraseña incorrecta');
+        }
       } else {
-        alert('Usuario no existe');
+        console.log('Usuario no existe');
       }
-    })
+    });
   }
 }
