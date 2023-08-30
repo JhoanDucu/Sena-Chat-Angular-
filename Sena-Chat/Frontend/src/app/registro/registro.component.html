@@ -23,7 +23,7 @@
             <label >Primer nombre</label>
           </div>
           <div class="user-box" id="c3">
-            <input type="text" maxlength="20" readonly name="segundoNombre" ngModel id="sN">
+            <input type="text" maxlength="20" readonly name="segundoNombre" ngModel id="sN" (focus)="validsN()" (blur)="invalidsN()">
             <label >Segundo nombre</label>
           </div>
           <div class="user-box" id="c4">
@@ -31,7 +31,7 @@
             <label >Primer apellido</label>
           </div>
           <div class="user-box" id="c5">
-            <input type="text" maxlength="20" readonly name="segundoApellido" ngModel>
+            <input type="text" maxlength="20" readonly name="segundoApellido" ngModel id="sA" (focus)="validsA()" (blur)="invalidsA()">
             <label >Segundo apellido</label>
           </div>
           <div class="user-box" id="c6">
