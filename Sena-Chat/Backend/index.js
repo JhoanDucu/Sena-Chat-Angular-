@@ -71,3 +71,16 @@ app.post('/registrar', (req, res) => {
        res.json('Se inserto correctamente el usuario');
     })
 })
+app.put('/bienvenida/:documento',(req, res)=>{
+   const numerodoc = req.params.documento;
+   const ficha = req.body.buscar;
+
+   console.log(numerodoc);
+   console.log(ficha);
+
+   const query = `UPDATE usuarios SET fk_id_ficha = ${ficha} WHERE numerodoc = ${numerodoc}`;
+   conexion.query(query, (error, resultado) => {
+      if (error) return console.error(error.message)
+      res.json('Actualizado');
+   })
+});
