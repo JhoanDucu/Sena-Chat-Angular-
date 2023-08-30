@@ -17,6 +17,8 @@ export class RegistroComponent {
     private router: Router
     ){ }
   Tdoc = "";
+  sN = '';
+  sA = '';
 
   Label(){
     let valid = document.getElementById("tipo");
@@ -38,28 +40,28 @@ export class RegistroComponent {
   }
   validsN() {
     let sN = document.getElementById("sN");
-    if (sN?.innerHTML == "") {
+    if (this.sN == "") {
       sN?.removeAttribute('readonly');
     }
   }
 
   validsA() {
     let sA = document.getElementById("sA");
-      if (sA?.innerHTML == "") {
+      if (this.sA == "") {
         sA?.removeAttribute('readonly');
       }
   }
 
   invalidsN() {
     let sN = document.getElementById("sN");
-    if (sN?.innerHTML == "") {
+    if (this.sN == "") {
       sN?.setAttribute('readonly', '');
     }
   }
 
   invalidsA() {
     let sA = document.getElementById("sA");
-    if (sA?.innerHTML == "") {
+    if (this.sA == "") {
       sA?.setAttribute('readonly', '');
     }
   }
