@@ -80,7 +80,7 @@ export class RegistroComponent {
     this.registroServicio.enviarDatos(datos).subscribe( (respuesta:any) => {
       if (respuesta == 'Se inserto correctamente el usuario') {
         alert(respuesta);
-        this.router.navigate(['login']);
+        this.router.navigate(['bienvenida', datos.Numerodoc]);
       } else {
         alert('No se agrego el usuario');
       }
