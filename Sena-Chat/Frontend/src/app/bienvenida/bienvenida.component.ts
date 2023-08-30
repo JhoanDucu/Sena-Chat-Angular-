@@ -13,14 +13,9 @@ export class BienvenidaComponent {
     private loginServicio: LogearService,
     private rutaActiva: ActivatedRoute 
     ){}
-  setFicha( ficha: {Ficha: ''}){
-    let usuario = this.rutaActiva.snapshot.params;
-    let UsuarioFicha = { f: ficha.Ficha, u: usuario['usuario']}
-    this.loginServicio.seleccionarFicha(UsuarioFicha).subscribe((respuesta: any) => {
-      if (respuesta==true) {
-        alert('sip');
-      }
-      // prompt("Su ficha es "+respuesta['ficha']);
+  setFicha( ficha: ''){
+    this.loginServicio.seleccionarFicha({buscar: ficha}, this.rutaActiva.snapshot.params['usuario']).subscribe((respuesta: any) => {
+      alert(respuesta);
     });
   }
 }
