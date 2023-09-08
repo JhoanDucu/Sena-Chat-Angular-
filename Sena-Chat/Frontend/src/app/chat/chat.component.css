@@ -1,7 +1,6 @@
-  body {
+    body {
     height: 100%;
     margin: 0;
-    background-color: #f7f3f3;
     padding: 0;
     font-family: sans-serif;
     border: 0;
@@ -20,3 +19,27 @@
     margin: 15px;
     margin-top: 0.5%;
   }
+  .navbar.fixed-top {
+    position: fixed;
+    top: 0; 
+}
+  .list-group-item {
+    background-image: url('../../assets/img/User.png'); 
+        background-repeat: no-repeat;
+        background-position: left center; 
+        padding-left: 30px; 
+        background-size: 60px 50px; 
+
+    text-align: center; 
+    line-height: 50px; 
+}
+
+.list-group-item:hover {
+  background-color: #0e882d; 
+}
+
+.offcanvas {
+  width: 25%; 
+  height: 75%; 
+  top: 20%;
+}
