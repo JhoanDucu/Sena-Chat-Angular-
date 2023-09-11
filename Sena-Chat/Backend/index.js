@@ -70,7 +70,8 @@ app.post('/registrar', (req, res) => {
        if (error) return console.error(error.message)
        res.json('Se inserto correctamente el usuario');
     })
-})
+});
+/* BIENVENIDA */
 app.put('/bienvenida/:documento',(req, res)=>{
    const numerodoc = req.params.documento;
    const ficha = req.body.buscar;
@@ -78,6 +79,65 @@ app.put('/bienvenida/:documento',(req, res)=>{
    const query = `UPDATE usuarios SET fk_id_ficha = ${ficha} WHERE numerodoc = ${numerodoc}`;
    conexion.query(query, (error, resultado) => {
       if (error) return console.error(error.message)
-      res.json('Actualizado');
+      res.json([ficha, numerodoc]);
    })
+});
+/* GRUPOS */
+// SELECT * FROM grupos WHERE id_ficha = ".$_GET['getf']
+app.get('/chat/grupos/:ficha', (req, res) => {
+   const ficha = req.params.ficha;
+   const query = `SELECT * FROM grupos WHERE id_ficha = ${ficha}`;
+
+   conexion.query(query, (error, result) => {
+      if(error) console.error(error.message);
+
+      if (result.length > 0) {
+         res.json(resultado);
+      } else {
+         res.json('No hay grupos aun');
+      }
+   })
+});
+
+/* MENSAJES */
+/* SELECT primer_nom,primer_apellido, time_format(fecha_hora, "%H:%i"), contenido_mensaje, id_tipo, u.numerodoc FROM usuarios u
+INNER JOIN mensaje a ON u.numerodoc = a.numerodoc 
+INNER JOIN grupos b ON b.id_grupos = a.fk_id_grupos
+WHERE b.id_grupos = '.$_GET["geti"] */
+
+app.get('/chat/grupos/:grupo', (req, res) => {
+   const grupo = req.params.grupo;
+   const query = `SELECT primer_nom,primer_apellido, time_format(fecha_hora, "%H:%i"), contenido_mensaje, id_tipo, u.numerodoc FROM usuarios u
+   INNER JOIN mensaje a ON u.numerodoc = a.numerodoc 
+   INNER JOIN grupos b ON b.id_grupos = a.fk_id_grupos
+   WHERE b.id_grupos = ${grupo}`;
+
+   conexion.query(query, (error, result) => {
+      if(error) console.error(error.message);
+
+      if (resultado.length > 0) {
+         res.json(resultado);
+      } else {
+         res.json(false);
+      }
+   })
+});
+
+/* INSERT INTO mensaje VALUES (NULL,'$this->fecha $this->hora','$this->mensaje',
+'$this->usuario','$this->tipoMensaje',$this->grupoDestino) */
+
+app.post('/mensaje', (req, res) => {
+   const mensaje = {
+      fecha: req.body.fecha,
+      hora: req.body.hora,
+      contenido_mensaje: req.body.mensaje,
+      numerodoc: req.body.usuario,
+      id_tipo: req.body.tipoMensaje,
+      fk_id_grupos: req.body.grupoDestino,
+   }
+   const query = 'INSERT INTO mensaje SET ?'
+   conexion.query(query, mensaje, (error, resultado) => {
+       if (error) return console.error(error.message)
+       res.json('Enviado');
+    })
 });
