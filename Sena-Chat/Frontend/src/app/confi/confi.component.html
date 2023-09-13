@@ -28,22 +28,68 @@
         
             <form>
                 <div class="mb-3">
-                  <label for="exampleInputEmail1" class="form-label">Nombre De Usuario</label>
-                  <input type="text" class="form-control" id="nombre" aria-describedby="emailHelp">
-                </div>
-                <div class="mb-3">
-                  <label for="exampleInputEmail1" class="form-label" >Numero De Documento</label>
-                  <input type="number" class="form-control" id="documento" aria-describedby="emailHelp">
-                </div>
-                <div class="mb-3">
-                  <label for="exampleInputPassword1" class="form-label">Correo Electronico</label>
+                  <label for="exampleInputEmail1" class="form-label">Primer nombre</label>
+                  <input type="text" class="form-control" id="p_nombre" aria-describedby="emailHelp">
+                  <br>
+                  <label for="exampleInputEmail1" class="form-label">Segundo nombre</label>
+                  <input type="text" class="form-control" id="s_nombre" aria-describedby="emailHelp">
+                  <br>
+                  <label for="exampleInputEmail1" class="form-label">Primer apellido</label>
+                  <input type="text" class="form-control" id="p_apellido" aria-describedby="emailHelp">
+                  <br>
+                  <label for="exampleInputEmail1" class="form-label" >Segundo apellido</label>
+                  <input type="text" class="form-control" id="s_apellido" aria-describedby="emailHelp">
+                  <br>
+                  <label for="exampleInputPassword1" class="form-label">Correo electronico</label>
                   <input type="email" class="form-control" id="correo">
+                  <br>
+                  <label for="exampleInputEmail1" class="form-label">Contraseña</label>
+
+                  <!-- icono de ver contraseña  -->
+                  <div class="form-group">
+                    <div class="input-group">
+                      <input type="{{ showPassword ? 'text' : 'password' }}" class="form-control" id="con_contrasena1" [(ngModel)]="password" name="password" #passwordField1>
+                      <div class="input-group-append">
+                        <button class="btn btn-default" type="button" (click)="togglePasswordVisibility()">
+                          <i class="fa" [ngClass]="{'fa-eye': showPassword, 'fa-eye-slash': !showPassword}"><i class='bx bx-low-vision'></i></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <br>
+
+                  <label for="exampleInputEmail1" class="form-label">Confirmacion de contraseña</label>
+                  
+                  <!-- icono de ver contraseña  -->
+                  <div class="form-group">
+                    <div class="input-group">
+                      <input type="{{ showPassword2 ? 'text' : 'password' }}" class="form-control" id="con_contrasena1" [(ngModel)]="password2" name="password2" #passwordField1>
+                      <div class="input-group-append">
+                        <button class="btn btn-default" type="button" (click)="togglePasswordVisibility2()">
+                          <i class="fa" [ngClass]="{'fa-eye': showPassword2, 'fa-eye-slash': !showPassword2}"><i class='bx bx-low-vision'></i></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <br>
+                  
+                  <label for="exampleInputEmail1" class="form-label">Nombre de usuario</label>
+                  <input type="text" class="form-control" id="nombre" aria-describedby="emailHelp">
+                  <br>
+                  <label for="exampleInputEmail1" class="form-label">Numero de documento</label>
+                  <input type="number" class="form-control" id="documento" aria-describedby="emailHelp">
+                  <br>
+
+                  <label for="formFile" class="form-label">Seleccione su foto de perfil</label>
+                  <input class="form-control" type="file" id="formFile" accept="image/*">
+                  
                 </div>                 
                 <div class="container-fluid"> 
                   <div class="row w-100 align-items-center">
                     <div class="col text-center">
-                      <button type="button" class="btn btn-success">GUARDAR</button>
-                      <button type="button" class="btn btn-success">VOLVER</button>  
+                      <button type="button" class="btn btn-success" [routerLink]="['/vis-perfil']">GUARDAR</button>
+                      <button type="button" class="btn btn-success" [routerLink]="['/chat']">VOLVER</button>
+  
                     </div>	
                   </div>
                 </div>
