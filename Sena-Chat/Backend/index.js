@@ -24,7 +24,7 @@ const conexion = mysql.createConnection ({
 );
 
 app.listen(puerto, () => {
-   console.log('Usando el puerto: '+puerto);
+   console.log('Usando el puerto: '+ puerto);
 });
 
 conexion.connect((error)=>{
@@ -70,3 +70,23 @@ app.post('/registrar', (req, res) => {
        res.json('Se inserto correctamente el usuario');
     })
 })
+
+//actualizar datos
+app.put('/actualizar/:id', (req, res) => {
+   const id = req.params.id;
+   const nuevosDatos = req.body; // Obtiene los nuevos datos desde el cuerpo de la solicitud
+   
+   // Construye la consulta SQL para actualizar los datos en la base de datos
+   const query = 'UPDATE usuarios SET ? WHERE id = ?';
+   
+   // Realiza la consulta SQL para actualizar los datos
+   conexion.query(query, [nuevosDatos, id], (error, resultado) => {
+     if (error) {
+       console.error(error.message);
+       res.status(500).json('Error al actualizar los datos');
+     } else {
+       res.json('Datos actualizados correctamente');
+     }
+   });
+ });
+
