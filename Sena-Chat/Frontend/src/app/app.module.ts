@@ -10,6 +10,9 @@ import { RegistroComponent } from './registro/registro.component';
 import { LoginComponent } from './login/login.component';
 import { ChatComponent } from './chat/chat.component';
 import { BienvenidaComponent } from './bienvenida/bienvenida.component';
+import { ConfiComponent } from './confi/confi.component';
+import { ContrasenaComponent } from './contrasena/contrasena.component';
+import { VisPerfilComponent } from './vis-perfil/vis-perfil.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +20,10 @@ import { BienvenidaComponent } from './bienvenida/bienvenida.component';
     RegistroComponent,
     LoginComponent,
     ChatComponent,
-    BienvenidaComponent
+    BienvenidaComponent,
+    ConfiComponent,
+    ContrasenaComponent,
+    VisPerfilComponent,
   ],
   imports: [
     BrowserModule,
