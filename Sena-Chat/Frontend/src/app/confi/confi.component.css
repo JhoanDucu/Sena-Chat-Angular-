@@ -1,0 +1,260 @@
+html{
+    height: 100% ;
+    position: relative;
+}
+
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background-color: #f7f3f3;
+    border: 0;
+}
+
+#cabecera {
+    float: right;
+    margin-left: 1em;
+    background: linear-gradient(to right,#81BB81, #0e882d);
+    width: 100%;
+    height: 70px;
+    margin-bottom: 10px;
+    box-shadow: 0 1px 2px rgba(0,0,0,.6);
+}
+
+#logo {
+    float: left;
+    width: 109px;
+    height: 70px;
+}
+
+#confi-box {
+    display: grid;
+    width: 70%;
+    height: 70%;
+    margin:  auto;
+    border-radius: 10px;
+    background: #ccc;
+    box-shadow: 0 2px 10px #000000;
+
+}
+
+#user {
+    display: flex;
+    justify-content: center;  
+    height: 70%;   
+    margin-top: 3%;
+}
+
+#text{
+    margin: 1%;
+    margin-top: 1%;
+    justify-content: center;
+}
+
+#text span{
+    font-weight: bold;
+}
+
+.p1 {
+    margin-left: 15%;
+    margin-bottom: 1%;
+    justify-content: center;
+}
+.p1 input {
+    width: 59%;
+    border-radius: 5px;
+    border:none;
+    height: 20px;
+    box-shadow: 0 1px 2px rgba(0,0,0,.6);
+}
+.p1_2 {
+    margin-left: 15%;
+    margin-bottom: 1%;
+    justify-content: center;
+}
+.p1_2 input{
+    width: 57%;
+    border-radius: 5px;
+    border:none;
+    height: 20px;
+    box-shadow: 0 1px 2px rgba(0,0,0,.6);
+}
+
+.p2  {
+    margin-left: 15%;
+    margin-bottom: 1%;
+    justify-content: center;
+} 
+.p2 input{
+    width: 60%;
+    border-radius: 5px;
+    border:none;
+    height: 20px;
+    box-shadow: 0 1px 2px rgba(0,0,0,.6);
+} 
+.p2_2  {
+    margin-left: 15%;
+    margin-bottom: 1%;
+    justify-content: center;
+}
+.p2_2 input{
+    width: 67%;
+    border-radius: 5px;
+    border:none;
+    height: 20px;
+    box-shadow: 0 1px 2px rgba(0,0,0,.6);
+}
+
+.p3 {
+    margin-top: 2%;
+    margin-left: 15%;
+    justify-content: center;
+}
+textarea{
+    width: 685px;
+    border-radius: 5px;
+    border:none;
+    margin-left: 26%;
+    height: 200px;
+    box-shadow: 0 1px 2px rgba(0,0,0,.6);
+}
+
+#boton[type="submit"] { 
+    width: 10%;
+    padding: 10px;
+    font-size: 16px;
+    margin-left:  27%;
+    margin-top: 7%;
+    border: none;
+    background: transparent;
+    font-weight: 900;
+}
+
+#boton:hover{
+    background: #237023;
+    color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #3a813a,
+                0 0 25px #3a813a,
+                0 0 50px #3a813a,
+                0 0 100px #3a813a;
+    
+}
+
+/* FALTA CONFIGURAR EL BOTON DE VOLVER */
+#boton[type="submit"] { 
+    width: 10%;
+    padding: 10px;
+    justify-content: center;
+    font-size: 16px;
+    margin-left:  27%;
+    margin-top: 7%;
+    border: none;
+    background: transparent;
+    font-weight: 900;
+}
+
+#boton:hover{
+    background: #237023;
+    color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #3a813a,
+                0 0 25px #3a813a,
+                0 0 50px #3a813a,
+                0 0 100px #3a813a;
+    
+}
+
+a{
+    text-decoration: none;
+}
+
+@media (min-width: 260px) and (max-width: 479px) and (orientation:portrait) {
+    html{
+      width: 100%;
+      height: 100%;
+    }
+    #confi-box{
+      width: 90%;
+      display: grid;
+      text-align:left ;
+
+    }
+    
+    #text{
+        margin: 20%;
+        margin-top: 1%;
+        justify-content: center;
+
+    }
+
+        #boton[type="submit"] { 
+            width: 50%;
+            padding: 10px;
+            font-size: 16px;
+            margin-left:  27%;
+            margin-top: 7%;
+            border: none;
+            background: transparent;
+            font-weight: 900;
+
+        }
+  }
+
+  @media (min-width: 500px) and (max-width: 1206px) and (orientation:portrait) {
+    html{
+      width: 90%;
+      height: 100%;
+    }
+    #confi-box{
+      width: 90%;
+      display: grid;
+      text-align:left ;
+
+    }
+    
+    #text{
+        margin: 2%;
+        margin-top: 1%;
+        justify-content:center;
+
+    }
+
+    .p1{
+        margin-right: 100px;
+    }
+    .p1_2 input{
+        width: 57%;
+        border-radius: 5px;
+        border:none;
+        height: 20px;
+        box-shadow: 0 1px 2px rgba(0,0,0,.6);
+    }
+    .p1_2{
+        margin-right: 100px;
+    }
+    .p2{
+        margin-right: 100px;
+    }
+    .p2_2{
+        margin-right: 100px;
+    }
+    .p3{
+        margin-right: 100px;
+    }
+
+        #boton[type="submit"] { 
+            width: 50%;
+            padding: 10px;
+            font-size: 16px;
+            margin-left:  27%;
+            margin-top: 7%;
+            border: none;
+            background: transparent;
+            font-weight: 900;
+
+        }
+  }
+  
+  
