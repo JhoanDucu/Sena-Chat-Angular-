@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { Component, Injectable } from '@angular/core';
 import { RegistrarService } from '../Servicios/registrar.service';
 import { Router } from '@angular/router';
+import { Usuario } from '../modelos/usuarios';
 
 @Component({
   selector: 'registro',
@@ -14,7 +15,7 @@ export class RegistroComponent {
   constructor(
     private http: HttpClient,
     private registroServicio: RegistrarService,
-    private router: Router
+    private router: Router,
     ){ }
   Tdoc = "";
   sN = '';
@@ -65,25 +66,14 @@ export class RegistroComponent {
       sA?.setAttribute('readonly', '');
     }
   }
-  registrar( datos = {
-    correo: "",
-    primerNombre: "",
-    segundoNombre: "",
-    primerApellido: "",
-    segundoApellido: "",
-    nombreUsuario: "",
-    tipodoc: "",
-    Numerodoc: "",
-    contraseña: "",
-    confirmar: ""
-  }){
-    this.registroServicio.enviarDatos(datos).subscribe( (respuesta:any) => {
-      if (respuesta == 'Se inserto correctamente el usuario') {
-        alert(respuesta);
-        this.router.navigate(['bienvenida', datos.Numerodoc]);
-      } else {
-        alert('No se agrego el usuario');
-      }
-    });
+  registrar( datos: Usuario, validar: any){
+     datos.contrasena === validar ? this.registroServicio.enviarDatos(datos).subscribe( (respuesta:any) => {
+       if (respuesta == 'Se inserto correctamente el usuario') {
+         alert(respuesta);
+         this.router.navigate(['bienvenida', datos.numerodoc]);
+       } else {
+         alert('No se agrego el usuario');
+       }
+     }): alert('Las contraseñas no son iguales');
   }
 }

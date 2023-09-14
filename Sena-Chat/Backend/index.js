@@ -38,38 +38,30 @@ app.get('/', (req, res) => {
 });
 
 app.post('/login', (req, res)=>{
-   const id = req.body.numerodoc;
-   const query = `SELECT * FROM usuarios WHERE numerodoc = ${numerodoc} AND fk_id_tipodoc = ${tipodoc} AND contrasena = '${md5(password)}'`;
-    conexion.query(query, (error, resultado) => {
+   const {tipodoc, numerodoc, contrasena} = req.body;
+   const query = `SELECT * FROM usuarios WHERE numerodoc = ${numerodoc} AND fk_id_tipodoc = ${tipodoc} AND contrasena = '${md5(contrasena)}'`;
+   conexion.query(query, (error, resultado) => {
        if (error) return console.error(error.message) 
        if (resultado.length > 0) {
-          res.json(resultado)
+          res.json([resultado.fk_id_ficha, resultado.numerodoc])
        } else {
           res.json('No existe registro')
        }
-    })
+   })
 });
 
 app.post('/registrar', (req, res) => {
-   const usuario = {
-      correo: req.body.correo,
-      primer_nom: req.body.primerNombre,
-      segundo_nom: req.body.segundoNombre,
-      primer_apellido: req.body.primerApellido,
-      segundo_apellido: req.body.segundoApellido,
-      contrasena: md5(req.body.contraseña),
-      nombre_usuario: req.body.nombreUsuario,
-      foto: '',
-      fk_id_rol: '2',
-      numerodoc: req.body.Numerodoc,
-      fk_id_tipodoc: req.body.tipodoc,
-      fk_id_ficha: '2558104',
-   }
+   const usuario = req.body;
+   usuario.fk_id_ficha = '2558104';
+   usuario.foto = 'NULL';
+   usuario.fk_id_rol = '2';
+   delete usuario?.confirmar;
+   usuario.contrasena = md5(usuario.contrasena);
    const query = 'INSERT INTO usuarios SET ?'
    conexion.query(query, usuario, (error, resultado) => {
        if (error) return console.error(error.message)
        res.json('Se inserto correctamente el usuario');
-    })
+   })
 });
 /* BIENVENIDA */
 app.put('/bienvenida/:documento',(req, res)=>{

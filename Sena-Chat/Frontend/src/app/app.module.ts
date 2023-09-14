@@ -31,11 +31,11 @@ import { VisPerfilComponent } from './vis-perfil/vis-perfil.component';
     AppRoutingModule,
     HttpClientModule,
     RouterModule.forRoot([
-      {path: 'registro', component: RegistroComponent},
-      {path: 'login', component: LoginComponent},
-      {path: 'chat', component: ChatComponent},
-      {path: 'bienvenida/:usuario', component: BienvenidaComponent},
-      {path: '', redirectTo: 'registro', pathMatch: "full"}
+      // {path: 'registro', component: RegistroComponent},
+      // {path: 'login', component: LoginComponent},
+      // {path: 'chat', component: ChatComponent},
+      // {path: 'bienvenida/:usuario', component: BienvenidaComponent},
+      // {path: '', redirectTo: 'registro', pathMatch: "full"}
     ]),
   ],
   providers: [],

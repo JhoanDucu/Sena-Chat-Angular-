@@ -13,7 +13,7 @@ const routes: Routes = [
   { path: 'home', component: AppComponent},
   { path: "registro", component: RegistroComponent},
   { path: "login", component: LoginComponent},
-  { path: 'chat', component: ChatComponent},
+  { path: 'chat/:documento/:ficha', component: ChatComponent},
   { path: 'bienvenida/:usuario', component: BienvenidaComponent},
   { path: 'confi', component: ConfiComponent },
   { path: 'contrasena', component: ContrasenaComponent},

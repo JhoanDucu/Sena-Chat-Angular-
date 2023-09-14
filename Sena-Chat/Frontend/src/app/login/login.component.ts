@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { LogearService } from '../Servicios/logear.service';
 import { Router } from '@angular/router';
+import { Login } from '../modelos/login';
 
 @Component({
   selector: 'app-login',
@@ -32,18 +33,11 @@ export class LoginComponent {
       invalid?.setAttribute('style','left: 15%; top: -20px; left: 0; color: #ffffff; font-size: 12px; margin-left: 10%;');
     }
   }
-  logear(datos: {
-    tipodoc: "",
-    numerodoc: "",
-    contraseña: ""
-  }){
+  logear(datos: Login){
     alert("Esperando respuesta...");
     this.loginServicio.buscarDatos(datos).subscribe((respuesta: any) => {
-      console.log(respuesta);
       if (respuesta != 'No existe registro') {
-        console.log(respuesta);
-        this.router.navigate(['chat']);
-        //this.router.navigate(["bienvenida",respuesta['usuario']['numerodoc']]);
+        this.router.navigate(['chat', respuesta[0], respuesta[1]]);
       } else {
         alert('Usuario no existe');
       }
