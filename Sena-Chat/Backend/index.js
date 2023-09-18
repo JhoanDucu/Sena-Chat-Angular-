@@ -38,16 +38,16 @@ const express = require("express")
  }); 
   
  app.post('/login', (req, res)=>{ 
-    const {tipodoc, numerodoc, contrasena} = req.body; 
+    const {tipodoc, numerodoc, contrasena} = req.body;
     const query = `SELECT * FROM usuarios WHERE numerodoc = ${numerodoc} AND fk_id_tipodoc = ${tipodoc} AND contrasena = '${md5(contrasena)}'`; 
     conexion.query(query, (error, resultado) => { 
         if (error) return console.error(error.message)  
-        if (resultado.length > 0) { 
-           res.json([resultado.fk_id_ficha, resultado.numerodoc]) 
+        if (resultado.length > 0) {
+           res.json([resultado[0].fk_id_ficha, resultado[0].numerodoc]);
         } else { 
            res.json('No existe registro') 
         } 
-    }) 
+    })
  }); 
   
  app.post('/registrar', (req, res) => { 
@@ -83,7 +83,7 @@ const express = require("express")
        if(error) console.error(error.message); 
   
        if (result.length > 0) { 
-          res.json(resultado); 
+          res.json(result); 
        } else { 
           res.json('No hay grupos aun'); 
        } 
@@ -97,7 +97,7 @@ app.get('/chat/miembros/:grupo', (req, res) => {
        if(error) console.error(error.message); 
   
        if (result.length > 0) { 
-          res.json(resultado); 
+          res.json(result); 
        } else { 
           res.json('No hay grupos aun'); 
        } 
@@ -111,7 +111,7 @@ app.get('/chat/miembros/:grupo', (req, res) => {
        if (error) console.error(error.message);
  
        if (result.length > 0) {
-          res.json(resultado);
+          res.json(result);
        } else {
           res.json('No hay grupos aun');
        }
@@ -127,7 +127,7 @@ app.get('/chat/miembros/:grupo', (req, res) => {
     INNER JOIN grupos b ON b.id_grupos = a.fk_id_grupos 
     WHERE b.id_grupos = ${grupo}`; 
   
-    conexion.query(query, (error, result) => { 
+    conexion.query(query, (error, resultado) => { 
        if(error) console.error(error.message); 
   
        if (resultado.length > 0) { 
