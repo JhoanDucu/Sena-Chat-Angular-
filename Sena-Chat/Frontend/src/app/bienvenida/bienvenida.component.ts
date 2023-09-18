@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { LogearService } from '../Servicios/logear.service';
 import { ActivatedRoute,Params } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-bienvenida',
@@ -11,16 +12,12 @@ import { ActivatedRoute,Params } from '@angular/router';
 export class BienvenidaComponent {
   constructor( 
     private loginServicio: LogearService,
-    private rutaActiva: ActivatedRoute 
+    private rutaActiva: ActivatedRoute,
+    private router: Router
     ){}
-  setFicha( ficha: {Ficha: ''}){
-    let usuario = this.rutaActiva.snapshot.params;
-    let UsuarioFicha = { f: ficha.Ficha, u: usuario['usuario']}
-    this.loginServicio.seleccionarFicha(UsuarioFicha).subscribe((respuesta: any) => {
-      if (respuesta==true) {
-        alert('sip');
-      }
-      // prompt("Su ficha es "+respuesta['ficha']);
+  setFicha( ficha: ''){
+    this.loginServicio.seleccionarFicha({buscar: ficha}, this.rutaActiva.snapshot.params['usuario']).subscribe((respuesta: any) => {
+      if(respuesta.length === 2) this.router.navigate(['chat', respuesta[1], respuesta[0],''],);
     });
   }
 }
