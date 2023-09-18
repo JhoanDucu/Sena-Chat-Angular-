@@ -43,8 +43,9 @@
             <!-- Lista de integrantes -->
             <div class="col-4">
                 <div class="list-group" id="list-tab" role="tablist" style="margin-top: 35px; margin-left: -26%; width: 110%;">
-                    <a class="list-group-item list-group-item-action active" id="list-home-list" data-bs-toggle="list"
+                    <a *ngFor="let g of grupos" class="list-group-item list-group-item-action active" id="list-home-list" data-bs-toggle="list"
                         href="#list-home" role="tab" aria-controls="list-home">lol</a>
+                    <!-- 
                     <a class="list-group-item list-group-item-action" id="list-profile-list" data-bs-toggle="list"
                         href="#list-profile" role="tab" aria-controls="list-profile">xd</a>
                     <a class="list-group-item list-group-item-action" id="list-messages-list" data-bs-toggle="list"
@@ -57,7 +58,7 @@
                     <a class="list-group-item list-group-item-actio" id="list-profile-list" data-bs-toggle="list"
                         href="#list-profil" role="tab" aria-controls="list-profile">xd</a>
                     <a class="list-group-item list-group-item-actio" id="list-messages-list" data-bs-toggle="list"
-                        href="#list-message" role="tab" aria-controls="list-messages">lol</a>
+                        href="#list-message" role="tab" aria-controls="list-messages">lol</a> -->
                 </div>
             </div>
 
