@@ -27,7 +27,7 @@
                             <img src="../../assets/img/User.png" id="perfil">
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a class="dropdown-item" href="#">Configuracion</a></li>
+                            <li><a class="dropdown-item" routerLink="/vis-perfil" routerLinkActive="active">Perfil</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" href="#">Salir</a></li>
                         </ul>
@@ -61,62 +61,115 @@
                 </div>
             </div>
 
-            <!-- Chat -->
-            <div class="col-8">
-                <div class="card"
-                    style="width: 123%; margin-top: 35px; margin-left: -10%; margin-right: auto; height: 470px;">
-                    <!-- Cabecera del chat -->
-                    <nav class="navbar bg-body-tertiary"
-                        style="background: linear-gradient(to right, #81BB81, #0e882d); height:15%;">
-                        <div class="container-fluid">
-                            <img src="../../assets/img/Grupo.png" alt="Descripción de la imagen"
-                                style="width: 70px; height: 50px; margin: 15px; margin-top: 0.1%;">
-                                <h5 style="color: #fff;">2558104</h5>
-                            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
-                                data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar"
-                                aria-label="Toggle navigation">
-                                <span class="navbar-toggler-icon"></span>
-                            </button>
-                        </div>
-                    </nav>
+            <!-- Cabecera del chat -->
+            <nav class="navbar bg-body-tertiary" style="background: linear-gradient(to right, #81BB81, #0e882d); height: 1%; width: 81%; margin-top: -471px; margin-left: 28%;">
+                <div class="container-fluid">
+                    <img src="../../assets/img/Grupo.png" alt="Descripción de la imagen"
+                        style="width: 70px; height: 50px; margin: 15px; margin-top: 0.1%;">
+                    <h5 style="color: #fff;">2558104</h5>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                </div>
+            </nav>
+            
+            <!-- Offcanvas -->
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Informacion del grupo</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
 
+                    </ul>
+                </div>
+            </div>
+            <!-- Cabecera del chat -->
+
+            <!-- Chat -->
+            <div class="col-8" style="margin-top: -388px; margin-left: 33.5%;">
+                <div class="card" style="width: 125%; margin-left: -10%; margin-right: auto; height: 325px;">                    
                     <!-- Cuerpo del chat: aquí se ubicarán los mensajes -->
                     <div class="card-body chat-box">
 
-                        <div class="card" style="background: #0e882d; color: #fff; left: 92%; width: 8%;">
-                            <div class="card-body">
-                              hola
-                            </div>
-                          </div>
-
-                          <br>
-                    
-                          <div class="card" style="background: #e3e6e4; width: 8%;">
-                            <div class="card-body">
-                              hola
-                            </div>
-                          </div>
-
-                    </div>
-
-                    <!-- Pie del chat: para enviar nuevos mensajes -->
-                    <div class="card-footer">
-                        <div class="input-group">
-                            <input type="text" class="form-control custom-text-input" placeholder="Escribe tu mensaje...">
-                            <div class="input-group-append">
-                                <button class="btn btn-success" type="button">Enviar</button>
+                        <!-- Mensaje de chat a la izquierda -->
+                        <div class="d-flex justify-content-start">
+                            <div class="text-dark p-2 rounded" style="background: #e3e6e4; max-width: 50%;"> <!-- Limita el ancho al 50% -->
+                                LOOOOOOOOOOOOOOOOOL
                             </div>
                         </div>
-                    
-                        <div class="custom-file-upload" style="left: 1%;">
-                            <input type="file" id="file" class="upload-file">
-                            <label for="file">
-                                <img src="../../assets/img/archivos.png" alt="Icono" />
-                            </label>
+
+                        <!-- Mensaje de chat a la derecha -->
+                        <div class="d-flex justify-content-end">
+                            <div class="bg-success text-white p-2 rounded" style="max-width: 50%;"> <!-- Limita el ancho al 50% -->
+                                HOLAAAAAAAAAA
+                            </div>
                         </div>
+
+                        <!-- Mensaje de chat a la izquierda -->
+                        <div class="d-flex justify-content-start">
+                            <div class="text-dark p-2 rounded" style="background: #e3e6e4; max-width: 50%;"> <!-- Limita el ancho al 50% -->
+                                LOOOOOOOOOOOOOOOOOL
+                                LOOOOOOOOOOO
+                            </div>
+                        </div>
+
+                        <!-- Otro mensaje de chat a la derecha -->
+                        <div class="d-flex justify-content-end">
+                            <div class="bg-success text-white p-2 rounded" style="max-width: 50%;"> <!-- Limita el ancho al 50% -->
+                                HOLAAAAAAAAAAAAAAAAAAAAAAA
+                            </div>
+                        </div>
+
+                        <!-- Mensaje de chat a la izquierda -->
+                        <div class="d-flex justify-content-start">
+                            <div class="text-dark p-2 rounded" style="background: #e3e6e4; max-width: 50%;"> <!-- Limita el ancho al 50% -->
+                                LOOOOOOOOOOOOOOOOOL
+                                LOOOOOOOOOOO
+                            </div>
+                        </div>
+
+                        <!-- Otro mensaje de chat a la derecha -->
+                        <div class="d-flex justify-content-end">
+                            <div class="bg-success text-white p-2 rounded" style="max-width: 50%;"> <!-- Limita el ancho al 50% -->
+                                HOLAAAAAAAAAAAAAAAAAAAAAAA
+                            </div>
+                        </div>
+
+                        <!-- Otro mensaje de chat a la derecha -->
+                        <div class="d-flex justify-content-end">
+                            <div class="bg-success text-white p-2 rounded" style="max-width: 50%;"> <!-- Limita el ancho al 50% -->
+                                HOLAAAAAAAAAAAAAAAAAAAAAAA
+                            </div>
+                        </div>
+                        
+                        <!-- Otro mensaje de chat a la derecha -->
+                        <div class="d-flex justify-content-end">
+                            <div class="bg-success text-white p-2 rounded" style="max-width: 50%;"> <!-- Limita el ancho al 50% -->
+                                HOLAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+                            </div>
+                        </div>
+                                            
                     </div>
-                    
-                          
+                </div>
+            </div>
+            <!-- Chat -->
+
+           <!-- Pie del chat: para enviar nuevos mensajes -->
+            <div class="card-footer" style="margin-top: -55px; margin-left: 28%; width: 80%;">
+                <div class="input-group">
+                    <input type="text" class="form-control custom-text-input" placeholder="Escribe tu mensaje...">
+                    <div class="input-group-append" style="margin-top: 10px;">
+                        <button class="btn btn-success" type="button">Enviar</button>
+                    </div>
+                </div>
+
+                <div class="custom-file-upload" style="left: 1%;">
+                    <input type="file" id="file" class="upload-file">
+                    <label for="file">
+                        <img src="../../assets/img/archivos.png" alt="Icono" />
+                    </label>
                 </div>
             </div>
         </div>
