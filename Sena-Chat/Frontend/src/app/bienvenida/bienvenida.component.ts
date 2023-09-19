@@ -17,7 +17,7 @@ export class BienvenidaComponent {
     ){}
   setFicha( ficha: ''){
     this.loginServicio.seleccionarFicha({buscar: ficha}, this.rutaActiva.snapshot.params['usuario']).subscribe((respuesta: any) => {
-      if(respuesta.length === 2) this.router.navigate(['chat', respuesta[1], respuesta[0],''],);
+      if(respuesta.length === 2) this.router.navigate(['chat', respuesta[1], respuesta[0],'']);
     });
   }
 }
