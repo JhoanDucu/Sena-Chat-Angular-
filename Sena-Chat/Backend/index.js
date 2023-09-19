@@ -122,7 +122,7 @@ app.get('/chat/miembros/:grupo', (req, res) => {
  
  app.get('/chat/mensajes/:grupo', (req, res) => { 
     const grupo = req.params.grupo; 
-    const query = `SELECT primer_nom,primer_apellido, time_format(fecha_hora, "%H:%i"), contenido_mensaje, id_tipo, u.numerodoc FROM usuarios u 
+    const query = `SELECT primer_nom,primer_apellido, fecha, hora, contenido_mensaje, id_tipo, u.numerodoc FROM usuarios u 
     INNER JOIN mensaje a ON u.numerodoc = a.numerodoc  
     INNER JOIN grupos b ON b.id_grupos = a.fk_id_grupos 
     WHERE b.id_grupos = ${grupo}`; 
