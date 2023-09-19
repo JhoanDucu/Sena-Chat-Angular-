@@ -1,10 +1,11 @@
-    body {
+  body {
     height: 100%;
     margin: 0;
     padding: 0;
     font-family: sans-serif;
     border: 0;
   }
+  
   
   #logo {
     float: left;
@@ -19,10 +20,7 @@
     margin: 15px;
     margin-top: 0.5%;
   }
-  .navbar.fixed-top {
-    position: fixed;
-    top: 0; 
-}
+
   .list-group-item {
     background-image: url('../../assets/img/User.png'); 
         background-repeat: no-repeat;
@@ -34,12 +32,58 @@
     line-height: 50px; 
 }
 
+.list-group-item.active {
+  background-color: #0e882d;
+  color: #fff;
+}
+
 .list-group-item:hover {
-  background-color: #0e882d; 
+  background-color: #81BB81; 
+  color: #fff;
 }
 
 .offcanvas {
   width: 25%; 
   height: 75%; 
   top: 20%;
+}
+
+.custom-file-upload {
+  position: relative;
+  display: inline-block;
+}
+
+.upload-file {
+  display: none;
+}
+
+label {
+  background-color: #f9f9f9;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+label img {
+  height: 23px;
+  width: 23px;
+  margin-right: 10px;
+}
+
+
+.card-footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between; 
+}
+
+
+.custom-text-input {
+  flex: 1; 
+  margin-right: 10px;
+}
+
+.custom-file-upload {
+  display: flex;
+  align-items: center;
 }
