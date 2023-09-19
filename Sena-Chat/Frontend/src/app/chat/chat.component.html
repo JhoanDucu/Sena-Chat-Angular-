@@ -43,9 +43,8 @@
             <!-- Lista de integrantes -->
             <div class="col-4">
                 <div class="list-group" id="list-tab" role="tablist" style="margin-top: 35px; margin-left: -26%; width: 110%;">
-                    <a *ngFor="let g of grupos" class="list-group-item list-group-item-action active" id="list-home-list" data-bs-toggle="list"
+                    <a class="list-group-item list-group-item-action active" id="list-home-list" data-bs-toggle="list"
                         href="#list-home" role="tab" aria-controls="list-home">lol</a>
-                    <!-- 
                     <a class="list-group-item list-group-item-action" id="list-profile-list" data-bs-toggle="list"
                         href="#list-profile" role="tab" aria-controls="list-profile">xd</a>
                     <a class="list-group-item list-group-item-action" id="list-messages-list" data-bs-toggle="list"
@@ -58,7 +57,7 @@
                     <a class="list-group-item list-group-item-actio" id="list-profile-list" data-bs-toggle="list"
                         href="#list-profil" role="tab" aria-controls="list-profile">xd</a>
                     <a class="list-group-item list-group-item-actio" id="list-messages-list" data-bs-toggle="list"
-                        href="#list-message" role="tab" aria-controls="list-messages">lol</a> -->
+                        href="#list-message" role="tab" aria-controls="list-messages">lol</a>
                 </div>
             </div>
 
@@ -103,15 +102,21 @@
                     <!-- Pie del chat: para enviar nuevos mensajes -->
                     <div class="card-footer">
                         <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Escribe tu mensaje...">
+                            <input type="text" class="form-control custom-text-input" placeholder="Escribe tu mensaje...">
                             <div class="input-group-append">
                                 <button class="btn btn-success" type="button">Enviar</button>
                             </div>
                         </div>
-                        <div class="mt-2">
-                            <input type="file" class="form-control-file">
+                    
+                        <div class="custom-file-upload" style="left: 1%;">
+                            <input type="file" id="file" class="upload-file">
+                            <label for="file">
+                                <img src="../../assets/img/archivos.png" alt="Icono" />
+                            </label>
                         </div>
                     </div>
+                    
+                          
                 </div>
             </div>
         </div>
