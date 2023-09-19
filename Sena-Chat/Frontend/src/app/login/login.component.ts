@@ -37,7 +37,7 @@ export class LoginComponent {
     alert("Esperando respuesta...");
     this.loginServicio.buscarDatos(datos).subscribe((respuesta: any) => {
       if (respuesta != 'No existe registro') {
-        this.router.navigate(['chat', respuesta[0], respuesta[1]]);
+        this.router.navigate(['chat', respuesta[1], respuesta[0], '']);
       } else {
         alert('Usuario no existe');
       }

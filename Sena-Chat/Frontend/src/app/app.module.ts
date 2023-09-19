@@ -35,7 +35,7 @@ import { VisPerfilComponent } from './vis-perfil/vis-perfil.component';
       // {path: 'login', component: LoginComponent},
       // {path: 'chat', component: ChatComponent},
       // {path: 'bienvenida/:usuario', component: BienvenidaComponent},
-      // {path: '', redirectTo: 'registro', pathMatch: "full"}
+      {path: '', redirectTo: 'login', pathMatch: "full"}
     ]),
   ],
   providers: [],

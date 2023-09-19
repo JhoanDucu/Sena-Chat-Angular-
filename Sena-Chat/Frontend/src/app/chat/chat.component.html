@@ -1,171 +1,124 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>chat</title>
-    <link rel="stylesheet" href="chat.component.css">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 </head>
+
 <body>
-    <div id="chat">
-        <header id="cabecera" class="position-relative">
+    <!-- CABECERA -->
+    <nav class="navbar navbar-expand-lg"
+        style="background: linear-gradient(to right, #81BB81, #0e882d); margin: -3.8%;">
+        <div class="container-fluid">
             <img src="../../assets/img/sena chat.png" id="logo">
-                
-            <div class="w-50">
-                <div class="btn-group dropstart">
-                    <button type="button" class="btn btn-secondary dropdown-toggle bg-transparent border-0" data-bs-toggle="dropdown" aria-expanded="false">
-                    <a><img src="../../assets/img/User.png" id="perfil"></a>
-                    </button>
-                    <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Configuracion</a></li>
-                    <li><a class="dropdown-item" href="#">Cerrar sesion</a></li>
-                    </ul>
-                </div>
-                <h3 class="mx-auto p-2" style="width: 300px; ">ACA QUE MANO</h3>
-            </div>
-        </header> 
-
-        <div id="list-box">
-        <a href=""><div class="rectangulo"> <img src="../../assets/img/Grupo.png" class="grupo"><h2>2558104</h2></div> </a>
-            <!--
-            <a href=""><div class="rectangulo"><img src="img/User.png" class="user"><h2>Participante</h2> </div> </a>
-            <a href=""><div class="rectangulo"><img src="img/User.png" class="user"><h2>Participante</h2> </div> </a>
-            <a href=""><div class="rectangulo"><img src="img/User.png" class="user"><h2>Participante</h2> </div> </a>
-            <a href=""><div class="rectangulo"><img src="img/User.png" class="user"><h2>Participante</h2> </div> </a>
-            <a href=""><div class="rectangulo"><img src="img/User.png" class="user"><h2>Participante</h2> </div> </a>
-            <a href=""><div class="rectangulo"><img src="img/User.png" class="user"><h2>Participante</h2> </div> </a>
-            <a href=""><div class="rectangulo"><img src="img/User.png" class="user"><h2>Participante</h2> </div> </a>
-            <a href=""><div class="rectangulo"> <img src="img/Grupo.png" class="grupo"><h2>2558104</h2></div> </a>
-            <a href=""><div class="rectangulo"> <img src="img/Grupo.png" class="grupo"><h2>2558104</h2></div> </a>
-            <a href=""><div class="rectangulo"> <img src="img/Grupo.png" class="grupo"><h2>2558104</h2></div> </a>
-            <a href=""><div class="rectangulo"> <img src="img/Grupo.png" class="grupo"><h2>2558104</h2></div> </a>
-            <a href=""><div class="rectangulo"> <img src="img/Grupo.png" class="grupo"><h2>2558104</h2></div> </a>  -->
-        </div>
-
-        <div id="informacion">
-            <img src="../../assets/img/Grupo.png" alt="Descripción de la imagen">
-            <div class="texto">
-                <p> 2558104 <br> grupo de heiver </p>
-            </div>
-
-            <button class=" btn-primary w-auto p-3 mb-2 bg-success text-white" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
-                <span>---</span><br>
-                <span>---</span><br>
-                <span>---</span>
-            </button>
-        </div>
-
-        <div class="offcanvas offcanvas-end " id="offcanvasRight" aria-labelledby="offcanvasRightLabel" style="height: 60%;">
-        <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="offcanvasRightLabel">informacion de grupo</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        </div>
-        <div class="offcanvas-body">
-                <span style="font-weight: bold;">instructor:</span><span>Heiver Cuesta</span>
-                <br>
-                <br>
-                <span style="font-weight: bold;">participantes:</span><span>22</span>
-                <br>
-                <br>
-                <br>
-                <br>
-                <div>
-                        <img  src="../../assets/img/User-agregar.png" class="info-agreg" style="width: 90px; height: 80px;"><span>agregar</span>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <button class="btn btn-outline-success" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop" style="border:none">
-                        <img src="../../assets/img/User-y.png" class="info-agreg" style="width: 90px; height: 90px;"><span>eliminar</span>
-                    </button>
-
-                </div>
-            </div>
-            </div>
-
-            <div class="offcanvas offcanvas-top" tabindex="-1" id="offcanvasTop" aria-labelledby="offcanvasTopLabel" style="height: 60%; left:79%;">
-                <div class="offcanvas-header">
-                    <h5 class="offcanvas-title" id="offcanvasTopLabel"></h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                </div>
-                <div class="offcanvas-body">
-
-                <img src="../../assets/img/User-y.png" class="info-agreg" style="width: 60px; height: 60px;"> <span>eliminar</span><br><br>
-                
-                <ul class="list-group">
-                    <li class="list-group-item list-group-item-success">';
-                        <img src="../../assets/img/User-y.png" class="info-agreg" style="width: 30px; height: 30px;">
+            <div class="collapse navbar-collapse" id="navbarScroll">
+                <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll"
+                    style="--bs-scroll-height: 100px;">
+                </ul>
+                <ul class="navbar-nav">
+                    <h4 class="dropdown-menu-end" style="margin-top: 10%;">JuanchoTv</h4>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            <img src="../../assets/img/User.png" id="perfil">
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="#">Configuracion</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Salir</a></li>
+                        </ul>
                     </li>
                 </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- CABECERA -->
+
+    <div class="container mt-4">
+        <div class="row">
+            <!-- Lista de integrantes -->
+            <div class="col-4">
+                <div class="list-group" id="list-tab" role="tablist" style="margin-top: 35px; margin-left: -26%; width: 110%;">
+                    <a *ngFor="let g of grupos" class="list-group-item list-group-item-action active" id="list-home-list" data-bs-toggle="list"
+                        href="#list-home" role="tab" aria-controls="list-home">lol</a>
+                    <!-- 
+                    <a class="list-group-item list-group-item-action" id="list-profile-list" data-bs-toggle="list"
+                        href="#list-profile" role="tab" aria-controls="list-profile">xd</a>
+                    <a class="list-group-item list-group-item-action" id="list-messages-list" data-bs-toggle="list"
+                        href="#list-messages" role="tab" aria-controls="list-messages">lol</a>
+                    <a class="list-group-item list-group-item-action" id="list-settings-list" data-bs-toggle="list"
+                        href="#list-settings" role="tab" aria-controls="list-settings">xd</a>
+                    
+                    <a class="list-group-item list-group-item-action activ" id="list-home-list" data-bs-toggle="list"
+                        href="#list-hom" role="tab" aria-controls="list-home">lol</a>
+                    <a class="list-group-item list-group-item-actio" id="list-profile-list" data-bs-toggle="list"
+                        href="#list-profil" role="tab" aria-controls="list-profile">xd</a>
+                    <a class="list-group-item list-group-item-actio" id="list-messages-list" data-bs-toggle="list"
+                        href="#list-message" role="tab" aria-controls="list-messages">lol</a> -->
                 </div>
             </div>
 
-        <!-- xx -->
+            <!-- Chat -->
+            <div class="col-8">
+                <div class="card"
+                    style="width: 123%; margin-top: 35px; margin-left: -10%; margin-right: auto; height: 470px;">
+                    <!-- Cabecera del chat -->
+                    <nav class="navbar bg-body-tertiary"
+                        style="background: linear-gradient(to right, #81BB81, #0e882d); height:15%;">
+                        <div class="container-fluid">
+                            <img src="../../assets/img/Grupo.png" alt="Descripción de la imagen"
+                                style="width: 70px; height: 50px; margin: 15px; margin-top: 0.1%;">
+                                <h5 style="color: #fff;">2558104</h5>
+                            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
+                                data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar"
+                                aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                        </div>
+                    </nav>
 
-        <div id="chat-box">
-            <div class="mensaje-izquierdo">
-                <span>heiver Cuesta</span>
-                Buenos dias aprendices!! Como les va el dia de hoy?
-                <div class="hora">10:30 AM</div>
-            </div> 
-            <div class="mensaje-izquierdo">
-                <span>heiver Cuesta</span>
-                Buenos dias aprendices!! Como les va el dia de hoy?
-                <div class="hora">10:30 AM</div>
-            </div> 
-            <div class="mensaje-izquierdo">
-                <span>heiver Cuesta</span>
-                Buenos dias aprendices!! Como les va el dia de hoy?
-                <div class="hora">10:30 AM</div>
-            </div> 
-            <div class="mensaje-izquierdo">
-                <span>heiver Cuesta</span>
-                Buenos dias aprendices!! Como les va el dia de hoy?
-                <div class="hora">10:30 AM</div>
-            </div> 
-            <div class="mensaje-izquierdo">
-                <span>heiver Cuesta</span>
-                Buenos dias aprendices!! Como les va el dia de hoy?
-                <div class="hora">10:30 AM</div>
-            </div> 
+                    <!-- Cuerpo del chat: aquí se ubicarán los mensajes -->
+                    <div class="card-body chat-box">
 
-            <div class="mensaje-izquierdo">
-                <span>Juan  Cardenas</span>
-                Buen dia instructor
-                <div class="hora">10:30 AM</div>
-            </div>
+                        <div class="card" style="background: #0e882d; color: #fff; left: 92%; width: 8%;">
+                            <div class="card-body">
+                              hola
+                            </div>
+                          </div>
 
-            <div class="mensaje-izquierdo">
-                <span>Juan  Cardenas</span>
-                Buen dia instructor
-                <div class="hora">10:30 AM</div>
-            </div>
-            
-            <div class="mensaje-izquierdo">
-                <span>Jhoan Ducuara</span>
-                Buenos dias
-                <div class="hora">10:30 AM</div>
-            </div>
+                          <br>
+                    
+                          <div class="card" style="background: #e3e6e4; width: 8%;">
+                            <div class="card-body">
+                              hola
+                            </div>
+                          </div>
 
-            <div class="mensaje-derecho">
-                <span></span>
-                Hola, buen dia
-                <div class="hora">10:30 AM</div>
-            </div>               
-            
-            <div id="here">
-                
+                    </div>
+
+                    <!-- Pie del chat: para enviar nuevos mensajes -->
+                    <div class="card-footer">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Escribe tu mensaje...">
+                            <div class="input-group-append">
+                                <button class="btn btn-success" type="button">Enviar</button>
+                            </div>
+                        </div>
+                        <div class="mt-2">
+                            <input type="file" class="form-control-file">
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        
-        <form id="escribir" method="post" action="">
-            <input type="text" placeholder="Escribir..." name="mensaje">
-            
-            <button type="submit" name="enviar" id="enviar">
-                <img src="../../assets/img/boton enviar.png" width="30px" height="30px">
-            </button>
-        </form>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 </body>
+
 </html>
