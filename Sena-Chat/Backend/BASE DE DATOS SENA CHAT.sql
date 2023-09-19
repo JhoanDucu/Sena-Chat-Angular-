@@ -122,19 +122,24 @@ FOREIGN KEY (fk_id_grupos)
 REFERENCES grupos (id_grupos);
 
 INSERT INTO ficha 
-VALUES ('2558104g1','Analisis Y Desarrollo De Software'),
-	   ('2558105','Arte, cultura, esparcimiento y deportes'),
-	   ('2558101','Tecnologías de la información'),
-	   ('2558102','Finanzas'),
-       ('2558103','administración'),
-	   ('2558109','Salud'),
-	   ('2558106','Operación de equipo industrial'),
-	   ('2558107','Ciencias sociales'),
-	   ('2558108','servicios gubernamentales');
+VALUES ('2558101','Analisis Y Desarrollo De Software'),
+	   ('2558102','Arte, cultura, esparcimiento y deportes'),
+	   ('2558103','Tecnologías de la información'),
+	   ('2558104','Finanzas'),
+       ('2558105','administración'),
+	   ('2558106','Salud'),
+	   ('2558107','Operación de equipo industrial'),
+	   ('2558108','Ciencias sociales'),
+	   ('2558109','servicios gubernamentales'),
+	   ('25581010', 'Desarrollo de Software'),
+('2558111', 'Gestión de Recursos Humanos'),
+('2558112', 'Mecatrónica Industrial'),
+('2558113', 'Gastronomía'),
+('2558114', 'Tecnología en Redes de Computadores');
 
 INSERT INTO roles 
 VALUES ('1','INSTRUCTOR'),
-	   ('2','APRENDIZ');
+('2','APRENDIZ');
 
 INSERT INTO tipo_documento 
 VALUES ('1','Cédula de Ciudadanía'),
@@ -150,7 +155,7 @@ VALUES ('1','Mensaje de Texto','text'),
 
 INSERT INTO usuarios 
 VALUES ('juan.cardenas34@misena.edu.co','juan','david','cardenas','perez',MD5('123'),'juan_cardenas',NULL,'2',1131104356,1, '2558104'),
-('camilo@gmail.com','camilo',NULL,'perez',NULL,MD5('123'),'carlosperez',NULL,'2','12345678911',1,'2558104'),
+('camilo@gmail.com','camilo',NULL,'perez',NULL,MD5('123'),'carlosperez',NULL,'2','1234567911',1,'2558104'),
 ('sebastian@gmail.com','sebastian',NULL,'carrillo',NULL,MD5('123'),'sebastian_123',NULL,'2','12345678912',1,'2558105'),
 ('isabella.mitchell@example.com','isabella',NULL,'mitchell',NULL,MD5('123'),'isabella',NULL,'2','12345678913',1,'2558102'),
 ('ethan.johnson@example.com','ethan',NULL,'johnson',NULL,MD5('123'),'ethan',NULL,'2','12345678914',1,'2558104'),
@@ -158,7 +163,27 @@ VALUES ('juan.cardenas34@misena.edu.co','juan','david','cardenas','perez',MD5('1
 ('alexander.turner@example.com','alexander',NULL,'turner',NULL,MD5('123'),'alexander',NULL,'2','12345678917',1,'2558104'),
 ('olivia.brooks@example.com','olivia',NULL,'brooks',NULL,MD5('123'),'oliva',NULL,'2','12345678918',1,'2558104'),
 ('mia.parker@example.com','mia',NULL,'parker',NULL,MD5('123'),'mia',NULL,'2','12345678919',1,'2558104'),
-('Minnick@gmail.com','nicolas',NULL,'Rincon',NULL,MD5('minnick'),'nicolas_rincon',NULL,'2','1021392807',1,'2558105');
+('Minnick@gmail.com','nicolas',NULL,'Rincon',NULL,MD5('minnick'),'nicolas_rincon',NULL,'2','1021392807',1,'2558105'),
+('johndoe@example.com', 'John', 'David', 'Doe', NULL, MD5('password123'), 'johndoe', 'john.jpg', '2', '12345678001', 1, '2558104'),
+('alicejane@example.com', 'Alice', 'Jane', 'Johnson', NULL, MD5('password456'), 'alicej', 'alice.jpg', '2', '12345678002', 2, '2558104'),
+('bobsmith@example.com', 'Bob', NULL, 'Smith', NULL, MD5('password789'), 'bobsmith', 'bob.jpg', '2', '12345678003', 1, '2558105'),
+('emilybrown@example.com', 'Emily', NULL, 'Brown', NULL, MD5('passwordabc'), 'emilyb', 'emily.jpg', '2', '12345678004', 2, '2558105'),
+('michaelscott@example.com', 'Michael', NULL, 'Scott', NULL, MD5('passwordxyz'), 'michaels', 'michael.jpg', '2', '12345678005', 1, '2558104'),
+('oliviawilliams@example.com', 'Olivia', NULL, 'Williams', NULL, MD5('password123'), 'oliviaw', 'olivia.jpg', '2', '12345678006', 2, '2558104'),
+('liamgarcia@example.com', 'Liam', NULL, 'Garcia', NULL, MD5('password456'), 'liamg', 'liam.jpg', '2', '12345678007', 1, '2558105'),
+('sophiamartinez@example.com', 'Sophia', NULL, 'Martinez', NULL, MD5('password789'), 'sophiam', 'sophia.jpg', '2', '12345678008', 2, '2558105'),
+('noahhernandez@example.com', 'Noah', NULL, 'Hernandez', NULL, MD5('passwordabc'), 'noahh', 'noah.jpg', '2', '12345678009', 1, '2558104'),
+('avagarcia@example.com', 'Ava', NULL, 'Garcia', NULL, MD5('passwordxyz'), 'avag', 'ava.jpg', '2', '12345678010', 2, '2558107'),
+('ethanjones@example.com', 'Ethan', NULL, 'Jones', NULL, MD5('password123'), 'ethanj', 'ethan.jpg', '2', '12345678011', 1, '2558112'),
+('mialopez@example.com', 'Mia', NULL, 'Lopez', NULL, MD5('password456'), 'mial', 'mia.jpg', '2', '12345678012', 2, '2558106'),
+('oliviamiller@example.com', 'Olivia', NULL, 'Miller', NULL, MD5('password789'), 'oliviam', 'olivia.jpg', '2', '12345678013', 1, '2558102'),
+('liamwilson@example.com', 'Liam', NULL, 'Wilson', NULL, MD5('passwordabc'), 'liamw', 'liam.jpg', '2', '12345678014', 2, '2558113'),
+('sophiamartinez2@example.com', 'Sophia', NULL, 'Martinez', NULL, MD5('passwordxyz'), 'sophiam2', 'sophia.jpg', '2', '12345678015', 1, '2558102'),
+('noahanderson@example.com', 'Noah', NULL, 'Anderson', NULL, MD5('password123'), 'noaha', 'noah.jpg', '2', '12345678016', 2, '2558102'),
+('avamartinez@example.com', 'Ava', NULL, 'Martinez', NULL, MD5('password456'), 'avam', 'ava.jpg', '2', '12345678017', 1, '2558103'),
+('ethanturner@example.com', 'Ethan', NULL, 'Turner', NULL, MD5('password789'), 'ethant', 'ethan.jpg', '2', '12345678018', 2, '2558103'),
+('miaparker@example.com', 'Mia', NULL, 'Parker', NULL, MD5('passwordabc'), 'miap', 'mia.jpg', '2', '12345678019', 1, '2558103'),
+('lucasbrown@example.com', 'Lucas', NULL, 'Brown', NULL, MD5('passwordxyz'), 'lucasb', 'lucas.jpg', '2', '12345678020', 2, '2558103');
 
 INSERT INTO grupos 
 VALUES ('1','grupo 1','grupo de Heiver, ficha 2558104','2558104'),
@@ -167,23 +192,56 @@ VALUES ('1','grupo 1','grupo de Heiver, ficha 2558104','2558104'),
 	   ('4','grupo 4','grupo de Isaura, ficha 2558104','2558104'),
 	   ('5','grupo 5','grupo de Wendy, ficha 2558105','2558105'),
 	   ('6','grupo 6','grupo de Alejandra, ficha 2558105','2558105'),
-	   ('7','grupo 7','grupo de Manolo, fivha de 2558102','2558102');
-	   
+	   ('7','grupo 7','grupo de Manolo, ficha de 2558102','2558102'),
+	   ('8', 'Grupo 8', 'Grupo de sofia', '2558111'),
+('9', 'Grupo 9', 'Grupo de sebas', '2558112'),
+('10', 'Grupo 10', 'Grupo de lorenso', '2558112'),
+('11', 'Grupo 11', 'Grupo de camilo', '2558103'),
+('12', 'Grupo 12', 'Grupo de tulia', '2558105'),
+('13', 'Grupo 13', 'Grupo de nicolas', '2558106'),
+('14', 'Grupo 14', 'Grupo de esteban', '2558107'),
+('15', 'Grupo 15', 'Grupo de maria', '2558105'),
+('16', 'Grupo 16', 'Grupo de camila', '2558102'),
+('17', 'Grupo 17', 'Grupo de lorena', '2558112'),
+('18', 'Grupo 18', 'Grupo de laura', '2558113'),
+('19', 'Grupo 19', 'Grupo de jhoan', '2558112'),
+('20', 'Grupo 20', 'Grupo de carlos', '2558113');
+
 INSERT INTO mensaje 
 VALUES ('1', '2020-03-20','11:30:00','HOLA','1131104356', '1','1'),
-	   ('2', '2020-03-20','12:30:00','BUEN DIA, INSTRUCTOR','1021392807', '1','1'),
-	   ('3', '2020-03-20','13:30:00','QUE TRANZA','12345678912','1','2'),
-	   ('4', '2020-03-20','11:30:00','PERROS WOOF WOOF','12345678911', '1','1'),
-	   ('5', '2020-03-20','12:30:00','ALAMBRE DE QUESO','1021392807', '1','2'),
-	   ('6', '2020-03-20','13:30:00','SI :D','1021392807','1','2');
+	('2', '2020-03-20','12:30:00','BUEN DIA, INSTRUCTOR','1021392807', '1','1'),
+	('3', '2020-03-20','13:30:00','QUE TRANZA','12345678912','1','2'),
+	('4', '2020-03-20','11:30:00','PERROS WOOF WOOF','12345678012', '1','1'),
+	('5', '2020-03-20','12:30:00','ALAMBRE DE QUESO','1021392807', '1','2'),
+	('6', '2020-03-20','13:30:00','SI :D','1021392807','1','2'),
+	('7', '2023-09-19', '14:45:00', 'ya', '1131104356', '1', '1'),
+('8', '2023-09-19', '15:00:00', 'no se', '12345678912', '1', '1'),
+('9', '2023-09-19', '15:15:00', 'jijija', '12345678914', '1', '2'),
+   ('10', '2023-09-19', '15:30:00', 'buenos dias profe', '12345678916', '1', '2'),
+   ('11', '2023-09-19', '15:45:00', 'ta to bien', '12345678917', '1', '2'),
+   ('12', '2023-09-19', '16:00:00', 'ola', '12345678918', '1', '1'),
+   ('13', '2023-09-19', '16:15:00', 'ya yo ya', '12345678919', '1', '1'),
+   ('14', '2023-09-19', '16:30:00', 'jaijsiajsijijsi', '12345678912', '1', '2'),
+   ('15', '2023-09-19', '16:45:00', 'no', '1021392807', '1', '2'),
+   ('16', '2023-09-19', '17:00:00', 'ayer me tome clorox', '1021392807', '1', '2'),
+   ('17', '2023-09-19', '17:15:00', 'no es excusas ', '12345678912', '1', '1'),
+   ('18', '2023-09-19', '17:30:00', 'es problema del indio', '12345678914', '1', '2'),
+   ('19', '2023-09-19', '17:45:00', 'la defeco', '12345678916', '1', '2'),
+   ('20', '2023-09-19', '18:00:00', 'no se chino', '12345678917', '1', '1'),
+   ('21', '2023-09-19', '18:15:00', 'colombia es gooood', '12345678918', '1', '1'),
+   ('22', '2023-09-19', '18:30:00', 'viva cristo rey', '12345678919', '1', '2'),
+   ('23', '2023-09-19', '18:45:00', 'nico lindo', '12345678912', '1', '2'),
+   ('24', '2023-09-19', '19:00:00', 'jhoan mi rey', '1021392807', '1', '2'),
+   ('25', '2023-09-19', '19:15:00', 'jhuan mi x100pre', '1021392807', '1', '1'),
+   ('26', '2023-09-19', '19:30:00', 'ilovemi', '12345678912', '1', '2');
 
 INSERT INTO usuarios_grupos 
 VALUES (NULL,'1','1131104356'),
 		(NULL,'3','1131104356'),
 	   	(NULL,'4','1131104356'),
-		(NULL,'1','12345678911'),
-		(NULL,'3','12345678911'),
-	   	(NULL,'4','12345678911'),
+		(NULL,'1','1234567911'),
+		(NULL,'3','1234567911'),
+	   	(NULL,'4','1234567911'),
 		(NULL,'1','12345678914'),
 		(NULL,'3','12345678914'),
 	   	(NULL,'4','12345678914'),
@@ -220,7 +278,7 @@ LEFT JOIN usuarios_grupos c ON a.id_grupos = c.id_grupos
 
 # Con esta consulta traeremos los datos de los mensajes
 # (segun el grupo al cual pertenezcan y en el que el usuario se ubica)
-SELECT DISTINCT a.numerodoc, primer_nom, primer_apellido, contenido_mensaje, hora, id_tipo, id_usuarios_grupos FROM usuarios a
-RIGHT JOIN usuarios_grupos b ON a.numerodoc = b.numerodoc
-INNER JOIN mensaje c ON b.id_grupos = c.fk_id_grupos
-WHERE b.id_usuarios_grupos = 1;
+-- SELECT DISTINCT a.numerodoc, primer_nom, primer_apellido, contenido_mensaje, hora, id_tipo, id_usuarios_grupos FROM usuarios a
+-- RIGHT JOIN usuarios_grupos b ON a.numerodoc = b.numerodoc
+-- INNER JOIN mensaje c ON b.id_grupos = c.fk_id_grupos
+-- WHERE b.id_usuarios_grupos = 1;
