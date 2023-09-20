@@ -40,6 +40,7 @@ body {
 .list-group-item.active {
   background-color: #0e882d; /* Cambia el fondo a verde oscuro */
   color: #fff; /* Cambia el color del texto a blanco */
+  border-color:#0e882d;
 }
 
 /* Estilo para el elemento de lista al pasar el mouse sobre él */
