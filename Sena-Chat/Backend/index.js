@@ -153,5 +153,14 @@ app.get('/chat/miembros/:grupo', (req, res) => {
      }) 
  });
  
- /*   PERFIL   */
- 
+ /*   USUARIO   */
+
+app.get('/usuario/:numerodoc', (req, res) =>{
+   const numerodoc = req.params.numerodoc;
+   const query = `SELECT * FROM usuarios WHERE numerodoc = ${numerodoc}`;
+conexion.query(query, (error, resultado) => { 
+   if (error) return console.error(error.message) 
+   res.json(resultado); 
+   console.log(resultado)
+   })
+}); 
