@@ -14,10 +14,11 @@ const routes: Routes = [
   { path: "registro", component: RegistroComponent},
   { path: "login", component: LoginComponent},
   { path: 'chat/:documento/:ficha/:grupo', component: ChatComponent},
+  { path: 'chat/:documento/:ficha', component: ChatComponent},
   { path: 'bienvenida/:usuario', component: BienvenidaComponent},
   { path: 'confi', component: ConfiComponent },
   { path: 'contrasena', component: ContrasenaComponent},
-  { path: 'vis-perfil', component: VisPerfilComponent},
+  { path: 'vis-perfil/:documento/:ficha', component: VisPerfilComponent}
 ];
 
 @NgModule({
