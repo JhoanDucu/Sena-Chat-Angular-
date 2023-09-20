@@ -1,10 +1,16 @@
-import { Component } from '@angular/core';
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
-@Component({
-  selector: 'app-vis-perfil',
-  templateUrl: './vis-perfil.component.html',
-  styleUrls: ['./vis-perfil.component.css']
+
+@Injectable({
+  providedIn: 'root'
 })
-export class VisPerfilComponent {
+export class VisPerfilService {
 
+  url = "http://localhost:3000";
+  constructor(private http: HttpClient) {}
+
+  buscarDatos(datos: any){
+    return this.http.get(`${this.url}/usuario/${datos}`);
+  }
 }
