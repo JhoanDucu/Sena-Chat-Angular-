@@ -10,4 +10,15 @@ export class ChatService {
   traerGrupos(ficha: any){
     return this.http.get(`${this.url}/chat/grupos/${ficha}`);
   }
+  traerMensajes(grupo: any){
+    return this.http.get(`${this.url}/chat/mensajes/${grupo}`);
+  }
+
+  traerUsuario(documento: any){
+    return this.http.get(`${this.url}/usuario/${documento}`);
+  }
+
+  agregarMensaje(datos: any){
+    return this.http.post(`${this.url}/mensaje`, datos);
+  }
 }

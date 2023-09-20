@@ -6,7 +6,6 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class VisPerfilService {
-
   url = "http://localhost:3000";
   constructor(private http: HttpClient) {}
 
