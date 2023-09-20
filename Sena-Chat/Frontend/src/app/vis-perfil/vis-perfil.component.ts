@@ -17,10 +17,9 @@ export class VisPerfilComponent {
     ){}
 
   public item: Usuario[] = [];
-  numerodoc = '';
+  numerodoc = this.rutaActiva.snapshot.params['documento'];
+  ficha = this.rutaActiva.snapshot.params['ficha'];
   ngOnInit(): void { 
-    this.VisPerfilService.buscarDatos(this.rutaActiva.snapshot.params['documento']).subscribe((data:any)=> data.forEach((value: any)=> this.item.push(value)));
+    this.VisPerfilService.buscarDatos(this.numerodoc).subscribe((data:any)=> data.forEach((value: any)=> this.item.push(value)));
   }
-
-  
 }
