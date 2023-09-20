@@ -60,6 +60,7 @@
                         href="#list-message" role="tab" aria-controls="list-messages">lol</a>
                 </div>
             </div>
+            <!-- Lista de integrantes -->
 
             <!-- Cabecera del chat -->
             <nav class="navbar bg-body-tertiary" style="background: linear-gradient(to right, #81BB81, #0e882d); height: 1%; width: 81%; margin-top: -471px; margin-left: 28%;">
@@ -82,9 +83,83 @@
                 <div class="offcanvas-body">
                     <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
 
+                        <!-- Boton agregar-->
+                        <button class="btn"  type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" 
+                        aria-controls="offcanvasRight" style="border: none !important; background-color: transparent !important; box-shadow: none !important; display: flex; align-items: center;">
+                            <img src="../../assets/img/User-agregar.png" style="width: 30%; height: 30%;" alt="Agregar">
+                            <h6 style="margin-left: 10px;">Agregar</h6>
+                        </button>                
+                        <!-- Boton agregar-->
+
+                        <!--Boton eliminar-->
+                        <button type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight2" 
+                                aria-controls="offcanvasRight2" style="border: none !important; background-color: transparent !important; box-shadow: none !important; display: flex; align-items: center;">
+                            <img src="../../assets/img/User-elim.png" style="width: 25%; height: 25%;" alt="Eliminar">
+                            <h6 style="margin-left: 10px;">eliminar</h6>
+                        </button>
+                        <!--Boton eliminar-->
+
                     </ul>
                 </div>
             </div>
+
+            <!-- agregar-->
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasRightLabel">Agregar</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body" style="display: flex; flex-direction: column; align-items: center; margin-top: 5%;">
+                    <img src="../../assets/img/User-agregar.png" style="width: 30%; height: 20%;" alt="Agregar">
+                    <br>
+                    <form>
+                        <div class="mb-3">
+                          <label for="exampleInputEmail1" class="form-label">Email</label>
+                          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                          <div id="emailHelp" class="form-text">Ingrese el Email de la persona</div>
+                        </div>
+                        <button type="submit" style="background-color:#0e882d; border-color:#0e882d;" class="btn btn-primary">Enviar</button>
+                      </form>
+                </div>
+            </div>
+            <!-- agregar-->
+
+            <!--eliminar-->
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight2" aria-labelledby="offcanvasRightLabel2">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasRightLabel2">Eliminar</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <div class="d-flex justify-content-center">
+                        <img src="../../assets/img/User-elim.png" style="width: 25%; height: 25%;" alt="Eliminar">
+                    </div>
+                    <br>
+                    <!--LISTA DE ELIMINAR PARTICIPANTES-->
+                    <ul class="list-group">
+                        <li class="list-group-item ">
+                            <h6>Participante</h6>
+                            <button type="button" class="btn btn-danger btn-sm">X</button>
+                        </li>
+                        <li class="list-group-item ">
+                            <h6>Participante</h6>
+                            <button type="button" class="btn btn-danger btn-sm">X</button>
+                        </li>
+                        <li class="list-group-item ">
+                            <h6>Participante</h6>
+                            <button type="button" class="btn btn-danger btn-sm">X</button>
+                        </li>
+                        <li class="list-group-item ">
+                            <h6>Participante</h6>
+                            <button type="button" class="btn btn-danger btn-sm">X</button>
+                        </li>
+                    </ul>
+                    <!--LISTA DE ELIMINAR PARTICIPANTES-->
+
+                </div>             
+            </div>
+            <!--eliminar-->
+
             <!-- Cabecera del chat -->
 
             <!-- Chat -->
@@ -134,5 +209,4 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 </body>
-
 </html>
