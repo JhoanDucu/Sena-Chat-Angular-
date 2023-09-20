@@ -18,17 +18,6 @@ export class VisPerfilComponent {
 
   public item: Usuario[] = [];
   numerodoc = '';
-
-  // usuario = {
-  //   primerNombre: 'Juan',
-  //   segundoNombre: 'David',
-  //   primerApellido: 'Cardenas',
-  //   segundoApellido: 'Perez',
-  //   nombreUsuario: 'juan_cardenas',
-  //   numeroDocumento: '1131104356',
-  //   correoElectronico: 'juan.cardenas34@misena.edu.co',
-  // };
-
   ngOnInit(): void { 
     this.VisPerfilService.buscarDatos(this.rutaActiva.snapshot.params['documento']).subscribe((data:any)=> data.forEach((value: any)=> this.item.push(value)));
   }
