@@ -1,13 +1,8 @@
-/* Maquetación */
-
-/* Establecer el fondo degradado en toda la página */
 body {
-  font-family: sans-serif;
+  background-color: #21222c;
 }
 
-/* Centrar el cuadro de inicio de sesión */
 .login-box {
-  background-color: lightgreen;
   text-align: center;
   position: absolute;
   top: 50%;
@@ -19,20 +14,11 @@ body {
   padding-left: 2%;
   padding-right: 2%;
   transform: translate(-50%, -50%);
-  /* background: rgba(255, 255, 255, 0.445); */
   box-sizing: border-box;
   box-shadow: 0 15px 25px rgba(0,0,0,.6);
   border-radius: 10px;
 }
 
-/* Dar estilo al encabezado */
-.login-box h1 {
-  margin: 0 0 2rem;
-  padding: 0;
-  color: #000000;
-  text-align: center;
-}
-/* Dar estilo a la imagen */
 .login-box img {
   position: relative;
   padding-top: 0.5rem;
@@ -99,7 +85,7 @@ body {
   position: relative;
   display: inline-block;
   padding: 20px 20px;
-  color: #000000;
+  color: #117311;
   font-size: 16px;
   text-decoration: none;
   text-transform: uppercase;
