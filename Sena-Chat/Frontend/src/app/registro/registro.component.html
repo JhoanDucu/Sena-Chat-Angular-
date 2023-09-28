@@ -15,7 +15,7 @@
         <img src="https://github.com/JhoanDucu/Sena-Chat-Angular-/blob/main/Sena-Chat/Frontend/src/assets/img/Logo-sesion.png?raw=true">
       </div>
         <font color="#117311"><h1>Registro</h1></font>
-        <form #datos="ngForm" (ngSubmit)="registrar(datos.value, datos.value.confirmar)">
+            <form #datos="ngForm" (ngSubmit)="registrar(datos.value)">
           <div class="user-box" id="c1">
             <input type="email" required name="correo" ngModel>
             <label>Correo electronico</label>
