@@ -11,12 +11,12 @@
 </head>
 <body>
     <div class="login-box">
-      <div id="center1">
+      <div id="c0">
         <img src="https://github.com/JhoanDucu/Sena-Chat-Angular-/blob/main/Sena-Chat/Frontend/src/assets/img/Logo-sesion.png?raw=true">
+        <font color="#117311"><h1>Registro</h1></font> 
       </div>
-        <font color="#117311"><h1>Registro</h1></font>
-            <form #datos="ngForm" (ngSubmit)="registrar(datos.value)">
-          <div class="user-box" id="c1">
+        <form #datos="ngForm" (ngSubmit)="registrar(datos.value)">
+        <div class="user-box" id="c1">
             <input type="email" required name="correo" ngModel>
             <label>Correo electronico</label>
           </div>
@@ -67,7 +67,7 @@
           <div id="c11">
           <div >
             <input type="submit" required class="ingreso" value="Registrarse" name="registrar">
-              <p>¿ya tienes una cuenta? <a class="button crear-cuenta" routerLink="../login"><font color="#117311">Iniciar sesion</font></a></p>
+              <p>¿ya tienes una cuenta? <a class="button crear-cuenta" routerLink="../login"><font color="#117311"><b>Inicia sesion</b></font></a></p>
           </div>
           </div>
         </form>
