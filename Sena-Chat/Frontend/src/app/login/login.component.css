@@ -12,8 +12,7 @@ body {
   padding-left: 2rem;
   padding-right: 2rem;
   transform: translate(-50%, -50%);
-  /* background: rgba(255, 255, 255, 0.445); */
-  background-color: lightgreen;
+  background-color: #ebebeb;
   box-sizing: border-box;
   box-shadow: 0 15px 25px rgba(0,0,0,.6);
   border-radius: 10px;
@@ -37,6 +36,15 @@ form #c5{
 form #c6{
   grid-area: olvidaste;
 }
+
+.login-box form #c4 {
+  grid-area: other;
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  margin-top: 20px; 
+}
+
 .login-box form{
   margin-top: 2%;
   display: grid;
@@ -48,7 +56,7 @@ form #c6{
 .login-box h1 {
   margin: 0 0 30px;
   padding: 0;
-  color: #000000;
+  color: #117311;
   text-align: center;
 }
 
@@ -103,10 +111,12 @@ form #c6{
 
 .ingreso {
   position: relative;
+  font-weight: bold;
   display: inline-block;
   padding: 20px 20px;
-  color: #000000;
+  color: #000;
   font-size: 16px;
+  align-items: center;
   text-decoration: none;
   text-transform: uppercase;
   overflow: hidden;
@@ -115,7 +125,6 @@ form #c6{
   letter-spacing: 4px;
   background: transparent;
   border: none;
-  cursor: pointer;
 }
 
 .ingreso:hover {
@@ -128,7 +137,6 @@ form #c6{
               0 0 100px #3a813a;
 }
 
-
 .Cont{
   cursor: pointer;
   text-shadow: 0 0 9px #000000;
@@ -139,7 +147,6 @@ form #c6{
   display: inline-block;
   padding: 20px 20px;
   color: #000000;
-
 }
 
 .crear-cuenta {
@@ -176,10 +183,7 @@ color: white;
 text-shadow: none;
 }
 
-/*Media Query*/
 
-/*Tablet*/
-/*Portrait*/
 @media (min-width: 576px) and (max-width: 991.98px) and (orientation:portrait) {
 .login-box{
   width: 32rem;
