@@ -1,171 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>chat</title>
-    <link rel="stylesheet" href="chat.component.css">
-</head>
-<body>
-    <div id="chat">
-        <header id="cabecera" class="position-relative">
-            <img src="../../assets/img/sena chat.png" id="logo">
-                
-            <div class="w-50">
-                <div class="btn-group dropstart">
-                    <button type="button" class="btn btn-secondary dropdown-toggle bg-transparent border-0" data-bs-toggle="dropdown" aria-expanded="false">
-                    <a><img src="../../assets/img/User.png" id="perfil"></a>
-                    </button>
-                    <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="confi">Configuracion</a></li>
-                    <li><a class="dropdown-item" href="#">Cerrar sesion</a></li>
-                    </ul>
+<!-- Lista de grupos -->
+            <div class="col-4">
+                <div *ngIf="gruposVisible" class="grupos" id="grupos" role="tablist" style="margin-top: 35px; margin-left: -26%; width: 110%;">
+                    <p>GRUPOS</p>
+                    
+                    <a class="list-group-item list-group-item-action active" id="list-home-list" data-bs-toggle="list"
+                        href="#list-home" role="tab" aria-controls="list-home">Heiver</a>
+                    <a class="list-group-item list-group-item-action" id="list-profile-list" data-bs-toggle="list"
+                        href="#list-profile" role="tab" aria-controls="list-profile">Isaura</a>
+                    <a class="list-group-item list-group-item-action" id="list-messages-list" data-bs-toggle="list"
+                        href="#list-messages" role="tab" aria-controls="list-messages">Leo</a>
+                    <a class="list-group-item list-group-item-action" id="list-settings-list" data-bs-toggle="list"
+                        href="#list-settings" role="tab" aria-controls="list-settings">Sofia</a>
+                    <a class="list-group-item list-group-item-action activ" id="list-home-list" data-bs-toggle="list"
+                        href="#list-hom" role="tab" aria-controls="list-home">Camila</a>
+                    <a class="list-group-item list-group-item-actio" id="list-profile-list" data-bs-toggle="list"
+                        href="#list-profil" role="tab" aria-controls="list-profile">Alfonso</a>
                 </div>
-                <h3 class="mx-auto p-2" style="width: 300px; ">ACA QUE MANO</h3>
-            </div>
-        </header> 
-
-        <div id="list-box">
-        <a href=""><div class="rectangulo"> <img src="https://github.com/JhoanDucu/Sena-Chat-Angular-/blob/main/Sena-Chat/Frontend/src/assets/img/Grupo.png?raw=true" class="grupo"><h2>2558104</h2></div> </a>
-            <!--
-            <a href=""><div class="rectangulo"><img src="img/User.png" class="user"><h2>Participante</h2> </div> </a>
-            <a href=""><div class="rectangulo"><img src="img/User.png" class="user"><h2>Participante</h2> </div> </a>
-            <a href=""><div class="rectangulo"><img src="img/User.png" class="user"><h2>Participante</h2> </div> </a>
-            <a href=""><div class="rectangulo"><img src="img/User.png" class="user"><h2>Participante</h2> </div> </a>
-            <a href=""><div class="rectangulo"><img src="img/User.png" class="user"><h2>Participante</h2> </div> </a>
-            <a href=""><div class="rectangulo"><img src="img/User.png" class="user"><h2>Participante</h2> </div> </a>
-            <a href=""><div class="rectangulo"><img src="img/User.png" class="user"><h2>Participante</h2> </div> </a>
-            <a href=""><div class="rectangulo"> <img src="img/Grupo.png" class="grupo"><h2>2558104</h2></div> </a>
-            <a href=""><div class="rectangulo"> <img src="img/Grupo.png" class="grupo"><h2>2558104</h2></div> </a>
-            <a href=""><div class="rectangulo"> <img src="img/Grupo.png" class="grupo"><h2>2558104</h2></div> </a>
-            <a href=""><div class="rectangulo"> <img src="img/Grupo.png" class="grupo"><h2>2558104</h2></div> </a>
-            <a href=""><div class="rectangulo"> <img src="img/Grupo.png" class="grupo"><h2>2558104</h2></div> </a>  -->
-        </div>
-
-        <div id="informacion">
-            <img src="../../assets/img/Grupo.png" alt="Descripción de la imagen">
-            <div class="texto">
-                <p> 2558104 <br> grupo de heiver </p>
-            </div>
-
-            <button class=" btn-primary w-auto p-3 mb-2 bg-success text-white" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
-                <span>---</span><br>
-                <span>---</span><br>
-                <span>---</span>
-            </button>
-        </div>
-
-        <div class="offcanvas offcanvas-end " id="offcanvasRight" aria-labelledby="offcanvasRightLabel" style="height: 60%;">
-        <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="offcanvasRightLabel">informacion de grupo</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        </div>
-        <div class="offcanvas-body">
-                <span style="font-weight: bold;">instructor:</span><span>Heiver Cuesta</span>
-                <br>
-                <br>
-                <span style="font-weight: bold;">participantes:</span><span>22</span>
-                <br>
-                <br>
-                <br>
-                <br>
-                <div>
-                        <img  src="../../assets/img/User-agregar.png" class="info-agreg" style="width: 90px; height: 80px;"><span>agregar</span>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <button class="btn btn-outline-success" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop" style="border:none">
-                        <img src="../../assets/img/User-y.png" class="info-agreg" style="width: 90px; height: 90px;"><span>eliminar</span>
-                    </button>
-
+            <!-- Lista de privados -->
+                <div *ngIf="privadosVisible" class="privados" id="privados" role="tablist" style="margin-top: 35px; margin-left: -26%; width: 110%;">
+                    <p> PRIVADOS</p>
+                    <a class="list-group-item list-group-item-action active" id="list-home-list" data-bs-toggle="list"
+                        href="#list-home" role="tab" aria-controls="list-home">Juancho</a>
+                    <a class="list-group-item list-group-item-action" id="list-profile-list" data-bs-toggle="list"
+                        href="#list-profile" role="tab" aria-controls="list-profile">Compa nicolas</a>
+                    <a class="list-group-item list-group-item-action" id="list-messages-list" data-bs-toggle="list"
+                        href="#list-messages" role="tab" aria-controls="list-messages">Mena</a>
+                    <a class="list-group-item list-group-item-action" id="list-settings-list" data-bs-toggle="list"
+                        href="#list-settings" role="tab" aria-controls="list-settings">enyeer</a>
+                    
                 </div>
-            </div>
-            </div>
-
-            <div class="offcanvas offcanvas-top" tabindex="-1" id="offcanvasTop" aria-labelledby="offcanvasTopLabel" style="height: 60%; left:79%;">
-                <div class="offcanvas-header">
-                    <h5 class="offcanvas-title" id="offcanvasTopLabel"></h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                </div>
-                <div class="offcanvas-body">
-
-                <img src="../../assets/img/User-y.png" class="info-agreg" style="width: 60px; height: 60px;"> <span>eliminar</span><br><br>
-                
-                <ul class="list-group">
-                    <li class="list-group-item list-group-item-success">';
-                        <img src="../../assets/img/User-y.png" class="info-agreg" style="width: 30px; height: 30px;">
-                    </li>
-                </ul>
-                </div>
-            </div>
-
-        <!-- xx -->
-
-        <div id="chat-box">
-            <div class="mensaje-izquierdo">
-                <span>heiver Cuesta</span>
-                Buenos dias aprendices!! Como les va el dia de hoy?
-                <div class="hora">10:30 AM</div>
             </div> 
-            <div class="mensaje-izquierdo">
-                <span>heiver Cuesta</span>
-                Buenos dias aprendices!! Como les va el dia de hoy?
-                <div class="hora">10:30 AM</div>
-            </div> 
-            <div class="mensaje-izquierdo">
-                <span>heiver Cuesta</span>
-                Buenos dias aprendices!! Como les va el dia de hoy?
-                <div class="hora">10:30 AM</div>
-            </div> 
-            <div class="mensaje-izquierdo">
-                <span>heiver Cuesta</span>
-                Buenos dias aprendices!! Como les va el dia de hoy?
-                <div class="hora">10:30 AM</div>
-            </div> 
-            <div class="mensaje-izquierdo">
-                <span>heiver Cuesta</span>
-                Buenos dias aprendices!! Como les va el dia de hoy?
-                <div class="hora">10:30 AM</div>
-            </div> 
-
-            <div class="mensaje-izquierdo">
-                <span>Juan  Cardenas</span>
-                Buen dia instructor
-                <div class="hora">10:30 AM</div>
-            </div>
-
-            <div class="mensaje-izquierdo">
-                <span>Juan  Cardenas</span>
-                Buen dia instructor
-                <div class="hora">10:30 AM</div>
-            </div>
-            
-            <div class="mensaje-izquierdo">
-                <span>Jhoan Ducuara</span>
-                Buenos dias
-                <div class="hora">10:30 AM</div>
-            </div>
-
-            <div class="mensaje-derecho">
-                <span></span>
-                Hola, buen dia
-                <div class="hora">10:30 AM</div>
-            </div>               
-            
-            <div id="here">
-                
-            </div>
-        </div>
-        
-        <form id="escribir" method="post" action="">
-            <input type="text" placeholder="Escribir..." name="mensaje">
-            
-            <button type="submit" name="enviar" id="enviar">
-                <img src="../../assets/img/boton enviar.png" width="30px" height="30px">
-            </button>
-        </form>
-    </div>
-</body>
-</html>
