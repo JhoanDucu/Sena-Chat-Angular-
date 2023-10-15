@@ -1,411 +1,130 @@
+/* Establece estilos generales para el cuerpo de la página */
+body {
+  height: 100%;
+  margin: 0;
+  padding: 3.5%;
+  font-family: sans-serif;
+  border: 0;
+}
 
-  body {
-    height: 100%;
-    margin: 0;
-    background-color: #f7f3f3;
-    padding: 0;
-    font-family: sans-serif;
-    border: 0;
-  }
-  
-#cabecera {
-    float: right;
-    margin-left: 1em;
-    background: #74bc78;
-    width: 100%;
-    height: 5rem;
-    margin-bottom: 10px;
-    box-shadow: 0 1px 2px rgba(0,0,0,.6);
-    background: linear-gradient(to right, #81BB81, #0e882d);
-  }
-  
-  #cabecera h3 {
-    float: right;
-  }
-  
-  
-  #logo {
-    float: left;
-    width: 9.5rem;
-    height: 4.8rem;
-  }
-  
-  #perfil {
-    float: right;
-    width: 50px;
-    height: 50px;
-    margin: 15px;
-    margin-top: 0.5%;
-  }
-  
-  
-  .perfil #menu{
-    display: grid;
-    margin-left: 90%;
-    text-align: center;
-    background-color: #000;
-  }
-  
-  #list-box {
-    background: linear-gradient(#81BB81, #0e882d);
-    width: 27%;
-    height: 85%;
-    top: 10%;
-    position: absolute;
-    box-sizing: border-box;
-    padding: 10px;
-    margin: 1%;
-    flex-direction: column;
-    border-radius: 10px;
-    overflow:auto;
-    box-shadow: 0 1px 2px rgba(0,0,0,.6);
-  }
-  #list-box::-webkit-scrollbar{
-    width: 7px; 
-  }
-  
-  #list-box::-webkit-scrollbar-thumb{
-    background-color:rgb(54, 77, 47);
-    border-radius: 10px;
-  }
-  
-  .rectangulo {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 8px;
-    margin-bottom: 9px;
-    flex: 1;
-  }
-  
-  .grupo {
-    width: 70px;
-    height: 50px;
-  }
-  
-  .user{
-    width: 60px;
-    height: 60px;
-  }
-  
-  .rectangulo h2 {
-    margin: auto ;
-  }
-  
-  button {
-    color: #000;
-    text-decoration: none;
-    border: none;
-    background: none;
-    width: 100%;
-  }
-  
-  .rectangulo:hover{
-    background: #3ca33c;
-    color: #fff;
-    border-radius: 10px;
-  }
-  
-  #chat-box {
-    position: absolute;
-    top: 25%;
-    right: 0;
-    width: 70%;
-    background-image: url(https://seeklogo.com/images/S/sena-colombia-logo-ACEBCC0AE1-seeklogo.com.png);
-    height: 70%;
-    background-repeat: no-repeat;
-    background-position: center;
-    margin: 1%;
-    background-color: rgb(221, 212, 212);
-    border-radius: 10px;
-    overflow:auto;
-    
-  }
-  
-  #chat-box::-webkit-scrollbar{
-    width: 7px; 
-  }
-  #chat-box::-webkit-scrollbar-thumb{
-    background-color:rgb(54, 77, 47);
-    border-radius: 10px;
-  }
-  
-  #informacion {
-    position: absolute;
-    height: 5.5rem;
-    right: 0;
-    top: 10%;
-    background: linear-gradient(to right, #81BB81, #0e882d);
-    width: 70%;
-    margin: 1%;
-    background-color: #74bc78;
-    border-radius: 10px;
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  #informacion img {
-    margin-top: 0.5em;
-    margin-left: 0.5em;
-    max-width: 80%;
-    max-height: 80%;
-  }
-  
-  .texto {
-    flex: 5;
-    text-align: center;
-    font-weight: bold;
-    font-size: 20px;
-  
-  }
-  
-  .boton-hamburguesa {
-    position: absolute;
-    top: 50%;
-    right: 1%;
-    transform: translateY(-50%);
-    width: 40px;
-    height: 30px;
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-  }
-  
-  .linea {
-    display: block;
-    width: 100%;
-    height: 3px;
-    margin-bottom: 5px;
-    background-color: #1b1b1b;
-    border-radius: 10px;
-  }
-  
-  .boton-hamburguesa.abierto .linea:nth-child(1) {
-    transform: rotate(45deg);
-    top: 50%;
-  }
-  
-  .boton-hamburguesa.abierto .linea:nth-child(2) {
-    opacity: 0;
-  }
-  
-  .boton-hamburguesa.abierto .linea:nth-child(3) {
-    transform: rotate(-45deg);
-    bottom: 50%;
-  }
-  
-  .boton-hamburguesa:hover .linea {
-    background: #fff;
-  }
-  
-  #escribir {
-    width: 70%;
-    margin-left: 29%;
-    position: absolute;
-    bottom: 0;
-    height: 5%;
-    margin-bottom: 18px;
-  }
-  
-  #escribir input[type="text"] {
-    width: 93%;
-    padding: 10px;
-    border: none;
-    box-sizing: border-box;
-    font-size: 16px;
-    outline: none;
-    border: 1px solid black;
-    border-radius: 10px;
-    position: relative;
-    top: 1%;
-    height: 83%;
-  }
-  
-  
-  #escribir button[type="submit"] {
-    width: 6%;
-    height: 83%;
-    border: none;
-    background-color: #74bc78;
-    box-sizing: border-box;
-    font-size: 16px;
-    outline: none;
-    border-radius: 10px;
-    border: 1px solid black;
-    position: relative;
-    top:19%;
-  }
-  
-  #escribir button:hover{
-    background: #3ca33c;
-    color: #fff;
-    border-radius: 10px;
-    cursor: pointer;
-  
-  }
-  
-  .mensaje-izquierdo::before {
-    content: '';
-    left: -18px;
-    top: 40%;
-    transform: translateY(-50%);
-    border: 10px solid transparent;
-    border-right-color: #fff;
-  }
-  
-  .mensaje-izquierdo {
-    position: relative;
-    float: left;                                                                        
-    clear: both;
-    padding: 10px;
-    background-color: #fff;
-    border-radius: 10px;
-    max-width: 70%;    
-    margin: 40px 0 30px 100px; 
-  }
-  
-  .mensaje-izquierdo span {
-    position: absolute;
-    top: -20px;
-    left: 0;
-    white-space: nowrap;
-    vertical-align: top;
-    font-weight :100;
-  }
-  
-  .mensaje-izquierdo .hora {
-    position: absolute;
-    bottom: -20px;
-    right: 10px;
-    font-size: 12px;
-    color: #999;
-  }
-  
-  .mensaje-derecho::after {
-    content: '';
-    position: absolute;
-    left: 122px;
-    top: 40%;
-    transform: translateY(-50%);
-    border: 10px solid transparent;
-    border-left-color: #81BB81;
-  }
-  .mensaje-derecho {
-    position: relative;
-    float: right;
-    clear: both;
-    padding: 10px;
-    background-color: #81BB81;
-    color: #fff;
-    border-radius: 10px;
-    max-width: 70%;
-    margin: 40px 100px 30px 0;
-  
-  }
-  
-  .mensaje-derecho .hora {
-    position: absolute;
-    bottom: -20px;
-    right: 10px;
-    font-size: 12px;
-    font-weight: 100;
-    color: #999;
-  }
-  
-  /* media Query */
-  /* laptop */
-  @media (min-height:480px) and (max-height:720px) {
-    /* body{background-color: black;} */
-    #list-box{
-      width: 20%;
-      height: 75%;
-      margin-top: 3rem;
-      margin-left: 2rem;
-    }
-    #informacion{
-      width: 75%;
-      top: 12%;
-      height: 4.8rem;
-    }
-    #chat-box{
-      width: 75%;
-      top: 25%;
-      height: 65%;
-    }
-    #chat #escribir input{
-      width: 100%;
-      left: -7%;
-      height: 90%;
-      top: 15%;
-    }
-    #chat #escribir button{
-      top: -85%;
-      left: 94%;
-      width: 4rem;
-      height: 2.5rem;
-    }
-  }
-  /*Tablet*/
-  /*Portrait*/
-  @media (min-width: 576px) and (max-width: 991.98px) and (orientation:portrait) {
-    .rectangulo{
-      width: 100%;
-      height: 8%;
-      font-size: 0.8rem;
-    }
-    .user{
-      width: 2.8rem;
-      height: 2.8rem;
-    }
-    .grupo{
-      width: 3rem;
-      height: 2.8rem;
-    }
-    #chat #informacion{
-      height: 5rem;
-    }
-    .mensaje-derecho{
-      margin-right: 3.2rem;
-    }
-    .mensaje-izquierdo{
-      margin-left: 3.2rem;
-    }
-    #chat-box::-webkit-scrollbar{
-      width: 0px; 
-    }
-    #list-box::-webkit-scrollbar-thumb{
-      background: transparent;
-    }
-  }
-  
-  /*fin tablet*/
-  
-  /*movil*/
-  /*Portrait*/
-  
-  /*landscape*/
-  @media (min-width: 576px) and (max-width: 991.98px) and (orientation:landscape) {
-    #list-box{
-      padding-left: 0%;
-      margin-left: 2%;
-    }
-    .rectangulo{
-      width: 100%;
-      height: 8%;
-      font-size: 0.5rem;
-    }
-    .user{
-      width: 3rem;
-      height: 3rem;
-    }
-    #chat #informacion{
-      height: 5rem;
-    }
-    .mensaje-derecho{
-      margin-right: 3.5rem;
-    }
-    .mensaje-izquierdo{
-      margin-left: 3.5rem;
-    }
-  }
-  /*fin movil*/
+/* Estilo para el logotipo en la esquina superior izquierda */
+#logo {
+  float: left;
+  width: 9.5rem;
+  height: 4.8rem;
+}
+
+/* Estilo para la imagen de perfil en la esquina superior derecha */
+#perfil {
+  float: right;
+  width: 50px;
+  height: 50px;
+  margin: 15px;
+  margin-top: 0.5%;
+}
+
+/* Estilo para los elementos de la lista desplegable */
+.list-group-item {
+  /* Agrega una imagen de fondo */
+  background-image: url('../../assets/img/User.png'); 
+  background-repeat: no-repeat;
+  background-position: left center; 
+  padding-left: 30px; 
+  background-size: 60px 50px; 
+
+  text-align: center; /* Centra el texto horizontalmente en el elemento */
+  line-height: 50px; /* Alinea verticalmente el texto en el elemento */
+}
+
+/* Estilo para el elemento de lista activo (seleccionado) */
+.list-group-item.active {
+  background-color: #0e882d; /* Cambia el fondo a verde oscuro */
+  color: #fff; /* Cambia el color del texto a blanco */
+  border-color:#0e882d;
+}
+
+/* Estilo para el elemento de lista al pasar el mouse sobre él */
+.list-group-item:hover {
+  background-color: #81BB81; /* Cambia el fondo a verde claro al pasar el mouse */
+  color: #fff; /* Cambia el color del texto a blanco */
+}
+
+/* Estilo para el panel lateral desplegable */
+.offcanvas {
+  width: 25%; /* Establece el ancho del panel lateral */
+  height: 75%; /* Establece la altura del panel lateral */
+  top: 20%; /* Posición vertical del panel lateral */
+}
+
+/* Estilo para el botón de carga de archivo personalizado */
+.custom-file-upload {
+  position: relative;
+  display: inline-block;
+}
+
+/* Estilo para el elemento de carga de archivo real (oculto) */
+.upload-file {
+  display: none;
+}
+
+/* Estilo para la etiqueta del botón de carga de archivo */
+label {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+/* Estilo para la imagen dentro de la etiqueta del botón de carga de archivo */
+label img {
+  height: 23px;
+  width: 23px;
+  margin-right: 10px;
+}
+
+/* Estilo para el pie del chat (para enviar nuevos mensajes) */
+.card-footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between; /* Espacio entre elementos en el pie del chat */
+}
+
+/* Estilo para el campo de entrada de texto personalizado */
+.custom-text-input {
+  flex: 1; /* Ocupa todo el espacio disponible horizontalmente */
+  margin-right: 10px; /* Espacio a la derecha del campo de entrada de texto */
+}
+
+/* Estilo para el botón de carga de archivo personalizado */
+.custom-file-upload {
+  display: flex;
+  align-items: center;
+}
+
+/* Estilo para los mensajes de chat a la izquierda */
+.d-flex.justify-content-start {
+  margin-bottom: 10px; /* Agrega espacio entre los mensajes a la izquierda */
+}
+
+/* Estilo para los mensajes de chat a la derecha */
+.d-flex.justify-content-end {
+  margin-bottom: 10px; /* Agrega espacio entre los mensajes a la derecha */
+}
+
+/* Estilo para el contenedor del chat */
+.card-body.chat-box {
+  max-height: 325px; /* Establece la altura máxima del contenedor del chat */
+  overflow-y: auto; /* Agrega una barra de desplazamiento vertical si es necesario */
+  scrollbar-width: thin; /* Establece el grosor de la barra de desplazamiento (solo para Firefox) */
+  scrollbar-color: #4CAF50 #e3e6e4; /* Establece el color de la barra de desplazamiento */
+}
+
+/* Estilo para la barra de desplazamiento */
+.card-body.chat-box::-webkit-scrollbar {
+  width: 8px; /* Ancho de la barra de desplazamiento */
+}
+
+/* Estilo para el pulgar (parte deslizable) de la barra de desplazamiento */
+.card-body.chat-box::-webkit-scrollbar-thumb {
+  background-color: #0e882d; /* Cambia el color de la barra de desplazamiento a verde */
+  border-radius: 4px; /* Agrega bordes redondeados al pulgar de la barra de desplazamiento */
+}
