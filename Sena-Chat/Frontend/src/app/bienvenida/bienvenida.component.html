@@ -8,28 +8,30 @@
     <link rel="stylesheet" href="bienvenida.component.css">
 </head>
 <body>
-  <img src="../../assets/img/sena chat.png">
-
     <div class="Bienv-box">
+        <div id="c0">
+          <img src="https://github.com/JhoanDucu/Sena-Chat-Angular-/blob/main/Sena-Chat/Frontend/src/assets/img/Logo-sesion.png?raw=true">
+          <h1>Bienvenido</h1>
+        </div>
       <div>
-        <h1>Bienvenido</h1>
-        <p>Le damos la Bienvenida a <span> SENA CHAT</span> </p>
-        <p>Seleccione el numero de ficha al cual pertenece.</p>
-      </div> <br>
-
-      <form id="fichas" #ficha="ngForm" (ngSubmit)="setFicha(ficha.value)">
+        <br>
+        <h5>Le damos la Bienvenida a <span> SENA CHAT </span>Seleccione el numero de ficha al cual pertenece.</h5>
+      </div> 
+      <br>
+      <form id="fichas" #data="ngForm" (ngSubmit)="setFicha(data.value.Ficha)">
         <div class="user-box">
           <div>
-            <label>N.Ficha:</label> <br> <br>
+            <label>Ficha:</label> 
             <select name="Ficha" required ngModel> 
               <option value="0"></option>
               <option value="2558104">2558104</option>
               <option value="2558105">2558105</option>
             </select>
         </div>
-        </div> <br>
+        </div>
+        <br>
         <div>
-          <input type="submit" value="Entrar" class="ir" name="Entrar">
+        <input type="submit" value="Entrar" class="ir" name="Entrar">
         </div>
       </form>
     </div>
