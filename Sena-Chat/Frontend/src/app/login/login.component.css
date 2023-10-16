@@ -53,6 +53,7 @@ form #c6{
                         "password password password"
                         "other other other";
 }
+
 .login-box h1 {
   margin: 0 0 30px;
   padding: 0;
@@ -87,7 +88,7 @@ form #c6{
   left: 3%;
   padding: 10px 0;
   font-size: 16px;
-  color: #181616;
+  color: #000;
   pointer-events: none;
   transition: .5s;
 }
@@ -105,8 +106,17 @@ form #c6{
 .login-box .user-box input:valid ~ label {
   top: -20px;
   left: 3%;
-  color: #ffffff;
+  color: #000;
   font-size: 12px;
+}
+
+.user-box select:focus {
+  border-color: #237023; 
+  box-shadow: 0 0 5px rgba(81, 173, 68, 0.5);
+}
+
+.user-box select option {
+  background-color: #70b470;
 }
 
 .ingreso {
@@ -177,6 +187,7 @@ top: 40%;
 color: #ffffff;
 font-size: 18px;
 }
+
 #c4 #c6 p a{
 text-decoration: none;
 color: white;
