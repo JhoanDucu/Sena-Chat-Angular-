@@ -113,6 +113,15 @@ form{
   font-size: 12px;
 }
 
+.user-box select:focus {
+  border-color: #237023; 
+  box-shadow: 0 0 5px rgba(81, 173, 68, 0.5);
+}
+
+.user-box select option {
+  background-color: #70b470;
+}
+
 .ingreso {
   position: relative;
   font-weight: bold;
