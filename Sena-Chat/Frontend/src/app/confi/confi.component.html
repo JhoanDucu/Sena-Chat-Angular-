@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,91 +9,54 @@
 </head>
 <body>
     <div id="info-perfil">
-
-        <nav class="navbar bg-body-tertiary" id="cabecera" >
-            <div class="container" >
-                <img src="https://github.com/JhoanDucu/Sena-Chat-Angular-/blob/main/Sena-Chat/Frontend/src/assets/img/sena%20chat.png?raw=true" alt="Bootstrap" width="10%" height="10%" >
+        <nav class="navbar bg-body-tertiary" id="cabecera">
+            <div class="container">
+                <img src="https://github.com/JhoanDucu/Sena-Chat-Angular-/blob/main/Sena-Chat/Frontend/src/assets/img/sena%20chat.png?raw=true" alt="Bootstrap" width="10%" height="10%">
             </div>
-          </nav>
-
-        <!-- <header id="cabecera">
-            <img src="https://github.com/JhoanDucu/Sena-Chat-Angular-/blob/main/Sena-Chat/Frontend/src/assets/img/sena%20chat.png?raw=true" id="logo">            
-        </header> -->
+        </nav>
 
         <div id="confi-box">
-
             <div id="user">
-               <img src="https://github.com/JhoanDucu/Sena-Chat-Angular-/blob/main/Sena-Chat/Frontend/src/assets/img/User.png?raw=true">
+                <img src="https://github.com/JhoanDucu/Sena-Chat-Angular-/blob/main/Sena-Chat/Frontend/src/assets/img/User.png?raw=true">
             </div>
-        
-            <form>
-                <div class="mb-3">
-                  <label for="exampleInputEmail1" class="form-label">Primer nombre</label>
-                  <input type="text" class="form-control" id="p_nombre" aria-describedby="emailHelp">
-                  <br>
-                  <label for="exampleInputEmail1" class="form-label">Segundo nombre</label>
-                  <input type="text" class="form-control" id="s_nombre" aria-describedby="emailHelp">
-                  <br>
-                  <label for="exampleInputEmail1" class="form-label">Primer apellido</label>
-                  <input type="text" class="form-control" id="p_apellido" aria-describedby="emailHelp">
-                  <br>
-                  <label for="exampleInputEmail1" class="form-label" >Segundo apellido</label>
-                  <input type="text" class="form-control" id="s_apellido" aria-describedby="emailHelp">
-                  <br>
-                  <label for="exampleInputPassword1" class="form-label">Correo electronico</label>
-                  <input type="email" class="form-control" id="correo">
-                  <br>
-                  <label for="exampleInputEmail1" class="form-label">Contraseña</label>
 
-                  <!-- icono de ver contraseña  -->
-                  <div class="form-group">
-                    <div class="input-group">
-                      <input type="{{ showPassword ? 'text' : 'password' }}" class="form-control" id="con_contrasena1" [(ngModel)]="password" name="password" #passwordField1>
-                      <div class="input-group-append">
-                        <button class="btn btn-default" type="button" (click)="togglePasswordVisibility()">
-                          <i class="fa" [ngClass]="{'fa-eye': showPassword, 'fa-eye-slash': !showPassword}"><i class='bx bx-low-vision'></i></i>
-                        </button>
-                      </div>
+            <div id="text">
+                <form>
+                    <div class="form-group">
+                        <span>Primer nombre:</span>
+                        <input type="text" id="Datos">
                     </div>
-                  </div>
-                  <br>
-
-                  <label for="exampleInputEmail1" class="form-label">Confirmacion de contraseña</label>
-                  
-                  <!-- icono de ver contraseña  -->
-                  <div class="form-group">
-                    <div class="input-group">
-                      <input type="{{ showPassword2 ? 'text' : 'password' }}" class="form-control" id="con_contrasena1" [(ngModel)]="password2" name="password2" #passwordField1>
-                      <div class="input-group-append">
-                        <button class="btn btn-default" type="button" (click)="togglePasswordVisibility2()">
-                          <i class="fa" [ngClass]="{'fa-eye': showPassword2, 'fa-eye-slash': !showPassword2}"><i class='bx bx-low-vision'></i></i>
-                        </button>
-                      </div>
+                    <div class="form-group">
+                        <span>Segundo nombre:</span>
+                        <input type="text" id="Datos">
                     </div>
-                  </div>
-                  <br>
-                  
-                  <label for="exampleInputEmail1" class="form-label">Nombre de usuario</label>
-                  <input type="text" class="form-control" id="nombre" aria-describedby="emailHelp">
-                  <br>
-                  <label for="exampleInputEmail1" class="form-label">Numero de documento</label>
-                  <input type="number" class="form-control" id="documento" aria-describedby="emailHelp">
-                  <br>
-
-                  <label for="formFile" class="form-label">Seleccione su foto de perfil</label>
-                  <input class="form-control" type="file" id="formFile" accept="image/*">
-                  
-                </div>                 
-                <div class="container-fluid"> 
-                  <div class="row w-100 align-items-center">
-                    <div class="col text-center">
-                      <button type="button" class="btn btn-success" [routerLink]="['/vis-perfil']">GUARDAR</button>
-                      <button type="button" class="btn btn-success" [routerLink]="['/chat']">VOLVER</button>
-  
-                    </div>	
-                  </div>
+                    <div class="form-group">
+                        <span>Primer apellido:</span>
+                        <input type="text" id="Datos">
+                    </div>
+                    <div class="form-group">
+                        <span>Segundo apellido:</span>
+                        <input type="text" id="Datos">
+                    </div>
+                    <div class="form-group">
+                        <span>Nombre de usuario:</span>
+                        <input type="text" id="Datos">
+                    </div>
+                    <div class="form-group">
+                        <span>Número de documento: </span>
+                        <input type="number" id="Datos">
+                    </div>
+                    <div class="form-group">
+                        <span>Correo electrónico: </span>
+                        <input type="text" id="Datos">
+                    </div>
+                    
+                </form>
+                <div class="botones">
+                    <input id="boton" name="submit" type="submit" [routerLink]="['/confi']" value="Guardar">
+                    <input id="boton" name="submit" type="submit" [routerLink]="['/chat']" value="Volver">
                 </div>
-              </form>
+            </div>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
