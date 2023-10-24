@@ -1,17 +1,10 @@
-/* Establece estilos generales para el cuerpo de la página */
-body {
-  height: 100%;
-  margin: 0;
-  padding: 3.5%;
-  font-family: sans-serif;
-  border: 0;
-}
-
-/* Estilo para el logotipo en la esquina superior izquierda */
-#logo {
-  float: left;
-  width: 9.5rem;
-  height: 4.8rem;
+#cabecera {
+  float: right;
+  background: linear-gradient(to right,#3d803d, #3d803d);
+  width: 100%;
+  height: 70px;
+  margin-bottom: 10px;
+  box-shadow: 0 1px 2px rgba(0,0,0,.6);
 }
 
 /* Estilo para la imagen de perfil en la esquina superior derecha */
@@ -20,7 +13,6 @@ body {
   width: 50px;
   height: 50px;
   margin: 15px;
-  margin-top: 0.5%;
 }
 
 /* Estilo para los elementos de la lista desplegable */
