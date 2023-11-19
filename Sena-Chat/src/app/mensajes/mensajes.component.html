@@ -1,0 +1,28 @@
+<div class="card-body chat-box">
+    <div *ngIf="!grupoSeleccionado; else mjs">
+        <div class="d-flex justify-content-start">
+            <div class="text-dark p-2 rounded" style="background: #e3e6e4; max-width: 50%;"> <!-- Limita el ancho al 50% -->
+                No hay grupo seleccionado
+            </div>
+        </div>
+    </div>
+    <ng-template #mjs>
+        <div *ngFor="let m of mensaje">
+            <ng-container *ngIf="m.numerodoc == usuario; else izquierdo">
+                <div class="d-flex justify-content-end mb-1">
+                    <div class="bg-success text-white p-2 rounded" style="max-width: 50%;"> <!-- Limita el ancho al 50% -->
+                    {{ m.contenido_mensaje }}
+                    </div>
+                </div>
+            </ng-container>
+            <ng-template #izquierdo>
+                <div class="d-flex justify-content-start mb-1">
+                    <div class="text-dark p-2 rounded" style="background: #e3e6e4; max-width: 50%;"> <!-- Limita el ancho al 50% -->
+                        {{ m.contenido_mensaje }}
+                    </div>
+                </div>
+            </ng-template>
+        </div>
+        <span id="final"></span>
+    </ng-template>
+</div>

@@ -1,0 +1,287 @@
+
+body {
+    font-family: sans-serif;
+  }
+  
+  .login-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 50rem;
+    padding: 3rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    transform: translate(-50%, -50%);
+    /* background: rgba(255, 255, 255, 0.445); */
+    background-color: lightgreen;
+    box-sizing: border-box;
+    box-shadow: 0 15px 25px rgba(0,0,0,.6);
+    border-radius: 10px;
+    text-align: center;
+  }
+  form #tipodoc{
+    grid-area: tipodoc;
+  }
+  form #c2{
+    grid-area: numerodoc;
+  }
+  form #c3{
+    grid-area: password;
+  }
+  form #c4{
+    grid-area: other;
+  }
+  form #c5{
+    grid-area: ingreso;
+  }
+  form #c6{
+    grid-area: olvidaste;
+  }
+  .login-box form{
+    margin-top: 2%;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-areas:  "tipodoc numerodoc numerodoc"
+                          "password password password"
+                          "other other other";
+  }
+  .login-box h1 {
+    margin: 0 0 30px;
+    padding: 0;
+    color: #000000;
+    text-align: center;
+  }
+  
+  .login-box img {
+    width: 190px;
+  }
+  
+  .login-box .user-box {
+    position: relative;
+  }
+  
+  .login-box .user-box input {
+    width: 94%;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #000000;
+    margin-bottom: 30px;
+    border: none;
+    border-bottom: 1px solid #000000;
+    outline: none;
+    background: transparent;
+    text-align: left;
+  }
+  
+  .login-box .user-box label {
+    position: absolute;
+    top: 0;
+    left: 3%;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #181616;
+    pointer-events: none;
+    transition: .5s;
+  }
+  .login-box .user-box #tipo{
+    left: 10%;
+  }
+  
+  .login-box .user-box #tipodoc{
+    padding: 10px 0;
+    position: relative;
+    top: -2.6rem;
+  }
+  
+  .login-box .user-box input:focus ~ label,
+  .login-box .user-box input:valid ~ label {
+    top: -20px;
+    left: 3%;
+    color: #ffffff;
+    font-size: 12px;
+  }
+  
+  .ingreso {
+    position: relative;
+    display: inline-block;
+    padding: 20px 20px;
+    color: #000000;
+    font-size: 16px;
+    text-decoration: none;
+    text-transform: uppercase;
+    overflow: hidden;
+    transition: .5s;
+    margin-top: 20px;
+    letter-spacing: 4px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .ingreso:hover {
+    background: #237023;
+    color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #3a813a,
+                0 0 25px #3a813a,
+                0 0 50px #3a813a,
+                0 0 100px #3a813a;
+  }
+  
+  
+  .Cont{
+    cursor: pointer;
+    text-shadow: 0 0 9px #000000;
+  }
+  
+  .login-box .Cont{
+    position: relative;
+    display: inline-block;
+    padding: 20px 20px;
+    color: #000000;
+  
+  }
+  
+  .crear-cuenta {
+    cursor: pointer;
+    text-shadow: 0 0 9px #000000;
+  }
+  
+  .login-box .crear-cuenta{
+  position: relative;
+  display: inline-block;
+  padding: 20px 20px;
+  color: #000000;
+  }
+  
+  .user-box select {
+  text-align: left;
+  width: 80%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #000000;
+  outline: none;
+  }
+  
+  .user-box i {
+  position: absolute;
+  right: 0;
+  top: 40%;
+  color: #ffffff;
+  font-size: 18px;
+  }
+  #c4 #c6 p a{
+  text-decoration: none;
+  color: white;
+  text-shadow: none;
+  }
+  
+  /*Media Query*/
+  
+  /*Tablet*/
+  /*Portrait*/
+  @media (min-width: 576px) and (max-width: 991.98px) and (orientation:portrait) {
+  .login-box{
+    width: 32rem;
+    height: 80%;
+  }
+  .login-box h1{
+    margin-bottom: 12%;
+  }
+  }
+  /*fin tablet*/
+  
+  /*movil*/
+  /*Portrait*/
+  /*Default*/
+  @media (min-width: 260px) and (max-width: 720px) and (orientation:portrait) {
+  .login-box{
+    width: 26rem;
+    height: 90%;
+    overflow-y: auto;
+  }
+  .login-box form{
+    text-align: left;
+    grid-template-columns: 1fr;
+    grid-template-areas:  "tipodoc"
+                          "numerodoc"
+                          "password"
+                          "other";
+  }
+  .login-box::-webkit-scrollbar{
+    width: 2%;
+  }
+  .login-box h1{
+    margin-bottom: 12%;
+  }
+  .login-box .user-box input:focus ~ label,
+  .login-box .user-box input:valid ~ label{
+    left: 0px;
+  }
+  .login-box .user-box #tipo{
+    left: -10%;
+  }
+  .login-box .user-box label{
+    left: 0%;
+  }
+  }
+  /*landscape*/
+  @media (min-width: 576px) and (max-width: 991.98px) and (orientation:landscape) {
+  .login-box{
+    width: 40rem;
+  }
+  .login-box h1{
+    margin-bottom: 10%;
+  }
+  }
+  /*fin movil*/
+  /*laptop*/
+  @media (min-height: 480px) and (max-height:720px){
+  .login-box center{
+    margin: 0%;
+  }
+  .login-box h1{
+    width: 60%;
+    margin: 0;
+    padding: 0;
+    font-size: 2rem;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+  }
+  .login-box img{
+    width: 22%;
+    height: 22%;
+  }
+  .login-box{
+    width: 60%;
+    height: 85%;
+    padding: 2%;
+  }
+  .login-box #c0{
+    width: 100%;
+    display: flex;
+    margin-bottom: 3%;
+    padding-top: 1%;
+  }
+  html{
+    height: 100%;
+  }
+  center p{
+    margin: 0% 0%;
+  }
+  .login-box form #c4{
+    margin-top: -1rem;
+    margin-right: -1rem;
+  }
+  .login-box form #c5{
+    display: flex;
+  }
+  .login-box form #c6{
+    padding-top: 0%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+  

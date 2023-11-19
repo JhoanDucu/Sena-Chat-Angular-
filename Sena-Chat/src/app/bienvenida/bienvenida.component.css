@@ -1,0 +1,119 @@
+body {
+    margin: 0;
+    font-family: sans-serif;
+    background: linear-gradient(#81BB81, #0e882d);
+}
+
+img {
+    margin: 0px;
+    width: 200px;
+    padding: 1rem;
+} 
+  .Bienv-box {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 500px;
+      padding: 60px;
+      transform: translate(-50%, -50%);
+      background-color: lightgreen;
+      box-sizing: border-box;
+      box-shadow: 0 15px 25px rgba(0,0,0,.6);
+      border-radius: 10px;
+      
+  }
+  
+  
+    
+  .login-box h1 {
+      margin: 30px;
+      padding: 0;
+      color: #000000;
+      text-align: center;
+  }
+  
+  span{
+      color: rgb(5, 80, 5);
+  }
+  
+  .ir {
+    position: relative;
+    display: inline-block;
+    padding: 20px 20px;
+    color: #000000;
+    font-size: 16px;
+    text-decoration: none;
+    text-transform: uppercase;
+    overflow: hidden;
+    transition: .5s;
+    margin-top: 20px;
+    letter-spacing: 4px;
+    background: transparent;
+    border: none;
+  }
+    
+  .ir:hover {
+    background: #237023;
+    color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #3a813a,
+                0 0 25px #3a813a,
+                0 0 50px #3a813a,
+                0 0 100px #3a813a;
+  }
+  
+    
+  .Cont{
+    cursor: pointer;
+    text-shadow: 0 0 9px #000000;
+  }
+  
+  
+  
+  .user-box select {
+      padding-right: 35px;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid #000000;
+      outline: none;
+    }
+  
+    /* Media Query */
+    
+    /*Para tablet*/
+    /*Portrait*/
+    @media (min-width: 576px) and (max-width: 991.98px) and (orientation:portrait) {
+      body img{
+        padding-top: 10%;
+        padding-left: 35%;
+      }
+      .Bienv-box{
+        width: 28rem;
+      }
+    }
+    
+    /*landscape (no usamos)*/
+    @media (min0-width: 991.98px) and (max-width: 1199.98px)and (orientation:landscape) {
+        
+    }
+    /*fin tablet*/
+    
+    /*Para movil*/
+    /*Portrait*/
+    /*Default*/
+    @media (max-width: 575.98px)and (orientation:portrait) {
+      body img{
+        padding-top: 5rem;
+        padding-left: 4rem;
+      }
+      .Bienv-box{
+        width: 22rem;
+      }
+     }
+    /*landscape*/
+    @media (min-width: 576px) and (max-width: 991.98px) and (orientation:landscape) {
+      body img{
+        padding-top: 5rem;
+        padding-left: 5rem;
+      }
+    }
