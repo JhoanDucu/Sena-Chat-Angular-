@@ -22,21 +22,21 @@ export class LoginComponent {
     contrasena: new FormControl('', Validators.required),
     tipodoc: new FormControl('', Validators.required)
   });
- 
+
   Label(){
     let valid = document.getElementById("tipo");
     if (this.formLogin.value.tipodoc === '') {
-      valid?.setAttribute('style','left: 15%; top: -20px; left: 0; color: #ffffff; font-size: 12px; margin-left: 10%;');
+      valid?.setAttribute('style','left: 15%; top: -20px; left: 0; color: #000; font-size: 12px; margin-left: 10%;');
     } else if (this.formLogin.value.tipodoc === '0'){
-      valid?.setAttribute('style','left: 15%; top: -20px; left: 0; color: #ffffff; font-size: 12px; margin-left: 10%;');
+      valid?.setAttribute('style','left: 15%; top: -20px; left: 0; color: #000; font-size: 12px; margin-left: 10%;');
     }
   }
   noLabel(){
     let invalid = document.getElementById("tipo");
     if (this.formLogin.value.tipodoc === '0') {
-      invalid?.setAttribute('style','top: 0; left: 10%; padding: 10px 0; font-size: 16px; color: #181616;');
+      invalid?.setAttribute('style','top: 0; left: 10%; padding: 10px 0; font-size: 16px; color: #000;');
     } else if (this.formLogin.value.tipodoc === '') {
-      invalid?.setAttribute('style','top: 0; left: 10%; padding: 10px 0; font-size: 16px; color: #181616;');
+      invalid?.setAttribute('style','top: 0; left: 10%; padding: 10px 0; font-size: 16px; color: #000;');
     } else {
       invalid?.setAttribute('style','left: 15%; top: -20px; left: 0; color: #ffffff; font-size: 12px; margin-left: 10%;');
     }
@@ -45,7 +45,7 @@ export class LoginComponent {
     alert("Esperando respuesta...");
     this.loginServicio.buscarDatos(datos).subscribe((respuesta: any) => {
       if (respuesta != 'No existe registro') {
-         this.router.navigate(['chat', respuesta[1], respuesta[0]]);
+        this.router.navigate(['chat', respuesta[1], respuesta[0]]);
        } else {
          alert('Usuario no existe');
        }
