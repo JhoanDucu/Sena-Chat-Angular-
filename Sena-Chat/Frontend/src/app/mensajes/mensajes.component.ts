@@ -1,13 +1,16 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ChatService } from '../Servicios/chat.service';
-import { Grupo } from '../modelos/grupos';
-import { Mensaje } from '../modelos/mensaje';
+import { Grupo } from '../Modelos/grupos';
+import { Mensaje } from '../Modelos/mensaje';
 
 @Component({
   selector: 'app-mensajes',
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './mensajes.component.html',
-  styleUrls: ['./mensajes.component.css']
+  styleUrl: './mensajes.component.css'
 })
 export class MensajesComponent {
   constructor(
@@ -37,7 +40,10 @@ export class MensajesComponent {
 
   ngOnInit(): void {
     this.Chat.traerGrupos(this.fichaSeleccionada).subscribe((data: any)=> data.forEach((element: any) => {this.grupos.push(element)}));
-    this.grupoSeleccionado ? this.Chat.traerMensajes(this.grupoSeleccionado).subscribe((data: any)=> data.forEach((element: any) => {this.mensaje.push(element)})) : undefined;
+    this.grupoSeleccionado ? this.Chat.traerMensajes(this.grupoSeleccionado).subscribe(
+      (data: any) => data ? data.forEach( (element: any) => {
+        this.mensaje.push(element)
+      }) : console.log('no')) : undefined; 
     document.getElementById("final")?.scrollIntoView(true);
   }
   seleccionar(){

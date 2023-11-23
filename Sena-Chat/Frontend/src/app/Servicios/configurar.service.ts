@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -5,5 +6,9 @@ import { Injectable } from '@angular/core';
 })
 export class ConfigurarService {
 
-  constructor() { }
+  constructor( private http: HttpClient ) { }
+  url = 'http://localhost:3000';
+  actualizaDatos(Datos: any, numerodoc: any){
+    return this.http.put(`${this.url}/configurar/${numerodoc}`,Datos);
+  }
 }

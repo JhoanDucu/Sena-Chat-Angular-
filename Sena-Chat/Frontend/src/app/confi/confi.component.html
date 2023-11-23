@@ -9,26 +9,54 @@
 </head>
 <body>
     <div id="info-perfil">
-
-        <header id="cabecera">
-            <img src="img/sena chat.png" id="logo">            
-        </header>
+        <nav class="navbar bg-body-tertiary" id="cabecera">
+            <div class="container">
+                <img src="https://github.com/JhoanDucu/Sena-Chat-Angular-/blob/main/Sena-Chat/Frontend/src/assets/img/sena%20chat.png?raw=true" alt="Bootstrap" width="10%" height="10%">
+            </div>
+        </nav>
 
         <div id="confi-box">
-
             <div id="user">
-               <img src="img/User.png">
+                <img src="https://github.com/JhoanDucu/Sena-Chat-Angular-/blob/main/Sena-Chat/Frontend/src/assets/img/User.png?raw=true">
             </div>
-        
+
             <div id="text">
-                <form action="" method="POST">
-                    <p class="p1"> <span>Nombre del usuario:</span> <input type="text" id="nombre" ></p> 
-                    <p class="p1_2"><span>Numero de documento:</span> <input type="text" id="documento" ></p>
-                    <p class="p2"> <span>Correo electronico:</span> <input type="email" id="correo" > </p>
-                    <input id="boton" type="submit"  value="Guardar" >
-                    <input id="boton" type="submit" href="chat" value="Volver" >
+                <form [formGroup]="confiForm" (ngSubmit)="actualizar()">
+                    <div class="form-group">
+                        <label for="primer_nom">Primer nombre:</label>
+                        <input type="text" class="Datos" id="primer_nom" formControlName="primer_nom">
+                    </div>
+                    <div class="form-group">
+                        <label for="segundo_nom">Segundo nombre:</label>
+                        <input type="text" class="Datos" id="segundo_nom" formControlName="segundo_nom">
+                    </div>
+                    <div class="form-group">
+                        <label for="primer_apellido">Primer apellido:</label>
+                        <input type="text" class="Datos" id="primer_apellido" formControlName="primer_apellido">
+                    </div>
+                    <div class="form-group">
+                        <label for="segundo_apellido">Segundo apellido:</label>
+                        <input type="text" class="Datos" id="segundo_apellido" formControlName="segundo_apellido">
+                    </div>
+                    <div class="form-group">
+                        <label for="nombre_usuario">Nombre de usuario:</label>
+                        <input type="text" class="Datos" id="nombre_usuario" formControlName="nombre_usuario">
+                    </div>
+                    <div class="form-group">
+                        <label for="contrasena">Contraseña: </label>
+                        <input type="password" class="Datos" id="contrasena" formControlName="contrasena">
+                    </div>
+                    <div class="form-group">
+                        <label for="correo">Correo electrónico: </label>
+                        <input type="text" class="Datos" id="correo" formControlName="correo">
+                    </div>
+                    <div class="botones">
+                        <input id="guardar" name="submit" type="submit" [routerLink]="['/confi', usuario, fichaSeleccionada]" value="Guardar">
+                        <input id="volver" name="submit" type="submit" [routerLink]="['/vis-perfil', usuario, fichaSeleccionada]" value="Volver">
+                    </div>
                 </form>
-           </div>
+                
+            </div>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>

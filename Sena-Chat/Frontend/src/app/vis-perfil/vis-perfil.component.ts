@@ -1,13 +1,15 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { VisPerfilService } from '../Servicios/vis-perfil.service';
-import { Router } from '@angular/router';
-import { ActivatedRoute,Params } from '@angular/router';
-import { Usuario } from '../modelos/usuarios';
+import { Usuario } from '../Modelos/usuarios';
 
 @Component({
   selector: 'app-vis-perfil',
+  standalone: true,
+  imports: [CommonModule, RouterModule],
   templateUrl: './vis-perfil.component.html',
-  styleUrls: ['./vis-perfil.component.css']
+  styleUrl: './vis-perfil.component.css'
 })
 export class VisPerfilComponent {
   constructor(
@@ -16,10 +18,11 @@ export class VisPerfilComponent {
     private rutaActiva: ActivatedRoute
     ){}
 
-  public item: Usuario[] = [];
+  public item: Usuario = new Usuario('','','','','','','','','','','','');
   numerodoc = this.rutaActiva.snapshot.params['documento'];
   ficha = this.rutaActiva.snapshot.params['ficha'];
   ngOnInit(): void { 
-    this.VisPerfilService.buscarDatos(this.numerodoc).subscribe((data:any)=> data.forEach((value: any)=> this.item.push(value)));
+    this.VisPerfilService.buscarDatos(this.numerodoc).subscribe((data:any) => this.item = data[0]);
   }
 }
+

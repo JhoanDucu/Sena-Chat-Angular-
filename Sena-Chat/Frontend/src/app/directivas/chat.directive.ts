@@ -1,7 +1,8 @@
 import { Directive, Input, OnChanges, TemplateRef, ViewContainerRef, SimpleChanges } from '@angular/core';
 
 @Directive({
-  selector: '[appChat]'
+  selector: '[appChat]',
+  standalone: true
 })
 export class ChatDirective implements OnChanges{
   @Input() appChat !: string;

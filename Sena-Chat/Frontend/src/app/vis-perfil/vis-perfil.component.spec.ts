@@ -6,10 +6,12 @@ describe('VisPerfilComponent', () => {
   let component: VisPerfilComponent;
   let fixture: ComponentFixture<VisPerfilComponent>;
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      declarations: [VisPerfilComponent]
-    });
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [VisPerfilComponent]
+    })
+    .compileComponents();
+    
     fixture = TestBed.createComponent(VisPerfilComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
