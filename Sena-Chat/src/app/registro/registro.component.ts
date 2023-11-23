@@ -36,19 +36,19 @@ export class RegistroComponent {
   Label(){
     let valid = document.getElementById("tipo");
     if (this.Tdoc.value === '') {
-      valid?.setAttribute('style','top: -20px; left: -35px; color: #ffffff; font-size: 12px; margin-left: 10%;');
+      valid?.setAttribute('style','top: -20px; left: -35px; color: #000; font-size: 12px; margin-left: 10%;');
     } else if (this.Tdoc.value === '0'){
-      valid?.setAttribute('style','top: -20px; left: -35px; color: #ffffff; font-size: 12px; margin-left: 10%;');
+      valid?.setAttribute('style','top: -20px; left: -35px; color: #000; font-size: 12px; margin-left: 10%;');
     }
   }
   noLabel(){
     let invalid = document.getElementById("tipo");
     if (this.Tdoc.value === '0') {
-      invalid?.setAttribute('style','top:0; left: 0; padding: 10px 0; padding-left: 5%; font-size: 16px; color: #181616;');
+      invalid?.setAttribute('style','top:0; left: 0; padding: 10px 0; padding-left: 5%; font-size: 16px; color: #000;');
     } else if (this.Tdoc.value === '') {
-      invalid?.setAttribute('style','top:0; left: 0; padding: 10px 0; padding-left: 5%; font-size: 16px; color: #181616;');
+      invalid?.setAttribute('style','top:0; left: 0; padding: 10px 0; padding-left: 5%; font-size: 16px; color: #000;');
     } else {
-      invalid?.setAttribute('style','top: -20px; left: -35px; color: #ffffff; font-size: 12px; margin-left: 10%;');
+      invalid?.setAttribute('style','top: -20px; left: -35px; color: #000; font-size: 12px; margin-left: 10%;');
     }
   }
   validsN() {
