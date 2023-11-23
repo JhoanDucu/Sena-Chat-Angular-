@@ -21,4 +21,7 @@ export class ChatService {
   agregarMensaje(datos: any){
     return this.http.post(`${this.url}/mensaje`, datos);
   }
+  traerPrivados(ficha: any){
+    return this.http.get(`${this.url}/chat/privados/${ficha}`);
+  }
 }

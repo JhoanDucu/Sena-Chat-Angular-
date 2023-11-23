@@ -42,7 +42,7 @@ export class MensajesComponent {
     this.Chat.traerGrupos(this.fichaSeleccionada).subscribe((data: any)=> data.forEach((element: any) => {this.grupos.push(element)}));
     this.grupoSeleccionado ? this.Chat.traerMensajes(this.grupoSeleccionado).subscribe(
       (data: any) => data ? data.forEach( (element: any) => {
-        this.mensaje.push(element)
+        this.mensaje.push(element);
       }) : console.log('no')) : undefined; 
     document.getElementById("final")?.scrollIntoView(true);
   }

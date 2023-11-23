@@ -33,23 +33,32 @@
         <div class="row">
             <!-- Lista de grupos -->
             <div class="col-4">
-                <div *ngIf="gruposVisible" class="grupos" id="grupos" role="tablist" style="margin-top: 35px; width: 100%;">
-                    <div class="list-group" id="list-tab" role="tablist" style="margin-top: 35px; margin-left: -26%; width: 110%;">
-                        <a class="list-group-item list-group-item-action active" id="list-home-list" data-bs-toggle="list"
-                            href="#list-home" role="tab" aria-controls="list-home">Grupos</a>
-                        <a *ngFor="let g of grupos" class="list-group-item list-group-item-action" id="list-profile-list" data-bs-toggle="list" (click)="seleccionar()"
-                            href="#list-profile" role="tab" aria-controls="list-profile" [routerLink]="['/chat', usuario, fichaSeleccionada, g.id_grupos]">{{ g.nom_grupos }}</a>
+                @if (gruposVisible) {
+                    <div class="grupos" id="grupos" role="tablist" style="margin-top: 35px; width: 100%;">
+                        <div class="list-group" id="list-tab" role="tablist" style="margin-top: 35px; margin-left: -26%; width: 110%;">
+                            <a class="list-group-item list-group-item-action active" id="list-home-list" data-bs-toggle="list"
+                                href="#list-home" role="tab" aria-controls="list-home">Grupos</a>
+                            @for ( g of grupos; track g.id_grupos) {
+                              <a class="list-group-item list-group-item-action" id="list-profile-list" data-bs-toggle="list" (click)="seleccionar()"
+                                href="#list-profile" role="tab" aria-controls="list-profile" [routerLink]="['/chat', usuario, fichaSeleccionada, g.id_grupos]">{{ g.nom_grupos }}</a>
+                            }
+                        </div>
                     </div>
-                </div>
+                }
+                
             <!-- Lista de privados -->
-                <div *ngIf="privadosVisible" class="privados" id="privados" role="tablist" style="margin-top: 35px; width: 100%;">
-                    <div class="list-group" id="list-tab" role="tablist" style="margin-top: 35px; margin-left: -26%; width: 110%;">
-                        <a class="list-group-item list-group-item-action active" id="list-home-list" data-bs-toggle="list"
-                            href="#list-home" role="tab" aria-controls="list-home">Privados</a>
-                        <a *ngFor="let g of grupos" class="list-group-item list-group-item-action" id="list-profile-list" data-bs-toggle="list" (click)="seleccionar()"
-                            href="#list-profile" role="tab" aria-controls="list-profile" [routerLink]="['/chat', usuario, fichaSeleccionada, g.id_grupos]">{{ g.nom_grupos }}</a>
+                @if (privadosVisible) {
+                    <div class="privados" id="privados" role="tablist" style="margin-top: 35px; width: 100%;">
+                        <div class="list-group" id="list-tab" role="tablist" style="margin-top: 35px; margin-left: -26%; width: 110%;">
+                            <a class="list-group-item list-group-item-action active" id="list-home-list" data-bs-toggle="list"
+                                href="#list-home" role="tab" aria-controls="list-home">Privados</a>
+                                @for (p of privados; track p.id_grupos) {
+                                    <a class="list-group-item list-group-item-action" id="list-profile-list" data-bs-toggle="list" (click)="seleccionar()"
+                                    href="#list-profile" role="tab" aria-controls="list-profile" [routerLink]="['/chat', usuario, fichaSeleccionada, p.id_grupos]">{{ p.nom_grupos }}</a>
+                                }
+                        </div>
                     </div>
-                </div>
+                }
             </div> 
             <!-- Cabecera del chat -->
             <nav class="navbar bg-body-tertiary" style="background: linear-gradient(to right, #81BB81, #0e882d); height: 1%; width: 81%; margin-top: -471px; margin-left: 28%;">

@@ -20,7 +20,7 @@ const express = require("express")
        host: 'localhost', 
        database: 'sena_chat', 
        user: 'root', 
-       password: '',
+       password: 'root',
        port: 3306,
     } 
  ); 
@@ -78,7 +78,7 @@ const express = require("express")
  /* GRUPOS */ 
  app.get('/chat/grupos/:ficha', (req, res) => { 
     const ficha = req.params.ficha; 
-    const query = `SELECT * FROM grupos WHERE id_ficha = ${ficha}`; 
+    const query = `SELECT * FROM grupos WHERE id_ficha = ${ficha} AND fk_tipo_grupo <> 1`; 
   
     conexion.query(query, (error, result) => { 
        if(error) console.error(error.message); 
@@ -123,10 +123,11 @@ app.get('/chat/miembros/:grupo', (req, res) => {
  
  app.get('/chat/mensajes/:grupo', (req, res) => { 
     const grupo = req.params.grupo; 
-    const query = `SELECT primer_nom,primer_apellido, fecha, hora, contenido_mensaje, id_tipo, u.numerodoc FROM usuarios u 
-    INNER JOIN mensaje a ON u.numerodoc = a.numerodoc  
-    INNER JOIN grupos b ON b.id_grupos = a.fk_id_grupos 
-    WHERE b.id_grupos = ${grupo}`; 
+    const query = `SELECT id_mensaje, primer_nom, primer_apellido, fecha, hora, contenido_mensaje, id_tipo, u.numerodoc FROM usuarios_grupos ug
+    INNER JOIN grupos g ON ug.id_grupos = g.id_grupos 
+    INNER JOIN usuarios u ON u.numerodoc = ug.numerodoc
+    INNER JOIN mensaje m ON m.fk_destino = ug.id_usuarios_grupos
+    WHERE ug.id_grupos = ${grupo} ORDER BY ug.id_usuarios_grupos`; 
   
     conexion.query(query, (error, resultado) => { 
        if(error) console.error(error.message); 
@@ -174,4 +175,21 @@ app.put('/configurar/:documento',(req, res)=>{
        if (error) return console.error(error.message) 
        res.json('Actualizado'); 
    }) 
-}); 
+});
+
+/* PRIVADOS */
+
+app.get('/chat/privados/:ficha', (req, res) => { 
+   const ficha = req.params.ficha; 
+   const query = `SELECT * FROM grupos WHERE id_ficha = ${ficha} AND fk_tipo_grupo <> 2`; 
+ 
+   conexion.query(query, (error, result) => { 
+      if(error) console.error(error.message); 
+ 
+      if (result.length > 0) { 
+         res.json(result); 
+      } else { 
+         res.json('No hay grupos aun'); 
+      } 
+   }) 
+});

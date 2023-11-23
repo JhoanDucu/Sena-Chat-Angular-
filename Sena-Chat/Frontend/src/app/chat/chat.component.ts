@@ -26,6 +26,7 @@ export class ChatComponent {
     private rutaActiva: ActivatedRoute
     ){}
   grupos: Grupo[] = [];
+  privados: Grupo[] = [];
   mensaje: Mensaje[] = [];
   datosUsuario: Usuario = new Usuario('','','','','','','','','','','','');
   grupoSeleccionado = this.rutaActiva.snapshot.params['grupo'];
@@ -55,6 +56,7 @@ export class ChatComponent {
   ngOnInit(): void {
     this.Chat.traerGrupos(this.fichaSeleccionada).subscribe((data: any)=> data.forEach((element: any) => {this.grupos.push(element)}));
     this.Chat.traerUsuario(this.usuario).subscribe((data: any) => this.datosUsuario = data[0]);
+    this.Chat.traerPrivados(this.fichaSeleccionada).subscribe((data: any)=> data.forEach((element: any) => {this.privados.push(element)}));
     // document.getElementById("final")?.scrollIntoView(true);
   }
   seleccionar(){
