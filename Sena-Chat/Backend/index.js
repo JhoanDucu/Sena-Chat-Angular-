@@ -1,6 +1,6 @@
 const express = require("express") 
  const cors = require('cors') 
- const mysql = require("mysql") 
+ const mysql = require("mysql2") 
  const bodyParser = require('body-parser') 
  const md5 = require('md5'); 
   
@@ -20,7 +20,8 @@ const express = require("express")
        host: 'localhost', 
        database: 'sena_chat', 
        user: 'root', 
-       password: '' 
+       password: '',
+       port: 3306,
     } 
  ); 
   
@@ -47,7 +48,7 @@ const express = require("express")
         } else { 
            res.json('No existe registro') 
         } 
-    })
+    });
  }); 
   
  app.post('/registrar', (req, res) => { 
@@ -160,7 +161,17 @@ app.get('/usuario/:numerodoc', (req, res) =>{
    const query = `SELECT * FROM usuarios WHERE numerodoc = ${numerodoc}`;
 conexion.query(query, (error, resultado) => { 
    if (error) return console.error(error.message) 
-   res.json(resultado); 
-   console.log(resultado)
+   res.json(resultado);
    })
+}); 
+app.put('/configurar/:documento',(req, res)=>{ 
+   const numerodoc = req.params.documento; 
+   const nuevosDatos = req.body;
+   nuevosDatos.contrasena = md5(nuevosDatos.contrasena);
+
+   const query = `UPDATE usuarios SET ? WHERE numerodoc = ${numerodoc}`; 
+   conexion.query(query, nuevosDatos, (error, resultado) => { 
+       if (error) return console.error(error.message) 
+       res.json('Actualizado'); 
+   }) 
 }); 
