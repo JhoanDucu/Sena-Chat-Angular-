@@ -1,259 +1,75 @@
-body {
-  font-family: sans-serif;
-}
-
-.login-box {
-  text-align: center;
-  position: absolute;
-  background-color: #ebebeb;
-  left: 50%;
-  width: 45rem;
-  height: 72rem;
-  margin-top: 45%;
-  padding-top: 4%;
-  padding-bottom: 4%;
-  padding-left: 2%;
-  padding-right: 2%;
-  transform: translate(-50%, -50%);
-  box-sizing: border-box;
-  box-shadow: 0 15px 25px rgba(0,0,0,.6);
-  border-radius: 10px;
-}
-
-#c0 {
-  display: flex;
-  align-items: center;
-}
-
-#c0 h1 {
-  margin-top: 10px;
-}
-
-#c0 img {
-  margin-right: 10px;
-}
-
-form{
-  margin: 1px;
-}
-.login-box img {
-  position: relative;
-  padding-top: 0.5rem;
-  width: 12rem;
-}
-
-.login-box #center1{
-  height: 8.5rem;
-}
-
-.login-box .user-box {
-  position: relative;
-}
-
-.login-box .user-box input{
-  width: 90%;
-  padding: 10px 0;
-  font-size: 16px;
-  color: #000000;
-  margin-bottom: 30px;
-  border: none;
-  border-bottom: 1px solid #000000;
-  outline: none;
-  background: transparent;
-  text-align: left;
-}
-
-.login-box .user-box label {
-  position: absolute;
-  top:0;
-  left: 0;
-  padding: 10px 0;
-  padding-left: 5%;
-  font-size: 16px;
-  color: #000;
-  pointer-events: none;
-  transition: .5s;
-}
-
-.login-box #c11 div p a{
-  text-decoration: none;
-  color: #117311;
-  text-shadow: none;
-}
-
-.login-box #c11 div p {
-  text-decoration: none;
-  margin-top: 20px;
-  color: #000;
-  text-shadow: none;
-}
-
-.login-box .user-box input:focus ~ label,
-.login-box .user-box input:valid ~ label {
-  top: -20px;
-  left: 0;
-  color: #000;
-  font-size: 12px;
-}
-
-.user-box select:focus {
-  border-color: #237023;
-  box-shadow: 0 0 5px rgba(81, 173, 68, 0.5);
-}
-
-.user-box select option {
-  background-color: #70b470;
-}
-
-.ingreso {
-  position: relative;
-  font-weight: bold;
-  display: inline-block;
-  padding: 20px 20px;
-  color: #000;
-  font-size: 16px;
-  text-decoration: none;
-  text-transform: uppercase;
-  overflow: hidden;
-  transition: .5s;
-  margin-top: 20px;
-  letter-spacing: 4px;
-  background: transparent;
-  border-color: #000;
-  border-radius: 5px;
-  border: 1.7px solid #000;
-  box-shadow: inset 0 0 0 0 #000;
-}
-
-.ingreso:hover {
-  background: #237023;
-  color: #fff;
-  border-radius: 5px;
-  border-color: #237023;
-  box-shadow: 0 0 5px #3a813a,
-              0 0 25px #3a813a,
-              0 0 50px #3a813a,
-              0 0 100px #3a813a;
-}
-
-.crear-cuenta {
-  cursor: pointer;
-  text-shadow: 0 0 9px #000000;
-}
-
-form #c1{
-  grid-area: correo;
-}
-form #c2{
-  grid-area: primernom;
-}
-form #c3{
-  grid-area: segundonom;
-}
-form #c4{
-  grid-area: primerape;
-}
-form #c5{
-  grid-area: segundoape;
-}
-form #c6{
-  grid-area: username;
-}
-form #c7{
-  grid-area: tipodoc;
-}
-
-.user-box select {
-  text-align: left;
-  width: 90%;
-  background: transparent;
-  border: none;
-  border-bottom: 1px solid #000000;
-  outline: none;
-}
-
-form #c8{
-  grid-area: documento;
-  margin-top: 25px;
-}
-form #c9{
-  grid-area: password;
-}
-form #c10{
-  grid-area: confirm;
-}
-form #c11{
-  grid-area: boton;
-}
-
-form{
-  display: grid;
-  grid-template-areas:
-                        "primernom "
-                        "segundonom"
-                        "primerape "
-                        "segundoape"
-                        "tipodoc"
-                        "documento "
-                        "correo "
-                        "username "
-                        "password "
-                        "confirm"
-                        "boton";
-}
-
-@media (min-width: 576px) and (max-width: 991.98px) and (orientation:portrait) {
-  .login-box{
-    width: 32rem;
-    text-align: center;
-  }
-  .login-box .user-box input{
-    width: 76%;
-    text-align: left;
-  }
-  .login-box .user-box label{
-    padding-left: 12%;
-  }
-}
-
-/* @media (min-width: 260px) and (max-width: 720px) and (orientation:portrait) {
-  html{
-    width: 100%;
-    height: 120%;
-  }
-  .login-box{
-    width: 22rem;
-    text-align: center;
-    height: 90%;
-    overflow-y: auto;
-  }
-  .login-box::-webkit-scrollbar{
-    width: 2%;
-  }
-  form{
-    grid-template-areas:  "correo" "primernom" "segundonom"
-                          "primerape" "segundoape" "username"
-                          "documento" "password" "confirm" "boton";
-  }
-  .login-box .user-box input{
-    width: 95%;
-    text-align: left;
-  }
-  .login-box .user-box label{
-    padding-left: 2.5%;
-  }
-}
-
-@media (min-width: 576px) and (max-width: 991.98px) and (orientation:landscape) {
-  .login-box{
-    width: 40rem;
-    text-align: center;
-  }
-  .login-box .user-box input{
-    width: 80%;
-    text-align: left;
-  }
-  .login-box .user-box label{
-    padding-left: 10%;
-  }
-} */
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrarse</title>
+    <link rel="stylesheet" href="registro.component.css">
+</head>
+<body>
+    <div class="login-box">
+      <div id="center1">
+        <img src="https://github.com/JhoanDucu/Sena-Chat-Angular-/blob/main/Sena-Chat/Frontend/src/assets/img/Logo-sesion.png?raw=true">
+      </div>
+        <font color = "#117311"><h1>Registro</h1></font>
+        <form [formGroup]="formRegistro" (ngSubmit)="registrar()">
+          <div class="user-box" id="c1">
+            <input type="email" required name="correo" id="correo" formControlName="correo">
+            <label for="correo">Correo electronico</label>
+          </div>
+          <div class="user-box" id="c2">
+            <input type="text" maxlength="20" id="primer_nom" name="primer_nom" required formControlName="primer_nom">
+            <label for="primer_nom">Primer nombre</label>
+          </div>
+          <div class="user-box" id="c3">
+            <input type="text" name="sN" id="sN" maxlength="20" readonly id="sN" (focus)="validsN()" (blur)="invalidsN()" [formControl]="sN">
+            <label for="sN">Segundo nombre</label>
+          </div>
+          <div class="user-box" id="c4">
+            <input type="text" maxlength="20" required formControlName="primer_apellido" id="primer_apellido" name="primer_apellido">
+            <label for="primer_apellido">Primer apellido</label>
+          </div>
+          <div class="user-box" id="c5">
+            <input type="text" maxlength="20" readonly formControlName="segundo_apellido" id="sA" name="sA" (focus)="validsA()" (blur)="invalidsA()" [formControl]="sA">
+            <label for="sA">Segundo apellido</label>
+          </div>
+          <div class="user-box" id="c6">
+            <input type="text" maxlength="30" required formControlName="nombre_usuario" id="nombre_usuario">
+            <label for="nombre_usuario">Nombre de usuario</label>
+          </div>
+          <div class="user-box" id="c7">
+            <label id="tipo" for="select">Tipo de Documento</label>
+              <br>
+              <select required name="fk_id_tipodoc" [formControl]="Tdoc" (focus)="Label()" id="select" (blur)="noLabel()">
+                <option value="0" selected></option>
+                <option value="1">Cedula de ciudadania</option>
+                <option value="2">Tarjeta de identidad</option>
+                <option value="3">Cédula de Extranjería</option>
+                <option value="4">PEP</option>
+                <option value="5">Permiso por Protección Temporal</option>
+              </select>
+          </div>
+          <div class="user-box" id="c8">
+            <input type="text" required formControlName="numerodoc" id="numerodoc">
+            <label for="numerodoc">Numero de documento</label>
+          </div>
+          <div class="user-box" id="c9">
+            <input type="password" required formControlName="contrasena" id="contrasena">
+            <label for="contrasena">Contraseña</label>
+          </div>
+          <div class="user-box" id="c10">
+            <input type="password" required formControlName="confirmar" id="confirmar">
+            <label for="confirmar">Confirmar contraseña</label>
+          </div>
+          <div id="c11">
+          <div >
+            <input type="submit" required class="ingreso" value="Registrarse" name="registrar">
+              <p id="pregunta">¿ya tienes una cuenta?<a class="button crear-cuenta" [routerLink]="['/login']"> Inicia sesion</a></p>
+          </div>
+          </div>
+        </form>
+      </div>
+      <router-outlet></router-outlet>
+</body>
+</html>
