@@ -7,18 +7,27 @@ body, html {
 }
 
 #cabecera {
+    padding-left: 800px;
     float: right;
     background: linear-gradient(to right,#3d803d, #3d803d);
-    width: 100%;
+    width: 150%;
     height: 70px;
     box-shadow: 0 1px 2px rgba(0,0,0,.6);
     position: relative; /* Asegura que el z-index funcione */
     z-index: 2;
-  
+
 }
+
+.cabecera-menu {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
 .nav-link {
   display: flex;
-  align-items: center; 
+  align-items: center;
 }
 
 #NomUsuario{
@@ -37,8 +46,7 @@ body, html {
   width: 45px;
   height: 50px;
   border-radius: 5px;
-  max-width: 50px; 
-  margin-right: 10px; 
+  max-width: 50px;
   user-select: none;
 }
 
@@ -67,13 +75,13 @@ body, html {
   padding-left: 5%;
   padding-right: 5%;
   border-radius: 20%;
-  border-radius: 5px; 
-  font-weight: bold; 
+  border-radius: 5px;
+  font-weight: bold;
   font-size: 16px;
   border: 1px solid #000;
   letter-spacing: 2px;
   box-shadow: 0 1px 2px rgba(0,0,0,.6);
-  transition: transform 0.2s; 
+  transition: transform 0.2s;
   user-select: none;
 }
 
@@ -83,13 +91,13 @@ body, html {
   padding-left: 5%;
   padding-right: 5%;
   border-radius: 20%;
-  border-radius: 5px; 
+  border-radius: 5px;
   font-size: 16px;
-  font-weight: bold; 
+  font-weight: bold;
   border: 1px solid #000;
   letter-spacing: 2px;
   box-shadow: 0 1px 2px rgba(0,0,0,.6);
-  transition: transform 0.2s; 
+  transition: transform 0.2s;
   user-select: none;
 }
 
@@ -97,15 +105,16 @@ body, html {
   transform: scale(0.95);
 }
 
+
 /* LISTA DE GRUPOS */
 
 .grupos , .privados{
   margin-top: 7vh;
-  overflow-y: auto; 
+  overflow-y: auto;
   max-height: 100vh;
   letter-spacing: 1px;
   font-size: 110%;
-  direction: rtl; 
+  direction: rtl;
 }
 
 .grupos .list-group-item , .privados .list-group-item{
@@ -123,11 +132,11 @@ body, html {
 
 .list-group-item.active {
   background-color: #3D803D;
-  color: #fff; 
+  color: #fff;
   border-color:#DFDFDF;
   position: sticky;
   top: 0;
-  z-index: 1; 
+  z-index: 1;
   font-family: 'Josefin Sans', sans-serif;
 }
 
@@ -141,13 +150,13 @@ body, html {
 }
 
 .grupos::-webkit-scrollbar-thumb {
-	background: #0E470E;
+	background: #0e882d;
 	border-radius: 5px;
 }
 
 .list-group-item-action:hover {
   background-color: #3D803D;
-  color: #fff; 
+  color: #fff;
 }
 
 /* Navbar del chat */
@@ -170,31 +179,51 @@ body, html {
 }
 
 
+/* Seccion Eliminar */
+
+.offcanvas-body {
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+
+.offcanvas-body::-webkit-scrollbar {
+  width: 8px;
+}
+
+.offcanvas-body::-webkit-scrollbar-thumb {
+  background-color: #0e882d;
+  border-radius: 4px;
+}
+
+.offcanvas-body::-webkit-scrollbar-track {
+  background-color: #f1f1f1;
+}
 
 
+/* Mensajes */
 
+.Chat {
+  padding: 0;
+  width: 70%;
+  height: 471px;
+  background-color: #9D9D9D;
+  position: absolute;
+  top: 140px;
+  left: end;
+  right: 0;
+}
 
+.input-group {
+  position: absolute;
+  bottom: 0;
+}
 
-
-
-
-
-
-
-
-/* Estilo para el elemento de lista al pasar el mouse sobre él */
 
 /* Estilo para el panel lateral desplegable */
 .offcanvas {
-  width: 25%; /* Establece el ancho del panel lateral */
-  height: 75%; /* Establece la altura del panel lateral */
-  top: 20%; /* Posición vertical del panel lateral */
-}
-
-/* Estilo para el botón de carga de archivo personalizado */
-.custom-file-upload {
-  position: relative;
-  display: inline-block;
+  width: 25%;
+  height: 75%;
+  top: 20%;
 }
 
 /* Estilo para el elemento de carga de archivo real (oculto) */
@@ -205,61 +234,13 @@ body, html {
 /* Estilo para la etiqueta del botón de carga de archivo */
 label {
   cursor: pointer;
-  display: flex;
   align-items: center;
 }
 
 /* Estilo para la imagen dentro de la etiqueta del botón de carga de archivo */
 label img {
-  height: 23px;
-  width: 23px;
-  margin-right: 10px;
+  margin-top: 5px;
+  height: 40px;
+  width: 40px;
 }
 
-/* Estilo para el pie del chat (para enviar nuevos mensajes) */
-.card-footer {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between; /* Espacio entre elementos en el pie del chat */
-}
-
-/* Estilo para el campo de entrada de texto personalizado */
-.custom-text-input {
-  flex: 1; /* Ocupa todo el espacio disponible horizontalmente */
-  margin-right: 10px; /* Espacio a la derecha del campo de entrada de texto */
-}
-
-/* Estilo para el botón de carga de archivo personalizado */
-.custom-file-upload {
-  display: flex;
-  align-items: center;
-}
-
-/* Estilo para los mensajes de chat a la izquierda */
-.d-flex.justify-content-start {
-  margin-bottom: 10px; /* Agrega espacio entre los mensajes a la izquierda */
-}
-
-/* Estilo para los mensajes de chat a la derecha */
-.d-flex.justify-content-end {
-  margin-bottom: 10px; /* Agrega espacio entre los mensajes a la derecha */
-}
-
-/* Estilo para el contenedor del chat */
-.card-body.chat-box {
-  max-height: 325px; /* Establece la altura máxima del contenedor del chat */
-  overflow-y: auto; /* Agrega una barra de desplazamiento vertical si es necesario */
-  scrollbar-width: thin; /* Establece el grosor de la barra de desplazamiento (solo para Firefox) */
-  scrollbar-color: #4CAF50 #e3e6e4; /* Establece el color de la barra de desplazamiento */
-}
-
-/* Estilo para la barra de desplazamiento */
-.card-body.chat-box::-webkit-scrollbar {
-  width: 8px; /* Ancho de la barra de desplazamiento */
-}
-
-/* Estilo para el pulgar (parte deslizable) de la barra de desplazamiento */
-.card-body.chat-box::-webkit-scrollbar-thumb {
-  background-color: #0e882d; /* Cambia el color de la barra de desplazamiento a verde */
-  border-radius: 4px; /* Agrega bordes redondeados al pulgar de la barra de desplazamiento */
-}
