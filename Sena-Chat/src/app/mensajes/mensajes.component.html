@@ -1,7 +1,7 @@
 <div class="card-body chat-box" style="  max-height: 420px;">
     <div *ngIf="!grupoSeleccionado; else mjs">
         <div class="d-flex justify-content-start">
-            <div class="text-dark p-2 rounded" style="background: #fff; max-width: 50%; text-align: center; margin-top: 20%; margin-left: 40%;"> <!-- Limita el ancho al 50% -->
+            <div class="text-dark p-2 rounded" style="background: #fff; max-width: 50%; text-align: center; margin-left: 40%;"> <!-- Limita el ancho al 50% -->
                 No hay grupo seleccionado
             </div>
         </div>
@@ -10,27 +10,37 @@
         <div *ngFor="let m of mensaje">
             <ng-container *ngIf="m.numerodoc == usuario; else izquierdo">
                 <div class="d-flex justify-content-end mb-1">
-                    <div class="bg-success text-white p-2" style="max-width: 50%;
-                    border-top-left-radius: 20px;
-                    border-bottom-left-radius: 20px;
+                    <div class="text-white p-2" 
+                    style="max-width: 50%;
+                    margin-bottom: 3px;
+                    background: #3d803d;
+                    border-top-left-radius: 10px;
+                    border-bottom-left-radius: 10px;
                     border-top-right-radius: 5px;
-                    border-bottom-right-radius: 5px;
-                    padding: 10px;">
-                    {{ m.contenido_mensaje }}
+                    border-bottom-right-radius: 1px;">
+                    <span style="padding-right: 10px;">
+                    {{ m.contenido_mensaje}}
+                    </span> 
+                    <p style="margin:0; font-size: 0.7em; text-align: right; font-weight: bold">1:13p.m.</p>
                     </div>
                 </div>
             </ng-container>
             <ng-template #izquierdo>
                 <div class="d-flex justify-content-start mb-1">
-                    <div class="text-dark p-2" style="background: #FFFFFF;
+                    <div class="text-dark p-2" 
+                    style="background: #FFFFFF;
+                    margin-bottom: 3px;
                     border-top-left-radius: 5px;
-                    border-bottom-left-radius: 5px;
-                    border-top-right-radius: 20px;
-                    border-bottom-right-radius: 20px;
-                    padding: 10px;
+                    border-bottom-left-radius: 1px;
+                    border-top-right-radius: 10px;
+                    border-bottom-right-radius: 10px;
                     max-width: 50%;">
-                        {{ m.contenido_mensaje }}
-                    </div>
+                    <p style="margin: 0; font-size: 0.8em; font-weight: bold">-- Carlos</p> 
+                    <span>
+                    {{ m.contenido_mensaje }}
+                    <p style="margin: 0; font-size: 0.7em; font-weight: bold; text-align: left; color:darkgreen; position: relative; bottom: -3%;">12:19p.m.</p>         
+                    </span>
+                </div>
                 </div>
             </ng-template>
         </div>
