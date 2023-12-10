@@ -1,49 +1,30 @@
-<div class="card-body chat-box" style="  max-height: 420px;">
-    <div *ngIf="!grupoSeleccionado; else mjs">
+<div class="card-body chat-box" id="componenteMensajes">
+    @if (!grupoSeleccionado) {
         <div class="d-flex justify-content-start">
-            <div class="text-dark p-2 rounded" style="background: #fff; max-width: 50%; text-align: center; margin-left: 40%;"> <!-- Limita el ancho al 50% -->
+            <div class="text-dark p-2 rounded" id='sinSeleccionarGrupo'>
                 No hay grupo seleccionado
             </div>
         </div>
-    </div>
-    <ng-template #mjs>
-        <div *ngFor="let m of mensaje">
-            <ng-container *ngIf="m.numerodoc == usuario; else izquierdo">
+    } @else {
+        @for ( m of mensaje; track m.id_mensaje) {
+            @if (m.numerodoc == usuario) {
                 <div class="d-flex justify-content-end mb-1">
-                    <div class="text-white p-2" 
-                    style="max-width: 50%;
-                    margin-bottom: 3px;
-                    background: #3d803d;
-                    border-top-left-radius: 10px;
-                    border-bottom-left-radius: 10px;
-                    border-top-right-radius: 5px;
-                    border-bottom-right-radius: 1px;">
-                    <span style="padding-right: 10px;">
-                    {{ m.contenido_mensaje}}
-                    </span> 
-                    <p style="margin:0; font-size: 0.7em; text-align: right; font-weight: bold">1:13p.m.</p>
+                    <div class="text-white p-2" id="mensajesPropios">
+                        <span id="contenido"> {{ m.contenido_mensaje }} </span> 
+                        <p id="horaPropios"> {{ obtenerHora(m.fecha_hora) }}</p>
                     </div>
                 </div>
-            </ng-container>
-            <ng-template #izquierdo>
+            } @else {
                 <div class="d-flex justify-content-start mb-1">
-                    <div class="text-dark p-2" 
-                    style="background: #FFFFFF;
-                    margin-bottom: 3px;
-                    border-top-left-radius: 5px;
-                    border-bottom-left-radius: 1px;
-                    border-top-right-radius: 10px;
-                    border-bottom-right-radius: 10px;
-                    max-width: 50%;">
-                    <p style="margin: 0; font-size: 0.8em; font-weight: bold">-- Carlos</p> 
-                    <span>
-                    {{ m.contenido_mensaje }}
-                    <p style="margin: 0; font-size: 0.7em; font-weight: bold; text-align: left; color:darkgreen; position: relative; bottom: -3%;">12:19p.m.</p>         
-                    </span>
+                    <div class="text-dark p-2" id="mensajesAjenos">
+                        <p id="nombreEmisor">-- {{ m.primer_nom }} </p>
+                        <span> {{ m.contenido_mensaje }}
+                            <p id="horaAjenos">{{ obtenerHora(m.fecha_hora) }}</p>         
+                        </span>
+                    </div>
                 </div>
-                </div>
-            </ng-template>
-        </div>
+            }
+        }
         <span id="final"></span>
-    </ng-template>
+    }
 </div>
