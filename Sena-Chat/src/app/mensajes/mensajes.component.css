@@ -1,17 +1,86 @@
+.card-body.chat-box {
+  max-height: 370px;
+  overflow-y: auto;
+}
 
+/* Estilo para la barra de desplazamiento */
+.card-body.chat-box::-webkit-scrollbar {
+  width: 8px;
+}
 
-  .card-body.chat-box{
-    max-height: 370px;
-    overflow-y: auto;
-  }
+/* Estilo para el pulgar (parte deslizable) de la barra de desplazamiento */
+.card-body.chat-box::-webkit-scrollbar-thumb {
+  background-color: #3d803d; 
+  border-radius: 4px;
+}
 
-  /* Estilo para la barra de desplazamiento */
-  .card-body.chat-box::-webkit-scrollbar {
-    width: 8px; 
-  }
+#componenteMensajes {
+  position: absolute;
+  overflow-y: auto; 
+  max-height: 430px;
+  width: 100%;
+}
 
-  /* Estilo para el pulgar (parte deslizable) de la barra de desplazamiento */
-  .card-body.chat-box::-webkit-scrollbar-thumb {
-    background-color: #3d803d; /* Cambia el color de la barra de desplazamiento a verde */
-    border-radius: 4px; /* Agrega bordes redondeados al pulgar de la barra de desplazamiento */
-  }
+#sinSeleccionarGrupo {
+  background: #fff;
+  max-width: 50%;
+  text-align: center;
+  margin-left: 40%;
+}
+
+#mensajesPropios {
+  max-width: 50%;
+  margin-bottom: 3px;
+  background: #3d803d;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 1px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  word-wrap: break-word; 
+  overflow-x: hidden;
+}
+
+#contenido {
+  padding-right: 10px;
+  word-wrap: break-word; 
+  word-break: break-word; 
+}
+
+#horaPropios {
+  margin: 0;
+  bottom: 100%;
+  margin-top: 7%;
+  padding: 0;
+  font-size: 0.7em;
+  text-align: right;
+  font-weight: bold;
+}
+
+#mensajesAjenos {
+  background: #ffffff;
+  margin-bottom: 3px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 1px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  max-width: 50%;
+}
+
+#nombreEmisor {
+  margin: 0;
+  font-size: 0.8em;
+  font-weight: bold;
+}
+
+#horaAjenos {
+  margin: 0;
+  font-size: 0.7em;
+  font-weight: bold;
+  text-align: left;
+  color: darkgreen;
+  position: relative;
+  bottom: -3%;
+}
