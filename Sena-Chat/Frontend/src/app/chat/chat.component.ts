@@ -28,6 +28,7 @@ export class ChatComponent {
   grupos: Grupo[] = [];
   privados: Grupo[] = [];
   mensaje: Mensaje[] = [];
+  miembros: Usuario[] = [];
   datosUsuario: Usuario = new Usuario('','','','','','','','','','','','');
   grupoSeleccionado = this.rutaActiva.snapshot.params['grupo'];
   fichaSeleccionada = this.rutaActiva.snapshot.params['ficha'];
@@ -54,25 +55,26 @@ export class ChatComponent {
  privadosVisible = false;
 
   ngOnInit(): void {
-    this.Chat.traerGrupos(this.fichaSeleccionada).subscribe((data: any)=> data.forEach((element: any) => {this.grupos.push(element)}));
+    this.Chat.traerGrupos(this.fichaSeleccionada, this.usuario).subscribe((data: any)=> data.forEach((element: any) => {this.grupos.push(element)}));
     this.Chat.traerUsuario(this.usuario).subscribe((data: any) => this.datosUsuario = data[0]);
-    this.Chat.traerPrivados(this.fichaSeleccionada).subscribe((data: any)=> data.forEach((element: any) => {this.privados.push(element)}));
+    this.Chat.traerPrivados(this.fichaSeleccionada, this.usuario).subscribe((data: any)=> data.forEach((element: any) => {this.privados.push(element)}));
     // document.getElementById("final")?.scrollIntoView(true);
   }
   seleccionar(){
     this.changes = this.changes == '0' ? '1' : '0';
   }
   enviar(mensaje: any, tipo: any){
-    this.grupoSeleccionado = this.grupoSeleccionado == '0' ? this.rutaActiva.snapshot.params['grupo'] : '0';
+    this.grupoSeleccionado = this.grupoSeleccionado == this.rutaActiva.snapshot.params['grupo'] ? this.rutaActiva.snapshot.params['grupo'] : this.rutaActiva.snapshot.params['grupo'];
     if(this.grupoSeleccionado != undefined && mensaje.contenido_mensaje != ''){
       let time = new Date();
-      mensaje.fecha = `${time.getFullYear()}-${time.getMonth()+1}-${time.getDate()}`;
-      mensaje.hora = `${time.getHours()}:${time.getMinutes()+1}:${time.getSeconds()}`;
-      mensaje.numerodoc = this.usuario;
+      mensaje.fecha_hora = `${time.getFullYear()}-${time.getMonth()+1}-${time.getDate()} ${time.getHours()}:${time.getMinutes()+1}:${time.getSeconds()}`;
+      this.Chat.destino(this.grupoSeleccionado, this.usuario).subscribe((id: any) => { 
+        mensaje.fk_destino = id[0].id_usuarios_grupos
+        this.Chat.agregarMensaje(mensaje).subscribe((data: any)=>data == 'Enviado' ? this.seleccionar() : undefined);
+      });
       mensaje.id_tipo = tipo;
-      mensaje.fk_id_grupos = this.rutaActiva.snapshot.params['grupo'];
       
-      this.Chat.agregarMensaje(mensaje).subscribe((data: any)=>data == 'Enviado' ? this.seleccionar() : undefined);
+      // 
       this.form.reset();
       document.getElementById("final")?.scrollIntoView(true);
     } else {
@@ -87,5 +89,8 @@ export class ChatComponent {
  mostrarPrivados() {
    this.gruposVisible = false;
    this.privadosVisible = true;
+ }
+ consultarMiembros(){
+  this.Chat.traerMiembros(this.grupoSeleccionado).subscribe((data: any) => {console.log(data)});
  }
 }

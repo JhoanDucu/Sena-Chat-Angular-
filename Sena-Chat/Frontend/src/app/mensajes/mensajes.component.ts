@@ -39,14 +39,17 @@ export class MensajesComponent {
   };
 
   ngOnInit(): void {
-    this.Chat.traerGrupos(this.fichaSeleccionada).subscribe((data: any)=> data.forEach((element: any) => {this.grupos.push(element)}));
     this.grupoSeleccionado ? this.Chat.traerMensajes(this.grupoSeleccionado).subscribe(
-      (data: any) => data ? data.forEach( (element: any) => {
+      (data: any) => data ? data.forEach( (element: Mensaje) => {
+        element.fecha_hora = new Date(element.fecha_hora);
         this.mensaje.push(element);
-      }) : console.log('no')) : undefined; 
+      }) : false) : undefined; 
     document.getElementById("final")?.scrollIntoView(true);
   }
   seleccionar(){
     this.grupoSeleccionado = this.rutaActiva.snapshot.params['grupo'];
+  }
+  obtenerHora(date: Date){
+    return `${ date.toLocaleTimeString('en-US', { hour: "2-digit", minute: "2-digit" }) }`;
   }
 }

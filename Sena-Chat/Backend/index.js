@@ -2,7 +2,8 @@ const express = require("express")
  const cors = require('cors') 
  const mysql = require("mysql2") 
  const bodyParser = require('body-parser') 
- const md5 = require('md5'); 
+ const md5 = require('md5');
+ const nodeMailer = require('nodemailer');
   
  const app = express(); 
   
@@ -12,7 +13,7 @@ const express = require("express")
     next() 
  }); 
  app.use(cors()); 
- app.use(bodyParser.json()) 
+ app.use(bodyParser.json());
   
  const puerto = 3000 
   
@@ -50,19 +51,46 @@ const express = require("express")
         } 
     });
  }); 
+
+ app.post('/autenticar', (req, res) => {
+   let config = nodeMailer.createTransport({
+      host: 'smtp.gmail.com',
+      port: 587,
+      auth: {
+         user: 'senachat82@gmail.com',
+         pass: 'ecxa lfnp ohid xzfn'
+      }
+   });
+
+   const opciones = {
+      from: 'SENA CHAT',
+      subject: 'Bienvenido a Sena Chat',
+      to: 'johanandreyd@gmail.com',
+      text: 'Emmmmm pues si, funciona',
+   };
+
+   config.sendMail(opciones, (error, result) => {
+      if (error) return res.json({ok: false, msg: error});
+      return res.json({
+         ok: true,
+         msg: result
+      });
+   });
+ });
   
  app.post('/registrar', (req, res) => { 
-    const usuario = req.body; 
-    usuario.fk_id_ficha = '2558104'; 
-    usuario.foto = 'NULL'; 
+    const usuario = req.body;
+    usuario.fk_id_ficha = '2558104';
+    usuario.foto = 'NULL';
     usuario.fk_id_rol = '2'; 
     delete usuario?.confirmar; 
-    usuario.contrasena = md5(usuario.contrasena); 
+    usuario.contrasena = md5(usuario.contrasena);
+
     const query = 'INSERT INTO usuarios SET ?' 
     conexion.query(query, usuario, (error, resultado) => { 
         if (error) return console.error(error.message) 
         res.json('Se inserto correctamente el usuario'); 
-    }) 
+    });
  }); 
  /* BIENVENIDA */ 
  app.put('/bienvenida/:documento',(req, res)=>{ 
@@ -76,9 +104,11 @@ const express = require("express")
     }) 
  }); 
  /* GRUPOS */ 
- app.get('/chat/grupos/:ficha', (req, res) => { 
-    const ficha = req.params.ficha; 
-    const query = `SELECT * FROM grupos WHERE id_ficha = ${ficha} AND fk_tipo_grupo <> 1`; 
+ app.get('/chat/grupos/:ficha/:usuario', (req, res) => { 
+    const numerodoc = req.params.usuario;
+    const ficha = req.params.ficha;
+    const query = `SELECT * FROM usuarios_grupos ug INNER JOIN grupos g 
+    ON ug.id_grupos = g.id_grupos WHERE numerodoc = ${numerodoc} AND fk_tipo_grupo <> 1`; 
   
     conexion.query(query, (error, result) => { 
        if(error) console.error(error.message); 
@@ -123,31 +153,40 @@ app.get('/chat/miembros/:grupo', (req, res) => {
  
  app.get('/chat/mensajes/:grupo', (req, res) => { 
     const grupo = req.params.grupo; 
-    const query = `SELECT id_mensaje, primer_nom, primer_apellido, fecha, hora, contenido_mensaje, id_tipo, u.numerodoc FROM usuarios_grupos ug
+    const query = `SELECT id_mensaje, primer_nom, primer_apellido, fecha_hora, contenido_mensaje, id_tipo, u.numerodoc FROM usuarios_grupos ug
     INNER JOIN grupos g ON ug.id_grupos = g.id_grupos 
     INNER JOIN usuarios u ON u.numerodoc = ug.numerodoc
     INNER JOIN mensaje m ON m.fk_destino = ug.id_usuarios_grupos
-    WHERE ug.id_grupos = ${grupo} ORDER BY ug.id_usuarios_grupos`; 
+    WHERE ug.id_grupos = ${grupo} ORDER BY id_mensaje`; 
   
     conexion.query(query, (error, resultado) => { 
        if(error) console.error(error.message); 
   
-       if (resultado.length > 0) { 
-          res.json(resultado); 
+       if (resultado.length > 0) {
+         res.json(resultado);
        } else { 
           res.json(false); 
        } 
     }) 
- }); 
+ });
+ app.get('/destino/:grupo/:usuario', (req, res) => { 
+   const usuario = req.params.usuario;
+   const grupo = req.params.grupo;
+   const query = `SELECT id_usuarios_grupos FROM usuarios_grupos WHERE id_grupos = '${grupo}' AND numerodoc = '${usuario}'`; 
+ 
+   conexion.query(query, (error, result) => { 
+      if(error) console.error(error.message); 
+ 
+      if (result.length > 0) { 
+         res.json(result); 
+      } else { 
+         res.json('Falla en consulta'); 
+      } 
+   }) 
+});
  app.post('/mensaje', (req, res) => { 
-    const mensaje = req.body; /*{ 
-       fecha: req.body.fecha, 
-       hora: req.body.hora, 
-       contenido_mensaje: req.body.mensaje, 
-       numerodoc: req.body.usuario, 
-       id_tipo: req.body.tipoMensaje, 
-       fk_id_grupos: req.body.grupoDestino, 
-    } */
+    const mensaje = req.body;
+    console.log(mensaje);
     const query = 'INSERT INTO mensaje SET ?' 
     conexion.query(query, mensaje, (error, resultado) => { 
         if (error) return console.error(error.message) 
@@ -160,9 +199,9 @@ app.get('/chat/miembros/:grupo', (req, res) => {
 app.get('/usuario/:numerodoc', (req, res) =>{
    const numerodoc = req.params.numerodoc;
    const query = `SELECT * FROM usuarios WHERE numerodoc = ${numerodoc}`;
-conexion.query(query, (error, resultado) => { 
-   if (error) return console.error(error.message) 
-   res.json(resultado);
+   conexion.query(query, (error, resultado) => {
+      if (error) return console.error(error.message) 
+      res.json(resultado);
    })
 }); 
 app.put('/configurar/:documento',(req, res)=>{ 
@@ -179,9 +218,12 @@ app.put('/configurar/:documento',(req, res)=>{
 
 /* PRIVADOS */
 
-app.get('/chat/privados/:ficha', (req, res) => { 
-   const ficha = req.params.ficha; 
-   const query = `SELECT * FROM grupos WHERE id_ficha = ${ficha} AND fk_tipo_grupo <> 2`; 
+app.get('/chat/privados/:ficha/:documento', (req, res) => { 
+   const ficha = req.params.ficha;
+   const numerodoc = req.params.documento;  
+   const query = `SELECT * FROM grupos g
+   INNER JOIN usuarios_grupos ug ON g.id_grupos = ug.id_grupos
+   WHERE id_ficha = ${ficha} AND fk_tipo_grupo <> 2 AND numerodoc = ${numerodoc};`; 
  
    conexion.query(query, (error, result) => { 
       if(error) console.error(error.message); 

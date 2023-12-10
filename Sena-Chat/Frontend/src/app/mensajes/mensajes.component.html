@@ -1,7 +1,7 @@
-<div class="card-body chat-box">
+<div class="card-body chat-box" id="componenteMensajes">
     @if (!grupoSeleccionado) {
         <div class="d-flex justify-content-start">
-            <div class="text-dark p-2 rounded" style="background: #e3e6e4; max-width: 50%;"> <!-- Limita el ancho al 50% -->
+            <div class="text-dark p-2 rounded" id='sinSeleccionarGrupo'> <!-- Limita el ancho al 50% -->
                 No hay grupo seleccionado
             </div>
         </div>
@@ -9,14 +9,18 @@
         @for ( m of mensaje; track m.id_mensaje) {
             @if (m.numerodoc == usuario) {
                 <div class="d-flex justify-content-end mb-1">
-                    <div class="bg-success text-white p-2 rounded" style="max-width: 50%;"> <!-- Limita el ancho al 50% -->
-                    {{ m.contenido_mensaje }}
+                    <div class="text-white p-2" id="mensajesPropios">
+                        <span id="contenido"> {{ m.contenido_mensaje }} </span> 
+                        <p id="horaPropios"> {{ obtenerHora(m.fecha_hora) }}</p>
                     </div>
                 </div>
             } @else {
                 <div class="d-flex justify-content-start mb-1">
-                    <div class="text-dark p-2 rounded" style="background: #e3e6e4; max-width: 50%;"> <!-- Limita el ancho al 50% -->
-                        {{ m.contenido_mensaje }}
+                    <div class="text-dark p-2" id="mensajesAjenos">
+                        <p id="nombreEmisor">-- {{ m.primer_nom }} </p>
+                        <span> {{ m.contenido_mensaje }}
+                            <p id="horaAjenos">{{ obtenerHora(m.fecha_hora) }}</p>         
+                        </span>
                     </div>
                 </div>
             }
