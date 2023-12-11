@@ -2,177 +2,167 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CHAT</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous"></head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+</head>
+
 <body>
     <!-- CABECERA -->
     <nav class="navbar bg-body-tertiary" id="cabecera">
         <div class="container">
-            <img src="https://github.com/JhoanDucu/Sena-Chat-Angular-/blob/main/Sena-Chat/Frontend/src/assets/img/sena%20chat.png?raw=true" alt="SENACHAT" width="10%" height="10%" style="margin-right: 100px;">
+            <img src="https://github.com/JhoanDucu/Sena-Chat-Angular-/blob/main/Sena-Chat/Frontend/src/assets/img/sena%20chat.png?raw=true"
+                alt="SENACHAT" id="logo-sena" />
             <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <h4 id="NomUsuario">{{ this.datosUsuario.nombre_usuario }}</h4>
-                <img src="../../assets/img/User.png" id="perfil">
+                <img src="../../assets/img/User.png" id="perfil" />
             </a>
-                <ul class="dropdown-menu dropdown-menu-end">
-                    <li><a class="dropdown-item" routerLinkActive="active" [routerLink]="['/vis-perfil', usuario, fichaSeleccionada]">Perfil</a></li>
-                    <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" [routerLink]="['/login']">Salir</a></li>
-                </ul>
-            </div>
+            <ul class="dropdown-menu dropdown-menu-end">
+                <li>
+                    <a class="dropdown-item" routerLinkActive="active"
+                        [routerLink]="['/vis-perfil', usuario, fichaSeleccionada]">Perfil</a>
+                </li>
+                <li>
+                    <hr class="dropdown-divider" />
+                </li>
+                <li><a class="dropdown-item" [routerLink]="['/login']">Salir</a></li>
+            </ul>
+        </div>
     </nav>
 
-
-        <div class="ContenedorGrupoos">
-            <div class="Botones d-flex justify-content-center">
-                <button class="Bgrupo" (click)="mostrarGrupos()">GRUPOS</button>
-                <button class="Bprivado" (click)="mostrarPrivados()">PRIVADOS</button>
-            </div>
-            @if (gruposVisible) {
-                <div class="grupos" id="grupos" role="tablist">
-                    <div class="list-group" id="list-tab" role="tablist">
-                        <a class="list-group-item list-group-item-action active" id="list-home-list" data-bs-toggle="list"
-                            role="tab" aria-controls="list-home">GRUPOS</a>
-                            @for ( g of grupos; track g.id_grupos) {
-                                <a class="list-group-item list-group-item-action" id="list-profile-list" data-bs-toggle="list" (click)="seleccionar()"
-                                  href="#list-profile" role="tab" aria-controls="list-profile" [routerLink]="['/chat', usuario, fichaSeleccionada, g.id_grupos]">{{ g.nom_grupos }}</a>
-                              }
-                    </div>
-                </div>
-            }
-
-            @if (privadosVisible) {
-                <div class="privados" id="privados" role="tablist">
-                    <div class="list-group" id="list-tab" role="tablist">
-                        <a class="list-group-item list-group-item-action active" id="list-home-list" data-bs-toggle="list"
-                            role="tab" aria-controls="list-home">PRIVADOS</a>
-                            @for (p of privados; track p.id_grupos) {
-                                <a class="list-group-item list-group-item-action" id="list-profile-list" data-bs-toggle="list" (click)="seleccionar()"
-                                role="tab" aria-controls="list-profile" [routerLink]="['/chat', usuario, fichaSeleccionada, p.id_grupos]">{{ p.nom_grupos }}</a>
-                            }
-                    </div>
-                </div>
-            }
+    <div class="ContenedorGrupoos">
+        <div class="Botones d-flex justify-content-center">
+            <button class="Bgrupo" (click)="mostrarGrupos()">GRUPOS</button>
+            <button class="Bprivado" (click)="mostrarPrivados()">PRIVADOS</button>
         </div>
-
-        <nav class="navbar bg-body-tertiary" id="cabeceraChat">
-            <div class="container-fluid">
-                <img src="../../assets/img/Grupo.png" alt="IMAGEN DEL GRUPO"
-                    style="width: 70px; height: 50px; margin: 15px; margin-top: 0;">
-                <h4 style="color: #000000;">2558104</h4>
-                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation" (click)="consultarMiembros()">
-                    <span class="navbar-toggler-icon"></span>
-                </button>   
-            </div>
-        </nav>
-
-
-            <div class="row">
-                 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-                <div class="offcanvas-header">
-                    <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Informacion del grupo</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        @if (gruposVisible) {
+            <div class="grupos" id="grupos" role="tablist">
+                <div class="list-group" id="list-tab" role="tablist">
+                    <a class="list-group-item list-group-item-action active" id="list-home-list" data-bs-toggle="list"
+                        role="tab" aria-controls="list-home">GRUPOS</a>
+                    @for ( g of grupos; track g.id_grupos) {
+                    <a class="list-group-item list-group-item-action" id="list-profile-list" data-bs-toggle="list"
+                        (click)="seleccionar()" href="#list-profile" role="tab" aria-controls="list-profile"
+                        [routerLink]="['/chat', usuario, fichaSeleccionada, g.id_grupos]">{{ g.nom_grupos }}</a>
+                    }
                 </div>
-                <div class="offcanvas-body">
-                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                        @if (!privadosVisible){
-                            <button class="btn"  type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
-                            aria-controls="offcanvasRight" style="border: none !important; background-color: transparent !important; box-shadow: none !important; display: flex; align-items: center;">
-                                <img src="../../assets/img/User-agregar.png" style="width: 30%; height: 30%;" alt="Agregar">
-                                <h6 style="margin-left: 10px;">Agregar</h6>
-                            </button>
+            </div>
+        } @if (privadosVisible) {
+            <div class="privados" id="privados" role="tablist">
+                <div class="list-group" id="list-tab" role="tablist">
+                    <a class="list-group-item list-group-item-action active" id="list-home-list" data-bs-toggle="list"
+                        role="tab" aria-controls="list-home">PRIVADOS</a>
+                    @for (p of privados; track p.id_grupos) {
+                    <a class="list-group-item list-group-item-action" id="list-profile-list" data-bs-toggle="list"
+                        (click)="seleccionar()" role="tab" aria-controls="list-profile"
+                        [routerLink]="['/chat', usuario, fichaSeleccionada, p.id_grupos]">{{ p.nom_grupos }}</a>
+                    }
+                </div>
+            </div>
+        }
+    </div>
 
-                            <button type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight2"
-                                    aria-controls="offcanvasRight2" style="border: none !important; background-color: transparent !important; box-shadow: none !important; display: flex; align-items: center;">
-                                <img src="../../assets/img/User-elim.png" style="width: 25%; height: 25%;" alt="Eliminar">
-                                <h6 style="margin-left: 10px;">eliminar</h6>
-                            </button>
+    <nav class="navbar bg-body-tertiary" id="cabeceraChat">
+        <div class="container-fluid">
+            <img src="../../assets/img/Grupo.png" alt="IMAGEN DEL GRUPO" id="logo-grupo" />
+            <h4>{{ fichaSeleccionada }}</h4>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+                aria-controls="offcanvasNavbar" aria-label="Toggle navigation" (click)="consultarMiembros()">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+    </nav>
+
+    <div class="row">
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Informacion del grupo</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                    @if (!privadosVisible){
+                    <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
+                        aria-controls="offcanvasRight" id="lista-privados">
+                        <img src="../../assets/img/User-agregar.png" style="width: 30%; height: 30%" alt="Agregar" />
+                        <h6 style="margin-left: 10px">Agregar</h6>
+                    </button>
+
+                    <div class="d-flex justify-content-center">
+                        <img src="../../assets/img/User-elim.png" style="width: 25%; height: 25%" alt="Eliminar" />
+                    </div>
+                    <br />
+                    <ul class="list-group">
+                        @for (m of miembros; track m.numerodoc) {
+                            <li class="list-group-item">
+                                <h6>{{ m.primer_nom }} {{m.segundo_nom}} </h6>
+                                @if (datosUsuario.numerodoc == m.numerodoc) {
+                                    <span>(TU)</span>
+                                } @else {
+                                    <button type="button" class="btn btn-danger btn-sm">X</button>
+                                }
+                            </li>
                         }
                     </ul>
-                </div>
+                    }
+                </ul>
             </div>
+        </div>
 
-            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-                <div class="offcanvas-header">
-                    <h5 class="offcanvas-title" id="offcanvasRightLabel">Agregar</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                </div>
-                <div class="offcanvas-body" style="display: flex; flex-direction: column; align-items: center; margin-top: 5%;">
-                    <img src="../../assets/img/User-agregar.png" style="width: 30%; height: 25%;" alt="Agregar">
-                    <br>
-                    <form>
-                        <div class="mb-3">
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasRightLabel">Agregar</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body" id="agregar">
+                <img src="../../assets/img/User-agregar.png" style="width: 30%; height: 25%" alt="Agregar" />
+                <br />
+                <form>
+                    <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                        <div id="emailHelp" class="form-text">Ingrese el Email de la persona</div>
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                        <div id="emailHelp" class="form-text">
+                            Ingrese el Email de la persona
                         </div>
-                        <button type="submit" style="background-color:#0e882d; border-color:#0e882d;" class="btn btn-primary">Enviar</button>
-                    </form>
-                </div>
-            </div>
-
-            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight2" aria-labelledby="offcanvasRightLabel2">
-                <div class="offcanvas-header">
-                    <h5 class="offcanvas-title" id="offcanvasRightLabel2">Eliminar</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                </div>
-                <div class="offcanvas-body">
-                    <div class="d-flex justify-content-center">
-                        <img src="../../assets/img/User-elim.png" style="width: 25%; height: 25%;" alt="Eliminar">
                     </div>
-                    <br>
-                    <ul class="list-group">
-                        <li class="list-group-item ">
-                            <h6>Participante</h6>
-                            <button type="button" class="btn btn-danger btn-sm">X</button>
-                        </li>
-                        <li class="list-group-item ">
-                            <h6>Participante</h6>
-                            <button type="button" class="btn btn-danger btn-sm">X</button>
-                        </li>
-                        <li class="list-group-item ">
-                            <h6>Participante</h6>
-                            <button type="button" class="btn btn-danger btn-sm">X</button>
-                        </li>
-                        <li class="list-group-item ">
-                            <h6>Participante</h6>
-                            <button type="button" class="btn btn-danger btn-sm">X</button>
-                        </li>
-                    </ul>
+                    <button type="submit" id="botonEnviar" class="btn btn-primary">Enviar</button>
+                </form>
+            </div>
+        </div>
 
+        <div class="Chat">
+            <div class="col-8">
+                <div class="card mensajes-container">
+                    <app-mensajes *appChat="changes"></app-mensajes>
                 </div>
             </div>
+            <form (ngSubmit)="enviar(form.value, this.datosUsuario.fk_id_tipodoc)" [formGroup]="form">
+                <div class="card-footer">
+                    <div class="input-group" style="background-color: #9d9d9d">
+                        <input type="text" class="form-control custom-text-input" placeholder="Escribe tu mensaje..."
+                            formControlName="contenido_mensaje" id="contenido_mensaje"/>
+                        <label for="file" style="height: 50px; padding-left: 15px">
+                            <img src="https://cdn-icons-png.flaticon.com/128/659/659774.png" style="opacity: 60%"
+                                alt="Icono" />
+                        </label>
+                        <div class="input-group-append">
+                            <button class="btn btn-success" id="enviar" type="submit">
+                                <img src="https://cdn-icons-png.flaticon.com/128/736/736212.png"
+                                    style="height: 40px; opacity: 70%; width: 40px" alt="" />
+                            </button>
+                        </div>
+                        <input type="file" id="file" class="upload-file" />
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+</body>
 
-
-            <div class="Chat">
-              <div class="col-8">
-                  <div class="card" style="background-color: transparent; padding: 0; left: 0; width: 150%; height: 420px; border: none;">
-                      <app-mensajes *appChat="changes"></app-mensajes>
-                  </div>
-              </div>
-                <form (ngSubmit)="enviar(form.value, this.datosUsuario.fk_id_tipodoc )" [formGroup]="form">
-                  <div class="card-footer">
-                      <div class="input-group">
-                          <input type="text" class="form-control custom-text-input" placeholder="Escribe tu mensaje..." formControlName="contenido_mensaje" id="contenido_mensaje" style="margin-right: 0; width: 30%;
-                          height: 50px;
-                          border-radius: 10px;">
-                          <label for="file" style="height: 50px; padding-left: 15px;">
-                            <img src="https://cdn-icons-png.flaticon.com/128/659/659774.png" style="opacity: 60%;" alt="Icono"/>
-                          </label>
-                          <div class="input-group-append">
-                              <button class="btn btn-success" style="right: 0; height: 50px; border-radius: 20%; margin-left: 15px; background-color: transparent; border: none;" type="submit" >
-                              <img src="https://cdn-icons-png.flaticon.com/128/736/736212.png" style="height: 40px; opacity: 70%;
-                              width: 40px;" alt="">
-                              </button>
-                          </div>
-                          <input type="file" id="file" class="upload-file">
-
-                      </div>
-                  </div>
-              </form>
-          </div>
-      </div>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-    </body>
 </html>

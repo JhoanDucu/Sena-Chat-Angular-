@@ -1,6 +1,5 @@
-.card-body.chat-box {
-  max-height: 370px;
-  overflow-y: auto;
+.card-body {
+  padding-bottom: 5%;
 }
 
 /* Estilo para la barra de desplazamiento */
@@ -10,12 +9,15 @@
 
 /* Estilo para el pulgar (parte deslizable) de la barra de desplazamiento */
 .card-body.chat-box::-webkit-scrollbar-thumb {
-  background-color: #3d803d; /* Cambia el color de la barra de desplazamiento a verde */
-  border-radius: 4px; /* Agrega bordes redondeados al pulgar de la barra de desplazamiento */
+  background-color: #3d803d; 
+  border-radius: 4px;
 }
 
 #componenteMensajes {
-  max-height: 420px;
+  position: absolute;
+  overflow-y: auto; 
+  max-height: 430px;
+  width: 100%;
 }
 
 #sinSeleccionarGrupo {
@@ -33,14 +35,24 @@
   border-bottom-left-radius: 10px;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 1px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  word-wrap: break-word; 
+  overflow-x: hidden;
 }
 
 #contenido {
   padding-right: 10px;
+  word-wrap: break-word; 
+  word-break: break-word; 
 }
 
 #horaPropios {
   margin: 0;
+  bottom: 100%;
+  margin-top: 7%;
+  padding: 0;
   font-size: 0.7em;
   text-align: right;
   font-weight: bold;

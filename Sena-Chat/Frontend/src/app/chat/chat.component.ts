@@ -24,12 +24,12 @@ export class ChatComponent {
     private router: Router,
     private Chat: ChatService,
     private rutaActiva: ActivatedRoute
-    ){}
+  ) { }
   grupos: Grupo[] = [];
   privados: Grupo[] = [];
   mensaje: Mensaje[] = [];
   miembros: Usuario[] = [];
-  datosUsuario: Usuario = new Usuario('','','','','','','','','','','','');
+  datosUsuario: Usuario = new Usuario('', '', '', '', '', '', '', '', '', '', '', '');
   grupoSeleccionado = this.rutaActiva.snapshot.params['grupo'];
   fichaSeleccionada = this.rutaActiva.snapshot.params['ficha'];
   usuario = this.rutaActiva.snapshot.params['documento'];
@@ -51,46 +51,48 @@ export class ChatComponent {
   form = new FormGroup({
     contenido_mensaje: new FormControl('')
   });
- gruposVisible = true;
- privadosVisible = false;
+  gruposVisible = true;
+  privadosVisible = false;
 
   ngOnInit(): void {
-    this.Chat.traerGrupos(this.fichaSeleccionada, this.usuario).subscribe((data: any)=> data.forEach((element: any) => {this.grupos.push(element)}));
+    this.Chat.traerGrupos(this.fichaSeleccionada, this.usuario).subscribe((data: any) => data.forEach((element: any) => { this.grupos.push(element) }));
     this.Chat.traerUsuario(this.usuario).subscribe((data: any) => this.datosUsuario = data[0]);
-    this.Chat.traerPrivados(this.fichaSeleccionada, this.usuario).subscribe((data: any)=> data.forEach((element: any) => {this.privados.push(element)}));
+    this.Chat.traerPrivados(this.fichaSeleccionada, this.usuario).subscribe((data: any) => data.forEach((element: any) => { this.privados.push(element) }));
     // document.getElementById("final")?.scrollIntoView(true);
   }
-  seleccionar(){
+  seleccionar() {
     this.changes = this.changes == '0' ? '1' : '0';
   }
-  enviar(mensaje: any, tipo: any){
+  actualizarParametro() {
     this.grupoSeleccionado = this.grupoSeleccionado == this.rutaActiva.snapshot.params['grupo'] ? this.rutaActiva.snapshot.params['grupo'] : this.rutaActiva.snapshot.params['grupo'];
-    if(this.grupoSeleccionado != undefined && mensaje.contenido_mensaje != ''){
+  }
+  enviar(mensaje: any, tipo: any) {
+    this.actualizarParametro();
+    if (this.grupoSeleccionado != undefined && mensaje.contenido_mensaje != '') {
       let time = new Date();
-      mensaje.fecha_hora = `${time.getFullYear()}-${time.getMonth()+1}-${time.getDate()} ${time.getHours()}:${time.getMinutes()+1}:${time.getSeconds()}`;
-      this.Chat.destino(this.grupoSeleccionado, this.usuario).subscribe((id: any) => { 
+      mensaje.fecha_hora = `${time.getFullYear()}-${time.getMonth() + 1}-${time.getDate()} ${time.getHours()}:${time.getMinutes() + 1}:${time.getSeconds()}`;
+      this.Chat.destino(this.grupoSeleccionado, this.usuario).subscribe((id: any) => {
         mensaje.fk_destino = id[0].id_usuarios_grupos
-        this.Chat.agregarMensaje(mensaje).subscribe((data: any)=>data == 'Enviado' ? this.seleccionar() : undefined);
+        this.Chat.agregarMensaje(mensaje).subscribe((data: any) => data == 'Enviado' ? this.seleccionar() : undefined);
       });
       mensaje.id_tipo = tipo;
-      
-      // 
       this.form.reset();
       document.getElementById("final")?.scrollIntoView(true);
     } else {
       alert('No has ingresado a algun grupo');
     }
   }
- mostrarGrupos() {
-   this.gruposVisible = true;
-   this.privadosVisible = false;
- }
+  mostrarGrupos() {
+    this.gruposVisible = true;
+    this.privadosVisible = false;
+  }
 
- mostrarPrivados() {
-   this.gruposVisible = false;
-   this.privadosVisible = true;
- }
- consultarMiembros(){
-  this.Chat.traerMiembros(this.grupoSeleccionado).subscribe((data: any) => {console.log(data)});
- }
+  mostrarPrivados() {
+    this.gruposVisible = false;
+    this.privadosVisible = true;
+  }
+  consultarMiembros() {
+    this.actualizarParametro();
+    this.Chat.traerMiembros(this.grupoSeleccionado).subscribe((data: any) => { this.miembros = data });
+  }
 }
