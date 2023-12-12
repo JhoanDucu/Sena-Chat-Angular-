@@ -122,7 +122,9 @@ const express = require("express")
  });
 app.get('/chat/miembros/:grupo', (req, res) => { 
     const grupo = req.params.grupo; 
-    const query = `SELECT primer_nom, segundo_nom, primer_apellido, segundo_apellido FROM usuarios_grupos ug INNER JOIN usuarios u ON u.numerodoc = ug.numerodoc WHERE ug.id_grupos = ${grupo}`; 
+    const query = `SELECT primer_nom, segundo_nom, primer_apellido, segundo_apellido, ug.numerodoc, u.fk_id_rol
+    FROM usuarios_grupos ug INNER JOIN usuarios u 
+    ON u.numerodoc = ug.numerodoc WHERE ug.id_grupos = ${grupo} ORDER BY u.fk_id_rol`; 
   
     conexion.query(query, (error, result) => { 
        if(error) console.error(error.message); 
@@ -198,9 +200,9 @@ app.get('/chat/miembros/:grupo', (req, res) => {
 
 app.get('/usuario/:numerodoc', (req, res) =>{
    const numerodoc = req.params.numerodoc;
-   const query = `SELECT * FROM usuarios WHERE numerodoc = ${numerodoc}`;
-   conexion.query(query, (error, resultado) => {
-      if (error) return console.error(error.message) 
+   const query = `SELECT * FROM usuarios WHERE numerodoc = ?`;
+   conexion.query(query, numerodoc, (error, resultado) => {
+      if (error) return console.error(error.message);
       res.json(resultado);
    })
 }); 
