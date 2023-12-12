@@ -89,7 +89,7 @@ const express = require("express")
     const query = 'INSERT INTO usuarios SET ?' 
     conexion.query(query, usuario, (error, resultado) => { 
         if (error) return console.error(error.message) 
-        res.json('Se inserto correctamente el usuario'); 
+        res.json(['Se inserto correctamente el usuario', usuario.numerodoc]); 
     });
  }); 
  /* BIENVENIDA */ 
