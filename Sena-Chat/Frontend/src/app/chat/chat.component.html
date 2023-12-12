@@ -7,6 +7,7 @@
     <title>CHAT</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -22,12 +23,12 @@
             <ul class="dropdown-menu dropdown-menu-end">
                 <li>
                     <a class="dropdown-item" routerLinkActive="active"
-                        [routerLink]="['/vis-perfil', usuario, fichaSeleccionada]">Perfil</a>
+                        [routerLink]="['/vis-perfil']">Perfil</a>
                 </li>
                 <li>
                     <hr class="dropdown-divider" />
                 </li>
-                <li><a class="dropdown-item" [routerLink]="['/login']">Salir</a></li>
+                <li><a class="dropdown-item" (click)="cerrarSesion()">Salir</a></li>
             </ul>
         </div>
     </nav>
@@ -45,7 +46,7 @@
                     @for ( g of grupos; track g.id_grupos) {
                     <a class="list-group-item list-group-item-action" id="list-profile-list" data-bs-toggle="list"
                         (click)="seleccionar()" href="#list-profile" role="tab" aria-controls="list-profile"
-                        [routerLink]="['/chat', usuario, fichaSeleccionada, g.id_grupos]">{{ g.nom_grupos }}</a>
+                        [routerLink]="['/chat', g.id_grupos]">{{ g.nom_grupos }}</a>
                     }
                 </div>
             </div>
@@ -57,7 +58,7 @@
                     @for (p of privados; track p.id_grupos) {
                     <a class="list-group-item list-group-item-action" id="list-profile-list" data-bs-toggle="list"
                         (click)="seleccionar()" role="tab" aria-controls="list-profile"
-                        [routerLink]="['/chat', usuario, fichaSeleccionada, p.id_grupos]">{{ p.nom_grupos }}</a>
+                        [routerLink]="['/chat', p.id_grupos]">{{ p.nom_grupos }}</a>
                     }
                 </div>
             </div>
@@ -69,22 +70,28 @@
             <img src="../../assets/img/Grupo.png" alt="IMAGEN DEL GRUPO" id="logo-grupo" />
             <h4>{{ fichaSeleccionada }}</h4>
 
-            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
-                aria-controls="offcanvasNavbar" aria-label="Toggle navigation" (click)="consultarMiembros()">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+            @if(grupoSeleccionado){
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+                    aria-controls="offcanvasNavbar" aria-label="Toggle navigation" (click)="consultarMiembros()">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            } @else {
+                <div></div>
+            }
         </div>
     </nav>
 
     <div class="row">
         <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
             <div class="offcanvas-header">
-                <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Informacion del grupo</h5>
+                <h5 class="offcanvas-title" id="offcanvasNavbarLabel">
+                    Informacion del grupo
+                </h5>
                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div class="offcanvas-body">
                 <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                    @if (!privadosVisible){
+                    @if (datosUsuario.fk_id_rol == '1'){
                     <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
                         aria-controls="offcanvasRight" id="lista-privados">
                         <img src="../../assets/img/User-agregar.png" style="width: 30%; height: 30%" alt="Agregar" />
@@ -97,16 +104,27 @@
                     <br />
                     <ul class="list-group">
                         @for (m of miembros; track m.numerodoc) {
-                            <li class="list-group-item">
-                                <h6>{{ m.primer_nom }} {{m.segundo_nom}} </h6>
-                                @if (datosUsuario.numerodoc == m.numerodoc) {
+                        <li class="list-group-item">
+                            <h6> {{ m.primer_nom }} {{ m.primer_apellido }} 
+                                @if (usuario == m.numerodoc) {
                                     <span>(TU)</span>
                                 } @else {
-                                    <button type="button" class="btn btn-danger btn-sm">X</button>
+                                    <button type="button" class="btn btn-outline-danger btn-sm" data-bs-toggle="tooltip" data-bs-html="true" title="Eliminar del grupo">
+                                        X
+                                    </button>
                                 }
-                            </li>
+                            </h6>
+                        </li>
                         }
                     </ul>
+                    } @else {
+                        @if (!privadosVisible) {
+                            
+                        } @else {
+                            <div class="text-center">
+                                <img src="../../assets/img/User.png" class="rounded-circle" style="border: 2px solid; " >
+                            </div>
+                        }
                     }
                 </ul>
             </div>
@@ -128,7 +146,9 @@
                             Ingrese el Email de la persona
                         </div>
                     </div>
-                    <button type="submit" id="botonEnviar" class="btn btn-primary">Enviar</button>
+                    <button type="submit" id="botonEnviar" class="btn btn-primary">
+                        Enviar
+                    </button>
                 </form>
             </div>
         </div>
@@ -143,26 +163,24 @@
                 <div class="card-footer">
                     <div class="input-group" style="background-color: #9d9d9d">
                         <input type="text" class="form-control custom-text-input" placeholder="Escribe tu mensaje..."
-                            formControlName="contenido_mensaje" id="contenido_mensaje"/>
-                        <label for="file" style="height: 50px; padding-left: 15px">
-                            <img src="https://cdn-icons-png.flaticon.com/128/659/659774.png" style="opacity: 60%"
-                                alt="Icono" />
+                            formControlName="contenido_mensaje" id="contenido_mensaje" autocomplete="off"  (keyup)="longitud()" />
+                        <label for="file" id="labelArchivo">
+                            <i class="bx bx-paperclip" id="iconoArchivo"></i>
+                            <input type="file" id="file" class="upload-file" />
                         </label>
                         <div class="input-group-append">
-                            <button class="btn btn-success" id="enviar" type="submit">
-                                <img src="https://cdn-icons-png.flaticon.com/128/736/736212.png"
-                                    style="height: 40px; opacity: 70%; width: 40px" alt="" />
+                            <button class="btn btn-success" id="enviar" type="submit" [disabled]="noEnviar">
+                                <i class="bx bxs-send" id="iconoEnviar"></i>
                             </button>
                         </div>
-                        <input type="file" id="file" class="upload-file" />
                     </div>
                 </div>
             </form>
         </div>
     </div>
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
 </body>
-
 </html>

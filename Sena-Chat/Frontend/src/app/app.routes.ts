@@ -5,20 +5,17 @@ import { BienvenidaComponent } from './bienvenida/bienvenida.component';
 import { ChatComponent } from './chat/chat.component';
 import { ConfiComponent } from './confi/confi.component';
 import { VisPerfilComponent } from './vis-perfil/vis-perfil.component';
+import { ContrasenaComponent } from './contrasena/contrasena.component';
 
 export const routes: Routes = [
     { path: "login", component: LoginComponent },
     { path: "registro", component: RegistroComponent },
-    { path: 'bienvenida/:usuario', component: BienvenidaComponent},
-    { path: 'chat/:documento/:ficha/:grupo', component: ChatComponent},
-    { path: 'chat/:documento/:ficha', component: ChatComponent},
-    { path: 'confi/:documento/:ficha', component: ConfiComponent },
-    { path: 'vis-perfil/:documento/:ficha', component: VisPerfilComponent},
+    { path: 'bienvenida', component: BienvenidaComponent},
+    { path: 'chat/:grupo', component: ChatComponent},
+    { path: 'chat', component: ChatComponent},
+    { path: 'confi', component: ConfiComponent },
+    { path: 'vis-perfil', component: VisPerfilComponent},
+    { path: 'contrasena', component: ContrasenaComponent},
     { path: '', redirectTo: 'login', pathMatch: "full" },
-    { path: '**', redirectTo: 'login', pathMatch: "full" }
-    
-    //
-    // { path: 'contrasena', component: ContrasenaComponent},
-    // 
-     
+    { path: '**', redirectTo: 'login', pathMatch: "full" },
 ];

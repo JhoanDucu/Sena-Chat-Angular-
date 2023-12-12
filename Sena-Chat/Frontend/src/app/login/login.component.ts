@@ -4,6 +4,7 @@ import { Router, RouterModule } from '@angular/router';
 import { Login } from '../Modelos/login';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators, FormsModule } from '@angular/forms';
 import { LogearService } from '../Servicios/logear.service';
+import { SesionService } from '../Sesiones/sesion.service';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,8 @@ import { LogearService } from '../Servicios/logear.service';
 export class LoginComponent {
   constructor(
     private router: Router,
-    private loginServicio: LogearService
+    private loginServicio: LogearService,
+    protected Sesion: SesionService,
     ){}
   formLogin = new FormGroup({
     numerodoc: new FormControl('', Validators.required),
@@ -45,8 +47,10 @@ export class LoginComponent {
     alert("Esperando respuesta...");
     this.loginServicio.buscarDatos(datos).subscribe((respuesta: any) => {
       if (respuesta != 'No existe registro') {
+        this.Sesion.set('ficha', respuesta[0]);
+        this.Sesion.set('documento', respuesta[1]);
         // this.loginServicio.mandarCorreo('hello').subscribe((r)=>console.log(r));
-        this.router.navigate(['chat', respuesta[1], respuesta[0]]);
+        this.router.navigate(['chat']);
        } else {
          alert('Usuario no existe');
        }

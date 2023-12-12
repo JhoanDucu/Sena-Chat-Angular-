@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormControl, FormGroup, FormGroupDirective, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, FormGroupDirective, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { ChatService } from '../Servicios/chat.service';
 import { Grupo } from '../Modelos/grupos';
@@ -8,6 +8,7 @@ import { Mensaje } from '../Modelos/mensaje';
 import { Usuario } from '../Modelos/usuarios';
 import { MensajesComponent } from '../mensajes/mensajes.component';
 import { ChatDirective } from '../Directivas/chat.directive';
+import { SesionService } from '../Sesiones/sesion.service';
 
 @Component({
   selector: 'app-chat',
@@ -23,7 +24,8 @@ export class ChatComponent {
   constructor(
     private router: Router,
     private Chat: ChatService,
-    private rutaActiva: ActivatedRoute
+    private rutaActiva: ActivatedRoute,
+    protected Sesion: SesionService
   ) { }
   grupos: Grupo[] = [];
   privados: Grupo[] = [];
@@ -31,34 +33,27 @@ export class ChatComponent {
   miembros: Usuario[] = [];
   datosUsuario: Usuario = new Usuario('', '', '', '', '', '', '', '', '', '', '', '');
   grupoSeleccionado = this.rutaActiva.snapshot.params['grupo'];
-  fichaSeleccionada = this.rutaActiva.snapshot.params['ficha'];
-  usuario = this.rutaActiva.snapshot.params['documento'];
+  fichaSeleccionada = this.Sesion.get('ficha');
+  usuario = this.Sesion.get('documento');
   changes = '0';
-  months = {
-    0: 'Enero',
-    1: 'Febrero',
-    2: 'Marzo',
-    3: 'Abril',
-    4: 'Mayo',
-    5: 'Junio',     /* USAR PARA MOSTRAR FECHAS */
-    6: 'Julio',
-    7: 'Agosto',
-    8: 'Septiembre',
-    9: 'Octubre',
-    10: 'Noviembre',
-    11: 'Diciembre',
-  };
   form = new FormGroup({
-    contenido_mensaje: new FormControl('')
+    contenido_mensaje: new FormControl('', Validators.required)
   });
   gruposVisible = true;
   privadosVisible = false;
+  noEnviar = true;
 
   ngOnInit(): void {
-    this.Chat.traerGrupos(this.fichaSeleccionada, this.usuario).subscribe((data: any) => data.forEach((element: any) => { this.grupos.push(element) }));
-    this.Chat.traerUsuario(this.usuario).subscribe((data: any) => this.datosUsuario = data[0]);
-    this.Chat.traerPrivados(this.fichaSeleccionada, this.usuario).subscribe((data: any) => data.forEach((element: any) => { this.privados.push(element) }));
-    // document.getElementById("final")?.scrollIntoView(true);
+    if(this.fichaSeleccionada == undefined || this.usuario == undefined){
+      this.router.navigate(['login']);
+      this.Sesion.set('error', 'No has iniciado sesion');
+    } else {
+      this.Chat.traerGrupos(this.fichaSeleccionada, this.usuario).subscribe((data: any) => data.forEach((element: any) => { this.grupos.push(element) }));
+      this.Chat.traerUsuario(this.usuario).subscribe((data: any) => this.datosUsuario = data[0]);
+      this.Chat.traerPrivados(this.fichaSeleccionada, this.usuario).subscribe((data: any) => data.forEach((element: any) => { this.privados.push(element) }));
+      
+      // document.getElementById("final")?.scrollIntoView(true);
+    }
   }
   seleccionar() {
     this.changes = this.changes == '0' ? '1' : '0';
@@ -68,7 +63,7 @@ export class ChatComponent {
   }
   enviar(mensaje: any, tipo: any) {
     this.actualizarParametro();
-    if (this.grupoSeleccionado != undefined && mensaje.contenido_mensaje != '') {
+    if (mensaje.contenido_mensaje != '') {
       let time = new Date();
       mensaje.fecha_hora = `${time.getFullYear()}-${time.getMonth() + 1}-${time.getDate()} ${time.getHours()}:${time.getMinutes() + 1}:${time.getSeconds()}`;
       this.Chat.destino(this.grupoSeleccionado, this.usuario).subscribe((id: any) => {
@@ -79,7 +74,7 @@ export class ChatComponent {
       this.form.reset();
       document.getElementById("final")?.scrollIntoView(true);
     } else {
-      alert('No has ingresado a algun grupo');
+      this.Sesion.set('error','Ingrese un mensaje 😒');
     }
   }
   mostrarGrupos() {
@@ -94,5 +89,15 @@ export class ChatComponent {
   consultarMiembros() {
     this.actualizarParametro();
     this.Chat.traerMiembros(this.grupoSeleccionado).subscribe((data: any) => { this.miembros = data });
+  }
+  cerrarSesion() {
+    this.Sesion.clear();
+  }
+  longitud(){
+    if(this.form.get('contenido_mensaje')?.errors?.['required']){
+      this.noEnviar = true;
+    } else {
+      this.noEnviar = false;
+    }
   }
 }

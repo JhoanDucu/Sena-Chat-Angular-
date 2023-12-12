@@ -13,4 +13,7 @@ export class LogearService {
   seleccionarFicha(ficha: any, numerodoc: any){
     return this.http.put(`${this.url}/bienvenida/${numerodoc}`,ficha);
   }
+  mandarCorreo(datos: any){
+    return this.http.post(`${this.url}/autenticar`, datos);
+  }
 }

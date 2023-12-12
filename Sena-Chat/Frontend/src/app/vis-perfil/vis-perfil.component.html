@@ -22,37 +22,33 @@
             </div>
 
             <div id="text">
-                    <span class="form-label"><strong>Primer nombre:</strong></span>
-                    <span class="form-label" id="datos" >{{item.primer_nom}}</span>
-                    <br>
-                    <span class="form-label"><strong>Segundo nombre: </strong></span>
-                    <span class="form-label" id="datos">{{item.segundo_nom}}</span>
-                    <span></span>
-                    <br>
-                    <span class="form-label"><strong>Primer apellido: </strong></span>
-                    <span class="form-label" id="datos">{{item.primer_apellido}}</span>
-                    <span></span>
-                    <br>
-                    <span class="form-label"><strong>Segundo apellido: </strong></span>
-                    <span class="form-label" id="datos">{{item.segundo_apellido}}</span>
-                    <span></span>
-                    <br>
-                    <span class="form-label"><strong>Nombre de usuario: </strong></span>
-                    <span class="form-label" id="datos">{{item.nombre_usuario}}</span>
-                    <span></span>
-                    <br>
-                    <span class="form-label"><strong>Número de documento: </strong></span>
-                    <span class="form-label" id="datos">{{item.numerodoc}}</span>
-                    <span></span>
-                    <br>
-                    <span class="form-label"><strong>Correo electrónico: </strong></span>
-                    <span class="form-label" id="datos">{{item.correo}}</span>
-                    <span></span>
-                    <br>
-                    <div class="botones">
-                    <input id="confi" name="submit" type="submit"  [routerLink]="['/confi', numerodoc, ficha]" value="Configurar" >
-                    <input id="volver" name="submit" type="submit"  [routerLink]="['/chat', numerodoc, ficha]" value="Volver" > 
-                    </div>
+                <form>
+                    <label for="exampleInputEmail1" class="form-label"><strong>Primer nombre:</strong></label>
+                    <label for="exampleInputEmail1" class="form-label" >{{item.primer_nom}}</label>
+                <br>
+                <label for="exampleInputEmail1" class="form-label"><strong>Segundo nombre: </strong></label>
+                <label for="exampleInputEmail1" class="form-label">{{item.segundo_nom}}</label>
+                <span></span>
+                <br>
+                <label for="exampleInputEmail1" class="form-label"><strong>Primer apellido: </strong></label>
+                <label for="exampleInputEmail1" class="form-label">{{item.primer_apellido}}</label>
+                <span></span>
+                <br>
+                <label for="exampleInputEmail1" class="form-label"><strong>Segundo apellido: </strong></label>
+                <label for="exampleInputEmail1" class="form-label">{{item.segundo_apellido}}</label>
+                <span></span>
+                <br>
+                <label for="exampleInputEmail1" class="form-label"><strong>ombre de usuario: </strong></label>
+                <label for="exampleInputEmail1" class="form-label"> {{item.nombre_usuario}}</label>
+                <span></span>
+                <br>
+                <label for="exampleInputPassword1" class="form-label"><strong>Correo electronico: </strong></label>
+                <label for="exampleInputEmail1" class="form-label">{{item.correo}}</label>
+                <span></span>
+                <br>
+                <button type="button" class="btn btn-success" [routerLink]="['/chat']">VOLVER AL CHAT</button>
+                <button type="button" class="btn btn-success" [routerLink]="['/confi']">CONFIGURAR</button>
+            </form>
             </div>
         </div>
     </div>

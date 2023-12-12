@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { VisPerfilService } from '../Servicios/vis-perfil.service';
 import { Usuario } from '../Modelos/usuarios';
+import { SesionService } from '../Sesiones/sesion.service';
 
 @Component({
   selector: 'app-vis-perfil',
@@ -15,12 +16,12 @@ export class VisPerfilComponent {
   constructor(
     private router: Router,
     private VisPerfilService: VisPerfilService,
-    private rutaActiva: ActivatedRoute
+    private Sesion: SesionService
     ){}
 
   public item: Usuario = new Usuario('','','','','','','','','','','','');
-  numerodoc = this.rutaActiva.snapshot.params['documento'];
-  ficha = this.rutaActiva.snapshot.params['ficha'];
+  numerodoc = this.Sesion.get('documento');
+  ficha = this.Sesion.get('ficha');
   ngOnInit(): void { 
     this.VisPerfilService.buscarDatos(this.numerodoc).subscribe((data:any) => this.item = data[0]);
   }

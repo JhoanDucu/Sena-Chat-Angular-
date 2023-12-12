@@ -20,13 +20,6 @@
   width: 100%;
 }
 
-#sinSeleccionarGrupo {
-  background: #fff;
-  max-width: 50%;
-  text-align: center;
-  margin-left: 40%;
-}
-
 #mensajesPropios {
   max-width: 50%;
   margin-bottom: 3px;
@@ -82,4 +75,12 @@
   color: darkgreen;
   position: relative;
   bottom: -3%;
+}
+
+#iconoInformacion {
+  font-size: 30px; margin-right: 10px
+}
+
+#sinMensaje {
+  font-size: 20px;
 }

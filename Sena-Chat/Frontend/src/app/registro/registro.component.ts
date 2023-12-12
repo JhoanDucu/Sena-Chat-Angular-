@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
 import { RegistrarService } from '../Servicios/registrar.service';
+import { SesionService } from '../Sesiones/sesion.service';
 
 @Component({
   selector: 'app-registro',
@@ -14,15 +14,15 @@ import { RegistrarService } from '../Servicios/registrar.service';
 })
 export class RegistroComponent {
   constructor(
-    private http: HttpClient,
     private registroServicio: RegistrarService,
     private router: Router,
+    protected Sesion: SesionService
     ){ }
     Tdoc: FormControl = new FormControl('');
     sN: FormControl = new FormControl('');
     sA: FormControl = new FormControl('');
   formRegistro = new FormGroup({
-    correo: new FormControl('', Validators.required),
+    correo: new FormControl('', [Validators.required, Validators.email]),
     primer_nom: new FormControl('', Validators.required),
     segundo_nom: this.sN,
     primer_apellido: new FormControl('', Validators.required),
@@ -36,9 +36,9 @@ export class RegistroComponent {
   Label(){
     let valid = document.getElementById("tipo");
     if (this.Tdoc.value === '') {
-      valid?.setAttribute('style','top: -20px; left: -35px; color: #ffffff; font-size: 12px; margin-left: 10%;');
+      valid?.setAttribute('style','top: -20px; color: #000000; font-size: 12px;');
     } else if (this.Tdoc.value === '0'){
-      valid?.setAttribute('style','top: -20px; left: -35px; color: #ffffff; font-size: 12px; margin-left: 10%;');
+      valid?.setAttribute('style','top: -20px; color: #000000; font-size: 12px; ');
     }
   }
   noLabel(){
@@ -48,7 +48,7 @@ export class RegistroComponent {
     } else if (this.Tdoc.value === '') {
       invalid?.setAttribute('style','top:0; left: 0; padding: 10px 0; padding-left: 5%; font-size: 16px; color: #181616;');
     } else {
-      invalid?.setAttribute('style','top: -20px; left: -35px; color: #ffffff; font-size: 12px; margin-left: 10%;');
+      invalid?.setAttribute('style','top: -20px; color: #000000; font-size: 12px;');
     }
   }
   validsN() {
@@ -80,9 +80,10 @@ export class RegistroComponent {
   }
   registrar(){
       this.formRegistro.value.contrasena === this.formRegistro.value.confirmar ? this.registroServicio.enviarDatos(this.formRegistro.value).subscribe( (respuesta:any) => {
-        if (respuesta == 'Se inserto correctamente el usuario') {
-          alert(respuesta);
-          this.router.navigate(['bienvenida', this.formRegistro.value.numerodoc]);
+        if (respuesta[0] == 'Se inserto correctamente el usuario') {
+          alert(respuesta[0]);
+          this.Sesion.set('documento', respuesta[1]);
+          this.router.navigate(['bienvenida']);
         } else {
           alert('No se agrego el usuario');
         }

@@ -1,9 +1,10 @@
 <div class="card-body chat-box" id="componenteMensajes">
     @if (!grupoSeleccionado) {
         <div class="d-flex justify-content-start">
-            <div class="text-dark p-2 rounded" id='sinSeleccionarGrupo'> <!-- Limita el ancho al 50% -->
-                No hay grupo seleccionado
-            </div>
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <strong>Bienvenido!</strong> Seleccione un grupo para comenzar 😁
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                  </div>
         </div>
     } @else {
         @for ( m of mensaje; track m.id_mensaje) {
@@ -24,6 +25,15 @@
                     </div>
                 </div>
             }
+        }
+        
+        @if (Sesion.get('error')) {
+            <div class="alert alert-primary d-flex align-items-center" role="alert">
+                <i class='bx bx-error-alt' id="iconoInformacion"></i>
+                <div id="sinMensaje">
+                  {{ Sesion.get('error') }}
+                </div>
+            </div>
         }
         <span id="final"></span>
     }

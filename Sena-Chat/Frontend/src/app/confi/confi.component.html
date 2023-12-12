@@ -20,7 +20,7 @@
                 <img src="https://github.com/JhoanDucu/Sena-Chat-Angular-/blob/main/Sena-Chat/Frontend/src/assets/img/User.png?raw=true">
             </div>
 
-            <div id="text">
+            <div id="text" class="overflow-auto">
                 <form [formGroup]="confiForm" (ngSubmit)="actualizar()">
                     <div class="form-group">
                         <label for="primer_nom">Primer nombre:</label>
@@ -51,8 +51,8 @@
                         <input type="text" class="Datos" id="correo" formControlName="correo">
                     </div>
                     <div class="botones">
-                        <input id="guardar" name="submit" type="submit" [routerLink]="['/confi', usuario, fichaSeleccionada]" value="Guardar">
-                        <input id="volver" name="submit" type="submit" [routerLink]="['/vis-perfil', usuario, fichaSeleccionada]" value="Volver">
+                        <input id="guardar" name="submit" type="submit" [routerLink]="['/confi']" value="Guardar">
+                        <input id="volver" name="submit" type="submit" [routerLink]="['/vis-perfil']" value="Volver">
                     </div>
                 </form>
                 

@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iniciar sesion</title>
     <link rel="stylesheet" href="login.component.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
     <div class="login-box">
@@ -40,11 +41,17 @@
               <input type="submit" value="Ingresar" class="ingreso" id="c5" name="sesion">
             <div id="c6">
               <p>¿Olvidaste tu contraseña?
-                <a class="Cont" href="">Click aqui</a></p>
+                <a class="Cont" [routerLink]="['/contrasena']" routerLinkActive="buttonactive">Click aqui</a></p>
               <p>¿No tienes una cuenta?
                 <a class="button crear-cuenta" [routerLink]="['/registro']" routerLinkActive="buttonactive">Crear Cuenta</a></p>  
             </div>
           </div>
+          @if (Sesion.get('error')) {
+            <div class="alert alert-primary d-flex align-items-center" role="alert">
+              <i class='bx bxs-error' style="font-size: 28px; margin-right: 12px;"></i>
+              <div>No has iniciado sesion</div>
+            </div>
+          }
         </form>
       </div>
 </body>

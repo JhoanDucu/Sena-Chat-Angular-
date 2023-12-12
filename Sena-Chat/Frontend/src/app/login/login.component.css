@@ -41,8 +41,8 @@ form #c6{
   grid-area: other;
   display: flex;
   flex-direction: column;
-  align-items: center; 
-  margin-top: 20px; 
+  align-items: center;
+  margin-top: 20px;
 }
 
 .login-box form{
@@ -74,7 +74,6 @@ form #c6{
   padding: 10px 0;
   font-size: 16px;
   color: #000000;
-  margin-bottom: 30px;
   border: none;
   border-bottom: 1px solid #000000;
   outline: none;
@@ -111,7 +110,7 @@ form #c6{
 }
 
 .user-box select:focus {
-  border-color: #237023; 
+  border-color: #237023;
   box-shadow: 0 0 5px rgba(81, 173, 68, 0.5);
 }
 
@@ -131,15 +130,19 @@ form #c6{
   text-transform: uppercase;
   overflow: hidden;
   transition: .5s;
-  margin-top: 20px;
+  margin-top: 30px;
   letter-spacing: 4px;
   background: transparent;
-  border: none;
+  border-color: #000;
+  border-radius: 5px;
+  border: 1.7px solid #000;
+  box-shadow: inset 0 0 0 0 #000;
 }
 
 .ingreso:hover {
   background: #237023;
   color: #fff;
+  border-color: #237023;
   border-radius: 5px;
   box-shadow: 0 0 5px #3a813a,
               0 0 25px #3a813a,
@@ -188,10 +191,18 @@ color: #ffffff;
 font-size: 18px;
 }
 
+#c3 p a{
+  text-decoration: none;
+  color: #117311;
+  text-shadow: none;
+  margin-left: 70%;
+  }
+
 #c4 #c6 p a{
 text-decoration: none;
-color: white;
+color: #117311;
 text-shadow: none;
+
 }
 
 
