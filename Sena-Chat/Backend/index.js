@@ -45,7 +45,7 @@ const express = require("express")
     conexion.query(query, (error, resultado) => { 
         if (error) return console.error(error.message)  
         if (resultado.length > 0) {
-           res.json([resultado[0].fk_id_ficha, resultado[0].numerodoc]);
+           res.json([resultado[0].fk_id_ficha, resultado[0].numerodoc, resultado[0].fk_id_rol]);
         } else { 
            res.json('No existe registro') 
         } 
@@ -99,7 +99,8 @@ const express = require("express")
   
     const query = `UPDATE usuarios SET fk_id_ficha = ${ficha} WHERE numerodoc = ${numerodoc}`; 
     conexion.query(query, (error, resultado) => { 
-       if (error) return console.error(error.message) 
+       if (error) return console.error(error.message);
+       console.log(); 
        res.json([ficha, numerodoc]); 
     }) 
  }); 
@@ -203,7 +204,7 @@ app.get('/usuario/:numerodoc', (req, res) =>{
    const query = `SELECT * FROM usuarios WHERE numerodoc = ?`;
    conexion.query(query, numerodoc, (error, resultado) => {
       if (error) return console.error(error.message);
-      res.json(resultado);
+      res.json(resultado[0]);
    })
 }); 
 app.put('/configurar/:documento',(req, res)=>{ 
