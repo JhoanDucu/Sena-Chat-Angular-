@@ -1,0 +1,66 @@
+<div class="row Botones">
+    <ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button"
+                role="tab" aria-controls="home" aria-selected="true" (click)="mostrarGrupos()">
+                <i class="bx bxs-group"></i>
+            </button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button"
+                role="tab" aria-controls="profile" aria-selected="false" (click)="mostrarPrivados()">
+                <i class="bx bxs-user"></i>
+            </button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button"
+                role="tab" aria-controls="contact" aria-selected="false">
+                <i class="bx bxs-help-circle"></i>
+            </button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#salir" type="button"
+                role="tab" aria-controls="contact" aria-selected="false">
+                <i class="bx bxs-cog"></i>
+            </button>
+        </li>
+
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#settings" type="button"
+                role="tab" aria-controls="contact" aria-selected="false" (click)="cerrarSesion()">
+                <i class="bx bxs-door-open"></i>
+            </button>
+        </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+            <div class="grupos" id="grupos" role="tablist">
+                <div class="list-group" id="list-tab" role="tablist">
+                    <a class="list-group-item list-group-item-action">GRUPOS</a>
+                    @for ( g of grupos; track g.id_grupos) {
+                    <a class="list-group-item list-group-item-action" id="list-profile-list" data-bs-toggle="list"
+                        (click)="seleccionarEnGrupos()" href="#list-profile" role="tab" aria-controls="list-profile"
+                        [routerLink]="['/chat', g.id_grupos]">{{ g.nom_grupos }}</a>
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+            <div class="privados" id="privados" role="tablist">
+                <div class="list-group" id="list-tab" role="tablist">
+                    <a class="list-group-item list-group-item-action">PRIVADOS</a>
+                    @for (p of privados; track p.id_grupos) {
+                    <a class="list-group-item list-group-item-action" id="list-profile-list" data-bs-toggle="list"
+                        (click)="seleccionarEnGrupos()" role="tab" aria-controls="list-profile"
+                        [routerLink]="['/chat', p.id_grupos]">{{ p.nom_grupos }}</a>
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+            3
+        </div>
+    </div>
+    <!-- <button class="Bgrupo"> </button> -->
+    <!-- <button class="Bprivado"></button> -->
+</div>

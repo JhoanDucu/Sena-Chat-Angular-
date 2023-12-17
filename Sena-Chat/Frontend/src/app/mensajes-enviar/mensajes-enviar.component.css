@@ -1,0 +1,66 @@
+#offcanvasScrolling {
+  width: 63%;
+}
+.input-group {
+  bottom: 0;
+  position: absolute;
+}
+
+#botonEnviar {
+  background-color: #0e882d;
+  border-color: #0e882d;
+}
+
+#contenidoMensajes {
+  margin-right: 0;
+  width: 30%;
+  height: 50px;
+  border-radius: 10px;
+}
+
+#enviar {
+  height: 50px;
+  border-radius: 20%;
+  background-color: transparent;
+  border: none;
+}
+
+#iconoEnviar {
+  font-size: 35px;
+  color: black;
+}
+
+#iconoEnviar:hover {
+  color: white;
+}
+
+#labelArchivo {
+  height: 50px;
+  padding: 6px 12px 6px 12px;
+  align-items: center;
+  cursor: pointer;
+}
+
+#iconoArchivo {
+  font-size: 35px;
+  color: black;
+}
+
+#iconoArchivo:hover {
+  color: white;
+}
+
+/* Estilo para el elemento de carga de archivo real (oculto) */
+.upload-file {
+  display: none;
+}
+
+/* Estilo para la imagen dentro de la etiqueta del botón de carga de archivo */
+label {
+  #file {
+    padding: 0;
+    /* margin-top: 5px;
+      height: 40px;
+      width: 40px; */
+  }
+}

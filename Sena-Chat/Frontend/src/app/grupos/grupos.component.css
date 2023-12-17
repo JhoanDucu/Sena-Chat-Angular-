@@ -1,0 +1,130 @@
+/* BOTONES */
+
+#myTab {
+  font-size: 30px;
+  padding: 0 0 0 12px;
+}
+
+#myTabContent {
+  padding: 0;
+}
+
+.Botones {
+  padding-top: 3vh;
+  margin: 0;
+}
+
+/* LISTA DE GRUPOS */
+
+.grupos,
+.privados {
+  overflow-y: auto;
+  max-height: 100vh;
+  letter-spacing: 1px;
+  font-size: 110%;
+  direction: rtl;
+}
+
+.grupos .list-group-item,
+.privados .list-group-item {
+  font-family: "Josefin Sans", sans-serif;
+  font-weight: bold;
+  font-size: larger;
+  border-bottom: 1px solid #000000;
+  padding: 15px;
+  text-align: center;
+}
+
+.list-group-item.list-group-item-action {
+  background-color: transparent;
+}
+
+.list-group-item.active {
+  background-color: #3d803d;
+  color: #fff;
+  border-color: #dfdfdf;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  font-family: "Josefin Sans", sans-serif;
+}
+
+#list-home-list:hover {
+  background-color: #3d803d !important;
+  color: inherit !important;
+}
+
+.grupos::-webkit-scrollbar {
+  width: 6px;
+}
+
+.grupos::-webkit-scrollbar-thumb {
+  background: #0e882d;
+  border-radius: 5px;
+}
+
+.list-group-item-action:hover {
+  background-color: #3d803d;
+  color: #fff;
+}
+
+#lista-privados {
+  border: none !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+  display: flex;
+  align-items: center;
+}
+
+/* BOTONES COMENTADOS */
+
+.Bprivado {
+  background-color: #4caf50;
+  margin-left: 18%;
+  padding-left: 3%;
+  padding-right: 3%;
+  border-radius: 20%;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 28px;
+  border: 1px solid #000;
+  letter-spacing: 2px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+  transition: transform 0.2s;
+  user-select: none;
+}
+
+.Bgrupo {
+  background-color: #4caf50;
+  padding-left: 3%;
+  padding-right: 3%;
+  border-radius: 20%;
+  border-radius: 5px;
+  font-size: 20px;
+  font-weight: bold;
+  border: 1px solid #000;
+  letter-spacing: 2px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+  transition: transform 0.2s;
+  user-select: none;
+}
+
+.Bprivado:active,
+.Bgrupo:active {
+  transform: scale(0.95);
+}
+
+/* FUTURA BARRA BUSQUEDA */
+
+.busqueda {
+  background-color: #4caf50;
+  padding: 2%;
+  padding-left: 5%;
+  padding-right: 5%;
+  border-radius: 5px;
+  font-size: 13px;
+  border: 1px solid #000;
+  user-select: none;
+  top: 40px;
+  margin-top: 20px;
+}

@@ -1,28 +1,16 @@
-body,
-html {
-  height: 100%;
-  margin: 0;
+body {
   overflow: hidden;
   font-family: josefin sans, sans-serif;
   background-color: rgb(165, 163, 163);
 }
 
-#cabecera {
-  padding-left: 800px;
-  float: right;
-  background: linear-gradient(to right, #3d803d, #3d803d);
-  width: 150%;
-  height: 70px;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
-  position: relative; /* Asegura que el z-index funcione */
-  z-index: 2;
+#allPage {
+  padding: 0;
+  margin: 0;
 }
 
-#logo-sena {
-  width: 120px;
-  height: 58px;
-  right: 150px;
-  position: relative;
+#rowPage {
+  flex-wrap: nowrap;
 }
 
 .cabecera-menu {
@@ -38,176 +26,42 @@ html {
   margin-right: 2.5%;
 }
 
-#NomUsuario {
-  margin-right: 5%;
-  font-weight: 100;
-  color: #fff;
-  user-select: none;
-}
-
 .nav-link.dropdown-toggle::after {
   display: none;
-}
-
-#perfil {
-  float: right;
-  width: 45px;
-  height: 50px;
-  border-radius: 5px;
-  max-width: 50px;
-  user-select: none;
 }
 
 /* Contenedor de los grupos y privados */
 
 .ContenedorGrupoos {
   background-color: #dfdfdf;
-  margin-left: 0px;
-  width: 30%;
+  margin: 0;
+  padding: 0px;
+  width: 38%;
   height: 100vh;
   border-right: 1px solid #000000;
+  -webkit-user-select: none;
   user-select: none;
 }
 
 #logo-grupo {
   width: 70px;
   height: 50px;
-  margin: 15px;
-  margin-top: 0;
-}
-
-/* BOTONES */
-
-.Botones {
-  margin: 10px;
-  padding-top: 4vh;
-}
-
-.Bprivado {
-  background-color: #4caf50;
-  margin-left: 18%;
-  padding: 2%;
-  padding-left: 5%;
-  padding-right: 5%;
-  border-radius: 20%;
-  border-radius: 5px;
-  font-weight: bold;
-  font-size: 16px;
-  border: 1px solid #000;
-  letter-spacing: 2px;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
-  transition: transform 0.2s;
-  user-select: none;
-}
-
-.Bgrupo {
-  background-color: #4caf50;
-  padding: 2%;
-  padding-left: 5%;
-  padding-right: 5%;
-  border-radius: 20%;
-  border-radius: 5px;
-  font-size: 16px;
-  font-weight: bold;
-  border: 1px solid #000;
-  letter-spacing: 2px;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
-  transition: transform 0.2s;
-  user-select: none;
-}
-
-.Bprivado:active,
-.Bgrupo:active {
-  transform: scale(0.95);
-}
-
-.busqueda {
-  background-color: #4caf50;
-  padding: 2%;
-  padding-left: 5%;
-  padding-right: 5%;
-  border-radius: 5px;
-  font-size: 13px;
-  border: 1px solid #000;
-  user-select: none;
-  top: 40px;
-  margin-top: 20px;
-}
-
-/* LISTA DE GRUPOS */
-
-.grupos,
-.privados {
-  margin-top: 7vh;
-  overflow-y: auto;
-  max-height: 100vh;
-  letter-spacing: 1px;
-  font-size: 110%;
-  direction: rtl;
-}
-
-.grupos .list-group-item,
-.privados .list-group-item {
-  font-family: "Josefin Sans", sans-serif;
-  font-weight: bold;
-  font-size: larger;
-  border-bottom: 1px solid #000000;
-  padding: 15px;
-  text-align: center;
-}
-
-.list-group-item.list-group-item-action {
-  background-color: transparent;
-}
-
-.list-group-item.active {
-  background-color: #3d803d;
-  color: #fff;
-  border-color: #dfdfdf;
-  position: sticky;
-  top: 0;
-  z-index: 1;
-  font-family: "Josefin Sans", sans-serif;
-}
-
-#list-home-list:hover {
-  background-color: #3d803d !important;
-  color: inherit !important;
-}
-
-.grupos::-webkit-scrollbar {
-  width: 6px;
-}
-
-.grupos::-webkit-scrollbar-thumb {
-  background: #0e882d;
-  border-radius: 5px;
-}
-
-.list-group-item-action:hover {
-  background-color: #3d803d;
-  color: #fff;
-}
-
-#lista-privados {
-  border: none !important;
-  background-color: transparent !important;
-  box-shadow: none !important;
-  display: flex;
-  align-items: center;
 }
 
 /* Navbar del chat */
 
+.contenedorChat {
+  padding: 0;
+  width: 62%;
+}
+
 #cabeceraChat {
-  position: absolute;
   background: linear-gradient(to right, #dfdfdf, #dfdfdf);
-  width: 70%;
   height: 70px;
+  width: 98.4%;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
-  top: 70px;
-  right: 0;
-  z-index: 1;
+  margin: 0;
+  padding: 0.5rem;
 }
 
 .container-fluid h4 {
@@ -216,121 +70,26 @@ html {
   letter-spacing: 1px;
 }
 
-/* Seccion Eliminar */
-
-.offcanvas-body {
-  overflow-y: auto;
-  scrollbar-width: thin;
-}
-
-.offcanvas-body::-webkit-scrollbar {
-  width: 8px;
-}
-
-.offcanvas-body::-webkit-scrollbar-thumb {
-  background-color: #0e882d;
-  border-radius: 4px;
-}
-
-.offcanvas-body::-webkit-scrollbar-track {
-  background-color: #f1f1f1;
-}
-
-#agregar {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 5%;
-}
 
 /* Mensajes */
 
 .Chat {
   padding: 0;
-  width: 70%;
+  margin: 0;
   position: absolute;
-  top: 140px;
-  bottom: 0;
-  left: end;
-  right: 0;
-  background-color: #9d9d9d;
-  overflow: auto;
+    width: 62%;
+    top: 70px;
+    bottom: 0;
+    background-color: #9d9d9d;
+    overflow: auto;
 }
 
 .mensajes-container {
   background-color: transparent;
   padding: 0;
   border: none;
-  position: absolute;
-  top: 0;
-  bottom: 0;
+  position: static;
   overflow-y: auto;
   width: 100%;
 }
 
-.input-group {
-  position: absolute;
-  bottom: 0;
-}
-
-#botonEnviar {
-  background-color: #0e882d;
-  border-color: #0e882d;
-}
-
-#contenidoMensajes {
-  margin-right: 0;
-  width: 30%;
-  height: 50px;
-  border-radius: 10px;
-}
-
-#enviar {
-  right: 0;
-  height: 50px;
-  border-radius: 20%;
-  background-color: transparent;
-  border: none;
-}
-
-#iconoEnviar {
-  font-size: 45px;
-  color: black;
-}
-
-#iconoEnviar:hover {
-  color: white;
-}
-
-#labelArchivo {
-  height: 50px;
-  padding-left: 15px;
-  padding-top: 5px;
-}
-
-#iconoArchivo {
-  font-size: 45px;
-  color: black;
-}
-
-#iconoArchivo:hover {
-  color: white;
-}
-
-/* Estilo para el elemento de carga de archivo real (oculto) */
-.upload-file {
-  display: none;
-}
-
-/* Estilo para la etiqueta del botón de carga de archivo */
-label {
-  cursor: pointer;
-  align-items: center;
-}
-
-/* Estilo para la imagen dentro de la etiqueta del botón de carga de archivo */
-label img {
-  margin-top: 5px;
-  height: 40px;
-  width: 40px;
-}

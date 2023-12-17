@@ -1,0 +1,73 @@
+<button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+    aria-controls="offcanvasNavbar" aria-label="Toggle navigation" (click)="consultarMiembros()">
+    <span class="navbar-toggler-icon"></span>
+</button>
+
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">
+            Informacion del grupo
+        </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+            @if (Sesion.get('rol') == '2'){
+            <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
+                aria-controls="offcanvasRight" id="lista-privados">
+                <img src="../../assets/img/User-agregar.png" style="width: 30%; height: 30%" alt="Agregar" />
+                <h6 style="margin-left: 10px">Agregar</h6>
+            </button>
+
+            <div class="d-flex justify-content-center">
+                <img src="../../assets/img/User-elim.png" style="width: 25%; height: 25%" alt="Eliminar" />
+            </div>
+            <br />
+            <ul class="list-group">
+                @for (m of miembros; track m.numerodoc) {
+                <li class="list-group-item">
+                    <h6>
+                        {{ m.primer_nom }} {{ m.primer_apellido }}
+                        @if (usuario == m.numerodoc) {
+                        <span>(TU)</span>
+                        } @else {
+                        <button type="button" class="btn btn-outline-danger btn-sm" data-bs-toggle="tooltip"
+                            data-bs-html="true" title="Eliminar del grupo">
+                            X
+                        </button>
+                        }
+                    </h6>
+                </li>
+                }
+            </ul>
+            } @else { @if (!1) { } @else {
+            <div class="text-center">
+                <img src="../../assets/img/User.png" class="rounded-circle" style="border: 2px solid" />
+            </div>
+            } }
+        </ul>
+    </div>
+</div>
+
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasRightLabel">Agregar</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body" id="agregar">
+        <img src="../../assets/img/User-agregar.png" style="width: 30%; height: 25%" alt="Agregar" />
+        <br />
+        <form>
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Email</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                <div id="emailHelp" class="form-text">
+                    Ingrese el Email de la persona
+                </div>
+            </div>
+            <button type="submit" id="botonEnviar" class="btn btn-primary">
+                Enviar
+            </button>
+        </form>
+    </div>
+</div>

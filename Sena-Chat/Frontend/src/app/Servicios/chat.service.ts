@@ -13,7 +13,6 @@ export class ChatService {
   traerMensajes(grupo: any){
     return this.http.get(`${this.url}/chat/mensajes/${grupo}`);
   }
-
   traerUsuario(documento: any){
     return this.http.get(`${this.url}/usuario/${documento}`);
   }

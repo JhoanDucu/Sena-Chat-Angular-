@@ -16,6 +16,9 @@ export class ChatDirective implements OnChanges{
     if( changes['appChat'] && changes['appChat'].previousValue != undefined){
       this.ViewContainerRef.clear();
       this.ViewContainerRef.createEmbeddedView(this.TemplateRef);
+      setTimeout(() => {
+        document.getElementById("final")?.scrollIntoView(true);        
+      }, 90);
     }
    }
 }

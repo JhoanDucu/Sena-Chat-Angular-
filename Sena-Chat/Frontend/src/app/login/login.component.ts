@@ -49,8 +49,10 @@ export class LoginComponent {
       if (respuesta != 'No existe registro') {
         this.Sesion.set('ficha', respuesta[0]);
         this.Sesion.set('documento', respuesta[1]);
+        this.Sesion.set('rol', respuesta[2]);
+        if(respuesta[2] == 3) this.router.navigate(['admin']);
+        if(respuesta[2] == 1 || respuesta[2] == 2) this.router.navigate(['chat']);
         // this.loginServicio.mandarCorreo('hello').subscribe((r)=>console.log(r));
-        this.router.navigate(['chat']);
        } else {
          alert('Usuario no existe');
        }

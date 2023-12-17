@@ -48,9 +48,6 @@ export class MensajesComponent {
       }) : false) : undefined; 
     document.getElementById("final")?.scrollIntoView(true);
   }
-  seleccionar(){
-    this.grupoSeleccionado = this.rutaActiva.snapshot.params['grupo'];
-  }
   obtenerHora(date: Date){
     return `${ date.toLocaleTimeString('en-US', { hour: "2-digit", minute: "2-digit" }) }`;
   }
