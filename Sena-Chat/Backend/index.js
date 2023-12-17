@@ -45,7 +45,7 @@ const express = require("express")
     conexion.query(query, (error, resultado) => { 
         if (error) return console.error(error.message)  
         if (resultado.length > 0) {
-           res.json([resultado[0].fk_id_ficha, resultado[0].numerodoc]);
+           res.json([resultado[0].fk_id_ficha, resultado[0].numerodoc, resultado[0].fk_id_rol]);
         } else { 
            res.json('No existe registro') 
         } 
@@ -89,7 +89,7 @@ const express = require("express")
     const query = 'INSERT INTO usuarios SET ?' 
     conexion.query(query, usuario, (error, resultado) => { 
         if (error) return console.error(error.message) 
-        res.json('Se inserto correctamente el usuario'); 
+        res.json(['Se inserto correctamente el usuario', usuario.numerodoc]); 
     });
  }); 
  /* BIENVENIDA */ 
@@ -99,7 +99,7 @@ const express = require("express")
   
     const query = `UPDATE usuarios SET fk_id_ficha = ${ficha} WHERE numerodoc = ${numerodoc}`; 
     conexion.query(query, (error, resultado) => { 
-       if (error) return console.error(error.message) 
+       if (error) return console.error(error.message);
        res.json([ficha, numerodoc]); 
     }) 
  }); 
@@ -188,7 +188,6 @@ app.get('/chat/miembros/:grupo', (req, res) => {
 });
  app.post('/mensaje', (req, res) => { 
     const mensaje = req.body;
-    console.log(mensaje);
     const query = 'INSERT INTO mensaje SET ?' 
     conexion.query(query, mensaje, (error, resultado) => { 
         if (error) return console.error(error.message) 
@@ -203,7 +202,7 @@ app.get('/usuario/:numerodoc', (req, res) =>{
    const query = `SELECT * FROM usuarios WHERE numerodoc = ?`;
    conexion.query(query, numerodoc, (error, resultado) => {
       if (error) return console.error(error.message);
-      res.json(resultado);
+      res.json(resultado[0]);
    })
 }); 
 app.put('/configurar/:documento',(req, res)=>{ 
