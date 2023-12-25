@@ -15,10 +15,10 @@ import { MensajesEnviarComponent } from '../mensajes-enviar/mensajes-enviar.comp
   selector: 'app-chat',
   standalone: true,
   imports: [
-    CommonModule, 
+    CommonModule,
     RouterModule,
-    MensajesComponent, 
-    ChatDirective, 
+    MensajesComponent,
+    ChatDirective,
     GruposComponent,
     InfoGruposComponent,
     MensajesEnviarComponent
@@ -39,10 +39,10 @@ export class ChatComponent {
   grupoSeleccionado: string | null = '';
   fichaSeleccionada = this.Sesion.get('ficha');
   usuario = this.Sesion.get('documento');
-  
+
 
   ngOnInit(): void {
-    if(this.fichaSeleccionada == undefined || this.usuario == undefined){
+    if (this.fichaSeleccionada == undefined || this.usuario == undefined) {
       this.router.navigate(['login']);
       this.Sesion.set('error', 'No has iniciado sesion');
     } else {
@@ -60,14 +60,14 @@ export class ChatComponent {
       this.Chat.destino(this.grupoSeleccionado, this.usuario).subscribe((id: any) => {
         mensaje.fk_destino = id[0].id_usuarios_grupos;
         mensaje.id_tipo = '1';
-        this.Chat.agregarMensaje(mensaje).subscribe( (data: any) => {
+        this.Chat.agregarMensaje(mensaje).subscribe((data: any) => {
           data == 'Enviado' ? this.changes = GruposComponent.seleccionar(this.changes) : undefined;
         });
       });
     } else {
-      this.Sesion.set('error','Ingrese un mensaje 😒');
+      this.Sesion.set('error', 'Ingrese un mensaje 😒');
     }
   }
-  
-  applyChanges = (newValue: string[]) => { this.changes = newValue[0]; this.Sesion.set('grupos', newValue[1]);}
+
+  applyChanges = (newValue: string[]) => { this.changes = newValue[0]; this.Sesion.set('grupos', newValue[1]); }
 }

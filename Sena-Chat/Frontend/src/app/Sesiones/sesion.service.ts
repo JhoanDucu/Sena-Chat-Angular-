@@ -8,20 +8,20 @@ export class SesionService {
 
   constructor(private router: Router) { }
 
-  set(key: string, value: string){
+  set(key: string, value: string) {
     sessionStorage.setItem(key, value);
   }
 
-  get(key: string){
+  get(key: string) {
     return sessionStorage.getItem(key);
   }
 
-  clear(){
+  clear() {
     sessionStorage.clear();
     this.router.navigate(['/login']);
   }
 
-  remove(key: string){
+  remove(key: string) {
     sessionStorage.removeItem(key);
   }
 }

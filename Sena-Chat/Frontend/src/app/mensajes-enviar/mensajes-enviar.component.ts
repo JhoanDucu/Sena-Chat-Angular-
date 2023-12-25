@@ -63,7 +63,7 @@ export class MensajesEnviarComponent {
     }
   });
 
-  cerrar(){
+  cerrar() {
     this.archivos = [];
     this.form.reset();
   }

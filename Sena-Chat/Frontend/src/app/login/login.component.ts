@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
-import { Login } from '../Modelos/login';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators, FormsModule } from '@angular/forms';
 import { LogearService } from '../Servicios/logear.service';
 import { SesionService } from '../Sesiones/sesion.service';

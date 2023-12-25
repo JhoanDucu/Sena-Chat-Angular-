@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ConfigurarService } from '../Servicios/configurar.service';
 import { SesionService } from '../Sesiones/sesion.service';
@@ -13,12 +13,12 @@ import { SesionService } from '../Sesiones/sesion.service';
   styleUrl: './confi.component.css'
 })
 export class ConfiComponent {
-  constructor( 
+  constructor(
     private Sesion: SesionService,
-    private Configurar: ConfigurarService ,
+    private Configurar: ConfigurarService,
     private router: Router,
-    ){}
-  
+  ) { }
+
   fichaSeleccionada = this.Sesion.get('ficha');
   usuario = this.Sesion.get('documento');
 
@@ -32,9 +32,9 @@ export class ConfiComponent {
     correo: new FormControl(''),
   });
 
-  actualizar(){
+  actualizar() {
     this.Configurar.actualizaDatos(this.confiForm.value, this.usuario).subscribe((data: any) => {
-      data == 'Actualizado' ?  alert(data) : alert('No '+data);
+      data == 'Actualizado' ? alert(data) : alert('No ' + data);
       this.router.navigate(['vis-perfil']);
     });
   }

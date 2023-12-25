@@ -4,21 +4,21 @@ import { Directive, Input, OnChanges, TemplateRef, ViewContainerRef, SimpleChang
   selector: '[appChat]',
   standalone: true
 })
-export class ChatDirective implements OnChanges{
+export class ChatDirective implements OnChanges {
   @Input() appChat !: string;
   constructor(
     private TemplateRef: TemplateRef<any>,
     private ViewContainerRef: ViewContainerRef,
   ) {
-    this.ViewContainerRef.createEmbeddedView( TemplateRef );
-   }
-   ngOnChanges(changes: SimpleChanges): void {
-    if( changes['appChat'] && changes['appChat'].previousValue != undefined){
+    this.ViewContainerRef.createEmbeddedView(TemplateRef);
+  }
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['appChat'] && changes['appChat'].previousValue != undefined) {
       this.ViewContainerRef.clear();
       this.ViewContainerRef.createEmbeddedView(this.TemplateRef);
     }
     setTimeout(() => {
-      document.getElementById("final")?.scrollIntoView(true);        
+      document.getElementById("final")?.scrollIntoView(true);
     }, 90);
-   }
+  }
 }

@@ -70,18 +70,17 @@ body {
   letter-spacing: 1px;
 }
 
-
 /* Mensajes */
 
 .Chat {
   padding: 0;
   margin: 0;
   position: absolute;
-    width: 62%;
-    top: 70px;
-    bottom: 0;
-    background-color: #9d9d9d;
-    overflow: auto;
+  width: 62%;
+  top: 70px;
+  bottom: 0;
+  background-color: #9d9d9d;
+  overflow: auto;
 }
 
 .mensajes-container {
@@ -92,4 +91,3 @@ body {
   overflow-y: auto;
   width: 100%;
 }
-

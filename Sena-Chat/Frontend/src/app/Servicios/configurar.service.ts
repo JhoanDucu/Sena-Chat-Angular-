@@ -6,9 +6,9 @@ import { Injectable } from '@angular/core';
 })
 export class ConfigurarService {
 
-  constructor( private http: HttpClient ) { }
+  constructor(private http: HttpClient) { }
   url = 'http://localhost:3000';
-  actualizaDatos(Datos: any, numerodoc: any){
-    return this.http.put(`${this.url}/configurar/${numerodoc}`,Datos);
+  actualizaDatos(Datos: any, numerodoc: any) {
+    return this.http.put(`${this.url}/configurar/${numerodoc}`, Datos);
   }
 }

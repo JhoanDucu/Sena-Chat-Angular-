@@ -17,10 +17,10 @@ export class RegistroComponent {
     private registroServicio: RegistrarService,
     private router: Router,
     protected Sesion: SesionService
-    ){ }
-    Tdoc: FormControl = new FormControl('');
-    sN: FormControl = new FormControl('');
-    sA: FormControl = new FormControl('');
+  ) { }
+  Tdoc: FormControl = new FormControl('');
+  sN: FormControl = new FormControl('');
+  sA: FormControl = new FormControl('');
   formRegistro = new FormGroup({
     correo: new FormControl('', [Validators.required, Validators.email]),
     primer_nom: new FormControl('', Validators.required),
@@ -33,22 +33,22 @@ export class RegistroComponent {
     fk_id_tipodoc: this.Tdoc,
     confirmar: new FormControl('', Validators.required)
   });
-  Label(){
+  Label() {
     let valid = document.getElementById("tipo");
     if (this.Tdoc.value === '') {
-      valid?.setAttribute('style','top: -20px; color: #000000; font-size: 12px;');
-    } else if (this.Tdoc.value === '0'){
-      valid?.setAttribute('style','top: -20px; color: #000000; font-size: 12px; ');
+      valid?.setAttribute('style', 'top: -20px; color: #000000; font-size: 12px;');
+    } else if (this.Tdoc.value === '0') {
+      valid?.setAttribute('style', 'top: -20px; color: #000000; font-size: 12px; ');
     }
   }
-  noLabel(){
+  noLabel() {
     let invalid = document.getElementById("tipo");
     if (this.Tdoc.value === '0') {
-      invalid?.setAttribute('style','top:0; left: 0; padding: 10px 0; padding-left: 5%; font-size: 16px; color: #181616;');
+      invalid?.setAttribute('style', 'top:0; left: 0; padding: 10px 0; padding-left: 5%; font-size: 16px; color: #181616;');
     } else if (this.Tdoc.value === '') {
-      invalid?.setAttribute('style','top:0; left: 0; padding: 10px 0; padding-left: 5%; font-size: 16px; color: #181616;');
+      invalid?.setAttribute('style', 'top:0; left: 0; padding: 10px 0; padding-left: 5%; font-size: 16px; color: #181616;');
     } else {
-      invalid?.setAttribute('style','top: -20px; color: #000000; font-size: 12px;');
+      invalid?.setAttribute('style', 'top: -20px; color: #000000; font-size: 12px;');
     }
   }
   validsN() {
@@ -60,9 +60,9 @@ export class RegistroComponent {
 
   validsA() {
     let sA = document.getElementById("sA");
-      if (this.sA.value == "") {
-        sA?.removeAttribute('readonly');
-      }
+    if (this.sA.value == "") {
+      sA?.removeAttribute('readonly');
+    }
   }
 
   invalidsN() {
@@ -78,15 +78,15 @@ export class RegistroComponent {
       sA?.setAttribute('readonly', '');
     }
   }
-  registrar(){
-      this.formRegistro.value.contrasena === this.formRegistro.value.confirmar ? this.registroServicio.enviarDatos(this.formRegistro.value).subscribe( (respuesta:any) => {
-        if (respuesta[0] == 'Se inserto correctamente el usuario') {
-          alert(respuesta[0]);
-          this.Sesion.set('documento', respuesta[1]);
-          this.router.navigate(['bienvenida']);
-        } else {
-          alert('No se agrego el usuario');
-        }
-      }): alert('Las contraseñas no son iguales');
+  registrar() {
+    this.formRegistro.value.contrasena === this.formRegistro.value.confirmar ? this.registroServicio.enviarDatos(this.formRegistro.value).subscribe((respuesta: any) => {
+      if (respuesta[0] == 'Se inserto correctamente el usuario') {
+        alert(respuesta[0]);
+        this.Sesion.set('documento', respuesta[1]);
+        this.router.navigate(['bienvenida']);
+      } else {
+        alert('No se agrego el usuario');
+      }
+    }) : alert('Las contraseñas no son iguales');
   }
 }

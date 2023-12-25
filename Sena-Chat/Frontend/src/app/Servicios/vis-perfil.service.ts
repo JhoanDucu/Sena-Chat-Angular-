@@ -8,9 +8,9 @@ import { Usuario } from '../Modelos/usuarios';
 })
 export class VisPerfilService {
   url = "http://localhost:3000";
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
-  buscarDatos(datos: any){
+  buscarDatos(datos: any) {
     return this.http.get<Usuario>(`${this.url}/usuario/${datos}`);
   }
 }

@@ -9,17 +9,17 @@
 
 /* Estilo para el pulgar (parte deslizable) de la barra de desplazamiento */
 .card-body.chat-box::-webkit-scrollbar-thumb {
-  background-color: #3d803d; 
+  background-color: #3d803d;
   border-radius: 4px;
 }
 
 #componenteMensajes {
   position: absolute;
-    overflow-y: auto;
-    max-height: 465px;
-    width: 100%;
-    bottom: 0px;
-    top: 0px;
+  overflow-y: auto;
+  max-height: 465px;
+  width: 100%;
+  bottom: 0px;
+  top: 0px;
 }
 
 #mensajesPropios {
@@ -33,14 +33,14 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  word-wrap: break-word; 
+  word-wrap: break-word;
   overflow-x: hidden;
 }
 
 #contenido {
   padding-right: 10px;
-  word-wrap: break-word; 
-  word-break: break-word; 
+  word-wrap: break-word;
+  word-break: break-word;
 }
 
 #horaPropios {
@@ -80,7 +80,8 @@
 }
 
 #iconoInformacion {
-  font-size: 30px; margin-right: 10px
+  font-size: 30px;
+  margin-right: 10px;
 }
 
 #sinMensaje {

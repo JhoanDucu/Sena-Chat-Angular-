@@ -11,8 +11,8 @@ import { RouterOutlet } from '@angular/router';
 })
 export class AppComponent {
   title = 'Frontend';
-  constructor(private elementRef: ElementRef) {}
+  constructor(private elementRef: ElementRef) { }
   ngAfterViewInit() {
-      this.elementRef.nativeElement.ownerDocument.body.style.backgroundColor = ' rgb(165, 163, 163)';
+    this.elementRef.nativeElement.ownerDocument.body.style.backgroundColor = ' rgb(165, 163, 163)';
   }
 }

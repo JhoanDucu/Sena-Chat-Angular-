@@ -17,13 +17,13 @@ export class VisPerfilComponent {
     private router: Router,
     private VisPerfilService: VisPerfilService,
     private Sesion: SesionService
-    ){}
+  ) { }
 
-  public item: Usuario = new Usuario('','','','','','','','','','','','');
+  public item: Usuario = new Usuario('', '', '', '', '', '', '', '', '', '', '', '');
   numerodoc = this.Sesion.get('documento');
   ficha = this.Sesion.get('ficha');
-  ngOnInit(): void { 
-    this.VisPerfilService.buscarDatos(this.numerodoc).subscribe((data:any) => this.item = data[0]);
+  ngOnInit(): void {
+    this.VisPerfilService.buscarDatos(this.numerodoc).subscribe((data: any) => this.item = data[0]);
   }
 }
 

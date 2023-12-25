@@ -1,6 +1,7 @@
 /* Seccion Eliminar */
 
-#offcanvasNavbar, #offcanvasRight {
+#offcanvasNavbar,
+#offcanvasRight {
   width: 62%;
 }
 
@@ -27,4 +28,10 @@
   flex-direction: column;
   align-items: center;
   margin-top: 5%;
+}
+
+.imagenGrupo {
+  width: 230px;
+  height: 200px;
+  border-radius: 50%;
 }

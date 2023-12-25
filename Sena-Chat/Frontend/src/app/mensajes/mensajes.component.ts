@@ -19,7 +19,7 @@ export class MensajesComponent {
     private Chat: ChatService,
     private rutaActiva: ActivatedRoute,
     protected Sesion: SesionService
-    ){}
+  ) { }
   grupos: Grupo[] = [];
   mensajes: Mensaje[] = [];
   grupoSeleccionado = this.Sesion.get('grupos');
@@ -42,12 +42,12 @@ export class MensajesComponent {
 
   ngOnInit(): void {
     this.grupoSeleccionado ? this.Chat.traerMensajes(this.grupoSeleccionado).subscribe(
-      (data: any) => data ? data.forEach( (element: Mensaje) => {
+      (data: any) => data ? data.forEach((element: Mensaje) => {
         element.fecha_hora = new Date(element.fecha_hora);
         this.mensajes.push(element);
       }) : false) : undefined;
   }
-  obtenerHora(date: Date){
-    return `${ date.toLocaleTimeString('en-US', { hour: "2-digit", minute: "2-digit" }) }`;
+  obtenerHora(date: Date) {
+    return `${date.toLocaleTimeString('en-US', { hour: "2-digit", minute: "2-digit" })}`;
   }
 }

@@ -5,9 +5,9 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class RegistrarService {
-  url="http://localhost:3000";
+  url = "http://localhost:3000";
   constructor(private http: HttpClient) { }
-  enviarDatos(datos: any){
-    return this.http.post<string>(`${this.url}/registrar`,datos);
+  enviarDatos(datos: any) {
+    return this.http.post<string>(`${this.url}/registrar`, datos);
   }
 }

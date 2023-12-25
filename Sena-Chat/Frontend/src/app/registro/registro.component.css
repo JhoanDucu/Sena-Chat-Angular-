@@ -16,7 +16,7 @@ body {
   padding-right: 2%;
   transform: translate(-50%, -50%);
   box-sizing: border-box;
-  box-shadow: 0 15px 25px rgba(0,0,0,.6);
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
   border-radius: 10px;
 }
 
@@ -33,7 +33,7 @@ body {
   margin-right: 10px;
 }
 
-form{
+form {
   margin: 1px;
 }
 .login-box img {
@@ -42,7 +42,7 @@ form{
   width: 12rem;
 }
 
-.login-box #center1{
+.login-box #center1 {
   height: 8.5rem;
 }
 
@@ -50,7 +50,7 @@ form{
   position: relative;
 }
 
-.login-box .user-box input{
+.login-box .user-box input {
   width: 90%;
   padding: 10px 0;
   font-size: 16px;
@@ -65,17 +65,17 @@ form{
 
 .login-box .user-box label {
   position: absolute;
-  top:0;
+  top: 0;
   left: 0;
   padding: 10px 0;
   padding-left: 5%;
   font-size: 16px;
   color: #000;
   pointer-events: none;
-  transition: .5s;
+  transition: 0.5s;
 }
 
-.login-box #c11 div p a{
+.login-box #c11 div p a {
   text-decoration: none;
   color: #117311;
   text-shadow: none;
@@ -115,7 +115,7 @@ form{
   text-decoration: none;
   text-transform: uppercase;
   overflow: hidden;
-  transition: .5s;
+  transition: 0.5s;
   margin-top: 20px;
   letter-spacing: 4px;
   background: transparent;
@@ -130,10 +130,8 @@ form{
   color: #fff;
   border-radius: 5px;
   border-color: #237023;
-  box-shadow: 0 0 5px #3a813a,
-              0 0 25px #3a813a,
-              0 0 50px #3a813a,
-              0 0 100px #3a813a;
+  box-shadow: 0 0 5px #3a813a, 0 0 25px #3a813a, 0 0 50px #3a813a,
+    0 0 100px #3a813a;
 }
 
 .crear-cuenta {
@@ -141,25 +139,25 @@ form{
   text-shadow: 0 0 9px #000000;
 }
 
-form #c1{
+form #c1 {
   grid-area: correo;
 }
-form #c2{
+form #c2 {
   grid-area: primernom;
 }
-form #c3{
+form #c3 {
   grid-area: segundonom;
 }
-form #c4{
+form #c4 {
   grid-area: primerape;
 }
-form #c5{
+form #c5 {
   grid-area: segundoape;
 }
-form #c6{
+form #c6 {
   grid-area: username;
 }
-form #c7{
+form #c7 {
   grid-area: tipodoc;
 }
 
@@ -172,46 +170,46 @@ form #c7{
   outline: none;
 }
 
-form #c8{
+form #c8 {
   grid-area: documento;
   margin-top: 25px;
 }
-form #c9{
+form #c9 {
   grid-area: password;
 }
-form #c10{
+form #c10 {
   grid-area: confirm;
 }
-form #c11{
+form #c11 {
   grid-area: boton;
 }
 
-form{
+form {
   display: grid;
   grid-template-areas:
-                        "primernom "
-                        "segundonom"
-                        "primerape "
-                        "segundoape"
-                        "tipodoc"
-                        "documento "
-                        "correo "
-                        "username "
-                        "password "
-                        "confirm"
-                        "boton";
+    "primernom "
+    "segundonom"
+    "primerape "
+    "segundoape"
+    "tipodoc"
+    "documento "
+    "correo "
+    "username "
+    "password "
+    "confirm"
+    "boton";
 }
 
-@media (min-width: 576px) and (max-width: 991.98px) and (orientation:portrait) {
-  .login-box{
+@media (min-width: 576px) and (max-width: 991.98px) and (orientation: portrait) {
+  .login-box {
     width: 32rem;
     text-align: center;
   }
-  .login-box .user-box input{
+  .login-box .user-box input {
     width: 76%;
     text-align: left;
   }
-  .login-box .user-box label{
+  .login-box .user-box label {
     padding-left: 12%;
   }
 }

@@ -11,16 +11,21 @@
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">
-        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-            @if (Sesion.get('rol') == '2'){
+        <div class="d-flex justify-content-evenly">
+            <div class="img-thumbnail">
+                <img src="../../assets/img/User-agregar.png" class="imagenGrupo" alt="Agregar" />
+                <h6 style="margin-left: 10px">Agregar</h6>
+            </div>
             <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
                 aria-controls="offcanvasRight" id="lista-privados">
-                <img src="../../assets/img/User-agregar.png" style="width: 30%; height: 30%" alt="Agregar" />
+                <img src="../../assets/img/User-agregar.png" class="imagenGrupo" alt="Agregar" />
                 <h6 style="margin-left: 10px">Agregar</h6>
             </button>
-
+        </div>
+        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+            @if (Sesion.get('rol') == '2'){
             <div class="d-flex justify-content-center">
-                <img src="../../assets/img/User-elim.png" style="width: 25%; height: 25%" alt="Eliminar" />
+                <img src="../../assets/img/User-elim.png" class="img-thumbnail" alt="Eliminar" />
             </div>
             <br />
             <ul class="list-group">

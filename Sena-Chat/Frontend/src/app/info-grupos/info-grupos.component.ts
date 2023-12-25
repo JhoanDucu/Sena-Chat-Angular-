@@ -12,10 +12,10 @@ import { ChatService } from '../Servicios/chat.service';
   styleUrl: './info-grupos.component.css'
 })
 export class InfoGruposComponent {
-  constructor (
+  constructor(
     protected Sesion: SesionService,
     private Chat: ChatService
-  ) {}
+  ) { }
   miembros: Usuario[] = [];
   usuario = this.Sesion.get('documento');
   @Input() grupoSeleccionado: string | null = '';
