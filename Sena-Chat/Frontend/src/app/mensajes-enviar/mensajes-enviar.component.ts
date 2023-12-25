@@ -12,47 +12,59 @@ import { DomSanitizer } from '@angular/platform-browser';
   styleUrl: './mensajes-enviar.component.css'
 })
 export class MensajesEnviarComponent {
-  constructor (
+  constructor(
     protected Sesion: SesionService,
     private sanitizer: DomSanitizer
-  ) {}
-  
+  ) { }
+
   @ViewChild(FormGroupDirective)
   formDirective !: FormGroupDirective;
   @Output() emitir = new EventEmitter<Object>();
   form = new FormGroup({
-    contenido_mensaje: new FormControl('', Validators.required)
+    contenido_mensaje: new FormControl('', Validators.required),
+    archivo: new FormControl('')
   });
-  archivos = [];
-  archivo = undefined;
+  archivos: string[] = [];
   noEnviar = true;
+  offcanvasClass = '';
 
-  longitud(){
-    if(this.form.get('contenido_mensaje')?.errors?.['required']){
+  longitud() {
+    if (this.form.get('contenido_mensaje')?.errors?.['required']) {
       this.noEnviar = true;
     } else {
       this.noEnviar = false;
     }
   }
 
-  emitirEnvio(formValue: any){
+  emitirEnvio(formValue: any) {
     this.emitir.emit(formValue);
-    this.form.reset()
+    this.form.reset();
   }
 
-  obtenerArchivo(event: any){
-    this.convertFile(event.files[0]).then((image: any) => this.archivo = image);
+  obtenerArchivo(event: any) {
+    for (const key in event.files) {
+      key !== 'length' && key !== 'item' ? this.convertFile(event.files[key]).then(
+        (image: any) => {
+          this.archivos.push(image);
+        }
+      ) : undefined;
+    }
   }
 
-  convertFile = async (file : File) => new Promise((resolve, reject) => {
+  convertFile = async (file: File) => new Promise((resolve, reject) => {
     try {
       // const insegura = window.URL.createObjectURL(file);
-    // const segura = this.sanitizer.bypassSecurityTrustUrl(insegura);
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = () => {resolve(reader.result)};
+      // const segura = this.sanitizer.bypassSecurityTrustUrl(insegura);
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => { resolve(reader.result) };
     } catch (error) {
-      
+      console.error(error);
     }
   });
+
+  cerrar(){
+    this.archivos = [];
+    this.form.reset();
+  }
 }

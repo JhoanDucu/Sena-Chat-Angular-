@@ -8,7 +8,7 @@ export class ChatDirective implements OnChanges{
   @Input() appChat !: string;
   constructor(
     private TemplateRef: TemplateRef<any>,
-    private ViewContainerRef: ViewContainerRef
+    private ViewContainerRef: ViewContainerRef,
   ) {
     this.ViewContainerRef.createEmbeddedView( TemplateRef );
    }
@@ -16,9 +16,9 @@ export class ChatDirective implements OnChanges{
     if( changes['appChat'] && changes['appChat'].previousValue != undefined){
       this.ViewContainerRef.clear();
       this.ViewContainerRef.createEmbeddedView(this.TemplateRef);
-      setTimeout(() => {
-        document.getElementById("final")?.scrollIntoView(true);        
-      }, 90);
     }
+    setTimeout(() => {
+      document.getElementById("final")?.scrollIntoView(true);        
+    }, 90);
    }
 }

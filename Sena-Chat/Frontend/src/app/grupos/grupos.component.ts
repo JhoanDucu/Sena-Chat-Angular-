@@ -13,44 +13,38 @@ import { SesionService } from '../Sesiones/sesion.service';
   styleUrl: './grupos.component.css'
 })
 export class GruposComponent {
-  constructor (
+  constructor(
     private Chat: ChatService,
     protected Sesion: SesionService
-    ) { }
+  ) { }
   grupos: Grupo[] = [];
   privados: Grupo[] = [];
   @Input() changesValue = '';
-  @Output() makeChange = new EventEmitter<string>();
+  @Input() selected: any = {};
+  @Output() makeChange = new EventEmitter<string[]>();
   fichaSeleccionada = this.Sesion.get('ficha');
   usuario = this.Sesion.get('documento');
-  gruposVisible = true;
-  privadosVisible = false;
+  pestañas = {
+    gruposVisible: () => this.Sesion.set('pestaña', 'grupos'),
+    privadosVisible: () => this.Sesion.set('pestaña', 'privados'),
+    cerrarVisible: () => this.Sesion.set('pestaña', 'cerrar'),
+  }
 
   ngOnInit(): void {
     this.Chat.traerGrupos(this.fichaSeleccionada, this.usuario).subscribe((data: any) => data.forEach((element: any) => { this.grupos.push(element) }));
     this.Chat.traerPrivados(this.fichaSeleccionada, this.usuario).subscribe((data: any) => data.forEach((element: any) => { this.privados.push(element) }));
   }
 
-  static seleccionar(value: string) {
-    return value = value == '0' ? '1' : '0';
-  }
+  static seleccionar = (value: string) => { return value = value == '0' ? '1' : '0' }
 
-  seleccionarEnGrupos(){
-    this.makeChange.emit(this.changesValue == '0' ? '1' : '0');
-  }
+  seleccionarEnGrupos = (id: any) => {
+    this.Sesion.remove('grupos');
+    this.makeChange.emit([this.changesValue == '0' ? '1' : '0', id]);
+  };
 
-  mostrarGrupos() {
-    this.gruposVisible = true;
-    this.privadosVisible = false;
-  }
+  mostrarGrupos = () => this.pestañas.gruposVisible;
 
-  mostrarPrivados() {
-    this.gruposVisible = false;
-    this.privadosVisible = true;
-  }
+  mostrarPrivados = () => this.pestañas.privadosVisible;
 
-  
-  cerrarSesion() {
-    this.Sesion.clear();
-  }
+  cerrarSesion = () => this.Sesion.clear();
 }

@@ -7,7 +7,7 @@
                   </div>
         </div>
     } @else {
-        @for ( m of mensaje; track m.id_mensaje) {
+        @for ( m of mensajes; track m.id_mensaje) {
             @if (m.numerodoc == usuario) {
                 <div class="d-flex justify-content-end mb-1">
                     <div class="text-white p-2" id="mensajesPropios">

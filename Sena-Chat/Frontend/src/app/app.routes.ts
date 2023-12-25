@@ -12,7 +12,6 @@ export const routes: Routes = [
     { path: "login", component: LoginComponent },
     { path: "registro", component: RegistroComponent },
     { path: 'bienvenida', component: BienvenidaComponent},
-    { path: 'chat/:grupo', component: ChatComponent},
     { path: 'chat', component: ChatComponent},
     { path: 'confi', component: ConfiComponent },
     { path: 'vis-perfil', component: VisPerfilComponent},

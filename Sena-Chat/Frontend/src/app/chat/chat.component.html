@@ -14,7 +14,8 @@
     <div class="container-fluid" id="allPage">
         <div class="row" id="rowPage">
             <div class="column ContenedorGrupoos">
-                <app-grupos (makeChange)="applyChanges($event)" [changesValue]="changes"></app-grupos>
+                <app-grupos (makeChange)="applyChanges($event)" [changesValue]="changes"
+                    [selected]="{ grupo: actualizarParametro(), p: Sesion.get('pestaña')}"></app-grupos>
             </div>
             <div class="column contenedorChat">
                 @if(grupoSeleccionado){

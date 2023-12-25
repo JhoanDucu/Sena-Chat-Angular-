@@ -13,17 +13,17 @@ import { SesionService } from '../Sesiones/sesion.service';
   styleUrl: './bienvenida.component.css'
 })
 export class BienvenidaComponent {
-  constructor( 
+  constructor(
     private loginServicio: LogearService,
     private Sesion: SesionService,
     private router: Router
-    ){}
-    formBienv = new FormGroup({
-      ficha: new FormControl('')
-    });
-  setFicha( ficha: any){
-    this.loginServicio.seleccionarFicha({buscar: ficha}, this.Sesion.get('documento')).subscribe((respuesta: any) => {
-      if(respuesta.length === 2) {
+  ) { }
+  formBienv = new FormGroup({
+    ficha: new FormControl('')
+  });
+  setFicha(ficha: any) {
+    this.loginServicio.seleccionarFicha({ buscar: ficha }, this.Sesion.get('documento')).subscribe((respuesta: any) => {
+      if (respuesta.length === 2) {
         this.Sesion.set('ficha', respuesta[0]);
         this.router.navigate(['chat']);
       };

@@ -20,4 +20,8 @@ export class SesionService {
     sessionStorage.clear();
     this.router.navigate(['/login']);
   }
+
+  remove(key: string){
+    sessionStorage.removeItem(key);
+  }
 }

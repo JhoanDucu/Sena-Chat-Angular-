@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { ChatService } from '../Servicios/chat.service';
@@ -27,7 +27,6 @@ import { MensajesEnviarComponent } from '../mensajes-enviar/mensajes-enviar.comp
   styleUrl: './chat.component.css'
 })
 export class ChatComponent {
-
   constructor(
     private router: Router,
     private Chat: ChatService,
@@ -37,7 +36,7 @@ export class ChatComponent {
   changes = '0';
   mensaje: Mensaje[] = [];
   datosUsuario: Usuario = new Usuario('', '', '', '', '', '', '', '', '', '', '', '');
-  grupoSeleccionado = this.rutaActiva.snapshot.params['grupo'];
+  grupoSeleccionado: string | null = '';
   fichaSeleccionada = this.Sesion.get('ficha');
   usuario = this.Sesion.get('documento');
   
@@ -48,11 +47,10 @@ export class ChatComponent {
       this.Sesion.set('error', 'No has iniciado sesion');
     } else {
       this.Chat.traerUsuario(this.usuario).subscribe((data: any) => this.datosUsuario = data);
-      // document.getElementById("final")?.scrollIntoView(true);
     }
   }
   actualizarParametro() {
-    return this.grupoSeleccionado = this.grupoSeleccionado == this.rutaActiva.snapshot.params['grupo'] ? this.rutaActiva.snapshot.params['grupo'] : this.rutaActiva.snapshot.params['grupo'];
+    return this.grupoSeleccionado = this.Sesion.get('grupos');
   }
 
   enviar(mensaje: any) {
@@ -63,8 +61,7 @@ export class ChatComponent {
         mensaje.fk_destino = id[0].id_usuarios_grupos;
         mensaje.id_tipo = '1';
         this.Chat.agregarMensaje(mensaje).subscribe( (data: any) => {
-          // data == 'Enviado' ? this.changes = GruposComponent.seleccionar(this.changes) : undefined;
-          document.getElementById("final")?.scrollIntoView(true);
+          data == 'Enviado' ? this.changes = GruposComponent.seleccionar(this.changes) : undefined;
         });
       });
     } else {
@@ -72,7 +69,5 @@ export class ChatComponent {
     }
   }
   
-  applyChanges(newValue: string){
-    this.changes = newValue;
-  }
+  applyChanges = (newValue: string[]) => { this.changes = newValue[0]; this.Sesion.set('grupos', newValue[1]);}
 }

@@ -18,7 +18,7 @@ export class InfoGruposComponent {
   ) {}
   miembros: Usuario[] = [];
   usuario = this.Sesion.get('documento');
-  @Input() grupoSeleccionado = '';
+  @Input() grupoSeleccionado: string | null = '';
 
   consultarMiembros() {
     this.Chat.traerMiembros(this.grupoSeleccionado).subscribe((data: any) => { this.miembros = data });
