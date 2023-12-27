@@ -4,6 +4,9 @@
 .input-group {
   bottom: 0;
   position: absolute;
+  .form-control:focus {
+    box-shadow: none;
+  }
 }
 
 #botonEnviar {

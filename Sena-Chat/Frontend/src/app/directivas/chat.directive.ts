@@ -21,4 +21,8 @@ export class ChatDirective implements OnChanges {
       document.getElementById("final")?.scrollIntoView(true);
     }, 90);
   }
+  
+  static seleccionar = (value: string) => { return value = value == '0' ? '1' : '0' }
+
+  static estadoBusqueda = (current: Boolean, before: Boolean) => current || before;
 }

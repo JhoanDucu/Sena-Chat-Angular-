@@ -13,9 +13,8 @@
             </button>
         </li>
         <li class="nav-item" role="presentation">
-            <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button"
-                role="tab" aria-controls="contact" aria-selected="false">
-                <i class="bx bxs-help-circle"></i>
+            <button class="nav-link" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                <i class='bx bxs-message-square-dots'></i>
             </button>
         </li>
         <li class="nav-item" role="presentation">
@@ -31,8 +30,36 @@
                 <i class="bx bxs-door-open"></i>
             </button>
         </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button"
+                role="tab" aria-controls="contact" aria-selected="false">
+                <i class="bx bxs-help-circle"></i>
+            </button>
+        </li>
     </ul>
+    <div class="input-group flex-nowrap" id="buscarGrupos">
+        <label for="buscar" class="input-group-text" id="addon-wrapping"><i class='bx bx-search-alt-2'></i></label>
+        <input id="buscar" type="text" class="form-control" placeholder="Username" aria-label="Username"
+            aria-describedby="addon-wrapping" [(ngModel)]="valorBuscar" (keyup)="busqueda()">
+    </div>
     <div class="tab-content" id="myTabContent">
+        @if (valorBuscar.trim()) {
+        <div class="tab-pane fade show active" *appChat="changes">
+            <h1>Grupos</h1>
+            @for (i of coincidencias.Grupos; track i) {
+            <h4 class="text-center">{{ coincidencias.Grupos[coincidencias.Grupos.indexOf(i)] }}</h4>
+            <br>
+            }
+            <h1>Privados</h1>
+            @for (i of coincidencias.Privados; track i) {
+            <h4 class="text-center">{{ coincidencias.Privados[coincidencias.Privados.indexOf(i)] }}</h4>
+            <br>
+            }
+        </div>
+        @if (coincidencias.resultados == false) {
+        <h2>Sin resultados de busqueda</h2>
+        }
+        } @else {
         <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
             <div class="grupos" id="grupos" role="tablist">
                 <div class="list-group" id="list-tab" role="tablist">
@@ -72,7 +99,30 @@
         <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
             3
         </div>
+        }
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel">Mensajes a varias fichas 😊</h5> 
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        @for (g of grupos; track g.id_grupos) {
+                            <div>
+                                <input class="form-check-input" type="checkbox" id="variasFichas" value="" aria-label="...">
+                                <label for="checkboxNoLabel">{{ g.id_ficha }}</label>
+                            </div>                              
+                        }
+                    </div>
+                    <div class="modal-footer">
+                        <input type="text" placeholder="Escribe el mensaje...">
+                        <button type="button" class="btn btn-primary">
+                            <i class="bx bxs-send" id="iconoEnviar"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <!-- <button class="Bgrupo"> </button> -->
-    <!-- <button class="Bprivado"></button> -->
-</div>

@@ -19,8 +19,12 @@ export class InfoGruposComponent {
   miembros: Usuario[] = [];
   usuario = this.Sesion.get('documento');
   @Input() grupoSeleccionado: string | null = '';
+  mostrarDropdown: string | undefined = undefined;
 
   consultarMiembros() {
     this.Chat.traerMiembros(this.grupoSeleccionado).subscribe((data: any) => { this.miembros = data });
   }
+
+  hover = (element: any) => this.mostrarDropdown = element;
+  notHover = () => this.mostrarDropdown = undefined;
 }

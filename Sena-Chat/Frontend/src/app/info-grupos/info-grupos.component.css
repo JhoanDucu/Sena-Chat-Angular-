@@ -31,7 +31,16 @@
 }
 
 .imagenGrupo {
-  width: 230px;
+  width: 200px;
   height: 200px;
+  border: 2px solid #0e882d;
   border-radius: 50%;
+  object-fit: contain;
+}
+
+#dropdown {
+  font-size: 30px;
+}
+#dropdown:focus {
+  border: none;
 }

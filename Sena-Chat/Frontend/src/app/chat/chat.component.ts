@@ -42,6 +42,7 @@ export class ChatComponent {
 
 
   ngOnInit(): void {
+    this.Sesion.remove('grupos');
     if (this.fichaSeleccionada == undefined || this.usuario == undefined) {
       this.router.navigate(['login']);
       this.Sesion.set('error', 'No has iniciado sesion');
@@ -61,7 +62,7 @@ export class ChatComponent {
         mensaje.fk_destino = id[0].id_usuarios_grupos;
         mensaje.id_tipo = '1';
         this.Chat.agregarMensaje(mensaje).subscribe((data: any) => {
-          data == 'Enviado' ? this.changes = GruposComponent.seleccionar(this.changes) : undefined;
+          data == 'Enviado' ? this.changes = ChatDirective.seleccionar(this.changes) : undefined;
         });
       });
     } else {

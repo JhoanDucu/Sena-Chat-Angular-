@@ -1,8 +1,6 @@
-/* BOTONES */
-
 #myTab {
   font-size: 30px;
-  padding: 0 0 0 12px;
+  padding: 0;
 }
 
 #myTabContent {
@@ -10,19 +8,8 @@
 }
 
 .Botones {
-  padding-top: 3vh;
   margin: 0;
-}
-
-/* LISTA DE GRUPOS */
-
-.grupos,
-.privados {
-  overflow-y: auto;
-  max-height: 100vh;
-  letter-spacing: 1px;
-  font-size: 110%;
-  direction: rtl;
+  padding-top: 3vh;
 }
 
 .grupos .list-group-item,
@@ -30,6 +17,7 @@
   font-family: "Josefin Sans", sans-serif;
   font-weight: bold;
   font-size: larger;
+  border: none;
   border-bottom: 1px solid #000000;
   padding: 15px;
   text-align: center;
@@ -76,55 +64,39 @@
   align-items: center;
 }
 
-/* BOTONES COMENTADOS */
+/* BARRA BUSQUEDA */
 
-.Bprivado {
-  background-color: #4caf50;
-  margin-left: 18%;
-  padding-left: 3%;
-  padding-right: 3%;
-  border-radius: 20%;
-  border-radius: 5px;
-  font-weight: bold;
-  font-size: 28px;
-  border: 1px solid #000;
-  letter-spacing: 2px;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
-  transition: transform 0.2s;
-  user-select: none;
+#buscarGrupos {
+  padding: 0;
+  margin: 4% 2.5% 4% 2.5%;
+  border: 1px solid;
+  width: 95%;
+  height: 45px;
+  border-radius: 30px;
+  .form-control {
+    border: none;
+    border-radius: 0;
+    border-top-right-radius: 22px;
+    border-bottom-right-radius: 22px;
+  }
+  #addon-wrapping {
+    border: none;
+    border-radius: 0;
+    border-top-left-radius: 50%;
+    width: 10%;
+    border-bottom-left-radius: 50%;
+    background-color: white;
+  }
+  .input-group-text {
+    justify-content: flex-end;
+  }
+  .form-control:focus {
+    box-shadow: none;
+  }
 }
 
-.Bgrupo {
-  background-color: #4caf50;
-  padding-left: 3%;
-  padding-right: 3%;
-  border-radius: 20%;
-  border-radius: 5px;
-  font-size: 20px;
-  font-weight: bold;
-  border: 1px solid #000;
-  letter-spacing: 2px;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
-  transition: transform 0.2s;
-  user-select: none;
-}
-
-.Bprivado:active,
-.Bgrupo:active {
-  transform: scale(0.95);
-}
-
-/* FUTURA BARRA BUSQUEDA */
-
-.busqueda {
-  background-color: #4caf50;
-  padding: 2%;
-  padding-left: 5%;
-  padding-right: 5%;
-  border-radius: 5px;
-  font-size: 13px;
-  border: 1px solid #000;
-  user-select: none;
-  top: 40px;
-  margin-top: 20px;
+#variasFichas {
+  border: 1px solid;
+  width: 20px;
+  height: 20px;
 }
