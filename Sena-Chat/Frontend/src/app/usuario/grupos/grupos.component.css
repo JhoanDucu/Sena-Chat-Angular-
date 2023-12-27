@@ -95,8 +95,13 @@
   }
 }
 
-#variasFichas {
+.variasFichas {
   border: 1px solid;
   width: 20px;
   height: 20px;
+}
+
+#mensajeFichas {
+  width: 87.9%;
+  height: 6vh;
 }

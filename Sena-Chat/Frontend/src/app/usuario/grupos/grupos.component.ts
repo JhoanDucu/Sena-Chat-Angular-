@@ -4,14 +4,14 @@ import { RouterModule } from '@angular/router';
 import { Grupo } from '../Modelos/grupos';
 import { ChatService } from '../Servicios/chat.service';
 import { SesionService } from '../Sesiones/sesion.service';
-import { FormsModule } from '@angular/forms';
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Buscar } from '../Modelos/buscar';
 import { ChatDirective } from '../Directivas/chat.directive';
 
 @Component({
   selector: 'app-grupos',
   standalone: true,
-  imports: [CommonModule, RouterModule, FormsModule, ChatDirective],
+  imports: [CommonModule, RouterModule, ReactiveFormsModule, FormsModule, ChatDirective],
   templateUrl: './grupos.component.html',
   styleUrl: './grupos.component.css'
 })
@@ -39,6 +39,10 @@ export class GruposComponent {
     Grupos: [],
     Privados: []
   };
+  mensajes = new FormGroup({
+    variasFichas: new FormControl('', Validators.required),
+    mensajeFichas: new FormControl('', Validators.required)
+  });
 
   ngOnInit(): void {
     this.Chat.traerGrupos(this.fichaSeleccionada, this.usuario).subscribe((data: any) => data.forEach((element: any) => { this.grupos.push(element) }));
@@ -68,5 +72,8 @@ export class GruposComponent {
       }
       this.changes = ChatDirective.seleccionar(this.changes);
     }
+  }
+  emitirEnvios(formValue: any){
+    console.log(formValue);
   }
 }
