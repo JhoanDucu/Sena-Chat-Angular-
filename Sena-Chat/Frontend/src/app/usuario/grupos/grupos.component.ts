@@ -25,6 +25,7 @@ export class GruposComponent {
   @Input() changesValue = '';
   @Input() selected: any = {};
   @Output() makeChange = new EventEmitter<string[]>();
+  @Output() envioMultiple = new EventEmitter<string>();
   fichaSeleccionada = this.Sesion.get('ficha');
   usuario = this.Sesion.get('documento');
   pestañas = {
@@ -43,6 +44,9 @@ export class GruposComponent {
     variasFichas: new FormControl('', Validators.required),
     mensajeFichas: new FormControl('', Validators.required)
   });
+  inputSizes = ['mensajeFichas', 'mensajeFichas2', 'mensajeFichas3'];
+  idInput = this.inputSizes[0];
+  checked: string[] = [];
 
   ngOnInit(): void {
     this.Chat.traerGrupos(this.fichaSeleccionada, this.usuario).subscribe((data: any) => data.forEach((element: any) => { this.grupos.push(element) }));
@@ -73,7 +77,21 @@ export class GruposComponent {
       this.changes = ChatDirective.seleccionar(this.changes);
     }
   }
-  emitirEnvios(formValue: any){
-    console.log(formValue);
+  emitirEnvios(formValue: any) {
+    if (formValue.variasFichas) this.checked.forEach(
+      (value: any) => this.envioMultiple.emit(value)
+    );
   }
+  inputSize(e: any) {
+    if (this.mensajes.value.mensajeFichas == '') this.idInput = this.inputSizes[0];
+    else if(this.inputSizes.indexOf(this.idInput) == 0 && e.code == 'Delete') console.log('e verdad');
+    // else if(this.inputSizes.indexOf(this.idInput) == 1) undefined
+    else if(this.inputSizes.indexOf(this.idInput) == 2) undefined
+    else if(e.target.scrollHeight >  e.target.offsetHeight) this.idInput = this.inputSizes[this.inputSizes.indexOf(this.idInput) + 1];
+  }
+  check(selected: any) {
+    if(this.checked.indexOf(selected.value) == -1 && selected.checked) this.checked.push(selected.value);
+    else this.checked.splice(this.checked.indexOf(selected.value), 1);
+  }
+  cerrar = () => this.checked = []; 
 }

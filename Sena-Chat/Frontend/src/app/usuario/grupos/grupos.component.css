@@ -21,6 +21,7 @@
   border-bottom: 1px solid #000000;
   padding: 15px;
   text-align: center;
+  cursor: pointer;
 }
 
 .list-group-item.list-group-item-action {
@@ -101,7 +102,24 @@
   height: 20px;
 }
 
-#mensajeFichas {
+.mensajesFichas {
   width: 87.9%;
+  resize: none;
+  outline: none;
+}
+
+#mensajeFichas {
   height: 6vh;
+}
+
+#mensajeFichas2 {
+  height: 12vh;
+}
+
+#mensajeFichas3 {
+  height: 18vh;
+}
+
+.mensajesFichas::-webkit-scrollbar {
+  width: 0px;
 }
