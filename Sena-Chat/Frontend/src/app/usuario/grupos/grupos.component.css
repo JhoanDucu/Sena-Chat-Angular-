@@ -1,0 +1,107 @@
+#myTab {
+  font-size: 30px;
+  padding: 0;
+}
+
+#myTabContent {
+  padding: 0;
+}
+
+.Botones {
+  margin: 0;
+  padding-top: 3vh;
+}
+
+.grupos .list-group-item,
+.privados .list-group-item {
+  font-family: "Josefin Sans", sans-serif;
+  font-weight: bold;
+  font-size: larger;
+  border: none;
+  border-bottom: 1px solid #000000;
+  padding: 15px;
+  text-align: center;
+}
+
+.list-group-item.list-group-item-action {
+  background-color: transparent;
+}
+
+.list-group-item.active {
+  background-color: #3d803d;
+  color: #fff;
+  border-color: #dfdfdf;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  font-family: "Josefin Sans", sans-serif;
+}
+
+#list-home-list:hover {
+  background-color: #3d803d !important;
+  color: inherit !important;
+}
+
+.grupos::-webkit-scrollbar {
+  width: 6px;
+}
+
+.grupos::-webkit-scrollbar-thumb {
+  background: #0e882d;
+  border-radius: 5px;
+}
+
+.list-group-item-action:hover {
+  background-color: #3d803d;
+  color: #fff;
+}
+
+#lista-privados {
+  border: none !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+  display: flex;
+  align-items: center;
+}
+
+/* BARRA BUSQUEDA */
+
+#buscarGrupos {
+  padding: 0;
+  margin: 4% 2.5% 4% 2.5%;
+  border: 1px solid;
+  width: 95%;
+  height: 45px;
+  border-radius: 30px;
+  .form-control {
+    border: none;
+    border-radius: 0;
+    border-top-right-radius: 22px;
+    border-bottom-right-radius: 22px;
+  }
+  #addon-wrapping {
+    border: none;
+    border-radius: 0;
+    border-top-left-radius: 50%;
+    width: 10%;
+    border-bottom-left-radius: 50%;
+    background-color: white;
+  }
+  .input-group-text {
+    justify-content: flex-end;
+  }
+  .form-control:focus {
+    box-shadow: none;
+  }
+}
+
+.variasFichas {
+  border: 1px solid;
+  width: 20px;
+  height: 20px;
+}
+
+#mensajeFichas {
+  width: 87.9%;
+  height: 6vh;
+}
