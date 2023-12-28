@@ -56,8 +56,11 @@ export class ChatComponent {
 
   enviar(mensaje: any) {
     if (mensaje.contenido_mensaje != '') {
-      let time = new Date();
-      mensaje.fecha_hora = `${time.getFullYear()}-${time.getMonth() + 1}-${time.getDate()} ${time.getHours()}:${time.getMinutes() + 1}:${time.getSeconds()}`;
+      delete mensaje.archivo;
+      delete mensaje.primer_nom;
+      delete mensaje.primer_apellido;
+      delete mensaje.numerodoc;
+      mensaje.fecha_hora = ChatDirective.fechaActual();
       this.Chat.destino(this.grupoSeleccionado, this.usuario).subscribe((id: any) => {
         mensaje.fk_destino = id[0].id_usuarios_grupos;
         mensaje.id_tipo = '1';
@@ -68,6 +71,14 @@ export class ChatComponent {
     } else {
       this.Sesion.set('error', 'Ingrese un mensaje 😒');
     }
+  }
+
+  enviarVarios(datos: any){
+    datos.id_tipo = this.datosUsuario.fk_id_tipodoc;
+
+    this.Chat.agregarMensaje(datos).subscribe(
+      (data: any) => console.log(data)      
+    )
   }
 
   applyChanges = (newValue: string[]) => { this.changes = newValue[0]; this.Sesion.set('grupos', newValue[1]); }

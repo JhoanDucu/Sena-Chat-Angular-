@@ -15,7 +15,8 @@
         <div class="row" id="rowPage">
             <div class="column ContenedorGrupoos">
                 <app-grupos (makeChange)="applyChanges($event)" [changesValue]="changes"
-                    [selected]="{ grupo: actualizarParametro(), p: Sesion.get('pestaña')}"></app-grupos>
+                    [selected]="{ grupo: actualizarParametro(), p: Sesion.get('pestaña')}"
+                    (envioMultiple)="enviar($event)"></app-grupos>
             </div>
             <div class="column contenedorChat">
                 @if(grupoSeleccionado){

@@ -7,6 +7,7 @@ import { SesionService } from '../Sesiones/sesion.service';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Buscar } from '../Modelos/buscar';
 import { ChatDirective } from '../Directivas/chat.directive';
+import { Mensaje } from '../Modelos/mensaje';
 
 @Component({
   selector: 'app-grupos',
@@ -25,7 +26,7 @@ export class GruposComponent {
   @Input() changesValue = '';
   @Input() selected: any = {};
   @Output() makeChange = new EventEmitter<string[]>();
-  @Output() envioMultiple = new EventEmitter<string>();
+  @Output() envioMultiple = new EventEmitter<Mensaje>();
   fichaSeleccionada = this.Sesion.get('ficha');
   usuario = this.Sesion.get('documento');
   pestañas = {
@@ -79,7 +80,16 @@ export class GruposComponent {
   }
   emitirEnvios(formValue: any) {
     if (formValue.variasFichas) this.checked.forEach(
-      (value: any) => this.envioMultiple.emit(value)
+      (value: any) => this.envioMultiple.emit({
+        id_mensaje: undefined,
+        primer_nom: '',
+        primer_apellido: '',
+        fecha_hora: ChatDirective.fechaActual(),
+        contenido_mensaje: formValue.mensajeFichas,
+        fk_destino: value,
+        numerodoc: '',
+        id_tipo: '',
+      })
     );
   }
   inputSize(e: any) {
