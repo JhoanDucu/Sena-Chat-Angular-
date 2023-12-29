@@ -107,3 +107,47 @@ img {
 .accordion-item{
     border-radius: none;
 }
+
+/* CONTENIDO */
+
+.contenido {
+    position: absolute;
+    top: 60px; /* Ajusta este valor según el alto de tu navbar */
+    bottom: 0;
+    left: 250px; /* Ajusta este valor según el ancho de tu barra lateral */
+    right: 0;
+    margin: 5px; /* Ajusta este valor para cambiar el margen alrededor del contenido */
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    overflow-y: auto; /* Agrega un scrollbar vertical cuando el contenido se desborde */
+    height: calc(98vh - 60px);
+}
+
+.contenido::-webkit-scrollbar {
+    width: 10px; /* Ajusta este valor para cambiar el ancho del scrollbar */
+}
+
+.contenido::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Cambia este valor para cambiar el color de la pista del scrollbar */
+}
+
+.contenido::-webkit-scrollbar-thumb {
+    background: rgb(69, 132, 69); /* Cambia este valor para cambiar el color del scrollbar */
+    border-radius: 5px; /* Ajusta este valor para cambiar el borde redondeado del scrollbar */
+}
+
+.search-container {
+    position: absolute;
+    top: 20px;
+    right: 1px;
+}
+
+.search-container .form-control {
+    padding-right: 20px; /* Ajusta este valor para dar espacio al ícono de búsqueda */
+}
+
+.search-container .bi-search {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
