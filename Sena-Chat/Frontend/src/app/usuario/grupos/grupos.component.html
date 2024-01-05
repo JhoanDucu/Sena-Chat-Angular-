@@ -71,8 +71,13 @@
                         aria-controls="list-profile">{{ g.nom_grupos }}</a>
                     } @else {
                     <a class="list-group-item list-group-item-action" id="list-profile-list" data-bs-toggle="list"
+<<<<<<< Updated upstream
                         (click)="seleccionarEnGrupos(g.id_grupos)" role="tab"
                         aria-controls="list-profile">{{ g.nom_grupos }}</a>
+=======
+                        (click)="seleccionarEnGrupos(g.id_grupos)" role="tab" aria-controls="list-profile">{{
+                        g.nom_grupos }}</a>
+>>>>>>> Stashed changes
                     }
                     }
                 </div>
@@ -100,11 +105,12 @@
             3
         </div>
         }
-        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" 
+            aria-labelledby="staticBackdropLabel" aria-hidden="true" #staticBackdrop>
             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                 <div class="modal-content">
                     <div class="modal-header">
+<<<<<<< Updated upstream
                         <h5 class="modal-title" id="staticBackdropLabel">Mensajes a varias fichas 😊</h5> 
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="cerrar()"></button>
                     </div>
@@ -127,6 +133,40 @@
                         </label>
                     </div>
                 </form>
+=======
+                        <h5 class="modal-title" id="staticBackdropLabel">
+                            Mensajes a varias fichas 😊
+                        </h5>
+                        <button type="button" class="btn-close" aria-label="Close"
+                            (click)="cerrar()"></button>
+                    </div>
+                    <form (ngSubmit)="emitirEnvios(mensajes.value)" [formGroup]="mensajes">
+                        <div class="modal-body">
+                            <p>Seleccione las fichas a las que se enviara el mensaje:</p>
+                            @for (g of grupos; track g.id_grupos) {
+                            <ul class="list-group mb-3" id="escoger">
+                                <li class="list-group-item w-50">
+                                    <label for="{{g.id_grupos}}" class="labelFichas align-middle">{{ g.id_ficha
+                                        }}</label>
+                                </li>
+                                <input class="form-check-input variasFichas align-middle" id="{{g.id_grupos}}"
+                                    type="checkbox" value="{{g.id_grupos}}" formControlName="variasFichas"
+                                    (click)="check($event.target)">
+                            </ul>
+                            }
+                        </div>
+                        <div class="modal-footer">
+                            <textarea type="text" placeholder="Escribe el mensaje..." [id]="idInput"
+                                formControlName="mensajeFichas" (keyup)="inputSize($event)"
+                                class="mensajesFichas"></textarea>
+                            <label for="mensajeFichas">
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="bx bxs-send" id="iconoEnviar"></i>
+                                </button>
+                            </label>
+                        </div>
+                    </form>
+>>>>>>> Stashed changes
                 </div>
             </div>
         </div>

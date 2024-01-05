@@ -223,6 +223,7 @@ app.put('/configurar/:documento',(req, res)=>{
 
 /* PRIVADOS */
 
+<<<<<<< Updated upstream
 app.get('/chat/privados/:ficha/:documento', (req, res) => { 
    const ficha = req.params.ficha;
    const numerodoc = req.params.documento;  
@@ -240,3 +241,22 @@ app.get('/chat/privados/:ficha/:documento', (req, res) => {
       } 
    }) 
 });
+=======
+app.get("/chat/privados/:ficha/:documento", (req, res) => {
+  const ficha = req.params.ficha;
+  const numerodoc = req.params.documento;
+  const query = `SELECT * FROM grupos g
+   INNER JOIN usuarios_grupos ug ON g.id_grupos = ug.id_grupos
+   WHERE id_ficha = ${ficha} AND fk_tipo_grupo <> 2 AND numerodoc = ${numerodoc};`;
+
+  conexion.query(query, (error, result) => {
+    if (error) console.error(error.message);
+
+    if (result.length > 0) {
+      res.json(result);
+    } else {
+      res.json("No hay grupos aun");
+    }
+  });
+});
+>>>>>>> Stashed changes

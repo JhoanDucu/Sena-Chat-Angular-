@@ -1,18 +1,21 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
 import { Grupo } from '../Modelos/grupos';
 import { ChatService } from '../Servicios/chat.service';
 import { SesionService } from '../Sesiones/sesion.service';
-import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormControl, FormGroup, FormGroupDirective, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Buscar } from '../Modelos/buscar';
 import { ChatDirective } from '../Directivas/chat.directive';
 import { Mensaje } from '../Modelos/mensaje';
+<<<<<<< Updated upstream
+=======
+import { Modal } from 'bootstrap';
+>>>>>>> Stashed changes
 
 @Component({
   selector: 'app-grupos',
   standalone: true,
-  imports: [CommonModule, RouterModule, ReactiveFormsModule, FormsModule, ChatDirective],
+  imports: [CommonModule, ReactiveFormsModule, FormsModule, ChatDirective],
   templateUrl: './grupos.component.html',
   styleUrl: './grupos.component.css'
 })
@@ -21,6 +24,8 @@ export class GruposComponent {
     private Chat: ChatService,
     protected Sesion: SesionService
   ) { }
+  @ViewChild('staticBackdrop', { static: false }) Modal ?: ElementRef;
+  @ViewChild(FormGroupDirective) formDirective !: FormGroupDirective;
   grupos: Grupo[] = [];
   privados: Grupo[] = [];
   @Input() changesValue = '';
@@ -65,6 +70,12 @@ export class GruposComponent {
 
   cerrarSesion = () => this.Sesion.clear();
 
+  cerrar(){
+    this.checked = []; this.mensajes.reset();
+    (this.Modal?.nativeElement as HTMLElement).style.display = 'none';
+    document.body.classList.remove('modal-open');
+  }
+
   busqueda(){
     this.coincidencias.Grupos = [];
     this.coincidencias.Privados = [];
@@ -79,6 +90,7 @@ export class GruposComponent {
     }
   }
   emitirEnvios(formValue: any) {
+<<<<<<< Updated upstream
     if (formValue.variasFichas) this.checked.forEach(
       (value: any) => this.envioMultiple.emit({
         id_mensaje: undefined,
@@ -91,6 +103,38 @@ export class GruposComponent {
         id_tipo: '',
       })
     );
+=======
+    // if (formValue.variasFichas) this.checked.forEach(
+    //   (value: any) => {
+    //     this.envioMultiple.emit({
+    //       id_mensaje: undefined,
+    //       primer_nom: '',
+    //       primer_apellido: '',
+    //       fecha_hora: '',
+    //       contenido_mensaje: formValue.mensajeFichas,
+    //       fk_destino: value,
+    //       numerodoc: '',
+    //       id_tipo: '',
+    //     });
+    //     this.seleccionarEnGrupos(value);
+    //   });
+    //   this.mensajes.reset();
+  }
+  inputSize(e: any) {
+    if (this.mensajes.value.mensajeFichas == '') this.idInput = this.inputSizes[0];
+    else if(this.inputSizes.indexOf(this.idInput) == 0 && e.code == 'Delete') console.log('e verdad');
+    // else if(this.inputSizes.indexOf(this.idInput) == 1) undefined
+    else if(this.inputSizes.indexOf(this.idInput) == 2) undefined
+    else if(e.target.scrollHeight >  e.target.offsetHeight) this.idInput = this.inputSizes[this.inputSizes.indexOf(this.idInput) + 1];
+  }
+  check(selected: any) {
+    if(this.checked.indexOf(selected.value) == -1 && selected.checked) this.checked.push(selected.value);
+    else this.checked.splice(this.checked.indexOf(selected.value), 1);
+  }
+  open(){
+    (this.Modal?.nativeElement as HTMLElement).style.display = 'block';
+    document.body.classList.add('modal-open');
+>>>>>>> Stashed changes
   }
   inputSize(e: any) {
     if (this.mensajes.value.mensajeFichas == '') this.idInput = this.inputSizes[0];

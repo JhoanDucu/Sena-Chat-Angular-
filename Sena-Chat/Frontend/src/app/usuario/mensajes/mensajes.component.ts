@@ -47,6 +47,11 @@ export class MensajesComponent {
         this.mensajes.push(element);
       }) : false) : undefined;
   }
+
+  ngOnDestroy(): void {
+    console.log('do something');
+  }
+
   obtenerHora(date: Date) {
     return `${date.toLocaleTimeString('en-US', { hour: "2-digit", minute: "2-digit" })}`;
   }

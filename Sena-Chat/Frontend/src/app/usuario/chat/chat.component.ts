@@ -54,23 +54,25 @@ export class ChatComponent {
     return this.grupoSeleccionado = this.Sesion.get('grupos');
   }
 
-  enviar(mensaje: any) {
+  enviar(mensaje: any, grupo: any) {
     if (mensaje.contenido_mensaje != '') {
       delete mensaje.archivo;
       delete mensaje.primer_nom;
       delete mensaje.primer_apellido;
       delete mensaje.numerodoc;
       mensaje.fecha_hora = ChatDirective.fechaActual();
+<<<<<<< Updated upstream
       this.Chat.destino(this.grupoSeleccionado, this.usuario).subscribe((id: any) => {
+=======
+      this.Chat.destino(grupo, this.usuario).subscribe((id: any) => {
+>>>>>>> Stashed changes
         mensaje.fk_destino = id[0].id_usuarios_grupos;
         mensaje.id_tipo = '1';
         this.Chat.agregarMensaje(mensaje).subscribe((data: any) => {
           data == 'Enviado' ? this.changes = ChatDirective.seleccionar(this.changes) : undefined;
         });
       });
-    } else {
-      this.Sesion.set('error', 'Ingrese un mensaje 😒');
-    }
+    } // else this.Sesion.set('error', 'Ingrese un mensaje 😒');
   }
 
   enviarVarios(datos: any){

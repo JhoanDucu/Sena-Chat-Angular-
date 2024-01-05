@@ -65,6 +65,15 @@
   align-items: center;
 }
 
+#escoger {
+  display: flex;
+  flex-direction: row;
+}
+
+.labelFichas {
+  padding-left: 10vh;
+}
+
 /* BARRA BUSQUEDA */
 
 #buscarGrupos {
@@ -98,8 +107,9 @@
 
 .variasFichas {
   border: 1px solid;
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
+  margin: 0;
 }
 
 .mensajesFichas {
@@ -108,6 +118,15 @@
   outline: none;
 }
 
+<<<<<<< Updated upstream
+.mensajesFichas {
+  width: 87.9%;
+  resize: none;
+  outline: none;
+}
+
+=======
+>>>>>>> Stashed changes
 #mensajeFichas {
   height: 6vh;
 }

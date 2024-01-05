@@ -1,65 +1,45 @@
-<!DOCTYPE html>
-<html lang="en">
+<div id="vis-perfil">
+    <nav class="navbar bg-body-tertiary" id="cabecera">
+        <div class="container">
+            <img src="https://github.com/JhoanDucu/Sena-Chat-Angular-/blob/main/Sena-Chat/Frontend/src/assets/img/sena%20chat.png?raw=true"
+                alt="Bootstrap" width="10%" height="10%">
+        </div>
+    </nav>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Visualizar Perfil</title>
-    <link rel="stylesheet" href="vis-perfil.component.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-</head>
+    <div id="perfil-box">
+        <div id="user">
+            <img
+                src="https://github.com/JhoanDucu/Sena-Chat-Angular-/blob/main/Sena-Chat/Frontend/src/assets/img/User.png?raw=true">
+        </div>
 
-<body>
-    <div id="vis-perfil">
-        <nav class="navbar bg-body-tertiary" id="cabecera">
-            <div class="container">
-                <img src="https://github.com/JhoanDucu/Sena-Chat-Angular-/blob/main/Sena-Chat/Frontend/src/assets/img/sena%20chat.png?raw=true"
-                    alt="Bootstrap" width="10%" height="10%">
-            </div>
-        </nav>
-
-        <div id="perfil-box">
-            <div id="user">
-                <img
-                    src="https://github.com/JhoanDucu/Sena-Chat-Angular-/blob/main/Sena-Chat/Frontend/src/assets/img/User.png?raw=true">
-            </div>
-
-            <div id="text">
-                <form>
-                    <label for="exampleInputEmail1" class="form-label"><strong>Primer nombre:</strong></label>
-                    <label for="exampleInputEmail1" class="form-label">{{item.primer_nom}}</label>
-                    <br>
-                    <label for="exampleInputEmail1" class="form-label"><strong>Segundo nombre: </strong></label>
-                    <label for="exampleInputEmail1" class="form-label">{{item.segundo_nom}}</label>
-                    <span></span>
-                    <br>
-                    <label for="exampleInputEmail1" class="form-label"><strong>Primer apellido: </strong></label>
-                    <label for="exampleInputEmail1" class="form-label">{{item.primer_apellido}}</label>
-                    <span></span>
-                    <br>
-                    <label for="exampleInputEmail1" class="form-label"><strong>Segundo apellido: </strong></label>
-                    <label for="exampleInputEmail1" class="form-label">{{item.segundo_apellido}}</label>
-                    <span></span>
-                    <br>
-                    <label for="exampleInputEmail1" class="form-label"><strong>ombre de usuario: </strong></label>
-                    <label for="exampleInputEmail1" class="form-label"> {{item.nombre_usuario}}</label>
-                    <span></span>
-                    <br>
-                    <label for="exampleInputPassword1" class="form-label"><strong>Correo electronico: </strong></label>
-                    <label for="exampleInputEmail1" class="form-label">{{item.correo}}</label>
-                    <span></span>
-                    <br>
-                    <button type="button" class="btn btn-success" [routerLink]="['/chat']">VOLVER AL CHAT</button>
-                    <button type="button" class="btn btn-success" [routerLink]="['/confi']">CONFIGURAR</button>
-                </form>
-            </div>
+        <div id="text">
+            <form>
+                <label for="exampleInputEmail1" class="form-label"><strong>Primer nombre:</strong></label>
+                <label for="exampleInputEmail1" class="form-label">{{item.primer_nom}}</label>
+                <br>
+                <label for="exampleInputEmail1" class="form-label"><strong>Segundo nombre: </strong></label>
+                <label for="exampleInputEmail1" class="form-label">{{item.segundo_nom}}</label>
+                <span></span>
+                <br>
+                <label for="exampleInputEmail1" class="form-label"><strong>Primer apellido: </strong></label>
+                <label for="exampleInputEmail1" class="form-label">{{item.primer_apellido}}</label>
+                <span></span>
+                <br>
+                <label for="exampleInputEmail1" class="form-label"><strong>Segundo apellido: </strong></label>
+                <label for="exampleInputEmail1" class="form-label">{{item.segundo_apellido}}</label>
+                <span></span>
+                <br>
+                <label for="exampleInputEmail1" class="form-label"><strong>ombre de usuario: </strong></label>
+                <label for="exampleInputEmail1" class="form-label"> {{item.nombre_usuario}}</label>
+                <span></span>
+                <br>
+                <label for="exampleInputPassword1" class="form-label"><strong>Correo electronico: </strong></label>
+                <label for="exampleInputEmail1" class="form-label">{{item.correo}}</label>
+                <span></span>
+                <br>
+                <button type="button" class="btn btn-success" [routerLink]="['/chat']">VOLVER AL CHAT</button>
+                <button type="button" class="btn btn-success" [routerLink]="['/confi']">CONFIGURAR</button>
+            </form>
         </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
-        crossorigin="anonymous"></script>
-</body>
-
-</html>
+</div>

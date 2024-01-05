@@ -1,7 +1,12 @@
 npm init
+<<<<<<< Updated upstream
 npm install express mysql2 body-parser nodemailer --save
 npm i nodemon --save-dev
 npm i --save cors md5
+=======
+npm install express mysql2 body-parser nodemailer cors md5 --save
+npm i nodemon socket.io --save-dev
+>>>>>>> Stashed changes
 "scripts" : "dev": "nodemon server.js"
 npm run dev
 
