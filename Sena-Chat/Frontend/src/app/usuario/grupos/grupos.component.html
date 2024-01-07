@@ -12,11 +12,13 @@
                 <i class="bx bxs-user"></i>
             </button>
         </li>
-        <li class="nav-item" role="presentation">
-            <button class="nav-link" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                <i class='bx bxs-message-square-dots'></i>
-            </button>
-        </li>
+        @if (Sesion.get('rol') == '1') {
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" type="button" (click)="abrir()">
+                    <i class='bx bxs-message-square-dots'></i>
+                </button>
+            </li>
+        }
         <li class="nav-item" role="presentation">
             <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#settings" type="button"
                 role="tab" aria-controls="contact" aria-selected="false">
@@ -71,13 +73,8 @@
                         aria-controls="list-profile">{{ g.nom_grupos }}</a>
                     } @else {
                     <a class="list-group-item list-group-item-action" id="list-profile-list" data-bs-toggle="list"
-<<<<<<< Updated upstream
-                        (click)="seleccionarEnGrupos(g.id_grupos)" role="tab"
-                        aria-controls="list-profile">{{ g.nom_grupos }}</a>
-=======
                         (click)="seleccionarEnGrupos(g.id_grupos)" role="tab" aria-controls="list-profile">{{
                         g.nom_grupos }}</a>
->>>>>>> Stashed changes
                     }
                     }
                 </div>
@@ -105,40 +102,15 @@
             3
         </div>
         }
-        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" 
-            aria-labelledby="staticBackdropLabel" aria-hidden="true" #staticBackdrop>
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                 <div class="modal-content">
                     <div class="modal-header">
-<<<<<<< Updated upstream
-                        <h5 class="modal-title" id="staticBackdropLabel">Mensajes a varias fichas 😊</h5> 
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="cerrar()"></button>
-                    </div>
-                    <form (ngSubmit)="emitirEnvios(mensajes.value)" [formGroup]="mensajes">
-                    <div class="modal-body">
-                        @for (g of grupos; track g.id_grupos) {
-                            <div class="fichas">
-                                <label for="{{g.id_grupos}}">{{ g.id_ficha }}</label>
-                                <input class="form-check-input variasFichas" id="{{g.id_grupos}}" type="checkbox" value="{{g.id_grupos}}"
-                                formControlName="variasFichas" (click)="check($event.target)">
-                            </div>                              
-                        }
-                    </div>
-                    <div class="modal-footer">
-                        <textarea type="text" placeholder="Escribe el mensaje..." [id]="idInput" formControlName="mensajeFichas" (keyup)="inputSize($event)" class="mensajesFichas"></textarea>
-                        <label for="mensajeFichas">
-                        <button type="submit" class="btn btn-primary">
-                            <i class="bx bxs-send" id="iconoEnviar"></i>
-                        </button>
-                        </label>
-                    </div>
-                </form>
-=======
                         <h5 class="modal-title" id="staticBackdropLabel">
                             Mensajes a varias fichas 😊
                         </h5>
-                        <button type="button" class="btn-close" aria-label="Close"
-                            (click)="cerrar()"></button>
+                        <button type="button" class="btn-close" (click)="cerrar()"></button>
                     </div>
                     <form (ngSubmit)="emitirEnvios(mensajes.value)" [formGroup]="mensajes">
                         <div class="modal-body">
@@ -155,18 +127,30 @@
                             </ul>
                             }
                         </div>
-                        <div class="modal-footer">
-                            <textarea type="text" placeholder="Escribe el mensaje..." [id]="idInput"
-                                formControlName="mensajeFichas" (keyup)="inputSize($event)"
-                                class="mensajesFichas"></textarea>
-                            <label for="mensajeFichas">
-                                <button type="submit" class="btn btn-primary">
-                                    <i class="bx bxs-send" id="iconoEnviar"></i>
-                                </button>
-                            </label>
+                        <div class="modal-footer container">
+                            <div class="row row-cols-1">
+                                @if (this.checked) {
+                                    <div class="col mb-3">
+                                        <div class="progress">
+                                            <div class="progress-bar progress-bar-striped progress-bar-animated w-75"
+                                                role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"
+                                                >75%</div>
+                                        </div>
+                                    </div>
+                                }
+                                <div class="col input-group">
+                                    <textarea type="text" placeholder="Escribe el mensaje..." [id]="idInput"
+                                        formControlName="mensajeFichas" (keyup)="inputSize($event)"
+                                        class="mensajesFichas"></textarea>
+                                    <label for="mensajeFichas">
+                                        <button type="submit" class="btn btn-primary">
+                                            <i class="bx bxs-send" id="iconoEnviar"></i>
+                                        </button>
+                                    </label>
+                                </div>
+                            </div>
                         </div>
                     </form>
->>>>>>> Stashed changes
                 </div>
             </div>
         </div>

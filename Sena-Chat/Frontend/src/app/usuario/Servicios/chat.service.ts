@@ -17,10 +17,10 @@ export class ChatService {
     return this.http.get(`${this.url}/usuario/${documento}`);
   }
   destino(grupo: any, usuario: any) {
-    return this.http.get(`${this.url}/destino/${grupo}/${usuario}`);
+    return this.http.get(`${this.url}/chat/destino/${grupo}/${usuario}`);
   }
   agregarMensaje(datos: any) {
-    return this.http.post(`${this.url}/mensaje`, datos);
+    return this.http.post(`${this.url}/chat/mensaje`, datos);
   }
   traerPrivados(ficha: any, usuario: any) {
     return this.http.get(`${this.url}/chat/privados/${ficha}/${usuario}`);

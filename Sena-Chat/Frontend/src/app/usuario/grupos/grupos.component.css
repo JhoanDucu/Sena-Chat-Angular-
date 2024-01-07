@@ -113,20 +113,12 @@
 }
 
 .mensajesFichas {
-  width: 87.9%;
+  width: 88%;
   resize: none;
   outline: none;
+  margin-right: 0.9rem;
 }
 
-<<<<<<< Updated upstream
-.mensajesFichas {
-  width: 87.9%;
-  resize: none;
-  outline: none;
-}
-
-=======
->>>>>>> Stashed changes
 #mensajeFichas {
   height: 6vh;
 }
@@ -141,4 +133,11 @@
 
 .mensajesFichas::-webkit-scrollbar {
   width: 0px;
+}
+
+.modal-footer {
+  display: block;
+  .col {
+    padding: 0;
+  }
 }

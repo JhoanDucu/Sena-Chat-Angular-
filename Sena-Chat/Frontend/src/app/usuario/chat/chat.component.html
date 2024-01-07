@@ -9,28 +9,35 @@
 </head>
 
 <body>
+    @if (loading) {
+        <h1>Cargando...</h1>
+    } @else {
     <div class="container-fluid" id="allPage">
         <div class="row" id="rowPage">
             <div class="column ContenedorGrupoos">
-                <app-grupos (makeChange)="applyChanges($event)" [changesValue]="changes"
-                    [selected]="{ grupo: actualizarParametro(), p: Sesion.get('pestaña')}"
-<<<<<<< Updated upstream
-                    (envioMultiple)="enviar($event)"></app-grupos>
-=======
-                    (envioMultiple)="enviar($event, $event.fk_destino)"></app-grupos>
->>>>>>> Stashed changes
+                <app-grupos
+                    [grupos]="datos.gruposComponent.grupos"
+                    [privados]="datos.gruposComponent.privados"
+                    (makeChange)="applyChanges($event)" 
+                    [changesValue]="changes"
+                    [selected]="{ grupo: this.Sesion.get('grupos'), p: Sesion.get('pestaña')}"
+                    (envioMultiple)="enviar($event, $event.fk_destino)"
+                />
             </div>
             <div class="column contenedorChat">
                 @if(grupoSeleccionado){
                 <nav class="container navbar bg-body-tertiary" id="cabeceraChat">
                     <img src="../../assets/img/Grupo.png" alt="IMAGEN DEL GRUPO" id="logo-grupo" />
                     <h4>{{ fichaSeleccionada }}</h4>
-                    <app-info-grupos [grupoSeleccionado]="actualizarParametro()"></app-info-grupos>
+                    <app-info-grupos [grupoSeleccionado]="this.Sesion.get('grupos')"></app-info-grupos>
                 </nav>
 
                 <div class="Chat container-fluid">
                     <div class="card mensajes-container">
-                        <app-mensajes *appChat="changes"></app-mensajes>
+                        <app-mensajes
+                        *appChat="changes"
+                         [mensajes]="mensajesGrupo"
+                        ></app-mensajes>
                     </div>
                     <app-mensajes-enviar (emitir)="enviar($event, grupoSeleccionado)"></app-mensajes-enviar>
                 </div>
@@ -38,7 +45,7 @@
             </div>
         </div>
     </div>
-    
+    }
 </body>
 
 </html>

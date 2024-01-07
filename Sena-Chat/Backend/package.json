@@ -16,7 +16,9 @@
     "md5": "^2.3.0",
     "mysql": "^2.18.1",
     "mysql2": "^3.6.3",
-    "nodemailer": "^6.9.7"
+    "nodemailer": "^6.9.7",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.0"
   },
   "devDependencies": {
     "nodemon": "^3.0.2",

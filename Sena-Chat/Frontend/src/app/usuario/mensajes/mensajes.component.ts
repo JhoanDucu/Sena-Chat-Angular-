@@ -1,9 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ChatService } from '../Servicios/chat.service';
-import { Grupo } from '../Modelos/grupos';
-import { Mensaje } from '../Modelos/mensaje';
+import { MensajeMostrar } from '../Modelos/mensaje';
 import { SesionService } from '../Sesiones/sesion.service';
 
 @Component({
@@ -20,8 +19,7 @@ export class MensajesComponent {
     private rutaActiva: ActivatedRoute,
     protected Sesion: SesionService
   ) { }
-  grupos: Grupo[] = [];
-  mensajes: Mensaje[] = [];
+  @Input() mensajes: MensajeMostrar[] = [];
   grupoSeleccionado = this.Sesion.get('grupos');
   fichaSeleccionada = this.Sesion.get('ficha');
   usuario = this.Sesion.get('documento');
@@ -40,12 +38,8 @@ export class MensajesComponent {
     11: 'Diciembre',
   };
 
-  ngOnInit(): void {
-    this.grupoSeleccionado ? this.Chat.traerMensajes(this.grupoSeleccionado).subscribe(
-      (data: any) => data ? data.forEach((element: Mensaje) => {
-        element.fecha_hora = new Date(element.fecha_hora);
-        this.mensajes.push(element);
-      }) : false) : undefined;
+  ngAfterViewInit(): void {
+    document.getElementById("final")?.scrollIntoView(true);
   }
 
   ngOnDestroy(): void {

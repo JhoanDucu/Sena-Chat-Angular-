@@ -1,4 +1,5 @@
 import { Directive, Input, OnChanges, TemplateRef, ViewContainerRef, SimpleChanges } from '@angular/core';
+import { SesionService } from '../Sesiones/sesion.service';
 
 @Directive({
   selector: '[appChat]',
@@ -9,6 +10,7 @@ export class ChatDirective implements OnChanges {
   constructor(
     private TemplateRef: TemplateRef<any>,
     private ViewContainerRef: ViewContainerRef,
+    private Sesion: SesionService
   ) {
     this.ViewContainerRef.createEmbeddedView(TemplateRef);
   }
@@ -17,9 +19,6 @@ export class ChatDirective implements OnChanges {
       this.ViewContainerRef.clear();
       this.ViewContainerRef.createEmbeddedView(this.TemplateRef);
     }
-    setTimeout(() => {
-      document.getElementById("final")?.scrollIntoView(true);
-    }, 90);
   }
   
   static seleccionar = (value: string) => { return value = value == '0' ? '1' : '0' }

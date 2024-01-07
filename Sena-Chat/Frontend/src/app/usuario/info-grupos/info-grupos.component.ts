@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { SesionService } from '../Sesiones/sesion.service';
 import { Usuario } from '../Modelos/usuarios';
 import { ChatService } from '../Servicios/chat.service';
+import { Dropdown, Offcanvas } from 'bootstrap';
 
 @Component({
   selector: 'app-info-grupos',
@@ -16,15 +17,38 @@ export class InfoGruposComponent {
     protected Sesion: SesionService,
     private Chat: ChatService
   ) { }
+  offcanvas: Offcanvas | undefined = undefined;
+  dropdown: Dropdown | undefined = undefined;
+  id: string  = '';
   miembros: Usuario[] = [];
   usuario = this.Sesion.get('documento');
   @Input() grupoSeleccionado: string | null = '';
   mostrarDropdown: string | undefined = undefined;
 
-  consultarMiembros() {
-    this.Chat.traerMiembros(this.grupoSeleccionado).subscribe((data: any) => { this.miembros = data });
+  ngOnInit(){
+    this.offcanvas = new Offcanvas(document.getElementById('offcanvasNavbar') as HTMLElement);
   }
 
-  hover = (element: any) => this.mostrarDropdown = element;
-  notHover = () => this.mostrarDropdown = undefined;
+  consultarMiembros() {
+    this.Chat.traerMiembros(this.grupoSeleccionado).subscribe((data: any) => { this.miembros = data });
+    this.offcanvas?.show();
+  }
+
+  hover = (element: any) => {
+    this.mostrarDropdown = element;
+    this.id = 'dropdown';
+  }
+  notHover = () => {
+    this.mostrarDropdown = undefined;
+    this.id = '';
+  }
+
+  abrir(){
+    this.dropdown = new Dropdown(document.getElementById('dropdown') as HTMLElement);
+    this.dropdown.show();
+  }
+
+  cerrarOff(){
+    this.offcanvas?.hide();
+  } 
 }
