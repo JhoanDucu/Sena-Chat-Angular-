@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>configuracion de perfil</title>
+</head>
+
+<body>
+    <div id="info-perfil">
+        <nav class="navbar bg-body-tertiary" id="cabecera">
+            <div class="container">
+                <img src="https://github.com/JhoanDucu/Sena-Chat-Angular-/blob/main/Sena-Chat/Frontend/src/assets/img/sena%20chat.png?raw=true"
+                    alt="Bootstrap" width="10%" height="10%">
+            </div>
+        </nav>
+
+        <div id="confi-box">
+            <div id="user">
+                <img
+                    src="https://github.com/JhoanDucu/Sena-Chat-Angular-/blob/main/Sena-Chat/Frontend/src/assets/img/User.png?raw=true">
+            </div>
+
+            <div id="text" class="overflow-auto">
+                <form [formGroup]="confiForm" (ngSubmit)="actualizar()">
+                    <div class="form-group">
+                        <label for="primer_nom">Primer nombre:</label>
+                        <input type="text" class="Datos" id="primer_nom" formControlName="primer_nom">
+                    </div>
+                    <div class="form-group">
+                        <label for="segundo_nom">Segundo nombre:</label>
+                        <input type="text" class="Datos" id="segundo_nom" formControlName="segundo_nom">
+                    </div>
+                    <div class="form-group">
+                        <label for="primer_apellido">Primer apellido:</label>
+                        <input type="text" class="Datos" id="primer_apellido" formControlName="primer_apellido">
+                    </div>
+                    <div class="form-group">
+                        <label for="segundo_apellido">Segundo apellido:</label>
+                        <input type="text" class="Datos" id="segundo_apellido" formControlName="segundo_apellido">
+                    </div>
+                    <div class="form-group">
+                        <label for="nombre_usuario">Nombre de usuario:</label>
+                        <input type="text" class="Datos" id="nombre_usuario" formControlName="nombre_usuario">
+                    </div>
+                    <div class="form-group">
+                        <label for="contrasena">Contraseña: </label>
+                        <input type="password" class="Datos" id="contrasena" formControlName="contrasena">
+                    </div>
+                    <div class="form-group">
+                        <label for="correo">Correo electrónico: </label>
+                        <input type="text" class="Datos" id="correo" formControlName="correo">
+                    </div>
+                    <div class="botones">
+                        <input id="guardar" name="submit" type="submit" [routerLink]="['/confi']" value="Guardar">
+                        <input id="volver" name="submit" type="submit" [routerLink]="['/vis-perfil']" value="Volver">
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

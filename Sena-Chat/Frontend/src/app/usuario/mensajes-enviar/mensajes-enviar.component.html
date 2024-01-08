@@ -1,0 +1,67 @@
+@if (archivos.length) {
+<div class="offcanvas offcanvas-end show" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1"
+  id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasScrollingLabel">
+      Colored with scrolling
+    </h5>
+    <button type="button" class="btn-close text-reset" (click)="cerrar()"></button>
+  </div>
+  <div class="offcanvas-body">
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        @for (a of archivos; track a) { @if (archivos.indexOf(a) == 0) {
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+          aria-current="true" aria-label="Slide 1"></button>
+        } @else {
+        <button type="button" data-bs-target="#carouselExampleIndicators"
+          attr.data-bs-slide-to="{{ archivos.indexOf(a) }}" attr.aria-label="Slide {{archivos.indexOf(a)+1}}"></button>
+        } }
+      </div>
+      <div class="carousel-inner">
+        @for (a of archivos; track a) { @if (archivos.indexOf(a) == 0) {
+        <div class="carousel-item active">
+          <img [src]="a" class="d-block w-100" alt="..." />
+        </div>
+        } @else {
+        <div class="carousel-item">
+          <img [src]="a" class="d-block w-100" alt="..." />
+        </div>
+        } }
+      </div>
+      @if (archivos.length > 1) {
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+        data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+        data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+      }
+    </div>
+    <div class="position-absolute bottom-0 end-0">
+      <button class="btn btn-success" type="submit" id="enviar">
+        <i class="bx bxs-send" id="iconoEnviar"></i>
+      </button>
+    </div>
+  </div>
+</div>
+}
+
+<form (ngSubmit)="emitirEnvio(form.value)" [formGroup]="form">
+  <div class="input-group" style="background-color: #9d9d9d">
+    <input type="text" class="form-control custom-text-input" placeholder="Escribe tu mensaje..." id="contenido_mensaje"
+      formControlName="contenido_mensaje" autocomplete="off" (keyup)="longitud()" />
+    <label for="file" id="labelArchivo">
+      <i class="bx bx-paperclip" id="iconoArchivo"></i>
+      <input type="file" id="file" class="upload-file" hidden (change)="obtenerArchivo($event.target)" multiple
+        formControlName="archivo" />
+    </label>
+    <button class="btn btn-success" type="submit" id="enviar" [disabled]="noEnviar">
+      <i class="bx bxs-send" id="iconoEnviar"></i>
+    </button>
+  </div>
+</form>

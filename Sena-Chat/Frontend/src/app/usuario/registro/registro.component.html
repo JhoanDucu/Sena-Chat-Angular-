@@ -1,0 +1,69 @@
+<div class="login-box">
+  <div id="center1">
+    <img
+      src="https://github.com/JhoanDucu/Sena-Chat-Angular-/blob/main/Sena-Chat/Frontend/src/assets/img/Logo-sesion.png?raw=true">
+  </div>
+  <font color="#117311">
+    <h1>Registro</h1>
+  </font>
+  <form [formGroup]="formRegistro" (ngSubmit)="registrar()">
+    <div class="user-box" id="c1">
+      <input type="email" required name="correo" id="csorreo" formControlName="correo">
+      <label for="correo">Correo electronico</label>
+    </div>
+    <div class="user-box" id="c2">
+      <input type="text" maxlength="20" id="primer_nom" name="primer_nom" required formControlName="primer_nom">
+      <label for="primer_nom">Primer nombre</label>
+    </div>
+    <div class="user-box" id="c3">
+      <input type="text" name="sN" id="sN" maxlength="20" readonly id="sN" (focus)="validsN()" (blur)="invalidsN()"
+        [formControl]="sN">
+      <label for="sN">Segundo nombre</label>
+    </div>
+    <div class="user-box" id="c4">
+      <input type="text" maxlength="20" required formControlName="primer_apellido" id="primer_apellido"
+        name="primer_apellido">
+      <label for="primer_apellido">Primer apellido</label>
+    </div>
+    <div class="user-box" id="c5">
+      <input type="text" maxlength="20" readonly formControlName="segundo_apellido" id="sA" name="sA"
+        (focus)="validsA()" (blur)="invalidsA()" [formControl]="sA">
+      <label for="sA">Segundo apellido</label>
+    </div>
+    <div class="user-box" id="c6">
+      <input type="text" maxlength="30" required formControlName="nombre_usuario" id="nombre_usuario">
+      <label for="nombre_usuario">Nombre de usuario</label>
+    </div>
+    <div class="user-box" id="c7">
+      <label id="tipo" for="select">Tipo de Documento</label>
+      <br>
+      <select required name="fk_id_tipodoc" [formControl]="Tdoc" (focus)="Label()" id="select" (blur)="noLabel()">
+        <option value="0" selected></option>
+        <option value="1">Cedula de ciudadania</option>
+        <option value="2">Tarjeta de identidad</option>
+        <option value="3">Cédula de Extranjería</option>
+        <option value="4">PEP</option>
+        <option value="5">Permiso por Protección Temporal</option>
+      </select>
+    </div>
+    <div class="user-box" id="c8">
+      <input type="text" required formControlName="numerodoc" id="numerodoc">
+      <label for="numerodoc">Numero de documento</label>
+    </div>
+    <div class="user-box" id="c9">
+      <input type="password" required formControlName="contrasena" id="contrasena">
+      <label for="contrasena">Contraseña</label>
+    </div>
+    <div class="user-box" id="c10">
+      <input type="password" required formControlName="confirmar" id="confirmar">
+      <label for="confirmar">Confirmar contraseña</label>
+    </div>
+    <div id="c11">
+      <div>
+        <input type="submit" required class="ingreso" value="Registrarse" name="registrar">
+        <p id="pregunta">¿ya tienes una cuenta?<a class="button crear-cuenta" [routerLink]="['/login']"> Inicia
+            sesion</a></p>
+      </div>
+    </div>
+  </form>
+</div>

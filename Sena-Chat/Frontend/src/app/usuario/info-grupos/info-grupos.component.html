@@ -1,0 +1,87 @@
+<button class="navbar-toggler" type="button" (click)="consultarMiembros()">
+    <span class="navbar-toggler-icon"></span>
+</button>
+
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">
+            Informacion del grupo
+        </h5>
+        <button type="button" class="btn-close" aria-label="Close" (click)="cerrarOff()"></button>
+    </div>
+    <div class="offcanvas-body">
+        <!-- <div class="">
+            <div class="d-flex justify-content-center">
+                <img src="../../assets/img/User-elim.png" class="img-thumbnail" alt="Eliminar" />
+            </div>
+        </div> -->
+        <div class="d-flex">
+            <div class="flex-shrink-0">
+                <img src="../../assets/img/Grupo.png" class="imagenGrupo" alt="Agregar" />
+            </div>
+            <div class="d-flex flex-column bd-highlight">
+                <div class="p-2 bd-highlight h-25">Nombre de grupo</div>
+                <div class="p-2 bd-highlight h-75 w-75">
+                    This is some content from a media component. You can replace this with any content and adjust it as
+                    needed.
+                </div>
+            </div>
+            <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
+                aria-controls="offcanvasRight" id="lista-privados">
+                <img src="../../assets/img/User-agregar.png" alt="Agregar" class="img-thumbnail" />
+                <h6 style="margin-left: 10px">Agregar</h6>
+            </button>
+        </div>
+        <div class="list-group" (mouseleave)="notHover()">
+            @for (m of miembros; track m.numerodoc) {
+            <button class="list-group-item list-group-item-action" aria-current="true"
+                (mouseenter)="hover(m.numerodoc)">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">{{ m.primer_nom }} {{ m.segundo_nom }} {{ m.primer_apellido }} {{
+                        m.segundo_apellido }}</h5>
+                    @if (mostrarDropdown == m.numerodoc) {
+                    <small class="position-absolute top-50 end-0 translate-middle-y">
+                        <div class="btn-group dropup">
+                            <button type="button" class="btn dropdown" data-bs-toggle="dropdown" aria-expanded="false"
+                                [id]="id" (click)="abrir()">
+                                <i class='bx bx-dots-vertical-rounded'></i>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end" [attr.aria-labelledby]="id">
+                                <li><button class="dropdown-item" type="button">Action</button></li>
+                                <li><button class="dropdown-item" type="button">Enviar Mensaje</button></li>
+                                <li><button class="dropdown-item" type="button">Eliminar del grupo</button></li>
+                            </ul>
+                        </div>
+                    </small>
+                    }
+                </div>
+                <p class="mb-1">Some placeholder content in a paragraph.</p>
+                <small>And some small print.</small>
+            </button>
+            }
+        </div>
+    </div>
+</div>
+
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasRightLabel">Agregar</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body" id="agregar">
+        <img src="../../assets/img/User-agregar.png" style="width: 30%; height: 25%" alt="Agregar" />
+        <br />
+        <form>
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Email</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                <div id="emailHelp" class="form-text">
+                    Ingrese el Email de la persona
+                </div>
+            </div>
+            <button type="submit" id="botonEnviar" class="btn btn-primary">
+                Enviar
+            </button>
+        </form>
+    </div>
+</div>
