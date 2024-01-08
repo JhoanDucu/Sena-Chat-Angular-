@@ -43,7 +43,7 @@ export class MensajesComponent {
   }
 
   ngOnDestroy(): void {
-    console.log('do something');
+    // console.log('do something');
   }
 
   obtenerHora(date: Date) {

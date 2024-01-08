@@ -8,6 +8,7 @@ import { Buscar } from '../Modelos/buscar';
 import { ChatDirective } from '../Directivas/chat.directive';
 import { MensajeEnviar } from '../Modelos/mensaje';
 import { Modal } from 'bootstrap';
+import { SocketService } from '../Servicios/socket.service';
 
 @Component({
   selector: 'app-grupos',
@@ -19,7 +20,8 @@ import { Modal } from 'bootstrap';
 export class GruposComponent {
   constructor(
     private Chat: ChatService,
-    protected Sesion: SesionService
+    protected Sesion: SesionService,
+    private socket: SocketService
   ) { }
   myModal: Modal | undefined  = undefined;
   @ViewChild(FormGroupDirective) formDirective !: FormGroupDirective;
@@ -56,8 +58,10 @@ export class GruposComponent {
   }
 
   seleccionarEnGrupos = (id: any) => {
+    if (this.Sesion.get('grupos')) this.socket.io.emit('salirSala', this.Sesion.get('grupos'));
     this.Sesion.remove('grupos');
     this.makeChange.emit([ChatDirective.seleccionar(this.changesValue), id]);
+    this.socket.io.emit('unirSala', id);
   };
 
   mostrarGrupos = () => this.pestañas.gruposVisible;

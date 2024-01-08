@@ -10,8 +10,23 @@ const exportarSocket = (http) => {
   });
 
   io.on("connection", (socket) => {
-    console.log('Nuevo usuario conectado');
-    socket.on("", () => socketFunctions.handleUserDisconnect(socket));
+    console.log("Nuevo usuario conectado");
+    socket.on("test", () => socketFunctions.handleUserDisconnect(socket));
+    socket.on('unirSala', (room) => socketFunctions.joinRoom(socket, room));
+    socket.on('salirSala', (room) => socketFunctions.leaveRoom(socket, room));
+    socket.on("enviarMensaje", (datos) => socketFunctions.emitMessage(socket, datos));
+  });
+
+  io.of("/").adapter.on("create-room", (room) => {
+    // console.log(`room ${room} was created`);
+  });
+  
+  io.of("/").adapter.on("join-room", (room, id) => {
+    // console.log(`socket ${id} has joined room ${room}`);
+  });
+
+  io.of("/").adapter.on("leave-room", (room, id) => {
+    // console.log(`Socket ${id} has left room ${room}`);
   });
 
   return io;

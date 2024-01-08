@@ -73,7 +73,7 @@
                         aria-controls="list-profile">{{ g.nom_grupos }}</a>
                     } @else {
                     <a class="list-group-item list-group-item-action" id="list-profile-list" data-bs-toggle="list"
-                        (click)="seleccionarEnGrupos(g.id_grupos)" role="tab" aria-controls="list-profile">{{
+                        (click)="seleccionarEnGrupos(g.id_grupos.toString())" role="tab" aria-controls="list-profile">{{
                         g.nom_grupos }}</a>
                     }
                     }
@@ -91,7 +91,7 @@
                         aria-controls="list-profile">{{ p.nom_grupos }}</a>
                     } @else {
                     <a class="list-group-item list-group-item-action" id="list-profile-list" data-bs-toggle="list"
-                        (click)="seleccionarEnGrupos(p.id_grupos)" role="tab" aria-controls="list-profile">{{
+                        (click)="seleccionarEnGrupos(p.id_grupos.toString())" role="tab" aria-controls="list-profile">{{
                         p.nom_grupos }}</a>
                     }
                     }

@@ -73,7 +73,8 @@ export class ChatComponent {
   }
 
   ngAfterViewInit() {
-    console.log(this.datos);
+    // console.log(this.datos);
+    this.socket.recibirPrivado();
   }
 
   enviar(mensaje: MensajeEnviar | any, grupo: any) {
@@ -83,9 +84,10 @@ export class ChatComponent {
       this.Chat.destino(grupo, this.usuario).subscribe((id: any) => {
         mensaje.fk_destino = id[0].id_usuarios_grupos;
         mensaje.id_tipo = '1';
-        this.Chat.agregarMensaje(mensaje).subscribe((data: any) => {
-          data == 'Enviado' ? this.changes = ChatDirective.seleccionar(this.changes) : undefined;
-        });
+        this.socket.io.emit('mensaje', {room: grupo, message: mensaje});
+        // this.Chat.agregarMensaje(mensaje).subscribe((data: any) => {
+        //   data == 'Enviado' ? this.changes = ChatDirective.seleccionar(this.changes) : undefined;
+        // });
       });
     }
   }
