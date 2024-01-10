@@ -27,6 +27,7 @@ exports.leaveRoom = (socket, room) => {
 };
 
 exports.emitMessage = (socket, datosEnvio) => {
-  socket.to(datosEnvio.room).emit('Recibe', datosEnvio.message);
+  socket.to(datosEnvio.room).emit('recibeMensaje', datosEnvio);
+  console.log(socket.rooms);
   // Lógica para manejar la desconexión de un usuario
 };

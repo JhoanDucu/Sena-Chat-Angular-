@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { MensajeEnviar } from '../Modelos/mensaje';
+import { ChatDirective } from '../Directivas/chat.directive';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +21,7 @@ export class ChatService {
   destino(grupo: any, usuario: any) {
     return this.http.get(`${this.url}/chat/destino/${grupo}/${usuario}`);
   }
-  agregarMensaje(datos: any) {
+  agregarMensaje(datos: MensajeEnviar) {
     return this.http.post(`${this.url}/chat/mensaje`, datos);
   }
   traerPrivados(ficha: any, usuario: any) {

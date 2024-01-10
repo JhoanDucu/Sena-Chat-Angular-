@@ -9,20 +9,14 @@
 </head>
 
 <body>
-    @if (loading) {
-        <h1>Cargando...</h1>
-    } @else {
     <div class="container-fluid" id="allPage">
         <div class="row" id="rowPage">
             <div class="column ContenedorGrupoos">
-                <app-grupos
-                    [grupos]="datos.gruposComponent.grupos"
-                    [privados]="datos.gruposComponent.privados"
-                    (makeChange)="applyChanges($event)" 
-                    [changesValue]="changes"
+                <app-grupos [grupos]="datos.gruposComponent.grupos" [privados]="datos.gruposComponent.privados"
+                    (makeChange)="applyChanges($event)" [changesValue]="datos.other.changes"
                     [selected]="{ grupo: this.Sesion.get('grupos'), p: Sesion.get('pestaña')}"
-                    (envioMultiple)="enviar($event, $event.fk_destino)"
-                />
+                    (envioMultiple)="enviar($event, $event.fk_destino)">
+                </app-grupos>
             </div>
             <div class="column contenedorChat">
                 @if(grupoSeleccionado){
@@ -34,10 +28,7 @@
 
                 <div class="Chat container-fluid">
                     <div class="card mensajes-container">
-                        <app-mensajes
-                        *appChat="changes"
-                         [mensajes]="mensajesGrupo"
-                        ></app-mensajes>
+                        <app-mensajes *appChat="datos.other.changes" [mensajes]="mensajesGrupo"></app-mensajes>
                     </div>
                     <app-mensajes-enviar (emitir)="enviar($event, grupoSeleccionado)"></app-mensajes-enviar>
                 </div>
@@ -45,7 +36,6 @@
             </div>
         </div>
     </div>
-    }
 </body>
 
 </html>

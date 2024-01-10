@@ -77,7 +77,7 @@ exports.obtenerDestino = (req, res) => {
     if (error) console.error(error.message);
 
     if (result.length > 0) {
-      res.json(result);
+      res.json(result[0].id_usuarios_grupos);
     } else {
       res.json("Falla en consulta");
     }
@@ -89,7 +89,7 @@ exports.insertarMensaje = (req, res) => {
   const query = "INSERT INTO mensaje SET ?";
   conexion.query(query, mensaje, (error, resultado) => {
     if (error) return console.error(error.message);
-    res.json("Enviado");
+    res.json(resultado.insertId);
   });
 };
 

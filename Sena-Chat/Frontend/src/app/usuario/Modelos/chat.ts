@@ -3,7 +3,11 @@ import { Usuario } from "./usuarios";
 
 export class ChatComponentData {
     constructor (
-        public gruposComponent: GrupoComponentData,
+        public gruposComponent: any | GrupoComponentData,
         public datosUsuario: Usuario | undefined,
+        public other: {
+            changes: any,
+            loading: boolean
+        }
     ) {}
 }
