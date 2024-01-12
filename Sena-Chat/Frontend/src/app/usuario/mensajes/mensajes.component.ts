@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ChatService } from '../Servicios/chat.service';
 import { MensajeMostrar } from '../Modelos/mensaje';
 import { SesionService } from '../Sesiones/sesion.service';
+import { ChatDirective } from '../Directivas/chat.directive';
 
 @Component({
   selector: 'app-mensajes',
@@ -46,7 +47,5 @@ export class MensajesComponent {
     // console.log('do something');
   }
 
-  obtenerHora(date: Date) {
-    return `${date.toLocaleTimeString('en-US', { hour: "2-digit", minute: "2-digit" })}`;
-  }
+  obtenerHora = (date: Date) => `${date.toLocaleTimeString('en-US', { hour: "2-digit", minute: "2-digit" })}`;
 }

@@ -41,7 +41,7 @@ export class ChatComponent {
   usuario = this.Sesion.get('documento');
   mensajesGrupo: Array<MensajeMostrar> = [];
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.Sesion.remove('grupos');
     if (this.fichaSeleccionada == undefined || this.usuario == undefined) {
       this.router.navigate(['login']);
@@ -85,8 +85,8 @@ export class ChatComponent {
           value.fecha_hora = new Date(value.fecha_hora);
         }) : undefined;
         element.mensajes = resultado ? resultado : [];
+        this.datos.gruposComponent[location].push(element);
       });
-      this.datos.gruposComponent[location].push(element);
     });
   }
 

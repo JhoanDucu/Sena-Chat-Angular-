@@ -1,7 +1,6 @@
 import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Grupo } from '../Modelos/grupos';
-import { ChatService } from '../Servicios/chat.service';
 import { SesionService } from '../Sesiones/sesion.service';
 import { FormControl, FormGroup, FormGroupDirective, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Buscar } from '../Modelos/buscar';
@@ -9,17 +8,17 @@ import { ChatDirective } from '../Directivas/chat.directive';
 import { MensajeEmitir } from '../Modelos/mensaje';
 import { Modal } from 'bootstrap';
 import { SocketService } from '../Servicios/socket.service';
+import { GrupoComponent } from '../grupo/grupo.component';
 
 @Component({
   selector: 'app-grupos',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, FormsModule, ChatDirective],
+  imports: [CommonModule, ReactiveFormsModule, FormsModule, ChatDirective, GrupoComponent],
   templateUrl: './grupos.component.html',
   styleUrl: './grupos.component.css'
 })
 export class GruposComponent {
   constructor(
-    private Chat: ChatService,
     protected Sesion: SesionService,
     private socket: SocketService
   ) { }

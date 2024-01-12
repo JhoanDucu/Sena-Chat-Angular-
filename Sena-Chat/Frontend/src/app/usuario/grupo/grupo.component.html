@@ -1,0 +1,25 @@
+@if (active) {
+    <a class="list-group-item list-group-item-action active" id="list-profile-list" 
+    data-bs-toggle="list" role="tab" aria-controls="list-profile">
+        <div class="tab">
+            <img src="../../../assets/img/Usuario1.jpg" class="pic-tab">
+            <div class="container-fluid">
+                {{ nomGrupo }} <small> {{ ultimoMensaje.fecha_hora }} </small>
+                <p>{{ reciente }}</p>
+                <!-- <span class="badge bg-secondary">4</span> -->
+            </div>
+        </div>
+    </a>
+} @else {
+    <a class="list-group-item list-group-item-action" id="list-profile-list" 
+    data-bs-toggle="list" role="tab" aria-controls="list-profile">
+        <div class="tab">
+            <img src="../../../assets/img/Usuario1.jpg" class="pic-tab">
+            <div class="container-fluid">
+                {{ nomGrupo }} <small>{{ ultimoMensaje.fecha_hora }}</small>
+                <p>{{ reciente }}</p>
+                <!-- <span class="badge bg-secondary">4</span> -->
+            </div>
+        </div>
+    </a>
+}

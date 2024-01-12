@@ -12,19 +12,14 @@
   padding-top: 3vh;
 }
 
-.grupos .list-group-item,
-.privados .list-group-item {
+.list-group-item {
   font-family: "Josefin Sans", sans-serif;
   font-weight: bold;
   font-size: larger;
   border: none;
   border-bottom: 1px solid #000000;
-  padding: 15px;
+  padding: 14px;
   text-align: center;
-  cursor: pointer;
-}
-
-.list-group-item.list-group-item-action {
   background-color: transparent;
 }
 
@@ -36,11 +31,6 @@
   top: 0;
   z-index: 1;
   font-family: "Josefin Sans", sans-serif;
-}
-
-#list-home-list:hover {
-  background-color: #3d803d !important;
-  color: inherit !important;
 }
 
 .grupos::-webkit-scrollbar {
@@ -78,7 +68,7 @@
 
 #buscarGrupos {
   padding: 0;
-  margin: 4% 2.5% 4% 2.5%;
+  margin: 2.5%;
   border: 1px solid;
   width: 95%;
   height: 45px;
