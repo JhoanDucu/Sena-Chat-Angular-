@@ -12,6 +12,7 @@ import { MensajesEnviarComponent } from '../mensajes-enviar/mensajes-enviar.comp
 import { ChatComponentData } from '../Modelos/chat';
 import { Grupo } from '../Modelos/grupos';
 import { SocketService } from '../Servicios/socket.service';
+import { Fecha } from '../Modelos/fechas';
 
 @Component({
   selector: 'app-chat',
@@ -63,7 +64,7 @@ export class ChatComponent {
     this.añadirMensaje({ ...mensaje }, this.usuario, pn, pa);
     this.Chat.destino(grupo, this.usuario).subscribe((id: any) => {
       mensaje.fk_destino = id;
-      mensaje.fecha_hora = ChatDirective.fechaActual();
+      mensaje.fecha_hora = Fecha.fechaActual();
       this.Chat.agregarMensaje(mensaje).subscribe((insertId: any) => {
         insertId !== undefined && insertId !== null ? mensaje.id_mensaje = insertId : undefined;
         this.socket.emitirMensaje({ room: grupo, message: mensaje, pn: pn, pa: pa });

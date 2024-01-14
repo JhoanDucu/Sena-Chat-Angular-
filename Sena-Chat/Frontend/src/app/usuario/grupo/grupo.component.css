@@ -37,7 +37,7 @@
     margin: 0;
   }
   small {
-    font-size: x-small;
+    font-size: calc(62%);
     float: inline-end;
   }
   p {

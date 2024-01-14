@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Grupo } from '../Modelos/grupos';
 
 @Component({
   selector: 'app-grupo',
@@ -12,11 +11,8 @@ import { Grupo } from '../Modelos/grupos';
 export class GrupoComponent {
   @Input() nomGrupo = '';
   @Input() active = false;
-  @Input() fecha = '';
-  @Input() reciente = '';
-  @Input() ultimoMensaje: any = {};
+  @Input() tiempo: any = '';
+  @Input() reciente: string | undefined = '';
 
-  obtenerHora = (date: Date) => `${date.toLocaleTimeString('en-US', { hour: "2-digit", minute: "2-digit" })}`;
-
-  ngAfterViewInit(){ }
+  ngOnInit(){}
 }

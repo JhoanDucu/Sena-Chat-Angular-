@@ -22,9 +22,4 @@ export class ChatDirective implements OnChanges {
   static seleccionar = (value: string) => { return value = value == '0' ? '1' : '0' }
 
   static estadoBusqueda = (current: Boolean, before: Boolean) => current || before;
-
-  static fechaActual = () => {
-    let time = new Date();
-    return `${time.getFullYear()}-${time.getMonth() + 1}-${time.getDate()} ${time.getHours()}:${time.getMinutes() + 1}:${time.getSeconds()}`;
-  }
 }

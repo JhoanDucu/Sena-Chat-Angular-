@@ -24,20 +24,6 @@ export class MensajesComponent {
   grupoSeleccionado = this.Sesion.get('grupos');
   fichaSeleccionada = this.Sesion.get('ficha');
   usuario = this.Sesion.get('documento');
-  months = {
-    0: 'Enero',
-    1: 'Febrero',
-    2: 'Marzo',
-    3: 'Abril',
-    4: 'Mayo',
-    5: 'Junio',     /* USAR PARA MOSTRAR FECHAS */
-    6: 'Julio',
-    7: 'Agosto',
-    8: 'Septiembre',
-    9: 'Octubre',
-    10: 'Noviembre',
-    11: 'Diciembre',
-  };
 
   ngAfterViewInit(): void {
     document.getElementById("final")?.scrollIntoView(true);

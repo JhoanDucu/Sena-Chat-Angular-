@@ -71,7 +71,8 @@
                         (click)="seleccionarEnGrupos(g.id_grupos, $index, 'grupos')"
                         [active]="selected.grupo == g.id_grupos ? true : false"
                         [nomGrupo]="g.nom_grupos"
-                        [ultimoMensaje]="g.mensajes[g.mensajes.length - 1]">
+                        [tiempo]="fecha(g.mensajes[g.mensajes.length - 1].fecha_hora)"
+                        [reciente]="g.mensajes[g.mensajes.length - 1].contenido_mensaje">
                     </app-grupo>
                     }
                 </div>
@@ -86,7 +87,8 @@
                         (click)="seleccionarEnGrupos(p.id_grupos, $index, 'privados')"
                         [active]="selected.grupo == p.id_grupos ? true : false"
                         [nomGrupo]="p.nom_grupos"
-                        [ultimoMensaje]="p.mensajes[p.mensajes.length - 1]">
+                        [tiempo]="fecha(p.mensajes[p.mensajes.length - 1].fecha_hora)"
+                        [reciente]="p.mensajes[p.mensajes.length - 1].contenido_mensaje">
                     </app-grupo>
                     }
                 </div>

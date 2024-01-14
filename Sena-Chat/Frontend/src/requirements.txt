@@ -1,5 +1,5 @@
-npm i bootstrap@next @types/bootstrap jquery popper.js --save
-npm install socket.io-client
+npm i bootstrap@next @types/bootstrap jquery popper.js @4keys/date-fns-utc-locale-es --save
+npm install socket.io-client date-fns 
 
 "styles": [
     "src/styles.css",

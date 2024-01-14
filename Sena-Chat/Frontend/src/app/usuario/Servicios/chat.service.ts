@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MensajeEnviar } from '../Modelos/mensaje';
-import { ChatDirective } from '../Directivas/chat.directive';
 
 @Injectable({
   providedIn: 'root'
