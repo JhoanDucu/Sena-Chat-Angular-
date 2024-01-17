@@ -14,7 +14,7 @@ import { GrupoComponent } from '../grupo/grupo.component';
 @Component({
   selector: 'app-grupos',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, FormsModule, ChatDirective, GrupoComponent ],
+  imports: [CommonModule, ReactiveFormsModule, FormsModule, ChatDirective, GrupoComponent],
   templateUrl: './grupos.component.html',
   styleUrl: './grupos.component.css'
 })

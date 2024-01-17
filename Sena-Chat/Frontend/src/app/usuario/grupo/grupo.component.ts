@@ -10,13 +10,22 @@ import { NotificacionDirective } from '../Directivas/notificacion.directive';
   styleUrl: './grupo.component.css'
 })
 export class GrupoComponent {
+
+  constructor() { }
+
   @Input() nomGrupo = '';
   @Input() active = false;
   @Input() tiempo: any = '';
   @Input() reciente: string | undefined = '';
-  @Input() contador: undefined | number = undefined;
+  @Input() idGrupo = '';
+  contador: any = undefined;
 
-  ngOnInit(){}
+  ngOnInit() { }
 
-  nuevaNotificacion = () => this.contador = (this.contador || 0) + 1;
+  nuevaNotificacion = () => {
+    if (this.active) this.contador = undefined;
+    else this.contador = (this.contador | 0) + 1;
+  };
+
+  restablecer = () => this.contador = undefined;
 }

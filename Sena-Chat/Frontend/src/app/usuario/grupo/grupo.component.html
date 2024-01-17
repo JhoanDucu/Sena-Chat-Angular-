@@ -5,9 +5,8 @@
         <img src="../../../assets/img/Usuario2.jpg" class="pic-tab">
         <div id="grupo">
             {{ nomGrupo }} <small>{{ tiempo }}</small>
-            <p [appNotificacion]="reciente">
-                {{ reciente }} 
-                <!-- <span class="badge bg-light text-dark">{{ contador }}</span> -->
+            <p [appNotificacion]="[reciente, active]" (-)="restablecer()">
+                {{ reciente }}
             </p>
         </div>
     </div>
@@ -19,9 +18,9 @@
         <img src="../../../assets/img/Usuario2.jpg" class="pic-tab">
         <div id="grupo">
             {{ nomGrupo }} <small>{{ tiempo }}</small>
-            <p [appNotificacion]="reciente" (+)="nuevaNotificacion()">
-                {{ reciente }} 
-                <span class="badge bg-dark text-light">{{ contador }}</span> 
+            <p [appNotificacion]="[reciente, active]" (+)="nuevaNotificacion()">
+                {{ reciente }}
+                <span class="badge bg-dark text-light">{{ contador }}</span>
             </p>
         </div>
     </div>

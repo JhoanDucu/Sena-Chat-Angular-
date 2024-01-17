@@ -43,7 +43,7 @@ export class SocketService {
     this.ioConnected.emit(opciones.accion, opciones.id_grupo);
   }
 
-  notificaMensaje(){
+  notificaMensaje() {
     return new Observable<MensajeEmitir>((subscriber) => {
       this.io.on('notificarMensaje', (nuevoMensaje: any) => {
         this.recibido ? this.recibido = false : subscriber.next(nuevoMensaje);
