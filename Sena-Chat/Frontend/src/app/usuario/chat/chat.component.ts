@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 import { ChatService } from '../Servicios/chat.service';
-import { MensajeMostrar } from '../Modelos/mensaje';
+import { MensajeEmitir, MensajeMostrar } from '../Modelos/mensaje';
 import { MensajesComponent } from '../mensajes/mensajes.component';
 import { ChatDirective } from '../Directivas/chat.directive';
 import { SesionService } from '../Sesiones/sesion.service';
@@ -56,6 +56,7 @@ export class ChatComponent {
 
   ngAfterViewInit() {
     this.socket.recibirMensaje().subscribe((data: any) => this.añadirMensaje(data.message, 'meh', data.pn, data.pa));
+    this.socket.notificaMensaje().subscribe((data: any) => this.añadirMensaje(data.message, 'meh', data.pn, data.pa, data.room));
   }
 
   enviar(mensaje: any, grupo: any) {
@@ -81,6 +82,7 @@ export class ChatComponent {
 
   extraerMensajes(data: any, location: string) {
     data.forEach((element: Grupo) => {
+      this.socket.conectarEnGrupo(element.id_grupos);
       this.Chat.traerMensajes(element.id_grupos).subscribe((resultado: any) => {
         resultado ? resultado.forEach((value: MensajeMostrar) => {
           value.fecha_hora = new Date(value.fecha_hora);
@@ -91,13 +93,17 @@ export class ChatComponent {
     });
   }
 
-  añadirMensaje(mensaje: MensajeMostrar, ...values: Array<any>) {
-    const [numerodoc, primer_nom, primer_apellido] = values;
+  añadirMensaje(mensaje: MensajeEmitir, ...values: Array<any>) {
+    const [numerodoc, primer_nom, primer_apellido, grupo] = values;
     mensaje.numerodoc = numerodoc;
     mensaje.primer_nom = primer_nom;
     mensaje.primer_apellido = primer_apellido;
     mensaje.fecha_hora = new Date();
-    this.mensajesGrupo.push(mensaje);
-    this.datos.other.changes = ChatDirective.seleccionar(this.datos.other.changes);
+
+    if (!grupo) this.mensajesGrupo.push(mensaje)
+    else {
+      this.datos.gruposComponent.grupos.find((g: Grupo) => g.id_grupos == grupo)?.mensajes.push(mensaje)
+      this.datos.gruposComponent.privados.find((p: Grupo) => p.id_grupos == grupo)?.mensajes.push(mensaje)
+    }
   }
 }

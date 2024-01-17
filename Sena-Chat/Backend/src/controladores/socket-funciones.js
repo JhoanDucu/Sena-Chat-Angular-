@@ -1,3 +1,5 @@
+const notificaciones = {}
+
 exports.handleChatMessage = (socket, message) => {
   console.log(`Nuevo mensaje: ${message}`);
   // Lógica para manejar el mensaje, enviar a otros usuarios, etc.
@@ -28,6 +30,8 @@ exports.leaveRoom = (socket, room) => {
 
 exports.emitMessage = (socket, datosEnvio) => {
   socket.to(datosEnvio.room).emit('recibeMensaje', datosEnvio);
-  console.log(socket.rooms);
-  // Lógica para manejar la desconexión de un usuario
 };
+
+exports.emitNotificacion = (socket, datos) => {
+  socket.to(Number(datos.room)).emit('notificarMensaje', datos);
+}

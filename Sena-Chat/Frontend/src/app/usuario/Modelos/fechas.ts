@@ -1,14 +1,27 @@
-import { format, isSameMonth, isSameWeek, isYesterday, isToday } from 'date-fns';
+import {
+    format,
+    isSameMonth,
+    isSameWeek,
+    isYesterday,
+    isToday,
+    addDays, // usar para el futuro
+    isWithinInterval,
+    startOfToday,
+    subDays
+} from 'date-fns';
+
 import { es } from 'date-fns/locale';
 
 export class Fecha {
-
+    private now = startOfToday();
+    private sevenDaysAgo = subDays(this.now, 7);
     constructor(
         private date: Date,
-        private now: Date,
     ){ }
 
-    private monthWeek = () => isSameMonth(this.date, this.now) && isSameWeek(this.date, this.now)
+    private monthWeek = () => isSameMonth(this.date, this.now) && isSameWeek(this.date, this.now);
+
+    private week = () =>  isWithinInterval(this.date, { start: this.sevenDaysAgo, end: this.now });
 
     static fechaActual = () => `${format(new Date(), 'yyyy-MM-dd HH:mm:ss')}`;
 
@@ -20,6 +33,6 @@ export class Fecha {
 
     public retornar = () => `${
         isToday(this.date) ? Fecha.obtenerHora(this.date) : isYesterday(this.date) ? 
-        'Ayer' : this.monthWeek() ? this.diaSemana() : this.fechaCompleta()
+        'Ayer' : this.monthWeek() || this.week() ? this.diaSemana() : this.fechaCompleta()
     }`;
 }

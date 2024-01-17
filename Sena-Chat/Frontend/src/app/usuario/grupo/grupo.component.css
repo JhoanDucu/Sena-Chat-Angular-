@@ -31,10 +31,11 @@
   text-align: start;
   width: calc(100%);
 
-  .container-fluid {
+  #grupo {
     padding: 0 0 0 12px;
     width: calc(88%);
     margin: 0;
+    position: relative;
   }
   small {
     font-size: calc(62%);
@@ -47,6 +48,12 @@
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+  }
+  span {
+    background-color: white;
+    font-size: 14px;
+    position: absolute;
+    right: 0;
   }
 }
 
