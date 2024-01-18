@@ -120,5 +120,5 @@ export class GruposComponent {
     else this.checked.splice(this.checked.indexOf(selected.value), 1);
   }
 
-  fecha = (date: Date) => new Fecha(date).retornar();
+  fecha = (date: Date) => date ? new Fecha(date).retornar() : undefined;
 }

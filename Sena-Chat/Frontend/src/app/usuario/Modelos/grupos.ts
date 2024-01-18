@@ -6,7 +6,8 @@ export class Grupo {
     public nom_grupos: string,
     public descripcion_grupos: string,
     public id_ficha: string,
-    public mensajes: Array<MensajeMostrar>
+    public mensajes: Array<MensajeMostrar>,
+    public sin_leer: number
   ) { }
 }
 

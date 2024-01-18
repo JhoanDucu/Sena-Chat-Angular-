@@ -1,6 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NotificacionDirective } from '../Directivas/notificacion.directive';
+import { OutletContext } from '@angular/router';
 
 @Component({
   selector: 'app-grupo',
@@ -18,13 +19,13 @@ export class GrupoComponent {
   @Input() tiempo: any = '';
   @Input() reciente: string | undefined = '';
   @Input() idGrupo = '';
-  contador: any = undefined;
+  @Input() contador: any = undefined;
 
-  ngOnInit() { }
+  ngOnInit() {}
 
   nuevaNotificacion = () => {
     if (this.active) this.contador = undefined;
-    else this.contador = (this.contador | 0) + 1;
+    this.contador = (this.contador | 0) + 1;
   };
 
   restablecer = () => this.contador = undefined;

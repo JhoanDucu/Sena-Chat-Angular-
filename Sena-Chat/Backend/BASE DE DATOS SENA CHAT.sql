@@ -73,6 +73,7 @@ CREATE TABLE usuarios_grupos
 	id_usuarios_grupos VARCHAR(50) NOT NULL,
 	id_grupos INT NOT NULL,
 	numerodoc VARCHAR(20) NOT NULL,
+	sin_leer INT NULL,
 	PRIMARY KEY (id_usuarios_grupos)
 );
 
@@ -240,70 +241,70 @@ INSERT INTO grupos VALUES
 ('21','grupo de Heiver','ficha 2558101','2558101',2);
 
 INSERT INTO usuarios_grupos VALUES
-('1-12345678019', '1', '12345678019'),	 	# Heiver - Grupo 1
-('2', '1', '1131104356'), 		# Juan - Grupo 1
-('3', '1', '1021392807'),  		# Nicolas - Grupo 1
-('4', '1', '1234567911'),  		# Camilo - Grupo 1
-('5', '2', '12345678020'), 		# Leonardo - Grupo 2
-('6', '2', '1131104356'),  		# Juan - Grupo 2
-('7', '2', '1021392807'),  		# Nicolas - Grupo 2
-('8', '2', '1234567911'),  		# Camilo - Grupo 2
-('9', '3', '12345678018'), 		# Isaura - Grupo 3
-('10', '3', '1131104356'),  	# Juan - Grupo 3
-('11', '3', '1021392807'),  	# Nicolas - Grupo 3
-('12', '4', '12345678021'), 	# Manolo - Grupo 4
-('13', '4', '12345678912'), 	# Sebastian -  Grupo 4
-('14', '4', '12345678913'), 	# Isabella - Grupo 4
-('15', '4', '12345678914'),		# Ethan - Grupo 4
-('16', '4', '12345678916'), 	# Sophia - Grupo 4
-('17', '4', '12345678917'),		# Alexander - Grupo 4
-('18', '4', '12345678918'),		# Olivia - Grupo 4
-('19', '4', '12345678919'), 	# Mia - Grupo 4
-('20', '4', '12345678001'),		# John - Grupo 4 
-('21', '5', '12345678022'), 	# Wendy - Grupo 5
-('22', '5', '12345678912'), 	# Sebastian -  Grupo 5
-('23', '5', '12345678913'), 	# Isabella - Grupo 5
-('24', '5', '12345678914'),		# Ethan - Grupo 5
-('25', '5', '12345678916'), 	# Sophia - Grupo 5
-('26', '5', '12345678917'),		# Alexander - Grupo 5
-('27', '5', '12345678918'),		# Olivia - Grupo 5
-('28', '5', '12345678919'), 	# Mia - Grupo 5
-('29', '5', '12345678001'),		# John - Grupo 5
-('30', '6', '12345678023'), 	# Javier - Grupo 6
-('31', '6', '12345678912'), 	# Sebastian -  Grupo 6
-('32', '6', '12345678913'), 	# Isabella - Grupo 6
-('33', '6', '12345678914'),		# Ethan - Grupo 6
-('34', '6', '12345678916'), 	# Sophia - Grupo 6
-('35', '6', '12345678917'),		# Alexander - Grupo 6
-('36', '6', '12345678918'),		# Olivia - Grupo 6
-('37', '6', '12345678919'), 	# Mia - Grupo 6
-('38', '6', '12345678001'),		# John - Grupo 6
-('39', '8', '1131104356'),		# Juan - Privado 8
-('40', '8', '1021392807'),		# Nicolas - Privado 8
-('41', '9', '1131104356'),		# Juan - Privado 9
-('42', '9', '1234567911'),		# Camilo - Privado 9
-('43', '10', '1131104356'),		# Juan - Privado 10
-('44', '10', '12345678018'),	# Isaura - Privado 10
-('45', '11', '1021392807'),		# Nicolas - Privado 11
-('46', '11', '12345678018'),	# Isaura - Privado 11
-('47', '12', '12345678001'),	# John - Privado 12
-('48', '12', '12345678912'),	# Sebastian - Privado 12
-('49', '13', '12345678001'),	# John - Privado 13
-('50', '13', '12345678913'),	# Isabella - Privado 13
-('51', '14', '12345678001'),	# John - Privado 14
-('52', '14', '12345678914'),	# Ethan - Privado 14
-('53', '15', '12345678001'),	# John - Privado 15
-('54', '15', '12345678916'),	# Sophia - Privado 15
-('55', '16', '12345678001'),	# John - Privado 16
-('56', '16', '12345678917'),	# Alexander - Priavdo 16
-('57', '17', '12345678001'),	# John - Privado 17
-('58', '17', '12345678918'),	# Olivia - Privado 17
-('59', '18', '12345678001'),	# John - Privado 18
-('60', '18', '12345678919'),	# Mia - Privado 18
-('61', '19', '12345678001'),	# John - Privado 19
-('62', '19', '12345678023'),	# Javier - Privado 19
-('63', '20', '12345678001'),	# John - Privado 20
-('64', '20', '12345678022');	# Wendy - Privado 20
+('1-12345678019', '1', '12345678019', NULL),	 	# Heiver - Grupo 1
+('2', '1', '1131104356', 2), 		# Juan - Grupo 1
+('3', '1', '1021392807', NULL),  		# Nicolas - Grupo 1
+('4', '1', '1234567911', NULL),  		# Camilo - Grupo 1
+('5', '2', '12345678020', NULL), 		# Leonardo - Grupo 2
+('6', '2', '1131104356', NULL),  		# Juan - Grupo 2
+('7', '2', '1021392807', NULL),  		# Nicolas - Grupo 2
+('8', '2', '1234567911', NULL),  		# Camilo - Grupo 2
+('9', '3', '12345678018', NULL), 		# Isaura - Grupo 3
+('10', '3', '1131104356', NULL),  	# Juan - Grupo 3
+('11', '3', '1021392807', NULL),  	# Nicolas - Grupo 3
+('12', '4', '12345678021', NULL), 	# Manolo - Grupo 4
+('13', '4', '12345678912', NULL), 	# Sebastian -  Grupo 4
+('14', '4', '12345678913', NULL), 	# Isabella - Grupo 4
+('15', '4', '12345678914', NULL),		# Ethan - Grupo 4
+('16', '4', '12345678916', NULL), 	# Sophia - Grupo 4
+('17', '4', '12345678917', NULL),		# Alexander - Grupo 4
+('18', '4', '12345678918', NULL),		# Olivia - Grupo 4
+('19', '4', '12345678919', NULL), 	# Mia - Grupo 4
+('20', '4', '12345678001', NULL),		# John - Grupo 4 
+('21', '5', '12345678022', NULL), 	# Wendy - Grupo 5
+('22', '5', '12345678912', NULL), 	# Sebastian -  Grupo 5
+('23', '5', '12345678913', NULL), 	# Isabella - Grupo 5
+('24', '5', '12345678914', NULL),		# Ethan - Grupo 5
+('25', '5', '12345678916', NULL), 	# Sophia - Grupo 5
+('26', '5', '12345678917', NULL),		# Alexander - Grupo 5
+('27', '5', '12345678918', NULL),		# Olivia - Grupo 5
+('28', '5', '12345678919', NULL), 	# Mia - Grupo 5
+('29', '5', '12345678001', NULL),		# John - Grupo 5
+('30', '6', '12345678023', NULL), 	# Javier - Grupo 6
+('31', '6', '12345678912', NULL), 	# Sebastian -  Grupo 6
+('32', '6', '12345678913', NULL), 	# Isabella - Grupo 6
+('33', '6', '12345678914', NULL),		# Ethan - Grupo 6
+('34', '6', '12345678916', NULL), 	# Sophia - Grupo 6
+('35', '6', '12345678917', NULL),		# Alexander - Grupo 6
+('36', '6', '12345678918', NULL),		# Olivia - Grupo 6
+('37', '6', '12345678919', NULL), 	# Mia - Grupo 6
+('38', '6', '12345678001', NULL),		# John - Grupo 6
+('39', '8', '1131104356', NULL),		# Juan - Privado 8
+('40', '8', '1021392807', NULL),		# Nicolas - Privado 8
+('41', '9', '1131104356', NULL),		# Juan - Privado 9
+('42', '9', '1234567911', NULL),		# Camilo - Privado 9
+('43', '10', '1131104356', NULL),		# Juan - Privado 10
+('44', '10', '12345678018', NULL),	# Isaura - Privado 10
+('45', '11', '1021392807', NULL),		# Nicolas - Privado 11
+('46', '11', '12345678018', NULL),	# Isaura - Privado 11
+('47', '12', '12345678001', NULL),	# John - Privado 12
+('48', '12', '12345678912', NULL),	# Sebastian - Privado 12
+('49', '13', '12345678001', NULL),	# John - Privado 13
+('50', '13', '12345678913', NULL),	# Isabella - Privado 13
+('51', '14', '12345678001', NULL),	# John - Privado 14
+('52', '14', '12345678914', NULL),	# Ethan - Privado 14
+('53', '15', '12345678001', NULL),	# John - Privado 15
+('54', '15', '12345678916', NULL),	# Sophia - Privado 15
+('55', '16', '12345678001', NULL),	# John - Privado 16
+('56', '16', '12345678917', NULL),	# Alexander - Priavdo 16
+('57', '17', '12345678001', NULL),	# John - Privado 17
+('58', '17', '12345678918', NULL),	# Olivia - Privado 17
+('59', '18', '12345678001', NULL),	# John - Privado 18
+('60', '18', '12345678919', NULL),	# Mia - Privado 18
+('61', '19', '12345678001', NULL),	# John - Privado 19
+('62', '19', '12345678023', NULL),	# Javier - Privado 19
+('63', '20', '12345678001', NULL),	# John - Privado 20
+('64', '20', '12345678022', NULL);	# Wendy - Privado 20
 
 INSERT INTO mensaje VALUES
 ('1', '2023-11-25 10:30:00','HOLA','1-12345678019','1'),
