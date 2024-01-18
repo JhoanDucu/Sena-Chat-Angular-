@@ -24,7 +24,9 @@ export class GrupoComponent {
 
   ngOnInit() {}
 
-  nuevaNotificacion = () => this.contador = (this.contador | 0) + 1;
+  nuevaNotificacion = () => {
+    if(this.Sesion.get('grupos') != this.idGrupo) this.contador = (this.contador | 0) + 1;
+  }
 
   restablecer = () => {
     this.contador = undefined;

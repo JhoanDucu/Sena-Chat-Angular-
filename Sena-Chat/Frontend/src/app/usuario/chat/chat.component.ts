@@ -101,11 +101,16 @@ export class ChatComponent {
     mensaje.primer_nom = primer_nom;
     mensaje.primer_apellido = primer_apellido;
     mensaje.fecha_hora = new Date();
-
-    if (!grupo) this.mensajesGrupo.push(mensaje)
+    
+    if (!grupo) this.mensajesGrupo.push(mensaje);
     else {
       this.datos.gruposComponent.grupos.find((g: Grupo) => g.id_grupos == grupo)?.mensajes.push(mensaje)
       this.datos.gruposComponent.privados.find((p: Grupo) => p.id_grupos == grupo)?.mensajes.push(mensaje)
     }
+  }
+
+  sinGrupo(){
+    this.grupoSeleccionado = '';
+    this.Sesion.remove('grupos');
   }
 }
