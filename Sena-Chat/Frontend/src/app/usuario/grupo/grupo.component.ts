@@ -1,7 +1,8 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NotificacionDirective } from '../Directivas/notificacion.directive';
-import { OutletContext } from '@angular/router';
+import { ChatService } from '../Servicios/chat.service';
+import { SesionService } from '../Sesiones/sesion.service';
 
 @Component({
   selector: 'app-grupo',
@@ -12,7 +13,7 @@ import { OutletContext } from '@angular/router';
 })
 export class GrupoComponent {
 
-  constructor() { }
+  constructor(private Chat: ChatService, private Sesion: SesionService) { }
 
   @Input() nomGrupo = '';
   @Input() active = false;
@@ -23,10 +24,12 @@ export class GrupoComponent {
 
   ngOnInit() {}
 
-  nuevaNotificacion = () => {
-    if (this.active) this.contador = undefined;
-    this.contador = (this.contador | 0) + 1;
-  };
+  nuevaNotificacion = () => this.contador = (this.contador | 0) + 1;
 
-  restablecer = () => this.contador = undefined;
+  restablecer = () => {
+    this.contador = undefined;
+    this.Chat.sinNotificaciones({u: this.Sesion.get('documento'), g: this.idGrupo}).subscribe((data: any) => {
+      // VALIDAR AQUI
+    });
+  };
 }

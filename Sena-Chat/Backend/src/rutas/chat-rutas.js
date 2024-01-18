@@ -9,5 +9,7 @@ router.get("/mensajes/:grupo", chatController.obtenerMensajes);
 router.get("/destino/:grupo/:usuario", chatController.obtenerDestino);
 router.post("/mensaje", chatController.insertarMensaje);
 router.get("/privados/:ficha/:documento", chatController.obtenerPrivados);
+router.put("/aumentar/notificaciones", chatController.actualizarSinLeer);
+router.put("/anular/notificaciones", chatController.reiniciarSinLeer);
 
 module.exports = router;

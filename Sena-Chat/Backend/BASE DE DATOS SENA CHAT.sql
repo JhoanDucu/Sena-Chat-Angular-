@@ -241,7 +241,7 @@ INSERT INTO grupos VALUES
 ('21','grupo de Heiver','ficha 2558101','2558101',2);
 
 INSERT INTO usuarios_grupos VALUES
-('1-12345678019', '1', '12345678019', NULL),	 	# Heiver - Grupo 1
+('1', '1', '12345678019', NULL),	 	# Heiver - Grupo 1
 ('2', '1', '1131104356', 2), 		# Juan - Grupo 1
 ('3', '1', '1021392807', NULL),  		# Nicolas - Grupo 1
 ('4', '1', '1234567911', NULL),  		# Camilo - Grupo 1

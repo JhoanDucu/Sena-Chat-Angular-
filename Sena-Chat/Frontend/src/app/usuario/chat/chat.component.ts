@@ -68,7 +68,9 @@ export class ChatComponent {
       mensaje.fecha_hora = Fecha.fechaActual();
       this.Chat.agregarMensaje(mensaje).subscribe((insertId: any) => {
         insertId !== undefined && insertId !== null ? mensaje.id_mensaje = insertId : undefined;
-        this.socket.emitirMensaje({ room: grupo, message: mensaje, pn: pn, pa: pa, u: this.usuario });
+        this.Chat.masNotificaciones({u: this.usuario, g: grupo}).subscribe((data: any) => data ?
+          this.socket.emitirMensaje({ room: grupo, message: mensaje, pn: pn, pa: pa, u: this.usuario })
+        : undefined );
       });
     });
   }
