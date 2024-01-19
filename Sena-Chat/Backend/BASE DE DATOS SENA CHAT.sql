@@ -307,10 +307,10 @@ INSERT INTO usuarios_grupos VALUES
 ('64', '20', '12345678022', NULL);	# Wendy - Privado 20
 
 INSERT INTO mensaje VALUES
-('1', '2023-11-25 10:30:00','HOLA','1-12345678019','1'),
+('1', '2023-11-25 10:30:00','HOLA','1','1'),
 ('2', '2023-11-25 10:34:00','BUEN DIA, INSTRUCTOR','4','1'),
 ('3', '2023-11-25 11:30:00','Buenos dias','3','1'),
-('4', '2023-11-25 11:31:00','Hoy no tenemos formacion, agradezco le informen a sus compañeros','1-12345678019','1'),
+('4', '2023-11-25 11:31:00','Hoy no tenemos formacion, agradezco le informen a sus compañeros','1','1'),
 ('5', '2023-11-25 13:30:00','Si Señor','2','1'),
 ('6', '2023-11-25 13:45:00','No olvidar la evidencia pendiente para el dia de hoy','5','1'),
 ('7', '2023-11-25 14:45:00', 'Ok, Vale', '6', '1'),

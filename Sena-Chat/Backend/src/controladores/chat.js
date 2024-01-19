@@ -112,7 +112,7 @@ exports.obtenerPrivados = (req, res) => {
 };
 
 exports.actualizarSinLeer = (req, res) => {
-  const { u: numerodoc, g: id_grupos} = req.body;
+  const { u: numerodoc, g: id_grupos } = req.body;
   const query = `UPDATE usuarios_grupos
                   SET sin_leer = COALESCE(sin_leer, 0) + 1
                   WHERE numerodoc <> ? AND id_grupos = ?`;
@@ -122,13 +122,13 @@ exports.actualizarSinLeer = (req, res) => {
     if (result.affectedRows != 0) {
       res.json(result.affectedRows);
     } else {
-      res.json('Caso en que no notifica'); // MANEJAR ERRORES
+      res.json("Caso en que no notifica"); // MANEJAR ERRORES
     }
   });
 };
 
 exports.reiniciarSinLeer = (req, res) => {
-  const { u: numerodoc, g: id_grupos} = req.body;
+  const { u: numerodoc, g: id_grupos } = req.body;
   const query = `UPDATE usuarios_grupos SET sin_leer = NULL
                   WHERE numerodoc = ? AND id_grupos = ?`;
 
@@ -137,7 +137,7 @@ exports.reiniciarSinLeer = (req, res) => {
     if (result.affectedRows != 0) {
       res.json(result.affectedRows);
     } else {
-      res.json('Caso en que no notifica'); // MANEJAR ERRORES
+      res.json("Caso en que no notifica"); // MANEJAR ERRORES
     }
   });
 };

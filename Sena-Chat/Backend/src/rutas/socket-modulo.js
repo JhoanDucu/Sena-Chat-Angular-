@@ -17,7 +17,9 @@ const exportarSocket = (http) => {
   io.of("/online").on("connection", (socket) => {
     socket.on("unirSala", (room) => socketFunctions.joinRoom(socket, room));
     socket.on("salirSala", (room) => socketFunctions.leaveRoom(socket, room));
-    socket.on("enviarMensaje", (datos) => socketFunctions.emitMessage(socket, datos));
+    socket.on("enviarMensaje", (datos) =>
+      socketFunctions.emitMessage(socket, datos)
+    );
   });
 
   io.of("/").adapter.on("create-room", (room) => {

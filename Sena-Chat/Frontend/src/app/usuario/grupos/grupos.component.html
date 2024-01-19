@@ -49,17 +49,17 @@
         <div class="tab-pane fade show active" *appChat="changes">
             <h1>Grupos</h1>
             @for (i of coincidencias.Grupos; track i) {
-                <h4 class="text-center">{{ coincidencias.Grupos[$index] }}</h4>
-                <br>
+            <h4 class="text-center">{{ coincidencias.Grupos[$index] }}</h4>
+            <br>
             }
             <h1>Privados</h1>
             @for (i of coincidencias.Privados; track i) {
-                <h4 class="text-center">{{ coincidencias.Privados[$index] }}</h4>
-                <br>
+            <h4 class="text-center">{{ coincidencias.Privados[$index] }}</h4>
+            <br>
             }
         </div>
         @if (coincidencias.resultados == false) {
-            <h2>Sin resultados de busqueda</h2>
+        <h2>Sin resultados de busqueda</h2>
         }
         } @else {
         <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
@@ -69,12 +69,7 @@
                     @for ( g of grupos; track g.id_grupos) {
                     <app-grupo 
                         (click)="seleccionarEnGrupos(g.id_grupos, $index, 'grupos')"
-                        [active]="selected.grupo == g.id_grupos ? true : false" 
-                        [nomGrupo]="g.nom_grupos"
-                        [tiempo]="fecha(g.mensajes.length ? g.mensajes[g.mensajes.length - 1].fecha_hora : undefined)"
-                        [reciente]="g.mensajes.length ? g.mensajes[g.mensajes.length - 1].contenido_mensaje : undefined" 
-                        [idGrupo]="g.id_grupos"
-                        [contador]="g.sin_leer">
+                        [active]="selected.grupo == g.id_grupos ? true : false" [grupo]="g">
                     </app-grupo>
                     }
                 </div>
@@ -85,14 +80,8 @@
                 <div class="list-group" id="list-tab" role="tablist">
                     <a class="list-group-item list-group-item-action">PRIVADOS</a>
                     @for (p of privados; track p.id_grupos) {
-                    <app-grupo 
-                        (click)="seleccionarEnGrupos(p.id_grupos, $index, 'privados')"
-                        [active]="selected.grupo == p.id_grupos ? true : false" 
-                        [nomGrupo]="p.nom_grupos"
-                        [tiempo]="fecha(p.mensajes.length ? p.mensajes[p.mensajes.length - 1].fecha_hora : undefined)"
-                        [reciente]="p.mensajes.length ? p.mensajes[p.mensajes.length - 1].contenido_mensaje : undefined"
-                        [idGrupo]="p.id_grupos"
-                        [contador]="p.sin_leer">
+                    <app-grupo (click)="seleccionarEnGrupos(p.id_grupos, $index, 'privados')"
+                        [active]="selected.grupo == p.id_grupos ? true : false" [grupo]="p">
                     </app-grupo>
                     }
                 </div>

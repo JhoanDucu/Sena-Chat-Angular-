@@ -36,7 +36,7 @@ const options = {
   swaggerDefinition,
   apis: [
     path.join(__dirname, "./index.js"),
-    path.join(__dirname,'./src/rutas/usuario-rutas.js')
+    path.join(__dirname, "./src/rutas/usuario-rutas.js"),
   ],
 };
 

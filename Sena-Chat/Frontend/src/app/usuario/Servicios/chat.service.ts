@@ -29,10 +29,10 @@ export class ChatService {
   traerMiembros(grupo: any) {
     return this.http.get(`${this.url}/chat/miembros/${grupo}`)
   }
-  masNotificaciones(datos: any){
+  masNotificaciones(datos: any) {
     return this.http.put(`${this.url}/chat/aumentar/notificaciones`, datos);
   }
-  sinNotificaciones(datos: any){
+  sinNotificaciones(datos: any) {
     return this.http.put(`${this.url}/chat/anular/notificaciones`, datos);
   }
 }

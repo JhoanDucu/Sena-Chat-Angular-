@@ -1,7 +1,6 @@
 import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Grupo } from '../Modelos/grupos';
-import { Fecha } from '../Modelos/fechas';
 import { SesionService } from '../Sesiones/sesion.service';
 import { FormControl, FormGroup, FormGroupDirective, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Buscar } from '../Modelos/buscar';
@@ -117,6 +116,4 @@ export class GruposComponent {
     if (this.checked.indexOf(selected.value) == -1 && selected.checked) this.checked.push(selected.value);
     else this.checked.splice(this.checked.indexOf(selected.value), 1);
   }
-
-  fecha = (date: Date) => date ? new Fecha(date).retornar() : undefined;
 }

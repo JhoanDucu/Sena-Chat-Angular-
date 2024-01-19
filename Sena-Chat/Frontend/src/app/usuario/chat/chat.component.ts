@@ -68,9 +68,9 @@ export class ChatComponent {
       mensaje.fecha_hora = Fecha.fechaActual();
       this.Chat.agregarMensaje(mensaje).subscribe((insertId: any) => {
         insertId !== undefined && insertId !== null ? mensaje.id_mensaje = insertId : undefined;
-        this.Chat.masNotificaciones({u: this.usuario, g: grupo}).subscribe((data: any) => data ?
+        this.Chat.masNotificaciones({ u: this.usuario, g: grupo }).subscribe((data: any) => data ?
           this.socket.emitirMensaje({ room: grupo, message: mensaje, pn: pn, pa: pa, u: this.usuario })
-        : undefined );
+          : undefined);
       });
     });
   }
@@ -101,7 +101,7 @@ export class ChatComponent {
     mensaje.primer_nom = primer_nom;
     mensaje.primer_apellido = primer_apellido;
     mensaje.fecha_hora = new Date();
-    
+
     if (!grupo) this.mensajesGrupo.push(mensaje);
     else {
       this.datos.gruposComponent.grupos.find((g: Grupo) => g.id_grupos == grupo)?.mensajes.push(mensaje)
@@ -109,7 +109,7 @@ export class ChatComponent {
     }
   }
 
-  sinGrupo(){
+  sinGrupo() {
     this.grupoSeleccionado = '';
     this.Sesion.remove('grupos');
   }
