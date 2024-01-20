@@ -1,5 +1,5 @@
 #offcanvasScrolling {
-  width: 63%;
+  width: 62%;
 }
 .input-group {
   bottom: 0;
@@ -34,7 +34,7 @@
 }
 
 #iconoEnviar:hover {
-  color: white;
+  color: #0e882d;
 }
 
 #labelArchivo {

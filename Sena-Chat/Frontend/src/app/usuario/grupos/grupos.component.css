@@ -5,6 +5,10 @@
 
 #myTabContent {
   padding: 0;
+  direction: rtl;
+  .list-group {
+    direction: ltr;
+  }
 }
 
 .Botones {
@@ -31,6 +35,11 @@
   top: 0;
   z-index: 1;
   font-family: "Josefin Sans", sans-serif;
+}
+
+.grupos, .privados{
+  overflow-y: auto;
+  max-height: 68vh;
 }
 
 .grupos::-webkit-scrollbar {
@@ -62,37 +71,6 @@
 
 .labelFichas {
   padding-left: 10vh;
-}
-
-/* BARRA BUSQUEDA */
-
-#buscarGrupos {
-  padding: 0;
-  margin: 2.5%;
-  border: 1px solid;
-  width: 95%;
-  height: 45px;
-  border-radius: 30px;
-  .form-control {
-    border: none;
-    border-radius: 0;
-    border-top-right-radius: 22px;
-    border-bottom-right-radius: 22px;
-  }
-  #addon-wrapping {
-    border: none;
-    border-radius: 0;
-    border-top-left-radius: 50%;
-    width: 10%;
-    border-bottom-left-radius: 50%;
-    background-color: white;
-  }
-  .input-group-text {
-    justify-content: flex-end;
-  }
-  .form-control:focus {
-    box-shadow: none;
-  }
 }
 
 .variasFichas {

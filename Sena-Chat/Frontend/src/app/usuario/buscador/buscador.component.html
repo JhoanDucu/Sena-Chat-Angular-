@@ -1,1 +1,25 @@
-<p>buscador works!</p>
+<div class="input-group flex-nowrap" id="buscarGrupos">
+    <label for="buscar" class="input-group-text" id="addon-wrapping"><i class='bx bx-search-alt-2'></i></label>
+    <input id="buscar" type="text" class="form-control" placeholder="Busca un chat..." aria-label="Username"
+        aria-describedby="addon-wrapping" [(ngModel)]="valorBuscar" (keyup)="busqueda()">
+</div>
+
+<div class="tab-content" id="myTabContent">
+@if (buscando && valorBuscar.trim()) {
+    <div class="tab-pane fade show active" *appChat="changes">
+    <h1>Grupos</h1>
+    @for (i of coincidencias.Grupos; track i) {
+    <h4 class="text-center">{{ coincidencias.Grupos[$index] }}</h4>
+    <br>
+    }
+    <h1>Privados</h1>
+    @for (i of coincidencias.Privados; track i) {
+    <h4 class="text-center">{{ coincidencias.Privados[$index] }}</h4>
+    <br>
+    }
+    @if (coincidencias.resultados == false) {
+    <h2>Sin resultados de busqueda</h2>
+    }
+    </div>
+}
+</div>

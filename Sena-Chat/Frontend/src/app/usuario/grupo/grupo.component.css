@@ -40,6 +40,7 @@
   small {
     font-size: calc(62%);
     float: inline-end;
+    letter-spacing: 0.3px;
   }
   p {
     font-weight: normal;

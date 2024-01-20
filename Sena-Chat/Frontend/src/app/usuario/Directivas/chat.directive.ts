@@ -20,6 +20,4 @@ export class ChatDirective implements OnChanges {
   }
 
   static seleccionar = (value: string) => { return value = value == '0' ? '1' : '0' }
-
-  static estadoBusqueda = (current: Boolean, before: Boolean) => current || before;
 }
