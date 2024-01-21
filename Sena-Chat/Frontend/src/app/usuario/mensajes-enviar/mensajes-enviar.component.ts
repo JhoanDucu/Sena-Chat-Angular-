@@ -26,18 +26,15 @@ export class MensajesEnviarComponent {
     archivo: new FormControl('')
   });
   archivos: string[] = [];
-  noEnviar = true;
+  noEnviar: boolean | undefined = true;
   offcanvasClass = '';
 
   longitud() {
-    if (this.form.get('contenido_mensaje')?.errors?.['required']) {
-      this.noEnviar = true;
-    } else {
-      this.noEnviar = false;
-    }
+    this.form.get('contenido_mensaje')?.value?.trim().length 
+    ? this.noEnviar = false : this.noEnviar = true;
   }
 
-  emitirEnvio(formValue: any){
+  emitirEnvio(formValue: any) {
     formValue.archivo ? formValue.id_tipo = 'incluir tipo de mensaje' : formValue.id_tipo = '1';
     formValue.archivo ? formValue.contenido_mensaje = formValue.archivo : delete formValue.archivo;
     formValue.id_mensaje = undefined;

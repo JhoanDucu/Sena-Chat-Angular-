@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output, SimpleChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NotificacionDirective } from '../Directivas/notificacion.directive';
 import { ChatService } from '../Servicios/chat.service';
@@ -15,25 +15,29 @@ import { Fecha } from '../Modelos/fechas';
 export class GrupoComponent {
 
   constructor(private Chat: ChatService, private Sesion: SesionService) { }
+
   @Input() grupo: any = {};
   @Input() active = false;
+  @Input() tiempo: any;
+  @Input() reciente: any;
+  @Output() moverGrupo = new EventEmitter();
   nomGrupo: any;
-  tiempo: any;
-  reciente: any;
   idGrupo: any;
   contador: any = undefined;
 
   ngOnInit() {
     this.nomGrupo = this.grupo.nom_grupos;
-    this.tiempo = this.fecha(this.grupo.mensajes.length ? this.grupo.mensajes[this.grupo.mensajes.length - 1].fecha_hora : undefined);
-    this.reciente = this.grupo.mensajes.length ? this.grupo.mensajes[this.grupo.mensajes.length - 1].contenido_mensaje : undefined;
     this.idGrupo = this.grupo.id_grupos;
     this.contador = this.grupo.sin_leer;
   }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['tiempo']) this.tiempo = this.fecha(changes['tiempo'].currentValue);
+  }
+
   nuevaNotificacion = () => {
-    this.reciente = this.grupo.mensajes[this.grupo.mensajes.length - 1].contenido_mensaje;
     if (this.Sesion.get('grupos') != this.idGrupo) this.contador = (this.contador | 0) + 1;
+    this.moverGrupo.emit();
   }
 
   restablecer = () => {

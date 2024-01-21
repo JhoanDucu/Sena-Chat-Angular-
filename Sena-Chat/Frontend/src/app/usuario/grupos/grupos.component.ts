@@ -101,4 +101,15 @@ export class GruposComponent {
     if (this.checked.indexOf(selected.value) == -1 && selected.checked) this.checked.push(selected.value);
     else this.checked.splice(this.checked.indexOf(selected.value), 1);
   }
+
+  cambiarPosicion(index: any, objeto: any, opcion: number){
+    let tempObjeto = objeto;
+    if (opcion != 2) {
+      this.grupos.splice(index, 1);
+      this.grupos.unshift(tempObjeto);
+    } else {
+      this.privados.splice(index, 1);
+      this.privados.unshift(tempObjeto);
+    }
+  }
 }

@@ -41,44 +41,48 @@
     </ul>
 </div>
 
-<app-buscador 
-    [buscando]="enBusqueda" 
-    (buscar)="mostrarBusqueda($event)" 
+<app-buscador [buscando]="enBusqueda" (buscar)="mostrarBusqueda($event)"
     [itemsDeBusqueda]="{Grupos: grupos, Privados: privados}">
 </app-buscador>
 
 @if (!enBusqueda) {
-    <div class="tab-content" id="myTabContent">
-        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-            <div class="grupos" id="grupos" role="tablist">
-                <div class="list-group" id="list-tab" role="tablist">
-                    <a class="list-group-item list-group-item-action">GRUPOS</a>
-                    @for ( g of grupos; track g.id_grupos) {
-                    <app-grupo (click)="seleccionarEnGrupos(g.id_grupos, $index, 'grupos')"
-                        [active]="selected.grupo == g.id_grupos ? true : false" [grupo]="g">
-                    </app-grupo>
-                    }
-                </div>
+<div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+        <div class="grupos" id="grupos" role="tablist">
+            <div class="list-group" id="list-tab" role="tablist">
+                <a class="list-group-item list-group-item-action">GRUPOS</a>
+                @for ( g of grupos; track g.id_grupos) {
+                <app-grupo (click)="seleccionarEnGrupos(g.id_grupos, $index, 'grupos')"
+                    [active]="selected.grupo == g.id_grupos ? true : false" [grupo]="g"
+                    [tiempo]="g.mensajes.length ? g.mensajes[g.mensajes.length - 1].fecha_hora : undefined"
+                    [reciente]="g.mensajes.length ? g.mensajes[g.mensajes.length - 1].contenido_mensaje : undefined"
+                    (moverGrupo)="cambiarPosicion($index, g, 1)">
+                </app-grupo>
+                }
             </div>
         </div>
-
-        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-            <div class="privados" id="privados" role="tablist">
-                <div class="list-group" id="list-tab" role="tablist">
-                    <a class="list-group-item list-group-item-action">PRIVADOS</a>
-                    @for (p of privados; track p.id_grupos) {
-                    <app-grupo (click)="seleccionarEnGrupos(p.id_grupos, $index, 'privados')"
-                        [active]="selected.grupo == p.id_grupos ? true : false" [grupo]="p">
-                    </app-grupo>
-                    }
-                </div>
-            </div>
-        </div>
-        <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-            3
-        </div>
-
     </div>
+
+    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+        <div class="privados" id="privados" role="tablist">
+            <div class="list-group" id="list-tab" role="tablist">
+                <a class="list-group-item list-group-item-action">PRIVADOS</a>
+                @for (p of privados; track p.id_grupos) {
+                <app-grupo (click)="seleccionarEnGrupos(p.id_grupos, $index, 'privados')"
+                    [active]="selected.grupo == p.id_grupos ? true : false" [grupo]="p"
+                    [tiempo]="p.mensajes.length ? p.mensajes[p.mensajes.length - 1].fecha_hora : undefined"
+                    [reciente]="p.mensajes.length ? p.mensajes[p.mensajes.length - 1].contenido_mensaje : undefined"
+                    (moverGrupo)="cambiarPosicion($index, p, 2)">
+                </app-grupo>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+        3
+    </div>
+
+</div>
 }
 
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"

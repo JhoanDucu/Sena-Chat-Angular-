@@ -54,7 +54,7 @@
 <form (ngSubmit)="emitirEnvio(form.value)" [formGroup]="form">
   <div class="input-group" style="background-color: #9d9d9d">
     <input type="text" class="form-control custom-text-input" placeholder="Escribe tu mensaje..." id="contenido_mensaje"
-      formControlName="contenido_mensaje" autocomplete="off" (keyup)="longitud()" />
+      formControlName="contenido_mensaje" autocomplete="off" (keyup)="longitud()"/>
     <label for="file" id="labelArchivo">
       <i class="bx bx-paperclip" id="iconoArchivo"></i>
       <input type="file" id="file" class="upload-file" hidden (change)="obtenerArchivo($event.target)" multiple
