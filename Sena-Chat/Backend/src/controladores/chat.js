@@ -1,12 +1,31 @@
 const conexion = require("./conexion");
+const selectGrupos = `
+ug.id_usuarios_grupos, 
+g.id_grupos,
+g.nom_grupos,
+g.descripcion_grupos,
+g.id_ficha,
+ug.sin_leer,
+COALESCE(subquery.fecha_reciente, '') as fecha_reciente
+`;
+
+const subconsultaGrupos = `
+(SELECT ug.id_grupos, 
+COALESCE(MAX(m.fecha_hora), '') as fecha_reciente
+FROM usuarios_grupos ug
+LEFT JOIN mensaje m ON m.fk_destino = ug.id_usuarios_grupos
+GROUP BY ug.id_grupos)
+`;
 
 exports.obtenerGrupos = (req, res) => {
   const numerodoc = req.params.usuario;
-  const ficha = req.params.ficha;
-  const query = `SELECT * FROM usuarios_grupos ug INNER JOIN grupos g 
-          ON ug.id_grupos = g.id_grupos WHERE numerodoc = ${numerodoc} AND fk_tipo_grupo <> 1`;
-
-  conexion.query(query, (error, result) => {
+  const query = `SELECT ${selectGrupos} FROM grupos g
+                  LEFT JOIN ${subconsultaGrupos} subquery ON g.id_grupos = subquery.id_grupos
+                  LEFT JOIN usuarios_grupos ug ON g.id_grupos = ug.id_grupos
+                  WHERE numerodoc = ? AND fk_tipo_grupo <> 1
+                  ORDER BY fecha_reciente DESC`;
+  
+  conexion.query(query, [numerodoc], (error, result) => {
     if (error) console.error(error.message);
 
     if (result.length > 0) {
@@ -94,13 +113,14 @@ exports.insertarMensaje = (req, res) => {
 };
 
 exports.obtenerPrivados = (req, res) => {
-  const ficha = req.params.ficha;
   const numerodoc = req.params.documento;
-  const query = `SELECT * FROM grupos g
-         INNER JOIN usuarios_grupos ug ON g.id_grupos = ug.id_grupos
-         WHERE id_ficha = ${ficha} AND fk_tipo_grupo <> 2 AND numerodoc = ${numerodoc};`;
-
-  conexion.query(query, (error, result) => {
+  const query = `SELECT ${selectGrupos} FROM grupos g
+                  LEFT JOIN ${subconsultaGrupos} subquery ON g.id_grupos = subquery.id_grupos
+                  LEFT JOIN usuarios_grupos ug ON g.id_grupos = ug.id_grupos
+                  WHERE numerodoc = ? AND fk_tipo_grupo <> 2
+                  ORDER BY fecha_reciente DESC`;
+  
+  conexion.query(query, [numerodoc], (error, result) => {
     if (error) console.error(error.message);
 
     if (result.length > 0) {

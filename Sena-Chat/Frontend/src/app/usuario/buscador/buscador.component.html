@@ -5,7 +5,7 @@
 </div>
 
 <div class="tab-content" id="myTabContent">
-@if (buscando && valorBuscar.trim()) {
+@if (buscando && valorBuscar.trim() && coincidencias.resultados) {
     <div class="tab-pane fade show active" *appChat="changes">
     <h1>Grupos</h1>
     @for (i of coincidencias.Grupos; track i) {
@@ -16,9 +16,6 @@
     @for (i of coincidencias.Privados; track i) {
     <h4 class="text-center">{{ coincidencias.Privados[$index] }}</h4>
     <br>
-    }
-    @if (coincidencias.resultados == false) {
-    <h2>Sin resultados de busqueda</h2>
     }
     </div>
 }

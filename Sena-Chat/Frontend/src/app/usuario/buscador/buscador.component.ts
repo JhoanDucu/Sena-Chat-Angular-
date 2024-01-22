@@ -28,7 +28,7 @@ export class BuscadorComponent {
   busqueda() {
     this.coincidencias.Grupos = [];
     this.coincidencias.Privados = [];
-    if (this.valorBuscar != '') {
+    if (this.valorBuscar.trim() != '') {
       this.buscar.emit(true);
       Array.isArray(this.itemsDeBusqueda) ? this.enArray() : this.enObjeto();
       this.changes = ChatDirective.seleccionar(this.changes);
@@ -41,12 +41,6 @@ export class BuscadorComponent {
         if(data.nom_grupos.includes(this.valorBuscar)) this.coincidencias[key].push(data.nom_grupos)
       })
     );
-    // for (let i = 0; i < Math.max(this.itemsDeBusqueda.length, this.privados.length); i++) {
-    //   if (this.itemsDeBusqueda[i].nom_grupos.includes(this.valorBuscar)) this.grupos[i].nom_grupos
-    //   else this.coincidencias.resultados = false;
-    //   if (this.privados[i].nom_grupos.includes(this.valorBuscar)) this.coincidencias.Privados.push(this.privados[i].nom_grupos);
-    //   else this.coincidencias.resultados = ChatDirective.estadoBusqueda(false, this.coincidencias.resultados);
-    // }
   }
 
   enArray() {
