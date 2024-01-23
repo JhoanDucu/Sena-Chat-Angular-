@@ -4,11 +4,12 @@ import { Buscar } from '../Modelos/buscar';
 import { FormsModule } from '@angular/forms';
 import { ChatDirective } from '../Directivas/chat.directive';
 import { Grupo } from '../Modelos/grupos';
+import { GrupoComponent } from '../grupo/grupo.component';
 
 @Component({
   selector: 'app-buscador',
   standalone: true,
-  imports: [CommonModule, FormsModule, ChatDirective],
+  imports: [CommonModule, FormsModule, ChatDirective, GrupoComponent],
   templateUrl: './buscador.component.html',
   styleUrl: './buscador.component.css'
 })
@@ -38,7 +39,7 @@ export class BuscadorComponent {
   enObjeto() {
     Object.keys(this.itemsDeBusqueda).forEach((key: any) => 
       this.itemsDeBusqueda[key].forEach( (data: Grupo) => {
-        if(data.nom_grupos.includes(this.valorBuscar)) this.coincidencias[key].push(data.nom_grupos)
+        if(data.nom_grupos.includes(this.valorBuscar)) this.coincidencias[key].push(data)
       })
     );
   }
@@ -49,5 +50,9 @@ export class BuscadorComponent {
 
   estadoBusqueda(){
     // EN EL FUTURO
+  }
+
+  seleccionarEnBuscador(){
+    console.log('hi');
   }
 }

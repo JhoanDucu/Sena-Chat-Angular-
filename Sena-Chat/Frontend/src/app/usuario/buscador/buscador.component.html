@@ -5,18 +5,20 @@
 </div>
 
 <div class="tab-content" id="myTabContent">
-@if (buscando && valorBuscar.trim() && coincidencias.resultados) {
+    @if (buscando && valorBuscar.trim() && coincidencias.resultados) {
     <div class="tab-pane fade show active" *appChat="changes">
-    <h1>Grupos</h1>
-    @for (i of coincidencias.Grupos; track i) {
-    <h4 class="text-center">{{ coincidencias.Grupos[$index] }}</h4>
-    <br>
-    }
-    <h1>Privados</h1>
-    @for (i of coincidencias.Privados; track i) {
-    <h4 class="text-center">{{ coincidencias.Privados[$index] }}</h4>
-    <br>
-    }
+        <div class="grupos" id="grupos" role="tablist">
+            <div class="list-group" id="list-tab" role="tablist">
+                <a class="list-group-item list-group-item-action">GRUPOS</a>
+                @for (i of coincidencias.Grupos; track i) {
+                <app-grupo [grupo]="i"></app-grupo>
+                }
+                <h1>Privados</h1>
+                @for (i of coincidencias.Privados; track i) {
+                <app-grupo [grupo]="i"></app-grupo>
+                }
+            </div>
+        </div>
     </div>
-}
+    }
 </div>

@@ -1,7 +1,10 @@
+import { Grupo } from "./grupos";
+import { MensajeMostrar } from "./mensaje";
+
 export interface Buscar {
     resultados: boolean;
-    Grupos: any[];
-    Privados: any[];
-    Mensajes: any[];
+    Grupos: Grupo[];
+    Privados: Grupo[];
+    Mensajes: MensajeMostrar[];
     [key: string]: any;
 }

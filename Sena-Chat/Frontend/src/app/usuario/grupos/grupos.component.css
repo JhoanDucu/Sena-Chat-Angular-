@@ -1,6 +1,9 @@
 #myTab {
   font-size: 30px;
   padding: 0;
+  .nav-link {
+    color: rebeccapurple;
+  }
 }
 
 #myTabContent {

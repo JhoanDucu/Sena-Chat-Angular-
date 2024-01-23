@@ -33,7 +33,7 @@ export class GruposComponent {
   @Output() deseleccionar = new EventEmitter();
   fichaSeleccionada = this.Sesion.get('ficha');
   usuario = this.Sesion.get('documento');
-  pestañas = {
+  pestañas = { 
     gruposVisible: () => this.Sesion.set('pestaña', 'grupos'),
     privadosVisible: () => this.Sesion.set('pestaña', 'privados'),
     cerrarVisible: () => this.Sesion.set('pestaña', 'cerrar'),
@@ -57,9 +57,9 @@ export class GruposComponent {
     this.socket.gestionarSalas({ accion: 'unirSala', id_grupo: String(id) });
   };
 
-  mostrarGrupos = () => this.pestañas.gruposVisible;
+  mostrarGrupos = () => this.pestañas.gruposVisible();
 
-  mostrarPrivados = () => this.pestañas.privadosVisible;
+  mostrarPrivados = () => this.pestañas.privadosVisible();
 
   mostrarBusqueda = (value: boolean) =>   this.enBusqueda = value;
 
