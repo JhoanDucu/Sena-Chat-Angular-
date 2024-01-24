@@ -17,19 +17,19 @@
   border: 1px solid;
   width: 95%;
   height: 45px;
-  border-radius: 30px;
+  border-radius: 10px;
   .form-control {
     border: none;
     border-radius: 0;
-    border-top-right-radius: 22px;
-    border-bottom-right-radius: 22px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
   }
   #addon-wrapping {
     border: none;
     border-radius: 0;
-    border-top-left-radius: 50%;
+    border-top-left-radius: 25%;
     width: 10%;
-    border-bottom-left-radius: 50%;
+    border-bottom-left-radius: 25%;
     background-color: white;
   }
   .input-group-text {
@@ -37,6 +37,12 @@
   }
   .form-control:focus {
     box-shadow: none;
+  }
+  label {
+    font-size: large;
+  }
+  button {
+    font-size: 22px;
   }
 }
 

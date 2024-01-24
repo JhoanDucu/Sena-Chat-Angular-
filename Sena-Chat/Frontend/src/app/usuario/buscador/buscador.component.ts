@@ -17,6 +17,7 @@ export class BuscadorComponent {
   @Input() buscando: any;
   @Input() itemsDeBusqueda: any;
   @Output() buscar = new EventEmitter();
+  @Output() seleccion = new EventEmitter();
   coincidencias: Buscar = {
     resultados: true,
     Grupos: [],
@@ -37,22 +38,30 @@ export class BuscadorComponent {
   }
 
   enObjeto() {
-    Object.keys(this.itemsDeBusqueda).forEach((key: any) => 
-      this.itemsDeBusqueda[key].forEach( (data: Grupo) => {
-        if(data.nom_grupos.includes(this.valorBuscar)) this.coincidencias[key].push(data)
+    Object.keys(this.itemsDeBusqueda).forEach((key: any) =>
+      this.itemsDeBusqueda[key].forEach((data: Grupo) => {
+        if (data.nom_grupos.includes(this.valorBuscar)) this.coincidencias[key].push(data)
       })
     );
+    this.estadoBusqueda();
   }
 
   enArray() {
     // Trabajar en el futuro
   }
 
-  estadoBusqueda(){
-    // EN EL FUTURO
+  estadoBusqueda() { 
+    this.coincidencias.Grupos.length || this.coincidencias.Privados.length || this.coincidencias.Mensajes.length ?
+    this.coincidencias.resultados = true : this.coincidencias.resultados = false;
+    console.log(this.coincidencias.resultados);
   }
 
-  seleccionarEnBuscador(){
-    console.log('hi');
+  seleccionarEnBuscador = (id: any, index: number, type: string) => this.seleccion.emit([id, index, type]);
+
+  cancelar(){
+    this.buscar.emit(false);
+    this.valorBuscar = '';
   }
+
+  tiene = (g: any, propiedad: string) => ChatDirective.contieneMensajes(g, propiedad);
 }

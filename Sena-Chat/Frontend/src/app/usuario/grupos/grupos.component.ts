@@ -33,7 +33,7 @@ export class GruposComponent {
   @Output() deseleccionar = new EventEmitter();
   fichaSeleccionada = this.Sesion.get('ficha');
   usuario = this.Sesion.get('documento');
-  pestañas = { 
+  pestañas = {
     gruposVisible: () => this.Sesion.set('pestaña', 'grupos'),
     privadosVisible: () => this.Sesion.set('pestaña', 'privados'),
     cerrarVisible: () => this.Sesion.set('pestaña', 'cerrar'),
@@ -61,7 +61,7 @@ export class GruposComponent {
 
   mostrarPrivados = () => this.pestañas.privadosVisible();
 
-  mostrarBusqueda = (value: boolean) =>   this.enBusqueda = value;
+  mostrarBusqueda = (value: boolean) => this.enBusqueda = value;
 
   cerrarSesion = () => this.Sesion.clear();
 
@@ -72,7 +72,7 @@ export class GruposComponent {
     this.mensajes.reset();
     this.myModal?.hide();
   }
-  
+
   emitirEnvios(formValue: any) {
     if (formValue.variasFichas) this.checked.forEach(
       (value, index) => {
@@ -102,7 +102,7 @@ export class GruposComponent {
     else this.checked.splice(this.checked.indexOf(selected.value), 1);
   }
 
-  cambiarPosicion(index: any, objeto: any, opcion: number){
+  cambiarPosicion(index: any, objeto: any, opcion: number) {
     let tempObjeto = objeto;
     if (opcion != 2) {
       this.grupos.splice(index, 1);
@@ -112,4 +112,6 @@ export class GruposComponent {
       this.privados.unshift(tempObjeto);
     }
   }
+
+  tiene = (g: any, propiedad: string) => ChatDirective.contieneMensajes(g, propiedad);
 }
