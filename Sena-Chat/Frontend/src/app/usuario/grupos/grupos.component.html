@@ -1,14 +1,14 @@
 <div class="row Botones">
     <ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist">
         <li class="nav-item" role="presentation">
-            <button class="nav-link active" id="grupos-tab" data-bs-toggle="tab" data-bs-target="#home" type="button"
-                role="tab" aria-controls="home" aria-selected="true" [disabled]="enBusqueda">
+            <button class="nav-link active" id="grupos-tab" data-bs-toggle="tab" data-bs-target="#grupos" type="button"
+                role="tab" aria-controls="grupos" aria-selected="true" [disabled]="enBusqueda">
                 <i class="bx bxs-group"></i>
             </button>
         </li>
         <li class="nav-item" role="presentation">
-            <button class="nav-link" id="privados-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button"
-                role="tab" aria-controls="profile" aria-selected="false" [disabled]="enBusqueda">
+            <button class="nav-link" id="privados-tab" data-bs-toggle="tab" data-bs-target="#privados" type="button"
+                role="tab" aria-controls="privados" aria-selected="false" [disabled]="enBusqueda">
                 <i class="bx bxs-user"></i>
             </button>
         </li>
@@ -20,8 +20,8 @@
         </li>
         }
         <li class="nav-item" role="presentation">
-            <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#settings" type="button"
-                role="tab" aria-controls="contact" aria-selected="false" [disabled]="enBusqueda">
+            <button class="nav-link" id="perfil-tab" data-bs-toggle="tab" data-bs-target="#ajustes" type="button"
+                role="tab" aria-controls="ajustes" aria-selected="false" [disabled]="enBusqueda">
                 <i class="bx bxs-cog"></i>
             </button>
         </li>
@@ -47,7 +47,7 @@
 
 @if (!enBusqueda) {
 <div class="tab-content" id="myTabContent">
-    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+    <div class="tab-pane fade show active" id="grupos" role="tabpanel" aria-labelledby="grupos">
         <div class="grupos" id="grupos" role="tablist">
             <div class="list-group" id="list-tab" role="tablist">
                 <a class="list-group-item list-group-item-action">GRUPOS</a>
@@ -62,7 +62,7 @@
         </div>
     </div>
 
-    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+    <div class="tab-pane fade" id="privados" role="tabpanel" aria-labelledby="privados">
         <div class="privados" id="privados" role="tablist">
             <div class="list-group" id="list-tab" role="tablist">
                 <a class="list-group-item list-group-item-action">PRIVADOS</a>
@@ -76,8 +76,8 @@
             </div>
         </div>
     </div>
-    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-        3
+    <div class="tab-pane fade" id="ajustes" role="tabpanel" aria-labelledby="ajustes">
+        <app-vis-perfil></app-vis-perfil>
     </div>
 
 </div>
@@ -98,18 +98,18 @@
                     <p>Seleccione las fichas a las que se enviara el mensaje:</p>
                     @for (g of grupos; track g.id_grupos) {
                     <ul class="list-group mb-3" id="escoger">
-                        <li class="list-group-item w-50">
-                            <label for="{{g.id_grupos}}" class="labelFichas align-middle">{{ g.id_ficha
-                                }}</label>
+                        <li class="list-group-item">
+                            <label for="{{g.id_grupos}}">{{g.nom_grupos}}</label>
+                            <input class="form-check-input variasFichas align-middle" id="{{g.id_grupos}}"
+                                type="checkbox" value="{{g.id_grupos}}" formControlName="variasFichas"
+                                (click)="check($event.target)">
                         </li>
-                        <input class="form-check-input variasFichas align-middle" id="{{g.id_grupos}}" type="checkbox"
-                            value="{{g.id_grupos}}" formControlName="variasFichas" (click)="check($event.target)">
                     </ul>
                     }
                 </div>
                 <div class="modal-footer container">
                     <div class="row row-cols-1">
-                        @if (this.checked) {
+                        <!-- @if (this.checked) {
                         <div class="col mb-3">
                             <div class="progress">
                                 <div class="progress-bar progress-bar-striped progress-bar-animated w-75"
@@ -117,7 +117,7 @@
                                     75%</div>
                             </div>
                         </div>
-                        }
+                        } -->
                         <div class="col input-group">
                             <textarea type="text" placeholder="Escribe el mensaje..." [id]="idInput"
                                 formControlName="mensajeFichas" (keyup)="inputSize($event)"

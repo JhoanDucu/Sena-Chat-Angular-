@@ -28,6 +28,7 @@
   padding: 14px;
   text-align: center;
   background-color: transparent;
+  width: 100%;
 }
 
 .list-group-item.active {
@@ -73,7 +74,7 @@
 }
 
 .labelFichas {
-  padding-left: 10vh;
+  margin-right: 1vh;
 }
 
 .variasFichas {

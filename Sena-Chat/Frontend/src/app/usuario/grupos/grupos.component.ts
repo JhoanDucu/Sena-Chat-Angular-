@@ -9,11 +9,20 @@ import { Modal } from 'bootstrap';
 import { SocketService } from '../Servicios/socket.service';
 import { GrupoComponent } from '../grupo/grupo.component';
 import { BuscadorComponent } from '../buscador/buscador.component';
+import { VisPerfilComponent } from '../vis-perfil/vis-perfil.component';
 
 @Component({
   selector: 'app-grupos',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, FormsModule, ChatDirective, GrupoComponent, BuscadorComponent],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule, 
+    FormsModule, 
+    ChatDirective,
+    GrupoComponent,
+    BuscadorComponent,
+    VisPerfilComponent
+  ],
   templateUrl: './grupos.component.html',
   styleUrl: './grupos.component.css'
 })
