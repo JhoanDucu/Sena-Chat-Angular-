@@ -1,0 +1,67 @@
+.form-container {
+    background-color: #D0D0D0;
+    padding: 20px;
+    width: 50%;
+    margin: 0 auto;
+    border-radius: 10px;
+    border: 1px solid gray;
+}
+
+.form-title {
+    font-weight:bolder;
+    text-align: center;
+    font-family: 'Josefin Sans', sans-serif;
+    color: rgb(81, 81, 81);
+    font-size: 2em;
+}
+
+.form-group {
+    margin-bottom: 1em;
+}
+
+.btn {
+    margin-right: 1em;
+}
+
+.btn-create {
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight:500;
+    font-size: 1.2em;
+    background-color: #7DC97B;
+    color: rgb(0, 0, 0);
+    border: 1px solid gray;
+}
+
+.btn-cancel {
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight:500;
+    font-size: 1.2em;
+    background-color: #C9847B;
+    color: rgb(0, 0, 0);
+    border: 1px solid gray;
+}
+
+.btn {
+    margin-right: 1em;
+    display: block;
+    width: 100%;
+}
+
+/* Estilo para la barra de desplazamiento */
+#groupDescription::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  #groupDescription::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+  }
+  
+  #groupDescription::-webkit-scrollbar-thumb {
+    background: rgb(69, 132, 69); /* Cambia este valor para cambiar el color del scrollbar */
+    border-radius: 10px;
+  }
+  
+  #groupDescription::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
