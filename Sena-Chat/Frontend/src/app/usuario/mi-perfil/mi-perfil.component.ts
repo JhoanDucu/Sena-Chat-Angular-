@@ -1,17 +1,17 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { VisPerfilService } from '../Servicios/vis-perfil.service';
-import { Usuario } from '../Modelos/usuarios';
 import { SesionService } from '../Sesiones/sesion.service';
+import { Usuario } from '../Modelos/usuarios';
 
 @Component({
-  selector: 'app-vis-perfil',
+  selector: 'app-mi-perfil',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './vis-perfil.component.html',
-  styleUrl: './vis-perfil.component.css'
+  templateUrl: './mi-perfil.component.html',
+  styleUrl: './mi-perfil.component.css'
 })
-export class VisPerfilComponent {
+export class MiPerfilComponent {
   constructor(
     private VisPerfilService: VisPerfilService,
     private Sesion: SesionService
@@ -24,4 +24,3 @@ export class VisPerfilComponent {
     this.VisPerfilService.buscarDatos(this.numerodoc).subscribe((data: any) => this.item = data[0]);
   }
 }
-
