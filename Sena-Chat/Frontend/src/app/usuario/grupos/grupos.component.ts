@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Grupo } from '../Modelos/grupos';
+import { Grupo, Tabs } from '../Modelos/grupos';
 import { SesionService } from '../Sesiones/sesion.service';
 import { FormControl, FormGroup, FormGroupDirective, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ChatDirective } from '../Directivas/chat.directive';
@@ -15,8 +15,8 @@ import { MiPerfilComponent } from '../mi-perfil/mi-perfil.component';
   standalone: true,
   imports: [
     CommonModule,
-    ReactiveFormsModule, 
-    FormsModule, 
+    ReactiveFormsModule,
+    FormsModule,
     ChatDirective,
     GrupoComponent,
     BuscadorComponent,
@@ -41,10 +41,10 @@ export class GruposComponent {
   @Output() deseleccionar = new EventEmitter();
   fichaSeleccionada = this.Sesion.get('ficha');
   usuario = this.Sesion.get('documento');
-  pestañas = {
-    gruposVisible: () => this.Sesion.set('pestaña', 'grupos'),
-    privadosVisible: () => this.Sesion.set('pestaña', 'privados'),
-    cerrarVisible: () => this.Sesion.set('pestaña', 'cerrar'),
+  tabs: Tabs = {
+    grupos: { class: 'tab-pane fade show active' },
+    privados: { class: 'tab-pane fade' },
+    ajustes: { class: 'tab-pane fade' },
   }
   mensajes = new FormGroup({
     variasFichas: new FormControl('', Validators.required),
@@ -65,9 +65,10 @@ export class GruposComponent {
     this.socket.gestionarSalas({ accion: 'unirSala', id_grupo: String(id) });
   };
 
-  mostrarGrupos = () => this.pestañas.gruposVisible();
-
-  mostrarPrivados = () => this.pestañas.privadosVisible();
+  showTab = (tab: string) => {
+    for (const key in this.tabs) 
+    key == tab ? this.tabs[key].class = 'tab-pane fade show active' : this.tabs[key].class = 'tab-pane fade';
+  };
 
   mostrarBusqueda = (value: boolean) => this.enBusqueda = value;
 

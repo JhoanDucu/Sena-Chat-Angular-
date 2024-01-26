@@ -49,3 +49,10 @@ body {
       text-wrap: balance;
     }
   }
+
+  #liveToast {
+    direction: ltr;
+    #toastImg {
+      height: 20px;
+    }
+  }

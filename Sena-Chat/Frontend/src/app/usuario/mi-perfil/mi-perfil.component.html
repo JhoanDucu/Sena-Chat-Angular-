@@ -6,7 +6,8 @@
             <h4>Nombre de Usuario</h4>
             <p>Siempre en busca de nuevas aventuras y dispuesta a
                 compartir experiencias. Amante de los animales y defensora del medio ambiente.</p>
-            <!-- <label for="exampleInputEmail1" class="form-label"><strong>Primer nombre:</strong></label>
+            <!-- 
+                <label for="exampleInputEmail1" class="form-label"><strong>Primer nombre:</strong></label>
                     <label for="exampleInputEmail1" class="form-label">....</label>
                     <br>
                     <label for="exampleInputEmail1" class="form-label"><strong>Segundo nombre: </strong></label>
@@ -33,5 +34,20 @@
     </div>
     <div id="datos-box">
         <p>Juan David Cardenas Perez</p>
+        <button type="button" class="btn btn-primary" id="liveToastBtn" (click)="toast()">Show live toast</button>
+    </div>
+</div>
+
+<div class="position-fixed bottom-0 start-0 p-3" style="z-index: 11">
+    <div id="liveToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+            <img src="../../../assets/img/Usuario3.jpg" class="rounded me-2" id="toastImg">
+            <strong class="me-auto">Bootstrap</strong>
+            <small>11 mins ago</small>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body">
+            Hello, world! This is a toast message.
+        </div>
     </div>
 </div>

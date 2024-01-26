@@ -16,3 +16,14 @@ export interface GrupoComponentData {
   grupos: Array<Grupo>,
   privados: Array<Grupo>,
 }
+
+export interface Tab {
+  class: string;
+}
+
+export interface Tabs {
+  grupos: Tab;
+  privados: Tab;
+  ajustes: Tab;
+  [key: string]: any,
+}
