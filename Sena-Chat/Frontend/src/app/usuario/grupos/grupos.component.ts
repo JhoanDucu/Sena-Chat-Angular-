@@ -45,6 +45,7 @@ export class GruposComponent {
     grupos: { class: 'tab-pane fade show active' },
     privados: { class: 'tab-pane fade' },
     ajustes: { class: 'tab-pane fade' },
+    perfil: { class: 'tab-pane fade' },
   }
   mensajes = new FormGroup({
     variasFichas: new FormControl('', Validators.required),

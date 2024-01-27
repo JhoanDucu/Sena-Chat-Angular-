@@ -1,6 +1,11 @@
 #myTab {
-  font-size: 30px;
+  font-size: 28px;
   padding: 0;
+  border: none;
+  padding-top: 1vh;
+  width: 98%;
+  background-color: currentColor;
+  margin: 5px;
   .nav-link {
     color: rebeccapurple;
   }
@@ -16,7 +21,19 @@
 
 .Botones {
   margin: 0;
-  padding-top: 3vh;
+  .perfilImg {
+    background: none;
+    border: none;
+    padding: 0;
+    width: 30%;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+  }
+  img {
+    height: 40px;
+    border-radius: 50%;
+  }
 }
 
 .list-group-item {
@@ -29,7 +46,19 @@
   text-align: center;
   background-color: transparent;
   width: 100%;
+  
 }
+/* font-family: "Josefin Sans", sans-serif;
+  font-weight: bold;
+  font-size: 18px;
+  border: none;
+  border-bottom: 1px solid #000000;
+  padding: 12px;
+  cursor: pointer;
+  text-align: center;
+  margin: 3px 12px;
+  width: 95%;
+  border-radius: 12px; */
 
 .list-group-item.active {
   background-color: #3d803d;
