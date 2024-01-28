@@ -13,9 +13,10 @@
 
 #buscarGrupos {
   padding: 0;
-  margin: 2.5%;
+  margin: 0% 4%;
+  margin-bottom: 1vh;
   border: 1px solid;
-  width: 95%;
+  width: 92%;
   height: 45px;
   border-radius: 10px;
   .form-control {
@@ -90,9 +91,10 @@
   font-family: "Josefin Sans", sans-serif;
 }
 
-.grupos, .privados{
+.grupos,
+.privados {
   overflow-y: auto;
-  max-height: 68vh;
+  max-height: 77vh;
 }
 
 .grupos::-webkit-scrollbar {

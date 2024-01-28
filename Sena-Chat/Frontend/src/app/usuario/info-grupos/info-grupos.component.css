@@ -1,3 +1,28 @@
+#cabeceraChat {
+  height: 70px;
+  margin: 0;
+  padding: 0.5rem 15px;
+}
+
+#nombre-grupo {
+  display: flex;
+  width: 70%;
+  #logo-grupo {
+    height: 42px;
+  }
+}
+
+#botones-grupo {
+  display: flex;
+  justify-content: end;
+  width: 30%;
+  #info-boton {
+    background: none;
+    border: none;
+    font-size: 30px;
+  }
+}
+
 /* Seccion Eliminar */
 
 #offcanvasNavbar,

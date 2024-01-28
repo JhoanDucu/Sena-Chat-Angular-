@@ -1,7 +1,7 @@
 body {
   overflow: hidden;
   font-family: josefin sans, sans-serif;
-  background-color: rgb(165, 163, 163);
+  background-color: #dfdfdf;
 }
 
 #allPage {
@@ -37,7 +37,6 @@ body {
 /* Contenedor de los grupos y privados */
 
 .ContenedorGrupoos {
-  background-color: #dfdfdf;
   margin: 0;
   padding: 0px;
   width: 38%;
@@ -47,24 +46,11 @@ body {
   user-select: none;
 }
 
-#logo-grupo {
-  width: 70px;
-  height: 50px;
-}
-
 /* Navbar del chat */
 
 .contenedorChat {
   padding: 0;
   width: 62%;
-}
-
-#cabeceraChat {
-  background: linear-gradient(to right, #dfdfdf, #dfdfdf);
-  height: 70px;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
-  margin: 0;
-  padding: 0.5rem 15px;
 }
 
 .container-fluid h4 {
@@ -82,7 +68,7 @@ body {
   width: 62%;
   top: 70px;
   bottom: 0;
-  background-color: #9d9d9d;
+  background-color: #dfdfdf;
   overflow: auto;
 }
 

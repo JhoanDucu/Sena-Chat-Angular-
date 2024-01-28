@@ -25,5 +25,6 @@ export interface Tabs {
   grupos: Tab;
   privados: Tab;
   ajustes: Tab;
+  perfil: Tab;
   [key: string]: any,
 }

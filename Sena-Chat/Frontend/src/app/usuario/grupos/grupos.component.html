@@ -1,5 +1,5 @@
-<div class="row Botones">
-    <ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist">
+<div class="Botones">
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item" role="presentation">
             <button class="nav-link active" id="grupos-tab" data-bs-toggle="tab" data-bs-target="#grupos" type="button"
                 role="tab" aria-controls="grupos" aria-selected="false" [disabled]="enBusqueda"
@@ -22,7 +22,7 @@
         </li>
         }
         <li class="nav-item" role="presentation">
-            <button class="nav-link" id="perfil-tab" data-bs-toggle="tab" data-bs-target="#ajustes" type="button"
+            <button class="nav-link" id="ajustes-tab" data-bs-toggle="tab" data-bs-target="#ajustes" type="button"
                 role="tab" aria-controls="ajustes" aria-selected="false" [disabled]="enBusqueda"
                 (click)="showTab('ajustes')">
                 <i class="bx bxs-cog"></i>
@@ -32,7 +32,7 @@
         <li class="nav-item" role="presentation">
             <button class="nav-link" id="dontk-tab" data-bs-toggle="tab" data-bs-target="#salir" type="button"
                 role="tab" aria-controls="contact" aria-selected="false" [disabled]="enBusqueda">
-                <i class="bx bxs-door-open"></i>
+                <i class='bx bxs-conversation'></i>
             </button>
         </li>
         <li class="nav-item" role="presentation">
@@ -41,10 +41,13 @@
                 <i class="bx bxs-help-circle"></i>
             </button>
         </li>
-        <button class="perfilImg" id="perfil-tab" data-bs-toggle="tab" data-bs-target="#perfil" type="button" role="tab"
-        aria-controls="perfil" aria-selected="false" [disabled]="enBusqueda" (click)="showTab('perfil')">
-        <img src="../../../assets/img/Usuario3.jpg" alt="">
-    </button>
+        <div id="foto-perfil">
+            <button class="nav-link" id="perfil-tab" data-bs-toggle="tab" data-bs-target="#perfil" type="button"
+                role="tab" aria-controls="perfil" aria-selected="false" [disabled]="enBusqueda"
+                (click)="showTab('perfil')">
+                <img src="../../../assets/img/Usuario3.jpg" alt="">
+            </button>
+        </div>
     </ul>
 </div>
 
@@ -57,7 +60,7 @@
     <div [className]="tabs.grupos.class" id="grupos" role="tabpanel" aria-labelledby="grupos">
         <div class="grupos" id="grupos" role="tablist">
             <div class="list-group" id="list-tab" role="tablist">
-                <h3>Grupos</h3>
+                <span>Grupos</span>
                 <!-- <a class="list-group-item list-group-item-action">GRUPOS</a> -->
                 @for ( g of grupos; track g.id_grupos) {
                 <app-grupo (click)="seleccionarEnGrupos(g.id_grupos, $index, 'grupos')"
@@ -87,7 +90,7 @@
     <div [className]="tabs.privados.class" id="privados" role="tabpanel" aria-labelledby="privados">
         <div class="privados" id="privados" role="tablist">
             <div class="list-group" id="list-tab" role="tablist">
-                <a class="list-group-item list-group-item-action">PRIVADOS</a>
+                <span>Privados</span>
                 @for (p of privados; track p.id_grupos) {
                 <app-grupo (click)="seleccionarEnGrupos(p.id_grupos, $index, 'privados')"
                     [active]="selected.grupo == p.id_grupos ? true : false" [grupo]="p"
@@ -98,11 +101,13 @@
             </div>
         </div>
     </div>
-    <div [className]="tabs.ajustes.class" id="perfil" role="tabpanel" aria-labelledby="perfil">
+    <div [className]="tabs.perfil.class" id="perfil" role="tabpanel" aria-labelledby="perfil">
         <app-mi-perfil></app-mi-perfil>
     </div>
     <!-- INCLUIR AQUI LOS NUEVOS BOTONES :D -->
 </div>
+<button id="iniciarChat">Nuevo<i class='bx bxs-conversation'></i></button>
+<button id="iniciarChat">Cerrar Sesion <i class="bx bxs-door-open"></i></button>
 }
 
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"

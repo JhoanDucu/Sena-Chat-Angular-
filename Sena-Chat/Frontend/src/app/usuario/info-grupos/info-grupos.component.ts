@@ -4,6 +4,7 @@ import { SesionService } from '../Sesiones/sesion.service';
 import { Usuario } from '../Modelos/usuarios';
 import { ChatService } from '../Servicios/chat.service';
 import { Dropdown, Offcanvas } from 'bootstrap';
+import { Grupo } from '../Modelos/grupos';
 
 @Component({
   selector: 'app-info-grupos',
@@ -22,7 +23,7 @@ export class InfoGruposComponent {
   id: string  = '';
   miembros: Usuario[] = [];
   usuario = this.Sesion.get('documento');
-  @Input() grupoSeleccionado: string | null = '';
+  @Input() grupoSeleccionado: Grupo | any;
   mostrarDropdown: string | undefined = undefined;
 
   ngOnInit(){
@@ -30,7 +31,7 @@ export class InfoGruposComponent {
   }
 
   consultarMiembros() {
-    this.Chat.traerMiembros(this.grupoSeleccionado).subscribe((data: any) => { this.miembros = data });
+    this.Chat.traerMiembros(this.grupoSeleccionado.id_grupos).subscribe((data: any) => { this.miembros = data });
     this.offcanvas?.show();
   }
 

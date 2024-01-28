@@ -20,15 +20,12 @@
             </div>
             <div class="column contenedorChat">
                 @if(grupoSeleccionado){
-                <nav class="container navbar bg-body-tertiary" id="cabeceraChat">
-                    <img src="../../assets/img/Grupo.png" alt="IMAGEN DEL GRUPO" id="logo-grupo" />
-                    <h4>{{ fichaSeleccionada }}</h4>
-                    <app-info-grupos [grupoSeleccionado]="this.Sesion.get('grupos')"></app-info-grupos>
-                </nav>
+
+                <app-info-grupos [grupoSeleccionado]="grupoElegido"></app-info-grupos>
 
                 <div class="Chat container-fluid">
                     <div class="card mensajes-container">
-                        <app-mensajes *appChat="datos.other.changes" [mensajes]="mensajesGrupo"></app-mensajes>
+                        <app-mensajes *appChat="datos.other.changes" [mensajes]="grupoElegido.mensajes"></app-mensajes>
                     </div>
                     <app-mensajes-enviar (emitir)="enviar($event, grupoSeleccionado)"></app-mensajes-enviar>
                 </div>

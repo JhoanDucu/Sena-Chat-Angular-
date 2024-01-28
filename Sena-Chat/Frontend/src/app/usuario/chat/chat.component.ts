@@ -40,7 +40,7 @@ export class ChatComponent {
   grupoSeleccionado: string | null = '';
   fichaSeleccionada = this.Sesion.get('ficha');
   usuario = this.Sesion.get('documento');
-  mensajesGrupo: Array<MensajeMostrar> = [];
+  grupoElegido: Grupo | any;
 
   ngOnInit() {
     this.Sesion.remove('grupos');
@@ -79,7 +79,7 @@ export class ChatComponent {
     this.datos.other.changes = newValue[0];
     this.Sesion.set('grupos', newValue[1]);
     this.grupoSeleccionado = this.Sesion.get('grupos');
-    this.mensajesGrupo = this.datos.gruposComponent[newValue[3]][newValue[2]].mensajes;
+    this.grupoElegido = this.datos.gruposComponent[newValue[3]][newValue[2]];
   }
 
   extraerMensajes(data: any, location: string) {
@@ -102,7 +102,7 @@ export class ChatComponent {
     mensaje.primer_apellido = primer_apellido;
     mensaje.fecha_hora = new Date();
 
-    if (!grupo) this.mensajesGrupo.push(mensaje);
+    if (!grupo) this.grupoElegido.mensajes.push(mensaje);
     else {
       this.datos.gruposComponent.grupos.find((g: Grupo) => g.id_grupos == grupo)?.mensajes.push(mensaje)
       this.datos.gruposComponent.privados.find((p: Grupo) => p.id_grupos == grupo)?.mensajes.push(mensaje)

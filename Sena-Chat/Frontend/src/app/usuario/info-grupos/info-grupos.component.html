@@ -1,6 +1,14 @@
-<button class="navbar-toggler" type="button" (click)="consultarMiembros()">
-    <span class="navbar-toggler-icon"></span>
-</button>
+<nav class="container navbar bg-body-tertiary" id="cabeceraChat">
+    <div id="nombre-grupo">
+        <img src="../../../assets/img/Usuario2.jpg" alt="IMAGEN DEL GRUPO" id="logo-grupo" />
+        <h4>{{ grupoSeleccionado.nom_grupos }}</h4>
+    </div>
+    <div id="botones-grupo">
+        <button id="info-boton" type="button" (click)="consultarMiembros()">
+            <i class='bx bx-dots-horizontal-rounded'></i>
+        </button>
+    </div>
+</nav>
 
 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
     <div class="offcanvas-header">
