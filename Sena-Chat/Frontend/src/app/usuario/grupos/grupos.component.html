@@ -61,7 +61,6 @@
         <div class="grupos" id="grupos" role="tablist">
             <div class="list-group" id="list-tab" role="tablist">
                 <span>Grupos</span>
-                <!-- <a class="list-group-item list-group-item-action">GRUPOS</a> -->
                 @for ( g of grupos; track g.id_grupos) {
                 <app-grupo (click)="seleccionarEnGrupos(g.id_grupos, $index, 'grupos')"
                     [active]="selected.grupo == g.id_grupos ? true : false" [grupo]="g"

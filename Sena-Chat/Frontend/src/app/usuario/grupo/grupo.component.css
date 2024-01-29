@@ -30,7 +30,11 @@
   position: relative;
   text-align: start;
   width: calc(100%);
-
+  .pic-tab {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+  }
   #grupo {
     padding: 0 0 0 12px;
     width: calc(88%);
@@ -56,10 +60,4 @@
     position: absolute;
     right: 0;
   }
-}
-
-.pic-tab {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
 }

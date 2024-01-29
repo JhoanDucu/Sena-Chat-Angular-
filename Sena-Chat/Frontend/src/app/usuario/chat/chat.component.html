@@ -1,38 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CHAT</title>
-    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
-</head>
-
-<body>
-    <div class="container-fluid" id="allPage">
-        <div class="row" id="rowPage">
-            <div class="column ContenedorGrupoos">
-                <app-grupos [grupos]="datos.gruposComponent.grupos" [privados]="datos.gruposComponent.privados"
-                    (makeChange)="applyChanges($event)" [changesValue]="datos.other.changes"
-                    [selected]="{ grupo: this.Sesion.get('grupos'), p: Sesion.get('pestaña')}"
-                    (envioMultiple)="enviar($event, $event.fk_destino)" (deseleccionar)="sinGrupo()">
-                </app-grupos>
-            </div>
-            <div class="column contenedorChat">
-                @if(grupoSeleccionado){
-
-                <app-info-grupos [grupoSeleccionado]="grupoElegido"></app-info-grupos>
-
-                <div class="Chat container-fluid">
-                    <div class="card mensajes-container">
-                        <app-mensajes *appChat="datos.other.changes" [mensajes]="grupoElegido.mensajes"></app-mensajes>
-                    </div>
-                    <app-mensajes-enviar (emitir)="enviar($event, grupoSeleccionado)"></app-mensajes-enviar>
+<div class="container-fluid" id="allPage">
+    <div class="row" id="rowPage">
+        <div class="column contenedorGrupos">
+            <app-grupos [grupos]="datos.gruposComponent.grupos" [privados]="datos.gruposComponent.privados"
+                (makeChange)="applyChanges($event)" [changesValue]="datos.other.changes"
+                [selected]="{ grupo: this.Sesion.get('grupos'), p: Sesion.get('pestaña')}"
+                (envioMultiple)="enviar($event, $event.fk_destino)" (deseleccionar)="sinGrupo()">
+            </app-grupos>
+        </div>
+        <div class="column contenedorChat">
+            @if(grupoSeleccionado){
+            <app-info-grupos [grupoSeleccionado]="grupoElegido"></app-info-grupos>
+            <div class="Chat container-fluid">
+                <div class="card mensajes-container">
+                    <app-mensajes *appChat="datos.other.changes" [mensajes]="grupoElegido.mensajes"></app-mensajes>
                 </div>
-                }
+                <app-mensajes-enviar (emitir)="enviar($event, grupoSeleccionado)"></app-mensajes-enviar>
             </div>
+            }
         </div>
     </div>
-</body>
-
-</html>
+</div>

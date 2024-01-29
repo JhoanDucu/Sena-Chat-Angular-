@@ -2,12 +2,10 @@
   padding-bottom: 5%;
 }
 
-/* Estilo para la barra de desplazamiento */
 .card-body.chat-box::-webkit-scrollbar {
   width: 8px;
 }
 
-/* Estilo para el pulgar (parte deslizable) de la barra de desplazamiento */
 .card-body.chat-box::-webkit-scrollbar-thumb {
   background-color: #3d803d;
   border-radius: 4px;
@@ -79,11 +77,13 @@
   bottom: -3%;
 }
 
-#iconoInformacion {
+/* DETECCION DE ERRORES */
+
+/* #iconoInformacion {
   font-size: 30px;
   margin-right: 10px;
-}
+} */
 
-#sinMensaje {
+/* #sinMensaje {
   font-size: 20px;
-}
+} */

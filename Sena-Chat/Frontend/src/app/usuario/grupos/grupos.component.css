@@ -13,9 +13,6 @@
   .nav-link {
     color: rebeccapurple;
   }
-  #myTabContent {
-    padding: 0;
-  }
 }
 
 #perfil-tab {
@@ -35,28 +32,8 @@
   padding-bottom: 10px;
 }
 
-.list-group-item {
-  font-family: "Josefin Sans", sans-serif;
-  font-weight: bold;
-  font-size: 18px;
-  border: none;
-  border-bottom: 1px solid #000000;
-  padding: 12px;
-  cursor: pointer;
-  text-align: center;
-  margin: 3px 12px;
-  width: 95%;
-  border-radius: 12px;
-}
-
-.list-group-item.active {
-  background-color: #3d803d;
-  color: #fff;
-  border-color: #dfdfdf;
-  position: sticky;
-  top: 0;
-  z-index: 1;
-  font-family: "Josefin Sans", sans-serif;
+#myTabContent {
+  padding: 0;
 }
 
 .grupos,
@@ -81,32 +58,15 @@
   border-radius: 5px;
 }
 
-.list-group-item-action:hover {
-  background-color: #3d803d;
-  color: #fff;
-}
-
-#lista-privados {
-  border: none !important;
-  background-color: transparent !important;
-  box-shadow: none !important;
-  display: flex;
-  align-items: center;
-}
-
-#escoger {
-  display: flex;
-  flex-direction: row;
-}
-
 #iniciarChat {
   font-size: 20px;
   border: 1px solid black;
   margin: 4px;
 }
 
-.labelFichas {
-  margin-right: 1vh;
+#escoger {
+  display: flex;
+  flex-direction: row;
 }
 
 .variasFichas {
@@ -116,32 +76,32 @@
   margin: 0;
 }
 
-.mensajesFichas {
-  width: 88%;
-  resize: none;
-  outline: none;
-  margin-right: 0.9rem;
-}
-
-#mensajeFichas {
-  height: 6vh;
-}
-
-#mensajeFichas2 {
-  height: 12vh;
-}
-
-#mensajeFichas3 {
-  height: 18vh;
-}
-
-.mensajesFichas::-webkit-scrollbar {
-  width: 0px;
-}
-
 .modal-footer {
   display: block;
   .col {
     padding: 0;
+  }
+
+  .mensajesFichas {
+    width: 88%;
+    resize: none;
+    outline: none;
+    margin-right: 0.9rem;
+  }
+
+  #mensajeFichas {
+    height: 6vh;
+  }
+
+  #mensajeFichas2 {
+    height: 12vh;
+  }
+
+  #mensajeFichas3 {
+    height: 18vh;
+  }
+
+  .mensajesFichas::-webkit-scrollbar {
+    width: 0px;
   }
 }

@@ -51,17 +51,19 @@
 </div>
 }
 
-<form (ngSubmit)="emitirEnvio(form.value)" [formGroup]="form">
-  <div class="input-group">
-    <input type="text" class="form-control custom-text-input" placeholder="Escribe tu mensaje..." id="contenido_mensaje"
-      formControlName="contenido_mensaje" autocomplete="off" (keyup)="longitud()"/>
-    <label for="file" id="labelArchivo">
-      <i class="bx bx-paperclip" id="iconoArchivo"></i>
-      <input type="file" id="file" class="upload-file" hidden (change)="obtenerArchivo($event.target)" multiple
-        formControlName="archivo" />
-    </label>
-    <button class="btn btn-success" type="submit" id="enviar" [disabled]="noEnviar">
-      <i class="bx bxs-send" id="iconoEnviar"></i>
-    </button>
-  </div>
-</form>
+<div class="contenedor-form">
+  <form (ngSubmit)="emitirEnvio(form.value)" [formGroup]="form">
+    <div class="input-group">
+      <input type="text" class="form-control custom-text-input" placeholder="Escribe tu mensaje..."
+        id="contenido_mensaje" formControlName="contenido_mensaje" autocomplete="off" (keyup)="longitud()" />
+      <label for="file" id="labelArchivo">
+        <i class="bx bx-paperclip" id="iconoArchivo"></i>
+        <input type="file" id="file" class="upload-file" hidden (change)="obtenerArchivo($event.target)" multiple
+          formControlName="archivo" />
+      </label>
+      <button class="btn btn-success" type="submit" id="enviar" [disabled]="noEnviar">
+        <i class="bx bxs-send" id="iconoEnviar"></i>
+      </button>
+    </div>
+  </form>
+</div>

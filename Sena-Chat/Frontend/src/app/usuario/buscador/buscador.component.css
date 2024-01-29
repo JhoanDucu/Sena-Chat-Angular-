@@ -1,16 +1,3 @@
-#myTab {
-  font-size: 30px;
-  padding: 0;
-}
-
-#myTabContent {
-  padding: 0;
-  direction: rtl;
-  .list-group {
-    direction: ltr;
-  }
-}
-
 #buscarGrupos {
   padding: 0;
   margin: 0% 4%;
@@ -47,48 +34,8 @@
   }
 }
 
-/* EDITARRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR */
-
-#myTab {
-  font-size: 30px;
-  padding: 0;
-  .nav-link {
-    color: rebeccapurple;
-  }
-}
-
 #myTabContent {
   padding: 0;
-  direction: rtl;
-  .list-group {
-    direction: ltr;
-  }
-}
-
-.Botones {
-  margin: 0;
-  padding-top: 3vh;
-}
-
-.list-group-item {
-  font-family: "Josefin Sans", sans-serif;
-  font-weight: bold;
-  font-size: larger;
-  border: none;
-  border-bottom: 1px solid #000000;
-  padding: 14px;
-  text-align: center;
-  background-color: transparent;
-}
-
-.list-group-item.active {
-  background-color: #3d803d;
-  color: #fff;
-  border-color: #dfdfdf;
-  position: sticky;
-  top: 0;
-  z-index: 1;
-  font-family: "Josefin Sans", sans-serif;
 }
 
 .grupos,
@@ -98,7 +45,7 @@
 }
 
 .grupos::-webkit-scrollbar {
-  width: 6px;
+  width: 5px;
 }
 
 .grupos::-webkit-scrollbar-thumb {
@@ -106,61 +53,3 @@
   border-radius: 5px;
 }
 
-.list-group-item-action:hover {
-  background-color: #3d803d;
-  color: #fff;
-}
-
-#lista-privados {
-  border: none !important;
-  background-color: transparent !important;
-  box-shadow: none !important;
-  display: flex;
-  align-items: center;
-}
-
-#escoger {
-  display: flex;
-  flex-direction: row;
-}
-
-.labelFichas {
-  padding-left: 10vh;
-}
-
-.variasFichas {
-  border: 1px solid;
-  width: 24px;
-  height: 24px;
-  margin: 0;
-}
-
-.mensajesFichas {
-  width: 88%;
-  resize: none;
-  outline: none;
-  margin-right: 0.9rem;
-}
-
-#mensajeFichas {
-  height: 6vh;
-}
-
-#mensajeFichas2 {
-  height: 12vh;
-}
-
-#mensajeFichas3 {
-  height: 18vh;
-}
-
-.mensajesFichas::-webkit-scrollbar {
-  width: 0px;
-}
-
-.modal-footer {
-  display: block;
-  .col {
-    padding: 0;
-  }
-}

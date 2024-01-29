@@ -1,42 +1,16 @@
-body {
+#allPage {
+  padding: 0;
+  margin: 0;
   overflow: hidden;
   font-family: josefin sans, sans-serif;
   background-color: #dfdfdf;
 }
 
-#allPage {
-  position: absolute;
-  top: 0;
-  left: 0;
-  padding: 0;
-  margin: 0;
-}
-
 #rowPage {
-  flex-wrap: nowrap;
   margin: 0;
 }
 
-.cabecera-menu {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-}
-
-.nav-link {
-  display: flex;
-  align-items: center;
-  margin-right: 2.5%;
-}
-
-.nav-link.dropdown-toggle::after {
-  display: none;
-}
-
-/* Contenedor de los grupos y privados */
-
-.ContenedorGrupoos {
+.contenedorGrupos {
   margin: 0;
   padding: 0px;
   width: 38%;
@@ -46,17 +20,9 @@ body {
   user-select: none;
 }
 
-/* Navbar del chat */
-
 .contenedorChat {
   padding: 0;
   width: 62%;
-}
-
-.container-fluid h4 {
-  font-weight: 700;
-  font-family: "Josefin Sans", sans-serif;
-  letter-spacing: 1px;
 }
 
 /* Mensajes */
