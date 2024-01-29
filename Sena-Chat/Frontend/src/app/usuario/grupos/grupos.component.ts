@@ -10,6 +10,9 @@ import { SocketService } from '../Servicios/socket.service';
 import { GrupoComponent } from '../grupo/grupo.component';
 import { BuscadorComponent } from '../buscador/buscador.component';
 import { MiPerfilComponent } from '../mi-perfil/mi-perfil.component';
+import { GruposTituloComponent } from '../grupos-titulo/grupos-titulo.component';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-grupos',
   standalone: true,
@@ -20,7 +23,8 @@ import { MiPerfilComponent } from '../mi-perfil/mi-perfil.component';
     ChatDirective,
     GrupoComponent,
     BuscadorComponent,
-    MiPerfilComponent
+    MiPerfilComponent,
+    GruposTituloComponent
   ],
   templateUrl: './grupos.component.html',
   styleUrl: './grupos.component.css'
@@ -28,6 +32,7 @@ import { MiPerfilComponent } from '../mi-perfil/mi-perfil.component';
 export class GruposComponent {
   constructor(
     protected Sesion: SesionService,
+    private router: Router,
     private socket: SocketService
   ) { }
   myModal: Modal | undefined = undefined;
@@ -73,7 +78,10 @@ export class GruposComponent {
 
   mostrarBusqueda = (value: boolean) => this.enBusqueda = value;
 
-  cerrarSesion = () => this.Sesion.clear();
+  cerrarSesion = () => {
+    this.Sesion.clear();
+    this.router.navigate(['login']);
+  };
 
   abrir = () => this.myModal?.show();
 

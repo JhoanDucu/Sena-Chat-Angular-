@@ -39,14 +39,7 @@
 .grupos,
 .privados {
   overflow-y: auto;
-  max-height: 70vh;
-  span {
-    font-family: "Josefin Sans", sans-serif;
-    font-weight: bold;
-    font-size: x-large;
-    padding: 14px 20px;
-    text-align: start;
-  }
+  height: 70vh;
 }
 
 .grupos::-webkit-scrollbar {
@@ -58,10 +51,17 @@
   border-radius: 5px;
 }
 
+#panel {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
 #iniciarChat {
-  font-size: 20px;
-  border: 1px solid black;
-  margin: 4px;
+  font-size: 30px;
+  border: none;
+  margin: 0 5px;
+  flex-grow: 1;
 }
 
 #escoger {
