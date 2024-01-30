@@ -48,7 +48,7 @@ img {
 .accordion-button {
     background-color: transparent; 
     border-bottom: 3px solid #ffffff; 
-    margin-top: 5%;
+    
 }
 
 .accordion-button:not(.collapsed) {
@@ -106,6 +106,16 @@ img {
 
 .accordion-item{
     border-radius: none;
+}
+
+.d-block {
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight:500;
+    font-size: 1em;
+    background-color: transparent;
+    color: rgb(255, 255, 255);
+    border: 1px solid gray;
+    border: none;
 }
 
 /* CONTENIDO */

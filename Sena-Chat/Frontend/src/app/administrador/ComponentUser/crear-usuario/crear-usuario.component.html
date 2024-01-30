@@ -1,0 +1,30 @@
+<div class="form-container">
+    <h1 class="form-title">CREAR USUARIO</h1>
+    <form>
+        <div class="form-group">
+            <input type="text" class="form-control" id="groupName" placeholder="Primer nombre">
+            <input type="text" class="form-control" id="groupName" placeholder="Segundo nombre">
+            <input type="text" class="form-control" id="groupName" placeholder="Primer apellido">
+            <input type="text" class="form-control" id="groupName" placeholder="Segundo apellido">
+            <select class="form-control" id="groupCards">
+                <option selected>Tipo de documento</option>
+            </select>
+            <input type="text" class="form-control" id="groupName" placeholder="Numero de documento">
+            <input type="text" class="form-control" id="groupName" placeholder="Correo electrónico">
+            <input type="text" class="form-control" id="groupName" placeholder="Nombre de usuario">
+            <input type="text" class="form-control" id="groupName" placeholder="Contraseña">
+            <input type="text" class="form-control" id="groupName" placeholder="Confirmar contraseña">            
+        </div>
+        <div class="form-group">
+            <select class="form-control" id="groupCards">
+                <option selected>Fichas</option>
+                <br>
+            </select>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-create">Crear</button>
+                <br>
+            <button (click)="cancelar()" type="button" class="btn btn-cancel">Cancelar</button>
+        </div>
+    </form>
+</div>

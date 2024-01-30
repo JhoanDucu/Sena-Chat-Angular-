@@ -1,0 +1,24 @@
+
+<div class="form-container">
+    <h1 class="form-title">CREAR GRUPO</h1>
+    <form>
+        <div class="form-group">
+            <input type="text" class="form-control" id="groupName" placeholder="Nombre del grupo">
+            <br>
+        </div>
+        <div class="form-group">
+            <textarea class="form-control" id="groupDescription" placeholder="Descripción del grupo"></textarea>            <br>
+        </div>
+        <div class="form-group">
+            <select class="form-control" id="groupCards">
+                <option selected>Fichas</option>
+                <br>
+            </select>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-create">Crear</button>
+                <br>
+            <button (click)="cancelar()" type="button" class="btn btn-cancel">Cancelar</button>
+        </div>
+    </form>
+</div>

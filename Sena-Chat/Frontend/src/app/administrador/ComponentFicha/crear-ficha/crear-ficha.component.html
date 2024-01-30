@@ -1,0 +1,18 @@
+<div class="form-container">
+    <h2 class="form-title">Crear Ficha</h2>
+    <form>
+        <div class="form-group">
+            <label for="idFicha">Numero de ficha</label>
+            <input type="text" class="form-control" id="idFicha">
+        </div>
+        <div class="form-group">
+            <label for="NameFicha">Nombre</label>
+            <input type="text" class="form-control" id="NameFicha">
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-create">Crear Ficha</button>
+            <br>
+            <button (click)="cancelar()" type="button" class="btn btn-cancel">Cancelar</button>
+        </div>
+    </form>
+</div>

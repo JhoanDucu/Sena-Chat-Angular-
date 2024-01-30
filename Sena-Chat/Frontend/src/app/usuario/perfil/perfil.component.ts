@@ -1,5 +1,11 @@
+<<<<<<< Updated upstream
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+=======
+import { Component, Input } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Usuario } from '../Modelos/usuarios';
+>>>>>>> Stashed changes
 
 @Component({
   selector: 'app-perfil',
@@ -9,5 +15,9 @@ import { CommonModule } from '@angular/common';
   styleUrl: './perfil.component.css'
 })
 export class PerfilComponent {
+<<<<<<< Updated upstream
 
+=======
+  @Input() usuario: Usuario = {}
+>>>>>>> Stashed changes
 }

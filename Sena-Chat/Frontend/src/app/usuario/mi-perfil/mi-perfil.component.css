@@ -33,7 +33,11 @@ button {
 #text {
   max-width: 50vh;
   padding: 2%;
+<<<<<<< Updated upstream
   h4 {
+=======
+  #nombre-usuario {
+>>>>>>> Stashed changes
     margin-top: 1rem;
   }
   p {

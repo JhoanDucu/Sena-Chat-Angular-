@@ -1,0 +1,171 @@
+/* Contenedor general */
+.contenedor-padre {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+/* Sub contenedor */
+.contenedor {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    background: rgba(99, 183, 97, 0.6);
+    width: calc((100% / 3) - 10px - 2%);
+    flex: 0 0 auto;
+    margin: 5px;
+    padding: 1%;
+    border-radius: 20px;
+    border: 2px solid #4E4E4E;
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+}
+
+.imagen {
+
+    border-radius: 10px;
+    width: 100px;
+    height: 100px;
+}
+
+.titulo {
+    margin-left: 10px;
+}
+
+.texto-completo {
+    margin-top: 5px;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.parrafos {
+    display: flex;
+    justify-content: space-between;
+}
+
+.parrafo {
+    width: 45%;
+    font-weight: bold;
+}
+
+span {
+    font-weight: normal;
+}
+
+.btn-eliminar {
+    font-family: 'Josefin Sans', sans-serif;
+    background-color: #C9847B;
+    color: rgb(0, 0, 0);
+    border: none;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-weight:500;
+    font-size: 1.2em;
+    margin: 4px auto;
+    cursor: pointer;
+    border-radius: 12px;
+    width: 80%;
+    border: 1px solid rgb(23, 23, 23);
+}
+
+.btn-editar {
+    font-family: 'Josefin Sans', sans-serif;
+    background-color: #7BC4C9;
+    color: rgb(0, 0, 0);
+    border: none;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-weight:500;
+    font-size: 1.2em;
+    margin: 4px auto;
+    cursor: pointer;
+    border-radius: 12px;
+    width: 80%;
+    border: 1px solid rgb(23, 23, 23);
+}
+
+/* Botón de crear */
+.btn-crear {
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 500;
+    font-size: 1.2em;
+    border: 1px solid gray;
+    background: rgba(99, 183, 97, 0.6);
+    color: rgb(0, 0, 0);
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+/* Botón de información */
+.btn-info {
+    font-family: 'Josefin Sans', sans-serif;
+    background-color: #c9b47b;
+    color: rgb(0, 0, 0);
+    border: none;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-weight:500;
+    font-size: 1.2em;
+    margin: 4px auto;
+    cursor: pointer;
+    border-radius: 12px;
+    width: 80%;
+    border: 1px solid rgb(23, 23, 23);
+}
+
+/* Información dentro del Offcanvas */
+.miembro {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.miembro-imagen {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.miembro-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.miembro-nombre {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.miembro-detalle {
+    font-size: 0.9em;
+    color: #666;
+}
+
+.btn-eliminar-miembro {
+    background-color: transparent;
+    color: red;
+    border: 1px solid red;
+    border-radius: 5%;
+    width: 22%;
+    height: 30px;
+    text-align: center;
+    line-height: 20px;
+    cursor: pointer;
+}
