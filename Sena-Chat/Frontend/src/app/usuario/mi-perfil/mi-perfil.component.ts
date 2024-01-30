@@ -12,11 +12,7 @@ import { Toast } from 'bootstrap';
 })
 export class MiPerfilComponent {
   constructor() { }
-<<<<<<< Updated upstream
-  @Input() perfil: Usuario | any;
-=======
   @Input() perfil: Usuario= {};
->>>>>>> Stashed changes
   myToastEl: any;
 
   ngOnInit(): void {

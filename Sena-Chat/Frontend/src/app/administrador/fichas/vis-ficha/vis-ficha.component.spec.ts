@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CrearGrupoComponent } from './crear-grupo.component';
+import { VisFichaComponent } from './vis-ficha.component';
 
-describe('CrearGrupoComponent', () => {
-  let component: CrearGrupoComponent;
-  let fixture: ComponentFixture<CrearGrupoComponent>;
+describe('VisFichaComponent', () => {
+  let component: VisFichaComponent;
+  let fixture: ComponentFixture<VisFichaComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CrearGrupoComponent]
+      imports: [VisFichaComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(CrearGrupoComponent);
+    fixture = TestBed.createComponent(VisFichaComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

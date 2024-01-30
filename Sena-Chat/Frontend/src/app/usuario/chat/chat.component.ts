@@ -36,11 +36,7 @@ export class ChatComponent {
     protected Sesion: SesionService,
     private socket: SocketService
   ) { }
-<<<<<<< Updated upstream
-  datos = new ChatComponentData({ grupos: [], privados: [] }, undefined, { changes: '0', loading: false });
-=======
   datos = new ChatComponentData({ grupos: [], privados: [] }, {}, { changes: '0', loading: false });
->>>>>>> Stashed changes
   grupoSeleccionado: string | null = '';
   fichaSeleccionada = this.Sesion.get('ficha');
   usuario = this.Sesion.get('documento');

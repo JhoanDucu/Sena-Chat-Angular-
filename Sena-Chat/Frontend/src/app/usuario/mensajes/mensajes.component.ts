@@ -4,7 +4,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ChatService } from '../Servicios/chat.service';
 import { MensajeMostrar } from '../Modelos/mensaje';
 import { SesionService } from '../Sesiones/sesion.service';
-import { ChatDirective } from '../Directivas/chat.directive';
 
 @Component({
   selector: 'app-mensajes',
