@@ -1,7 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { VisPerfilService } from '../Servicios/vis-perfil.service';
-import { SesionService } from '../Sesiones/sesion.service';
 import { Usuario } from '../Modelos/usuarios';
 import { Toast } from 'bootstrap';
 
@@ -13,18 +11,11 @@ import { Toast } from 'bootstrap';
   styleUrl: './mi-perfil.component.css'
 })
 export class MiPerfilComponent {
-  constructor(
-    private VisPerfilService: VisPerfilService,
-    private Sesion: SesionService
-  ) { }
-
-  public item: Usuario = new Usuario('', '', '', '', '', '', '', '', '', '', '', '');
-  numerodoc = this.Sesion.get('documento');
-  ficha = this.Sesion.get('ficha');
+  constructor() { }
+  @Input() perfil: Usuario | any;
   myToastEl: any;
 
   ngOnInit(): void {
-    this.VisPerfilService.buscarDatos(this.numerodoc).subscribe((data: any) => this.item = data[0]);
     this.myToastEl = new Toast(document.getElementById('liveToast') as HTMLElement);
   }
 

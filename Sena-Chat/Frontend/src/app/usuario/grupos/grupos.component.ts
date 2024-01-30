@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Grupo, Tabs } from '../Modelos/grupos';
+import { GrupoComponentData, Tabs } from '../Modelos/grupos';
 import { SesionService } from '../Sesiones/sesion.service';
 import { FormControl, FormGroup, FormGroupDirective, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ChatDirective } from '../Directivas/chat.directive';
@@ -37,15 +37,13 @@ export class GruposComponent {
   ) { }
   myModal: Modal | undefined = undefined;
   @ViewChild(FormGroupDirective) formDirective !: FormGroupDirective;
-  @Input() grupos: Grupo[] = [];
-  @Input() privados: Grupo[] = [];
+  @Input() datos: GrupoComponentData = {grupos: [], privados: []};
+  @Input() usuario: any;
   @Input() changesValue = '';
   @Input() selected: any = {};
   @Output() makeChange = new EventEmitter<any[]>();
   @Output() envioMultiple = new EventEmitter<MensajeEnviar>();
   @Output() deseleccionar = new EventEmitter();
-  fichaSeleccionada = this.Sesion.get('ficha');
-  usuario = this.Sesion.get('documento');
   tabs: Tabs = {
     grupos: { class: 'tab-pane fade show active' },
     privados: { class: 'tab-pane fade' },
@@ -123,11 +121,11 @@ export class GruposComponent {
   cambiarPosicion(index: any, objeto: any, opcion: number) {
     let tempObjeto = objeto;
     if (opcion != 2) {
-      this.grupos.splice(index, 1);
-      this.grupos.unshift(tempObjeto);
+      this.datos.grupos.splice(index, 1);
+      this.datos.grupos.unshift(tempObjeto);
     } else {
-      this.privados.splice(index, 1);
-      this.privados.unshift(tempObjeto);
+      this.datos.privados.splice(index, 1);
+      this.datos.privados.unshift(tempObjeto);
     }
   }
 

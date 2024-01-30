@@ -3,7 +3,7 @@
         <img src="../../../assets/img/Usuario2.jpg" id="user">
 
         <div id="text">
-            <h4>Nombre de Usuario</h4>
+            <h4>{{ perfil?.nombre_usuario }}</h4>
             <p>Siempre en busca de nuevas aventuras y dispuesta a
                 compartir experiencias. Amante de los animales y defensora del medio ambiente.</p>
             <!-- 
@@ -33,7 +33,10 @@
         </div>
     </div>
     <div id="datos-box">
-        <p>Juan David Cardenas Perez</p>
+        <p>
+            {{perfil.primer_apellido}} {{perfil.segundo_apellido}}
+            {{perfil.primer_nom}} {{perfil.segundo_nom}}
+        </p>
         <button type="button" class="btn btn-primary" id="liveToastBtn" (click)="toast()">Show live toast</button>
     </div>
 </div>

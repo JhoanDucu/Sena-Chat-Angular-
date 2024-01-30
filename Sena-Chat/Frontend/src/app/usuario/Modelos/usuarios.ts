@@ -1,16 +1,14 @@
-export class Usuario {
-    constructor (
-        public correo: string,
-        public primer_nom: string,
-        public segundo_nom: string,
-        public primer_apellido: string,
-        public segundo_apellido: string,
-        public contrasena: string,
-        public nombre_usuario: string,
-        public numerodoc: string,
-        public fk_id_tipodoc: string,
-        public fk_id_ficha: string,
-        public foto: string,
-        public fk_id_rol: string
-    ) {}
+export interface Usuario {
+    correo: string;
+    primer_nom: string;
+    segundo_nom: string;
+    primer_apellido: string;
+    segundo_apellido: string;
+    contrasena: string;
+    nombre_usuario: string;
+    numerodoc: string;
+    fk_id_tipodoc: string;
+    fk_id_ficha: string;
+    foto: string;
+    fk_id_rol: string;
 }

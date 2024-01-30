@@ -1,7 +1,7 @@
 <div class="container-fluid" id="allPage">
     <div class="row" id="rowPage">
         <div class="column contenedorGrupos">
-            <app-grupos [grupos]="datos.gruposComponent.grupos" [privados]="datos.gruposComponent.privados"
+            <app-grupos [datos]="datos.gruposComponent" [usuario]="datos.datosUsuario"
                 (makeChange)="applyChanges($event)" [changesValue]="datos.other.changes"
                 [selected]="{ grupo: this.Sesion.get('grupos'), p: Sesion.get('pestaña')}"
                 (envioMultiple)="enviar($event, $event.fk_destino)" (deseleccionar)="sinGrupo()">
