@@ -7,8 +7,8 @@ interface DatosUsuario {
     contrasena: string;
     nombre_usuario: string;
     numerodoc: string;
-    fk_id_tipodoc: string;
-    fk_id_ficha: string;
+    fk_id_tipodoc: number;
+    id_fichas: string;
     foto: string;
     fk_id_rol: string;
 }

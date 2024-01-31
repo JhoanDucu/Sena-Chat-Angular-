@@ -1,10 +1,14 @@
 npm i bootstrap@next @types/bootstrap jquery popper.js @4keys/date-fns-utc-locale-es --save
-npm install socket.io-client date-fns 
+npm install socket.io-client date-fns
+npm install boxicons --save
+
+----------------- ANGULAR.JSON -------------------------------------------------------------
 
 "styles": [
     "src/styles.css",
-    "node_modules/bootstrap/dist/css/bootstrap.min.css"
+    "node_modules/bootstrap/dist/css/bootstrap.min.css",
+    "node_modules/boxicons/css/boxicons.min.css"
 ],
 "scripts": [
     "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
-]
+],

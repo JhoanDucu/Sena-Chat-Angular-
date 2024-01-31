@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Usuario } from '../Modelos/usuarios';
 import { Toast } from 'bootstrap';
+import { SesionService } from '../Sesiones/sesion.service';
 
 @Component({
   selector: 'app-mi-perfil',
@@ -11,8 +12,8 @@ import { Toast } from 'bootstrap';
   styleUrl: './mi-perfil.component.css'
 })
 export class MiPerfilComponent {
-  constructor() { }
-  @Input() perfil: Usuario= {};
+  constructor(private sesion: SesionService) { }
+  @Input() perfil: Usuario = {};
   myToastEl: any;
 
   ngOnInit(): void {
@@ -20,4 +21,6 @@ export class MiPerfilComponent {
   }
 
   toast = () => this.myToastEl.show();
+
+  rol = () => this.sesion.get('rol') == '1' ? true : false;
 }

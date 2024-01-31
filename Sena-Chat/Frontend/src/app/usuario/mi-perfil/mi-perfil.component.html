@@ -4,8 +4,8 @@
 
         <div id="text">
             <span id="nombre-usuario">{{ perfil.nombre_usuario }}</span>
-            <p>Siempre en busca de nuevas aventuras y dispuesta a
-                compartir experiencias. Amante de los animales y defensora del medio ambiente.</p>
+            @if (rol()) { <p id="ficha">Instructor</p> }
+            @else { <p id="ficha">Aprendiz de la ficha {{perfil.id_fichas}} </p>}
             <!-- 
                 <label for="exampleInputEmail1" class="form-label"><strong>Primer nombre:</strong></label>
                     <label for="exampleInputEmail1" class="form-label">....</label>
@@ -33,11 +33,18 @@
         </div>
     </div>
     <div id="datos-box">
+        <h2>Informacion</h2>
         <p>
+            <i class='bx bx-user-circle'></i>
             {{perfil.primer_apellido}} {{perfil.segundo_apellido}}
             {{perfil.primer_nom}} {{perfil.segundo_nom}}
         </p>
-        <button type="button" class="btn btn-primary" id="liveToastBtn" (click)="toast()">Show live toast</button>
+        <p><i class='bx bx-mail-send bx-tada'></i>{{perfil.correo}}</p>
+        <p> @switch (perfil.fk_id_tipodoc) {
+            @case (1) { C.C }
+            @case (2) { T.I }
+            } {{ perfil.numerodoc }}</p>
+        <button type="button" class="btn btn-primary" id="liveToastBtn" (click)="toast()">Editar</button>
     </div>
 </div>
 

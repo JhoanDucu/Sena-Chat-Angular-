@@ -78,7 +78,8 @@ exports.enviarEmail = (req, res) => {
 
   exports.obtenerDatosUsuario = (req, res) => {
     const numerodoc = req.params.numerodoc;
-    const query = `SELECT * FROM usuarios WHERE numerodoc = ?`;
+    const query = `SELECT * from USUARIOS u INNER JOIN usuarios_fichas f 
+                    ON u.numerodoc = f.numerodoc WHERE u.numerodoc = ?`;
     conexion.query(query, numerodoc, (error, resultado) => {
       if (error) return console.error(error.message);
       res.json(resultado[0]);
