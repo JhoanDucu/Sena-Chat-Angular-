@@ -6,6 +6,7 @@ interface DatosUsuario {
     segundo_apellido: string;
     contrasena: string;
     nombre_usuario: string;
+    descripcion: string;
     numerodoc: string;
     fk_id_tipodoc: number;
     id_fichas: string;

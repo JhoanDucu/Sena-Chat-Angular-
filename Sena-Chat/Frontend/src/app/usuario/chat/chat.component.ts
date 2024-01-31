@@ -43,7 +43,7 @@ export class ChatComponent {
   grupoElegido: Grupo | any;
 
   ngOnInit() {
-    this.Sesion.remove('grupos');
+    this.Sesion.remove('grupos'); this.Sesion.set('pestaña', 'grupos');
     if (this.fichaSeleccionada == undefined || this.usuario == undefined) {
       this.router.navigate(['login']);
       this.Sesion.set('error', 'No has iniciado sesion');

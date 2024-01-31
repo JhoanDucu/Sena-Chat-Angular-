@@ -12,6 +12,7 @@ import { BuscadorComponent } from '../buscador/buscador.component';
 import { MiPerfilComponent } from '../mi-perfil/mi-perfil.component';
 import { GruposTituloComponent } from '../grupos-titulo/grupos-titulo.component';
 import { Router } from '@angular/router';
+import { GruposPanelComponent } from '../grupos-panel/grupos-panel.component';
 
 @Component({
   selector: 'app-grupos',
@@ -24,7 +25,8 @@ import { Router } from '@angular/router';
     GrupoComponent,
     BuscadorComponent,
     MiPerfilComponent,
-    GruposTituloComponent
+    GruposTituloComponent,
+    GruposPanelComponent
   ],
   templateUrl: './grupos.component.html',
   styleUrl: './grupos.component.css'
@@ -70,16 +72,12 @@ export class GruposComponent {
   };
 
   showTab = (tab: string) => {
+    this.Sesion.set('pestaña', tab);
     for (const key in this.tabs) 
     key == tab ? this.tabs[key].class = 'tab-pane fade show active' : this.tabs[key].class = 'tab-pane fade';
   };
 
   mostrarBusqueda = (value: boolean) => this.enBusqueda = value;
-
-  cerrarSesion = () => {
-    this.Sesion.clear();
-    this.router.navigate(['login']);
-  };
 
   abrir = () => this.myModal?.show();
 

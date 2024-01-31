@@ -1,4 +1,4 @@
--- DROP DATABASE sena_chat;   PA BORRAR POR SI ES EXISTENTE
+-- DROP DATABASE sena_chat;    
 CREATE DATABASE SENA_CHAT;
 	USE SENA_CHAT;
 
@@ -60,7 +60,8 @@ CREATE TABLE usuarios
 	primer_apellido VARCHAR(20) NOT NULL,
 	segundo_apellido VARCHAR(20) NULL,
 	contrasena VARCHAR(100) NOT NULL,
-	nombre_usuario VARCHAR(50) NOT NULL,
+	nombre_usuario VARCHAR(20) NOT NULL,
+	descripcion VARCHAR(140) NULL,
 	foto VARCHAR(30) NULL,
 	fk_id_rol INT NOT NULL,
 	numerodoc VARCHAR(20) NOT NULL,
@@ -172,25 +173,26 @@ INSERT INTO tipo_grupo VALUES
 (2, 'Grupal');
 
 INSERT INTO usuarios VALUES 
-('j', 'j', 'j', 'j', 'j', MD5('321'), 'JHOAN', null, '3', 1024471018, 1),
-('juan.cardenas34@misena.edu.co','Juan','David','Cardenas','Perez',MD5('123'),'juan_cardenas',NULL,'2',1131104356,1),
-('camilo@gmail.com','Camilo',NULL,'Perez',NULL,MD5('123'),'carlosperez',NULL,'2','1234567911',1),
-('sebastian@gmail.com','Sebastian',NULL,'Carrillo',NULL,MD5('123'),'sebastian_123',NULL,'2','12345678912',1),
-('isabella.mitchell@example.com','Isabella',NULL,'Mitchell',NULL,MD5('123'),'isabella',NULL,'2','12345678913',1),
-('ethan.johnson@example.com','Ethan',NULL,'Johnson',NULL,MD5('123'),'ethan',NULL,'2','12345678914',1),
-('sophia.anderson@example.com','Sophia',NULL,'Anderson',NULL,MD5('123'),'sophia',NULL,'2','12345678916',1),
-('alexander.turner@example.com','Alexander',NULL,'Turner',NULL,MD5('123'),'alexander',NULL,'2','12345678917',1),
-('olivia.brooks@example.com','Olivia',NULL,'Brooks',NULL,MD5('123'),'oliva',NULL,'2','12345678918',1),
-('mia.parker@example.com','Mia',NULL,'Parker',NULL,MD5('123'),'mia',NULL,'2','12345678919',1),
-('Minnick@gmail.com','Nicolas',NULL,'Rincon',NULL,MD5('minnick'),'nicolas_rincon',NULL,'2','1021392807',1),
-('johndoe@example.com', 'John', 'David', 'Doe', NULL, MD5('password123'), 'johndoe', 'john.jpg', '2', '12345678001', 1),
-('isaura@example.com', 'Isaura', 'Maria', 'Suarez', 'Novoa', MD5('789'), 'Isaura', NULL, '1', '12345678018', 2),
-('heivercuesta@misena.edu.co', 'Heiver', NULL, 'Cuesta', 'Davila', MD5('abc'), 'Heiver', NULL, '1', '12345678019', 2),
-('leonardo@example.com', 'Leonardo', NULL, 'Pineda', NULL, MD5('xyz'), 'Leonardo', NULL, '1', '12345678020', 2),
-('Manolo@example.com', 'Manolo', 'Esteban', 'Olivo', 'Rodrigez', MD5('789'), 'Manolo', NULL, '1', '12345678021', 2),
-('wendybohorquez1987@gmail.com', 'Wendy', NULL, 'Bohorquez', NULL, MD5('abc'), 'Wendy', NULL, '1', '12345678022', 2),
-('javier@example.com', 'Javier', NULL, 'Almanza', 'Vela', MD5('xyz'), 'Javier', NULL, '1', '12345678023', 2),
-('Alejandro@example.com', 'Maria', 'Alejandra', 'Garcia', 'Romero', MD5('789'), 'Alejandra', NULL, '1', '12345678024', 2);
+('j', 'j', 'j', 'j', 'j', MD5('321'), 'JHOAN', 'Entusiasta de la tecnología y los videojuegos. Siempre en busca de nuevas aventuras en la web.', NULL, '3', 1024471018, 1),
+('juan.cardenas34@misena.edu.co','Juan','David','Cardenas','Perez',MD5('123'),'juan_cardenas','Apasionado por la programación y el desarrollo web. ¡Listo para aprender y crecer en este mundo digital!', NULL, '2', 1131104356, 1),
+('camilo@gmail.com','Camilo',NULL,'Perez',NULL,MD5('123'),'carlosperez','Amante de los deportes y la música. Siempre dispuesto a charlar sobre los últimos lanzamientos en la industria musical.', NULL,'2','1234567911',1),
+('sebastian@gmail.com','Sebastian',NULL,'Carrillo',NULL,MD5('123'),'sebastian_123','Fanático de los viajes y la fotografía. Compartamos historias y experiencias de viaje mientras exploramos el mundo juntos.', NULL,'2','12345678912',1),
+('isabella.mitchell@example.com','Isabella',NULL,'Mitchell',NULL,MD5('123'),'isabella','Adicta a los libros y al café. Siempre buscando nuevas lecturas y lugares acogedores para disfrutar de una buena taza.', NULL,'2','12345678913',1),
+('ethan.johnson@example.com','Ethan',NULL,'Johnson',NULL,MD5('123'),'ethan','Entusiasta del cine y la cultura pop. ¡Hablemos de películas, series y todo lo relacionado con el mundo del entretenimiento!', NULL,'2','12345678914',1),
+('sophia.anderson@example.com','Sophia',NULL,'Anderson',NULL,MD5('123'),'sophia','Amante de la naturaleza y los animales. Siempre buscando nuevas aventuras al aire libre y amigos peludos para acompañarme.', NULL,'2','12345678916',1),
+('alexander.turner@example.com','Alexander',NULL,'Turner',NULL,MD5('123'),'alexander','Aventurero y amante de la adrenalina. Siempre listo para nuevas experiencias y desafíos emocionantes.', NULL,'2','12345678917',1),
+('olivia.brooks@example.com','Olivia',NULL,'Brooks',NULL,MD5('123'),'oliva','Apasionada por la cocina y la gastronomía. ¡Hablemos de recetas, restaurantes y todo lo relacionado con el mundo culinario!', NULL,'2','12345678918',1),
+('mia.parker@example.com','Mia',NULL,'Parker',NULL,MD5('123'),'mia','Fanática del fitness y el bienestar. Siempre buscando nuevas formas de mantenerme activa y saludable.', NULL,'2','12345678919',1),
+('Minnick@gmail.com','Nicolas',NULL,'Rincon',NULL,MD5('minnick'),'nicolas_rincon','Emprendedor y amante de la tecnología. Siempre en busca de nuevas oportunidades para innovar y crecer profesionalmente.', NULL,'2','1021392807',1),
+('johndoe@example.com', 'John', 'David', 'Doe', NULL, MD5('password123'), 'johndoe', 'Entusiasta de la música y los conciertos en vivo. Siempre buscando nuevas bandas para escuchar y experiencias musicales para disfrutar.', 'john.jpg', '2', '12345678001', 1),
+('isaura@example.com', 'Isaura', 'Maria', 'Suarez', 'Novoa', MD5('789'), 'Isaura', 'Apasionada por el arte y la creatividad. Siempre buscando inspiración en cada rincón del mundo para mis proyectos artísticos.', NULL, '1', '12345678018', 2),
+('heivercuesta@misena.edu.co', 'Heiver', NULL, 'Cuesta', 'Davila', MD5('abc'), 'Heiver', 'Estudiante dedicado y amante del aprendizaje. ¡Siempre listo para adquirir nuevos conocimientos y enfrentar desafíos académicos!', NULL, '1', '12345678019', 2),
+('leonardo@example.com', 'Leonardo', NULL, 'Pineda', NULL, MD5('xyz'), 'Leonardo', 'Amante de los deportes extremos y la naturaleza. Siempre en busca de nuevas aventuras al aire libre y experiencias emocionantes.', NULL, '1', '12345678020', 2),
+('Manolo@example.com', 'Manolo', 'Esteban', 'Olivo', 'Rodrigez', MD5('789'), 'Manolo', 'Fanático de los videojuegos y la tecnología. Siempre buscando nuevos desafíos en el mundo digital y conectando con otros gamers.', NULL, '1', '12345678021', 2),
+('wendybohorquez1987@gmail.com', 'Wendy', NULL, 'Bohorquez', NULL, MD5('abc'), 'Wendy', 'Entusiasta de la moda y el estilo. Siempre buscando las últimas tendencias y compartiendo consejos de moda con amigos.', NULL, '1', '12345678022', 2),
+('javier@example.com', 'Javier', NULL, 'Almanza', 'Vela', MD5('xyz'), 'Javier', 'Amante de la música y la guitarra. Siempre buscando inspiración en cada nota y compartiendo melodías con otros aficionados.', NULL, '1', '12345678023', 2),
+('Alejandro@example.com', 'Maria', 'Alejandra', 'Garcia', 'Romero', MD5('789'), 'Alejandra', 'Apasionado por los viajes y la fotografía. Siempre en busca de nuevos destinos para explorar y capturar momentos memorables con mi cámara.', NULL, '1', '12345678024', 2);
+
 
 INSERT INTO usuarios_fichas VALUES
 ('0000000', '1024471018'),

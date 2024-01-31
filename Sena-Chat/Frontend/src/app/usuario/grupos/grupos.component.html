@@ -87,15 +87,10 @@
         </div>
     </div>
     <div [className]="tabs.perfil.class" id="perfil" role="tabpanel" aria-labelledby="perfil">
+        <app-grupos-titulo [titulo]="'Mi Perfil'"></app-grupos-titulo>
         <app-mi-perfil [perfil]="usuario"></app-mi-perfil>
     </div>
-    <!-- INCLUIR AQUI LOS NUEVOS BOTONES :D -->
-</div>
-<div id="panel">
-    <button id="iniciarChat"><i class='bx bx-note'></i></button>
-    <button id="iniciarChat"><i class='bx bx-envelope-open'></i></button>
-    <button id="iniciarChat"><i class='bx bx-slider'></i></button>
-    <button id="iniciarChat" (click)="cerrarSesion()"><i class='bx bx-log-out'></i></button>
+    <app-grupos-panel></app-grupos-panel>
 </div>
 }
 

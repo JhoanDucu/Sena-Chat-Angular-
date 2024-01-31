@@ -10,7 +10,7 @@
 #datos-box {
   width: 100%;
   height: 60%;
-  padding: 0 3vh;
+  padding: 3vh;
 }
 
 #imagen-box {
@@ -41,6 +41,10 @@ button {
   }
   #ficha {
     font-size: 15px;
+    text-wrap: balance;
+  }
+  #descripcion {
+    font-size: 14px;
     text-wrap: balance;
   }
 }

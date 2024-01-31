@@ -51,19 +51,6 @@
   border-radius: 5px;
 }
 
-#panel {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-}
-
-#iniciarChat {
-  font-size: 30px;
-  border: none;
-  margin: 0 5px;
-  flex-grow: 1;
-}
-
 #escoger {
   display: flex;
   flex-direction: row;
