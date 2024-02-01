@@ -36,17 +36,16 @@
   padding: 0;
 }
 
-.grupos,
-.privados {
+.tab {
   overflow-y: auto;
   height: 70vh;
 }
 
-.grupos::-webkit-scrollbar {
+.tab::-webkit-scrollbar {
   width: 5px;
 }
 
-.grupos::-webkit-scrollbar-thumb {
+.tab::-webkit-scrollbar-thumb {
   background: #0e882d;
   border-radius: 5px;
 }

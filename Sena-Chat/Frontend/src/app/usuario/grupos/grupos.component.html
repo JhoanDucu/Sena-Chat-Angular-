@@ -58,7 +58,7 @@
 @if (!enBusqueda) {
 <div class="tab-content" id="myTabContent">
     <div [className]="tabs.grupos.class" id="grupos" role="tabpanel" aria-labelledby="grupos">
-        <div class="grupos" id="grupos" role="tablist">
+        <div class="tab"role="tablist">
             <div class="list-group" id="list-tab" role="tablist">
                 <app-grupos-titulo [titulo]="'Grupos'"></app-grupos-titulo>
                 @for ( g of datos.grupos; track g.id_grupos) {
@@ -73,7 +73,7 @@
     </div>
 
     <div [className]="tabs.privados.class" id="privados" role="tabpanel" aria-labelledby="privados">
-        <div class="privados" id="privados" role="tablist">
+        <div class="tab" id="privados" role="tablist">
             <div class="list-group" id="list-tab" role="tablist">
                 <app-grupos-titulo [titulo]="'Privados'"></app-grupos-titulo>
                 @for (p of datos.privados; track p.id_grupos) {

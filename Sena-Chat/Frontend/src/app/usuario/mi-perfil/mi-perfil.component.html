@@ -34,19 +34,27 @@
         </div>
     </div>
     <div id="datos-box">
-        <h4>
+        <h5>Detalles</h5>
+        <div class="info">
             <i class='bx bx-user-circle'></i>
-            {{perfil.primer_apellido}} {{perfil.segundo_apellido}}
-            {{perfil.primer_nom}} {{perfil.segundo_nom}}
-        </h4>
-        <h4><i class='bx bx-mail-send bx-tada'></i> {{perfil.correo}}</h4>
-        <h4>
+            <span>
+                {{perfil.primer_apellido}} {{perfil.segundo_apellido}}
+                {{perfil.primer_nom}} {{perfil.segundo_nom}}
+            </span>
+        </div>
+        <div class="info">
+            <i class='bx bx-mail-send bx-tada'></i>
+            <span>{{perfil.correo}}</span>
+        </div>
+        <div class="info">
             <i class='bx bx-id-card'></i>
-            @switch (perfil.fk_id_tipodoc) {
-            @case (1) { C.C }
-            @case (2) { T.I }
-            } {{ perfil.numerodoc }}
-        </h4>
+            <span>
+                @switch (perfil.fk_id_tipodoc) {
+                @case (1) { C.C }
+                @case (2) { T.I }
+                } {{ perfil.numerodoc }}
+            </span>
+        </div>
     </div>
 </div>
 

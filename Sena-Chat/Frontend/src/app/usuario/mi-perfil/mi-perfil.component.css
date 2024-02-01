@@ -4,13 +4,28 @@
   height: 70vh;
   margin: auto;
   flex-wrap: wrap;
+  flex-direction: column;
   direction: ltr;
 }
 
 #datos-box {
   width: 100%;
-  height: 60%;
+  height: 54%;
+  display: flex;
+  flex-direction: column;
   padding: 3vh;
+
+  .info {
+    width: 100%;
+    height: 9vh;
+    display: flex;
+    font-size: 16px;
+    align-items: center;
+    i {
+      font-size: xxx-large;
+      margin-right: 2vh;
+    }
+  }
 }
 
 #imagen-box {
@@ -42,6 +57,7 @@ button {
   #ficha {
     font-size: 15px;
     text-wrap: balance;
+    margin-bottom: 0.8rem;
   }
   #descripcion {
     font-size: 14px;
