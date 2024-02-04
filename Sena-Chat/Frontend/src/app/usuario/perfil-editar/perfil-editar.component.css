@@ -3,10 +3,19 @@
 }
 
 img {
-  image-rendering: -webkit-optimize-contrast; /* Webkit (Safari/Chrome) Browsers */
-  image-rendering: -moz-crisp-edges; /* Mozilla Firefox */
-  image-rendering: crisp-edges; /* CSS3 Proposed */
-  -ms-interpolation-mode: nearest-neighbor; /* IE (non-standard property) */
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+  -ms-interpolation-mode: nearest-neighbor;
+}
+
+button {
+  border: none;
+  background: none;
+}
+
+#cerrarEditar {
+    font-size: 20px;
 }
 
 #presentacion {
@@ -15,10 +24,40 @@ img {
   height: 100%;
   flex-direction: column;
   justify-content: center;
-  #imagen-perfil {
-    width: 50%;
+  align-items: center;
+  #imagenPerfil {
+    height: 100%;
+    border-radius: 50%;
   }
-  #nombreUsuario {
-    font-size: xx-large;
+}
+
+#labelCambiarImg {
+  cursor: pointer;
+  width: 70vh;
+  height: 70vh;
+  display: flex;
+  border-radius: 50%;
+  background-image: url(../../../assets/img/Usuario3.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: x-large;
+  i {
+    font-size: 30px;
+    margin-left: 10px;
+  }
+}
+
+#labelCambiarImg:hover {
+  opacity: 0.6;
+}
+
+#nombreUsuario {
+  font-size: xxx-large;
+  button {
+    font-size: 25px;
   }
 }

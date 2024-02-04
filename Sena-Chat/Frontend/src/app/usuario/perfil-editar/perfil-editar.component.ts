@@ -10,5 +10,9 @@ import { Usuario } from '../Modelos/usuarios';
   styleUrl: './perfil-editar.component.css'
 })
 export class PerfilEditarComponent {
-  @Input() usuario: Usuario = {}
+  @Input() usuario: Usuario = {};
+  hoverImg = false;
+  nombre_usuario = false;
+
+  activarBoton = () => this.hoverImg = !this.hoverImg;
 }
