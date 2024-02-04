@@ -1,25 +1,15 @@
 <div class="titulo-container">
-    <span>{{ titulo }}</span>
-    @if (titulo == 'Mi Perfil') {
-    <a></a>
-    <a><i class='bx bx-hide'></i></a>
-    <a (click)="editarPerfil()"><i class='bx bx-edit-alt'></i></a>
-    <!-- <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Toggle right offcanvas</button> -->
-    <!-- <a><i class='bx bx-lock'></i></a> -->
-    } @else {
-    @if (titulo == 'Grupos') {<a><i class='bx bx-message-add'></i></a>}
-    @else {<a><i class='bx bx-plus-circle'></i></a>}
-    <a><i class='bx bx-bell'></i></a>
-    <a><i class='bx bx-edit'></i></a>
-    }
-</div>
-
-<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-  <div class="offcanvas-header">
-    <h5 id="offcanvasRightLabel">Offcanvas right</h5>
-    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-  </div>
-  <div class="offcanvas-body">
-    ...
-  </div>
+  <span>{{ titulo }}</span>
+  @if (titulo == 'Mi Perfil') {
+  <a></a>
+  <a><i class='bx bx-hide'></i></a>
+  <a (click)="editarPerfil()"><i class='bx bx-edit-alt'></i></a>
+  <!-- <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Toggle right offcanvas</button> -->
+  <!-- <a><i class='bx bx-lock'></i></a> -->
+  } @else {
+  @if (titulo == 'Grupos') {<a><i class='bx bx-message-add'></i></a>}
+  @else {<a><i class='bx bx-plus-circle'></i></a>}
+  <a><i class='bx bx-bell'></i></a>
+  <a><i class='bx bx-edit'></i></a>
+  }
 </div>

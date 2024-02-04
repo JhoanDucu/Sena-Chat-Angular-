@@ -6,6 +6,7 @@
                 [selected]="{ grupo: this.Sesion.get('grupos'), p: Sesion.get('pestaña')}"
                 (envioMultiple)="enviar($event, $event.fk_destino)" (deseleccionar)="sinGrupo()">
             </app-grupos>
+            <app-perfil-editar [usuario]="datos.datosUsuario"></app-perfil-editar>
         </div>
         <div class="column contenedorChat">
             @if(grupoSeleccionado){

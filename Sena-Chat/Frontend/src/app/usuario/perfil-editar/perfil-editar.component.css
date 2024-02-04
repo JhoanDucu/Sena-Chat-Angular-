@@ -1,0 +1,24 @@
+#offcanvasRight {
+  width: 62%;
+}
+
+img {
+  image-rendering: -webkit-optimize-contrast; /* Webkit (Safari/Chrome) Browsers */
+  image-rendering: -moz-crisp-edges; /* Mozilla Firefox */
+  image-rendering: crisp-edges; /* CSS3 Proposed */
+  -ms-interpolation-mode: nearest-neighbor; /* IE (non-standard property) */
+}
+
+#presentacion {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  justify-content: center;
+  #imagen-perfil {
+    width: 50%;
+  }
+  #nombreUsuario {
+    font-size: xx-large;
+  }
+}
