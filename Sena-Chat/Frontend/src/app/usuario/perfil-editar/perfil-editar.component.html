@@ -1,7 +1,8 @@
 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
     <div class="offcanvas-header">
         <h5 id="offcanvasRightLabel">Editar Perfil</h5>
-        <button id="cerrarEditar" data-bs-dismiss="offcanvas" aria-label="Close"><i class='bx bx-right-arrow-alt'></i></button>
+        <button id="cerrarEditar" data-bs-dismiss="offcanvas" aria-label="Close"><i
+                class='bx bx-right-arrow-alt'></i></button>
     </div>
     <div class="offcanvas-body">
         <div id="presentacion">
@@ -9,7 +10,18 @@
                 @if (hoverImg) { <span>Cambiar foto </span><i class='bx bxs-camera'></i> }
                 <input type="file" id="cambiarImg" hidden>
             </label>
-            <span id="nombreUsuario">{{ usuario.nombre_usuario }} <button><i class='bx bxs-pencil'></i></button></span>
+            <span id="nombreUsuario">
+                @if (propsEditar.nombre_usuario) {
+                <input type="text" id="inputTitulo" (blur)="activarEditar('nombre_usuario')"
+                    [value]="usuario.nombre_usuario" appEditar>
+                <button id="botonTitulo"><i class='bx bx-check'></i></button>
+                } @else {
+                {{ usuario.nombre_usuario }}
+                <button id="botonTitulo" (click)="activarEditar('nombre_usuario')">
+                    <i class='bx bxs-pencil'></i>
+                </button>
+                }
+            </span>
         </div>
         <div id="informacion">
 
