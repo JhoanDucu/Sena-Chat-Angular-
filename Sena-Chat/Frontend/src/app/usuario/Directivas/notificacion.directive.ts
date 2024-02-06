@@ -26,7 +26,7 @@ export class NotificacionDirective implements OnChanges {
   ) {
   }
   ngOnChanges(changes: SimpleChanges) {
-    if (this.ultimoMensaje[1]) this.cero.emit()
+    if (this.ultimoMensaje[1]) this.cero.emit();
     else if (changes['ultimoMensaje'].currentValue && changes['ultimoMensaje'].previousValue && !this.ultimoMensaje[1]) {
       this.renderer.setStyle(this.el.nativeElement, 'font-weight', 'bolder');
       this.sumar.emit();

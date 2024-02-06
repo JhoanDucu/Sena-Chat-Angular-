@@ -1,5 +1,5 @@
 .card-body {
-  padding-bottom: 5%;
+  padding-bottom: 1%;
 }
 
 .card-body.chat-box::-webkit-scrollbar {
@@ -12,12 +12,9 @@
 }
 
 #componenteMensajes {
-  position: absolute;
   overflow-y: auto;
-  max-height: 465px;
+  max-height: 455px;
   width: 100%;
-  bottom: 0px;
-  top: 0px;
 }
 
 #mensajesPropios {

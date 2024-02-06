@@ -47,10 +47,10 @@ export class GruposComponent {
   @Output() envioMultiple = new EventEmitter<MensajeEnviar>();
   @Output() deseleccionar = new EventEmitter();
   tabs: Tabs = {
-    grupos: { class: 'tab-pane fade show active', new: false },
-    privados: { class: 'tab-pane fade', new: false },
-    ajustes: { class: 'tab-pane fade', new: false },
-    perfil: { class: 'tab-pane fade', new: false },
+    grupos: { class: true, new: false },
+    privados: { class: false, new: false },
+    ajustes: { class: false, new: false },
+    perfil: { class: false, new: false },
   }
   mensajes = new FormGroup({
     variasFichas: new FormControl('', Validators.required),
@@ -73,8 +73,7 @@ export class GruposComponent {
 
   showTab = (tab: string) => {
     this.Sesion.set('pestaña', tab);
-    for (const key in this.tabs) 
-    key == tab ? this.tabs[key].class = 'tab-pane fade show active' : this.tabs[key].class = 'tab-pane fade';
+    for (const key in this.tabs) key == tab ? this.tabs[key].class = true : this.tabs[key].class = false;
   };
 
   mostrarBusqueda = (value: boolean) => this.enBusqueda = value;

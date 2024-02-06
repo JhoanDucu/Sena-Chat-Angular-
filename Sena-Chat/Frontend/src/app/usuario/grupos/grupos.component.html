@@ -4,20 +4,22 @@
             <button class="nav-link active position-relative" id="grupos-tab" data-bs-toggle="tab"
                 data-bs-target="#grupos" type="button" role="tab" aria-controls="grupos" aria-selected="false"
                 [disabled]="enBusqueda" (click)="showTab('grupos')">
-                <i class='bx bxs-chat'></i><span></span>
+                <i [ngClass]="tabs.grupos.new ? 'bx bxs-chat bx-tada' : 'bx bxs-chat'"></i>
+                @if(tabs.grupos.new){<span></span>}
             </button>
         </li>
         <li class="nav-item" role="presentation">
             <button class="nav-link" id="privados-tab" data-bs-toggle="tab" data-bs-target="#privados" type="button"
                 role="tab" aria-controls="privados" aria-selected="false" [disabled]="enBusqueda"
                 (click)="showTab('privados')">
-                <i class='bx bxs-message'></i><span></span>
+                <i [ngClass]="tabs.privados.new ? 'bx bxs-message bx-tada' : 'bx bxs-message'"></i>
+                @if(tabs.privados.new){<span></span>}
             </button>
         </li>
         @if (Sesion.get('rol') == '1') {
         <li class="nav-item" role="presentation">
             <button class="nav-link" type="button" (click)="abrir()" [disabled]="enBusqueda">
-                <i class='bx bxs-conversation'></i><span></span>
+                <i class='bx bxs-conversation'></i>
             </button>
         </li>
         }
@@ -25,14 +27,14 @@
             <button class="nav-link" id="ajustes-tab" data-bs-toggle="tab" data-bs-target="#ajustes" type="button"
                 role="tab" aria-controls="ajustes" aria-selected="false" [disabled]="enBusqueda"
                 (click)="showTab('ajustes')">
-                <i class='bx bxs-message-square-dots'></i><span></span>
+                <i class='bx bxs-message-square-dots'></i>@if(tabs.ajustes.new){<span></span>}
             </button>
         </li>
 
         <li class="nav-item" role="presentation">
             <button class="nav-link" id="dontk-tab" data-bs-toggle="tab" data-bs-target="#salir" type="button"
                 role="tab" aria-controls="contact" aria-selected="false" [disabled]="enBusqueda">
-                <i class="bx bxs-cog"></i><span></span>
+                <i class="bx bxs-cog bx-tada"></i><span></span>
             </button>
         </li>
         <li class="nav-item" role="presentation">
@@ -57,7 +59,8 @@
 
 @if (!enBusqueda) {
 <div class="tab-content" id="myTabContent">
-    <div [className]="tabs.grupos.class" id="grupos" role="tabpanel" aria-labelledby="grupos">
+    <div [ngClass]="tabs.grupos.class ? 'tab-pane fade show active' : 'tab-pane fade'" id="grupos" role="tabpanel"
+        aria-labelledby="grupos">
         <div class="tab" role="tablist">
             <div class="list-group" id="list-tab" role="tablist">
                 <app-grupos-titulo [titulo]="'Grupos'"></app-grupos-titulo>
@@ -72,7 +75,8 @@
         </div>
     </div>
 
-    <div [className]="tabs.privados.class" id="privados" role="tabpanel" aria-labelledby="privados">
+    <div [ngClass]="tabs.privados.class ? 'tab-pane fade show active' : 'tab-pane fade'" id="privados" role="tabpanel"
+        aria-labelledby="privados">
         <div class="tab" id="privados" role="tablist">
             <div class="list-group" id="list-tab" role="tablist">
                 <app-grupos-titulo [titulo]="'Privados'"></app-grupos-titulo>
@@ -86,7 +90,8 @@
             </div>
         </div>
     </div>
-    <div [className]="tabs.perfil.class" id="perfil" role="tabpanel" aria-labelledby="perfil">
+    <div [ngClass]="tabs.perfil.class ? 'tab-pane fade show active' : 'tab-pane fade'" id="perfil" role="tabpanel"
+        aria-labelledby="perfil">
         <app-grupos-titulo [titulo]="'Mi Perfil'"></app-grupos-titulo>
         <app-mi-perfil [perfil]="usuario"></app-mi-perfil>
     </div>
