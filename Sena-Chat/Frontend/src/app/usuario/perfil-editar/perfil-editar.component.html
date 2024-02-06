@@ -24,7 +24,56 @@
             </span>
         </div>
         <div id="informacion">
+            <span class="info-container">
+                @if (!propsEditar.nombres) {
+                {{usuario.primer_nom + ' ' + usuario.segundo_nom}}
+                <button id="botonTitulo" (click)="activarEditar('nombres')">
+                    <i class='bx bxs-pencil'></i>
+                </button>
+                } @else {
+                <label for="exampleInputEmail1" class="labelEditar"><strong>Nombres: </strong></label>
+                <input type="text" class="inputEditar" [value]="usuario.primer_nom + ' ' + usuario.segundo_nom">
+                <button id="botonTitulo"><i class='bx bx-check'></i></button>
+                }
+            </span>
 
+            <span class="info-container">
+                @if (!propsEditar.Apellidos) {
+                {{usuario.primer_apellido + ' ' + usuario.segundo_apellido}}
+                <button id="botonTitulo" (click)="activarEditar('nombres')">
+                    <i class='bx bxs-pencil'></i>
+                </button>
+                } @else {
+                <label for="exampleInputEmail1" class="labelEditar"><strong>Apellidos: </strong></label>
+                <input type="text" class="inputEditar"
+                    [value]="usuario.primer_apellido + ' ' + usuario.segundo_apellido">
+                <button id="botonTitulo"><i class='bx bx-check'></i></button>
+                }
+            </span>
+
+            <span class="info-container">
+                <label for="exampleInputEmail1" class="labelEditar"><strong>Descripcion: </strong></label>
+                <textarea class="inputEditar">{{usuario.descripcion}}</textarea>
+                <button id="botonTitulo"><i class='bx bx-check'></i></button>
+            </span>
+
+            <span class="info-container">
+                <label for="exampleInputEmail1" class="labelEditar"><strong>Numero de documento: </strong></label>
+                <input type="text" class="inputEditar" [value]="usuario.numerodoc">
+                <button id="botonTitulo"><i class='bx bx-check'></i></button>
+            </span>
+
+            <span class="info-container">
+                <label for="exampleInputEmail1" class="labelEditar"><strong>Nombre de usuario: </strong></label>
+                <input type="text" class="inputEditar" [value]="">
+                <button id="botonTitulo"><i class='bx bx-check'></i></button>
+            </span>
+
+            <span class="info-container">
+                <label for="exampleInputPassword1" class="labelEditar"><strong>Correo electronico: </strong></label>
+                <input type="text" class="inputEditar" [value]="usuario.correo">
+                <button id="botonTitulo"><i class='bx bx-check'></i></button>
+            </span>
         </div>
     </div>
 </div>

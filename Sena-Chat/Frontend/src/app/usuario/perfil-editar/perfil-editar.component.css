@@ -2,6 +2,14 @@
   width: 62%;
 }
 
+#offcanvasRightLabel {
+  margin: 0;
+}
+
+.offcanvas-header {
+  justify-content: end;
+}
+
 img {
   image-rendering: -webkit-optimize-contrast;
   image-rendering: -moz-crisp-edges;
@@ -15,7 +23,7 @@ button {
 }
 
 #cerrarEditar {
-    font-size: 20px;
+  font-size: 20px;
 }
 
 #presentacion {
@@ -37,6 +45,27 @@ button {
     border: none;
     outline: none;
     border-bottom: 2px solid black;
+  }
+}
+
+#informacion {
+  display: flex;
+  flex-direction: column;
+  margin: 3vh;
+  /* .labelEditar {
+    width: 100%;
+  } */
+  .inputEditar {
+    border: none;
+    outline: none;
+    border-bottom: 1.5px solid black;
+    width: 85%;
+    resize: none;
+  }
+  .info-container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 5%;
   }
 }
 

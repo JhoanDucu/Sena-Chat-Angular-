@@ -15,10 +15,8 @@ export class PerfilEditarComponent {
   hoverImg = false;
   propsEditar: any = {
     correo: false,
-    primer_nom: false,
-    segundo_nom: false,
-    primer_apellido: false,
-    segundo_apellido: false,
+    nombres: false,
+    apellidos: false,
     contrasena: false,
     nombre_usuario: false,
     descripcion: false,
