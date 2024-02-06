@@ -12,6 +12,13 @@
   margin: 2vh 4vh;
   .nav-link {
     color: rebeccapurple;
+    span {
+      position: absolute;
+      background-color: red;
+      border-radius: 50%;
+      width: 12px;
+      height: 12px;
+    }
   }
 }
 

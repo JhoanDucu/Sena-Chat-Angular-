@@ -19,6 +19,7 @@ export interface GrupoComponentData {
 
 export interface Tab {
   class: string;
+  new: boolean;
 }
 
 export interface Tabs {

@@ -47,10 +47,10 @@ export class GruposComponent {
   @Output() envioMultiple = new EventEmitter<MensajeEnviar>();
   @Output() deseleccionar = new EventEmitter();
   tabs: Tabs = {
-    grupos: { class: 'tab-pane fade show active' },
-    privados: { class: 'tab-pane fade' },
-    ajustes: { class: 'tab-pane fade' },
-    perfil: { class: 'tab-pane fade' },
+    grupos: { class: 'tab-pane fade show active', new: false },
+    privados: { class: 'tab-pane fade', new: false },
+    ajustes: { class: 'tab-pane fade', new: false },
+    perfil: { class: 'tab-pane fade', new: false },
   }
   mensajes = new FormGroup({
     variasFichas: new FormControl('', Validators.required),

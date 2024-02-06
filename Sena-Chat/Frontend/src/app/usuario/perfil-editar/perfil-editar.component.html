@@ -25,36 +25,45 @@
         </div>
         <div id="informacion">
             <span class="info-container">
+                <label for="exampleInputEmail1" class="labelEditar"><strong>Nombres:</strong></label>
                 @if (!propsEditar.nombres) {
                 {{usuario.primer_nom + ' ' + usuario.segundo_nom}}
                 <button id="botonTitulo" (click)="activarEditar('nombres')">
                     <i class='bx bxs-pencil'></i>
                 </button>
                 } @else {
-                <label for="exampleInputEmail1" class="labelEditar"><strong>Nombres: </strong></label>
-                <input type="text" class="inputEditar" [value]="usuario.primer_nom + ' ' + usuario.segundo_nom">
+                <input type="text" class="inputEditar" (blur)="activarEditar('nombres')"
+                    [value]="usuario.primer_nom + ' ' + usuario.segundo_nom" appEditar>
                 <button id="botonTitulo"><i class='bx bx-check'></i></button>
                 }
             </span>
 
             <span class="info-container">
-                @if (!propsEditar.Apellidos) {
+                <label for="exampleInputEmail1" class="labelEditar"><strong>Apellidos:</strong></label>
+                @if (!propsEditar.apellidos) {
                 {{usuario.primer_apellido + ' ' + usuario.segundo_apellido}}
-                <button id="botonTitulo" (click)="activarEditar('nombres')">
+                <button id="botonTitulo" (click)="activarEditar('apellidos')">
                     <i class='bx bxs-pencil'></i>
                 </button>
                 } @else {
-                <label for="exampleInputEmail1" class="labelEditar"><strong>Apellidos: </strong></label>
-                <input type="text" class="inputEditar"
-                    [value]="usuario.primer_apellido + ' ' + usuario.segundo_apellido">
+                <input type="text" class="inputEditar" (blur)="activarEditar('apellidos')"
+                    [value]="usuario.primer_apellido + ' ' + usuario.segundo_apellido" appEditar>
                 <button id="botonTitulo"><i class='bx bx-check'></i></button>
                 }
             </span>
+            <audio src="../../../assets/audio/livechat-129007.mp3"></audio>
 
             <span class="info-container">
                 <label for="exampleInputEmail1" class="labelEditar"><strong>Descripcion: </strong></label>
-                <textarea class="inputEditar">{{usuario.descripcion}}</textarea>
+                @if (propsEditar.descripcion) {
+                <textarea class="inputEditar" (blur)="activarEditar('descripcion')" appEditar>{{usuario.descripcion}}</textarea>
                 <button id="botonTitulo"><i class='bx bx-check'></i></button>
+                } @else {
+                    {{usuario.descripcion}}
+                <button id="botonTitulo" (click)="activarEditar('descripcion')">
+                    <i class='bx bxs-pencil'></i>
+                </button>
+                }
             </span>
 
             <span class="info-container">
@@ -64,9 +73,9 @@
             </span>
 
             <span class="info-container">
-                <label for="exampleInputEmail1" class="labelEditar"><strong>Nombre de usuario: </strong></label>
-                <input type="text" class="inputEditar" [value]="">
-                <button id="botonTitulo"><i class='bx bx-check'></i></button>
+                <span class="labelEditar"><strong>Ficha: </strong> {{usuario.id_fichas}}</span>
+                <!-- <input type="text" class="inputEditar" [value]="usuario.id_fichas">
+                <button id="botonTitulo"><i class='bx bx-check'></i></button> -->
             </span>
 
             <span class="info-container">

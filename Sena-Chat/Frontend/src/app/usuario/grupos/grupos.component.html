@@ -1,23 +1,23 @@
 <div class="Botones">
     <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item" role="presentation">
-            <button class="nav-link active" id="grupos-tab" data-bs-toggle="tab" data-bs-target="#grupos" type="button"
-                role="tab" aria-controls="grupos" aria-selected="false" [disabled]="enBusqueda"
-                (click)="showTab('grupos')">
-                <i class='bx bxs-chat'></i>
+            <button class="nav-link active position-relative" id="grupos-tab" data-bs-toggle="tab"
+                data-bs-target="#grupos" type="button" role="tab" aria-controls="grupos" aria-selected="false"
+                [disabled]="enBusqueda" (click)="showTab('grupos')">
+                <i class='bx bxs-chat'></i><span></span>
             </button>
         </li>
         <li class="nav-item" role="presentation">
             <button class="nav-link" id="privados-tab" data-bs-toggle="tab" data-bs-target="#privados" type="button"
                 role="tab" aria-controls="privados" aria-selected="false" [disabled]="enBusqueda"
                 (click)="showTab('privados')">
-                <i class='bx bxs-message'></i>
+                <i class='bx bxs-message'></i><span></span>
             </button>
         </li>
         @if (Sesion.get('rol') == '1') {
         <li class="nav-item" role="presentation">
             <button class="nav-link" type="button" (click)="abrir()" [disabled]="enBusqueda">
-                <i class='bx bxs-conversation'></i>
+                <i class='bx bxs-conversation'></i><span></span>
             </button>
         </li>
         }
@@ -25,20 +25,20 @@
             <button class="nav-link" id="ajustes-tab" data-bs-toggle="tab" data-bs-target="#ajustes" type="button"
                 role="tab" aria-controls="ajustes" aria-selected="false" [disabled]="enBusqueda"
                 (click)="showTab('ajustes')">
-                <i class='bx bxs-message-square-dots'></i>
+                <i class='bx bxs-message-square-dots'></i><span></span>
             </button>
         </li>
 
         <li class="nav-item" role="presentation">
             <button class="nav-link" id="dontk-tab" data-bs-toggle="tab" data-bs-target="#salir" type="button"
                 role="tab" aria-controls="contact" aria-selected="false" [disabled]="enBusqueda">
-                <i class="bx bxs-cog"></i>
+                <i class="bx bxs-cog"></i><span></span>
             </button>
         </li>
         <li class="nav-item" role="presentation">
             <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button"
                 role="tab" aria-controls="contact" aria-selected="false" [disabled]="enBusqueda">
-                <i class="bx bxs-help-circle"></i>
+                <i class="bx bxs-help-circle"></i><span></span>
             </button>
         </li>
         <div id="foto-perfil">
