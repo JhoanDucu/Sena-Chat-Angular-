@@ -14,6 +14,7 @@ import { Grupo } from '../Modelos/grupos';
 import { SocketService } from '../Servicios/socket.service';
 import { Fecha } from '../Modelos/fechas';
 import { PerfilEditarComponent } from '../perfil-editar/perfil-editar.component';
+import { MensajesVariosComponent } from '../mensajes-varios/mensajes-varios.component';
 
 @Component({
   selector: 'app-chat',
@@ -26,7 +27,8 @@ import { PerfilEditarComponent } from '../perfil-editar/perfil-editar.component'
     GruposComponent,
     InfoGruposComponent,
     MensajesEnviarComponent,
-    PerfilEditarComponent
+    PerfilEditarComponent,
+    MensajesVariosComponent
   ],
   templateUrl: './chat.component.html',
   styleUrl: './chat.component.css'

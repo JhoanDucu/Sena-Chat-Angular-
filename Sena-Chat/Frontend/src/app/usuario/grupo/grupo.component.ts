@@ -33,11 +33,10 @@ export class GrupoComponent {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['tiempo']) this.tiempo = this.fecha(changes['tiempo'].currentValue);
-    if (changes['reciente'] !== undefined) !changes['reciente'].isFirstChange() ? 
-    this.moverGrupo.emit() : undefined;
+    if (changes['reciente'] !== undefined) !changes['reciente'].isFirstChange() ? this.moverGrupo.emit() : undefined;
   }
 
-  nuevaNotificacion = () => this.Sesion.get('grupos') != this.idGrupo ? this.contador = (this.contador | 0) + 1 : undefined;
+  nuevaNotificacion = () => this.Sesion.get('grupos') != this.idGrupo ? this.contador = (this.contador | 0) + 1 : document.getElementById;
 
   restablecer = () => {
     this.contador = undefined;

@@ -3,10 +3,10 @@
         <div class="column contenedorGrupos">
             <app-grupos [datos]="datos.gruposComponent" [usuario]="datos.datosUsuario"
                 (makeChange)="applyChanges($event)" [changesValue]="datos.other.changes"
-                [selected]="{ grupo: this.Sesion.get('grupos'), p: Sesion.get('pestaña')}"
-                (envioMultiple)="enviar($event, $event.fk_destino)" (deseleccionar)="sinGrupo()">
+                [selected]="{ grupo: this.Sesion.get('grupos'), p: Sesion.get('pestaña')}">
             </app-grupos>
             <app-perfil-editar [usuario]="datos.datosUsuario"></app-perfil-editar>
+            <app-mensajes-varios [grupos]="datos.gruposComponent.grupos"></app-mensajes-varios>
         </div>
         <div class="column contenedorChat">
             @if(grupoSeleccionado){
