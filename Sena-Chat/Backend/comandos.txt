@@ -1,6 +1,6 @@
 npm init
-npm install express mysql body-parser --save
+npm install express mysql2 body-parser --save
 npm i nodemon --save-dev
-npm i --save cors
+npm i --save cors md5
 "scripts" : "dev": "nodemon server.js"
 npm run dev

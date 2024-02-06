@@ -133,3 +133,37 @@ span{
     padding: 10px 20px;
     border-radius: 5px;
 }
+
+/* Contenido del Offcanvas */
+
+.imgUsuario {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+img {
+    width: 70%;
+    height: 40%;
+    border-radius: 5%;
+    margin-bottom: 15px;
+}
+
+.contUsuario span {
+    font-weight:bolder;
+    font-weight: bold;
+    display: block;
+    text-align: start;
+    margin-bottom: 10px;
+}
+
+p {
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+p span {
+    font-weight: normal;
+    color: #555;
+}
