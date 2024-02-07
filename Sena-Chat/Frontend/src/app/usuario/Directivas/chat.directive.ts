@@ -1,4 +1,5 @@
 import { Directive, Input, OnChanges, TemplateRef, ViewContainerRef, SimpleChanges } from '@angular/core';
+import { Grupo } from '../Modelos/grupos';
 
 @Directive({
   selector: '[appChat]',
@@ -8,7 +9,7 @@ export class ChatDirective implements OnChanges {
   @Input() appChat !: string;
   constructor(
     private TemplateRef: TemplateRef<any>,
-    private ViewContainerRef: ViewContainerRef,
+    private ViewContainerRef: ViewContainerRef
   ) {
     this.ViewContainerRef.createEmbeddedView(TemplateRef);
   }
@@ -17,12 +18,11 @@ export class ChatDirective implements OnChanges {
       this.ViewContainerRef.clear();
       this.ViewContainerRef.createEmbeddedView(this.TemplateRef);
     }
-    setTimeout(() => {
-      document.getElementById("final")?.scrollIntoView(true);
-    }, 90);
   }
-  
+
   static seleccionar = (value: string) => { return value = value == '0' ? '1' : '0' }
 
-  static estadoBusqueda = (current: Boolean, before: Boolean) => current || before;
+  static contieneMensajes = (grupo: Grupo, valor: string) => {
+    return grupo.mensajes.length ? grupo.mensajes[grupo.mensajes.length - 1][valor] : undefined;
+  }
 }

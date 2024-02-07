@@ -1,0 +1,63 @@
+.list-group-item {
+  font-family: "Josefin Sans", sans-serif;
+  font-weight: bold;
+  font-size: 18px;
+  border: none;
+  border-bottom: 1px solid #000000;
+  padding: 12px;
+  cursor: pointer;
+  text-align: center;
+  background-color: transparent;
+}
+
+.list-group-item-action:hover {
+  background-color: #3d803d !important;
+  color: #fff;
+}
+
+.list-group-item.active {
+  background-color: #3d803d;
+  color: #fff;
+  border-color: #dfdfdf;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  font-family: "Josefin Sans", sans-serif;
+}
+
+.tab {
+  display: flex;
+  position: relative;
+  text-align: start;
+  width: calc(100%);
+  .pic-tab {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+  }
+  #grupo {
+    padding: 0 0 0 12px;
+    width: calc(88%);
+    margin: 0;
+    position: relative;
+  }
+  small {
+    font-size: calc(62%);
+    float: inline-end;
+    letter-spacing: 0.3px;
+  }
+  p {
+    font-weight: normal;
+    margin: 0;
+    font-size: 14px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  span {
+    background-color: white;
+    font-size: 14px;
+    position: absolute;
+    right: 0;
+  }
+}

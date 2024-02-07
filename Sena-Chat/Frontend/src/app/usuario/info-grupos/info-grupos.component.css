@@ -1,4 +1,36 @@
-/* Seccion Eliminar */
+#cabeceraChat {
+  height: 70px;
+  margin: 0;
+  padding: 0.5rem 15px;
+}
+
+#info-basica {
+  display: flex;
+  width: 70%;
+  #logo-grupo {
+    height: 42px;
+  }
+  #nombre-grupo {
+    margin-left: 10px;
+    height: 30px;
+    font-size: 20px;
+    font-weight: bold;
+  }
+}
+
+#botones-grupo {
+  display: flex;
+  justify-content: end;
+  width: 30%;
+  #info-boton {
+    background: none;
+    border: none;
+    font-size: 25px;
+    width: 18%;
+  }
+}
+
+/* offCanvas */
 
 #offcanvasNavbar,
 #offcanvasRight {
@@ -41,6 +73,7 @@
 #dropdown {
   font-size: 30px;
 }
+
 #dropdown:focus {
   border: none;
 }

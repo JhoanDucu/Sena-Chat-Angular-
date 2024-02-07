@@ -1,0 +1,28 @@
+@if (active) {
+<a class="list-group-item list-group-item-action active" id="list-profile-list" data-bs-toggle="list" role="tab"
+    aria-controls="list-profile">
+    <div class="tab">
+        <img src="../../../assets/img/Usuario2.jpg" class="pic-tab">
+        <div id="grupo">
+            {{ nomGrupo }} <small>{{ tiempo }}</small>
+            <p [appNotificacion]="[grupo.mensajes.length, active]" (-)="restablecer()">
+                {{ reciente }}
+            </p>
+        </div>
+    </div>
+</a>
+} @else {
+<a class="list-group-item list-group-item-action" id="list-profile-list" data-bs-toggle="list" role="tab"
+    aria-controls="list-profile">
+    <div class="tab">
+        <img src="../../../assets/img/Usuario2.jpg" class="pic-tab">
+        <div id="grupo">
+            {{ nomGrupo }} <small>{{ tiempo }}</small>
+            <p [appNotificacion]="[grupo.mensajes.length, active]" (+)="nuevaNotificacion()">
+                {{ reciente }}
+                <span class="badge bg-dark text-light">{{ contador > 99 ? '+99' : contador }}</span>
+            </p>
+        </div>
+    </div>
+</a>
+}

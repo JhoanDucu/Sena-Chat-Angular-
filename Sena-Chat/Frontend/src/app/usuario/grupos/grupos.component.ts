@@ -1,79 +1,80 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
-import { Grupo } from '../Modelos/grupos';
-import { ChatService } from '../Servicios/chat.service';
+import { GrupoComponentData, Tabs } from '../Modelos/grupos';
 import { SesionService } from '../Sesiones/sesion.service';
-import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Buscar } from '../Modelos/buscar';
 import { ChatDirective } from '../Directivas/chat.directive';
+import { Modals } from '../Modelos/modal';
+import { SocketService } from '../Servicios/socket.service';
+import { GrupoComponent } from '../grupo/grupo.component';
+import { BuscadorComponent } from '../buscador/buscador.component';
+import { MiPerfilComponent } from '../mi-perfil/mi-perfil.component';
+import { GruposTituloComponent } from '../grupos-titulo/grupos-titulo.component';
+import { GruposPanelComponent } from '../grupos-panel/grupos-panel.component';
 
 @Component({
   selector: 'app-grupos',
   standalone: true,
-  imports: [CommonModule, RouterModule, ReactiveFormsModule, FormsModule, ChatDirective],
+  imports: [
+    CommonModule,
+    ChatDirective,
+    GrupoComponent,
+    BuscadorComponent,
+    MiPerfilComponent,
+    GruposTituloComponent,
+    GruposPanelComponent
+  ],
   templateUrl: './grupos.component.html',
   styleUrl: './grupos.component.css'
 })
 export class GruposComponent {
   constructor(
-    private Chat: ChatService,
-    protected Sesion: SesionService
+    protected Sesion: SesionService,
+    private socket: SocketService
   ) { }
-  grupos: Grupo[] = [];
-  privados: Grupo[] = [];
+  @Input() datos: GrupoComponentData = {grupos: [], privados: []};
+  @Input() usuario: any;
   @Input() changesValue = '';
   @Input() selected: any = {};
-  @Output() makeChange = new EventEmitter<string[]>();
-  fichaSeleccionada = this.Sesion.get('ficha');
-  usuario = this.Sesion.get('documento');
-  pestañas = {
-    gruposVisible: () => this.Sesion.set('pestaña', 'grupos'),
-    privadosVisible: () => this.Sesion.set('pestaña', 'privados'),
-    cerrarVisible: () => this.Sesion.set('pestaña', 'cerrar'),
+  @Output() makeChange = new EventEmitter<any[]>();
+  tabs: Tabs = {
+    grupos: { class: true, new: false },
+    privados: { class: false, new: false },
+    ajustes: { class: false, new: false },
+    perfil: { class: false, new: false },
+    otra1: { class: false, new: false },
+    otra2: { class: false, new: false }
   }
-  changes = '0';
-  valorBuscar = '';
-  coincidencias: Buscar = {
-    resultados: true,
-    Grupos: [],
-    Privados: []
-  };
-  mensajes = new FormGroup({
-    variasFichas: new FormControl('', Validators.required),
-    mensajeFichas: new FormControl('', Validators.required)
-  });
+  enBusqueda = false;
 
-  ngOnInit(): void {
-    this.Chat.traerGrupos(this.fichaSeleccionada, this.usuario).subscribe((data: any) => data.forEach((element: any) => { this.grupos.push(element) }));
-    this.Chat.traerPrivados(this.fichaSeleccionada, this.usuario).subscribe((data: any) => data.forEach((element: any) => { this.privados.push(element) }));
-  }
+  ngOnInit(): void {}
 
-  seleccionarEnGrupos = (id: any) => {
-    this.Sesion.remove('grupos');
-    this.makeChange.emit([ChatDirective.seleccionar(this.changesValue), id]);
+  seleccionarEnGrupos = (id: any, index: number, type: string) => {
+    if (this.Sesion.get('grupos')) this.socket.gestionarSalas({ accion: 'salirSala', id_grupo: this.Sesion.get('grupos') });
+    this.makeChange.emit([ChatDirective.seleccionar(this.changesValue), String(id), index, type]);
+    this.socket.gestionarSalas({ accion: 'unirSala', id_grupo: String(id) });
   };
 
-  mostrarGrupos = () => this.pestañas.gruposVisible;
+  showTab = (tab: string) => {
+    this.Sesion.set('pestaña', tab);
+    for (const key in this.tabs) key == tab ? this.tabs[key].class = true : this.tabs[key].class = false;
+  };
 
-  mostrarPrivados = () => this.pestañas.privadosVisible;
+  mostrarBusqueda = (value: boolean) => this.enBusqueda = value;
 
-  cerrarSesion = () => this.Sesion.clear();
+  abrir = () => new Modals().usar('grupos', 1);
 
-  busqueda(){
-    this.coincidencias.Grupos = [];
-    this.coincidencias.Privados = [];
-    if (this.valorBuscar != '') {
-      for (let i = 0; i < Math.max(this.grupos.length, this.privados.length); i++) {
-        if (this.grupos[i].nom_grupos.includes(this.valorBuscar)) this.coincidencias.Grupos.push(this.grupos[i].nom_grupos);
-        else this.coincidencias.resultados = false;
-        if (this.privados[i].nom_grupos.includes(this.valorBuscar)) this.coincidencias.Privados.push(this.privados[i].nom_grupos);
-        else this.coincidencias.resultados = ChatDirective.estadoBusqueda(false, this.coincidencias.resultados);
-      }
-      this.changes = ChatDirective.seleccionar(this.changes);
+  cambiarPosicion(index: any, objeto: any, opcion: number) {
+    let tempObjeto = objeto;
+    if (opcion != 2) {
+      this.datos.grupos.splice(index, 1);
+      this.datos.grupos.unshift(tempObjeto);
+      this.tabs.grupos.new = true;
+    } else {
+      this.datos.privados.splice(index, 1);
+      this.datos.privados.unshift(tempObjeto);
+      this.tabs.privados.new = true;
     }
   }
-  emitirEnvios(formValue: any){
-    console.log(formValue);
-  }
+
+  tiene = (g: any, propiedad: string) => ChatDirective.contieneMensajes(g, propiedad);
 }

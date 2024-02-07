@@ -1,14 +1,27 @@
-<button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
-    aria-controls="offcanvasNavbar" aria-label="Toggle navigation" (click)="consultarMiembros()">
-    <span class="navbar-toggler-icon"></span>
-</button>
+<nav class="container navbar bg-body-tertiary" id="cabeceraChat">
+    <div id="info-basica">
+        <img src="../../../assets/img/Usuario2.jpg" alt="IMAGEN DEL GRUPO" id="logo-grupo" />
+        <span id="nombre-grupo">{{ grupoSeleccionado.nom_grupos }}</span>
+    </div>
+    <div id="botones-grupo">
+        <button id="info-boton">
+            <i class='bx bx-calendar-alt' ></i>
+        </button>
+        <button id="info-boton">
+            <i class='bx bx-search-alt-2 bx-flip-horizontal' ></i>
+        </button>
+        <button id="info-boton" (click)="consultarMiembros()">
+            <i class='bx bx-dots-horizontal-rounded'></i>
+        </button>
+    </div>
+</nav>
 
 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
     <div class="offcanvas-header">
         <h5 class="offcanvas-title" id="offcanvasNavbarLabel">
             Informacion del grupo
         </h5>
-        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        <button type="button" class="btn-close" aria-label="Close" (click)="cerrarOff()"></button>
     </div>
     <div class="offcanvas-body">
         <!-- <div class="">
@@ -21,42 +34,46 @@
                 <img src="../../assets/img/Grupo.png" class="imagenGrupo" alt="Agregar" />
             </div>
             <div class="d-flex flex-column bd-highlight">
-                    <div class="p-2 bd-highlight h-25">Nombre de grupo</div>
-                    <div class="p-2 bd-highlight h-75 w-75">
-                        This is some content from a media component. You can replace this with any content and adjust it as needed.
-                    </div>
+                <div class="p-2 bd-highlight h-25">{{ grupoSeleccionado.nom_grupos }}</div>
+                <div class="p-2 bd-highlight h-75 w-75">
+                    This is some content from a media component. You can replace this with any content and adjust it as
+                    needed.
+                </div>
             </div>
             <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
                 aria-controls="offcanvasRight" id="lista-privados">
-                <img src="../../assets/img/User-agregar.png" alt="Agregar" class="img-thumbnail" /> 
+                <img src="../../assets/img/User-agregar.png" alt="Agregar" class="img-thumbnail" />
                 <h6 style="margin-left: 10px">Agregar</h6>
             </button>
-          </div>
-            <div class="list-group" (mouseleave)="notHover()">
-                @for (m of miembros; track m.numerodoc) {
-                    <button class="list-group-item list-group-item-action" aria-current="true" (mouseenter)="hover(m.numerodoc)">
-                        <div class="d-flex w-100 justify-content-between">
-                          <h5 class="mb-1">{{ m.primer_nom }} {{ m.segundo_nom }} {{ m.primer_apellido }} {{ m.segundo_apellido }}</h5>
-                          @if (mostrarDropdown == m.numerodoc) {
-                            <small class="position-absolute top-50 end-0 translate-middle-y">
-                                <div class="btn-group">
-                                    <button type="button" class="btn dropdown" data-bs-toggle="dropdown" aria-expanded="false" id="dropdown">
-                                        <i class='bx bx-dots-vertical-rounded'></i>
-                                    </button>
-                                    <ul class="dropdown-menu dropdown-menu-end">
-                                    <li><button class="dropdown-item" type="button">Action</button></li>
-                                    <li><button class="dropdown-item" type="button">Enviar Mensaje</button></li>
-                                    <li><button class="dropdown-item" type="button">Eliminar del grupo</button></li>
-                                    </ul>
-                                </div>
-                              </small>
-                          }
-                        </div>
-                        <p class="mb-1">Some placeholder content in a paragraph.</p>
-                        <small>And some small print.</small>
-                      </button>
+        </div>
+        <div class="list-group" (mouseleave)="notHover()">
+            @for (m of miembros; track m.numerodoc) {
+            <button class="list-group-item list-group-item-action" aria-current="true"
+                (mouseenter)="hover(m.numerodoc)">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">{{ m.primer_nom }} {{ m.segundo_nom }} {{ m.primer_apellido }} {{
+                        m.segundo_apellido }}</h5>
+                </div>
+                <p class="mb-1">Some placeholder content in a paragraph.</p>
+                <small>And some small print.</small>
+                @if (mostrarDropdown == m.numerodoc) {
+                <small class="position-absolute top-50 end-0 translate-middle-y">
+                    <div class="btn-group dropup">
+                        <button type="button" class="btn dropdown" data-bs-toggle="dropdown" aria-expanded="false"
+                            [id]="id" (click)="abrir()">
+                            <i class='bx bx-dots-vertical-rounded'></i>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end" [attr.aria-labelledby]="id">
+                            <li><button class="dropdown-item" type="button">Action</button></li>
+                            <li><button class="dropdown-item" type="button">Enviar Mensaje</button></li>
+                            <li><button class="dropdown-item" type="button">Eliminar del grupo</button></li>
+                        </ul>
+                    </div>
+                </small>
                 }
-              </div>
+            </button>
+            }
+        </div>
     </div>
 </div>
 

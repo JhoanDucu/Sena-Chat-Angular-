@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CrearGrupoComponent } from '../crear-grupo/crear-grupo.component';
+import { GruposService } from '../../service/grupos.service';
 
 @Component({
   selector: 'app-vis-grupos',
@@ -10,7 +11,18 @@ import { CrearGrupoComponent } from '../crear-grupo/crear-grupo.component';
 })
 export class VisGruposComponent {
 
+  constructor(private visGrupos:GruposService) { }
+
   mostrar = false;
+  grupos:any = [];
+      
+
   mostrarCrear = () => this.mostrar = !this.mostrar;
+
+  ngOnInit() {
+    this.visGrupos.traerGrupos().subscribe((datos:any) => {
+      this.grupos = datos;
+    });
+  }
 
 }

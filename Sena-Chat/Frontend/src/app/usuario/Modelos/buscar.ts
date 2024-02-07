@@ -1,8 +1,10 @@
-export class Buscar {
-    constructor(
-        public resultados: Boolean,
-        public Grupos: string[],
-        public Privados: string[],
-        //  public Mensajes: string[]
-    ) { }
+import { Grupo } from "./grupos";
+import { MensajeMostrar } from "./mensaje";
+
+export interface Buscar {
+    resultados: boolean;
+    Grupos: Grupo[];
+    Privados: Grupo[];
+    Mensajes: MensajeMostrar[];
+    [key: string]: any;
 }

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CrearUsuarioComponent } from '../crear-usuario/crear-usuario.component';
+import { UsuarioService } from '../../service/usuario.service';
 
 @Component({
   selector: 'app-vis-usuario',
@@ -12,7 +13,17 @@ import { CrearUsuarioComponent } from '../crear-usuario/crear-usuario.component'
 })
 export class VisUsuarioComponent {
 
+  constructor(private visUsuario:UsuarioService) { }
+
   mostrar = false;
+  usuarios:any = [];
+
   mostrarCrear = () => this.mostrar = !this.mostrar;
+
+  ngOnInit() {
+    this.visUsuario.traerUsuarios().subscribe((datos:any) => {
+      this.usuarios = datos;
+    });
+  }
 
 }

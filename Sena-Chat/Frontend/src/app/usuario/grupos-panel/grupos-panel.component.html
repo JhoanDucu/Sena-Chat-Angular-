@@ -1,0 +1,23 @@
+@if (Sesion.get('pestaña') == 'grupos' || Sesion.get('pestaña') == 'privados') {
+<div id="panel">
+    <button id="iniciarChat"><i class='bx bx-note'></i></button>
+    <button id="iniciarChat"><i class='bx bx-mail-send bx-tada'></i></button>
+    <button id="iniciarChat"><i class='bx bx-slider'></i></button>
+    <button id="iniciarChat" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom"
+        aria-controls="offcanvasBottom">
+        <i class='bx bx-log-out'></i>
+    </button>
+</div>
+}
+
+<div class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBottomLabel">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasBottomLabel">Offcanvas bottom</h5>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body small">
+        ¿DESEA CERRAR SESION? 
+        <button class="btn btn-primary" (click)="cerrarSesion()">SI</button>
+        <button class="btn btn-danger" data-bs-dismiss="offcanvas" aria-label="Close">NO</button>
+    </div>
+</div>

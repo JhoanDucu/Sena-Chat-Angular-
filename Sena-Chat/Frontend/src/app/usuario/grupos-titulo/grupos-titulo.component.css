@@ -1,0 +1,21 @@
+.titulo-container {
+  display: flex;
+  padding: 14px 20px;
+}
+
+span {
+  font-family: "Josefin Sans", sans-serif;
+  font-weight: bold;
+  font-size: x-large;
+  text-align: start;
+  width: 70%;
+}
+
+a {
+  display: flex;
+  font-size: 30px;
+  width: 10%;
+  justify-content: end;
+  align-self: center;
+  cursor: pointer;
+}

@@ -1,12 +1,26 @@
-export class Mensaje {
-    constructor(
-        public id_mensaje: string,
-        public primer_nom: string,
-        public primer_apellido: string,
-        public fecha_hora: any,
-        public contenido_mensaje: string,
-        public fk_destino: string,
-        public numerodoc: string,
-        public id_tipo: string,
-    ){}
+export interface MensajeEnviar {
+    id_mensaje: undefined,
+    fecha_hora: any,
+    contenido_mensaje: string | undefined,
+    archivo?: string,
+    fk_destino: string,
+    id_tipo: string,
 }
+
+export interface MensajeMostrar {
+    id_mensaje: undefined,
+    primer_nom: string,
+    primer_apellido: string,
+    fecha_hora: any,
+    contenido_mensaje: string | undefined,
+    numerodoc: any,
+    id_tipo: string,
+    [key: string]: any;
+}
+
+interface extras {
+    variasFichas?: string,
+    mensajeFichas?: string
+}
+
+export interface MensajeEmitir extends MensajeEnviar, MensajeMostrar, extras {}

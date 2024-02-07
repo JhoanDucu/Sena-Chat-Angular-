@@ -1,15 +1,20 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { ChatService } from '../Servicios/chat.service';
-import { Mensaje } from '../Modelos/mensaje';
-import { Usuario } from '../Modelos/usuarios';
+import { MensajeEmitir, MensajeMostrar } from '../Modelos/mensaje';
 import { MensajesComponent } from '../mensajes/mensajes.component';
 import { ChatDirective } from '../Directivas/chat.directive';
 import { SesionService } from '../Sesiones/sesion.service';
 import { GruposComponent } from '../grupos/grupos.component';
 import { InfoGruposComponent } from '../info-grupos/info-grupos.component';
 import { MensajesEnviarComponent } from '../mensajes-enviar/mensajes-enviar.component';
+import { ChatComponentData } from '../Modelos/chat';
+import { Grupo } from '../Modelos/grupos';
+import { SocketService } from '../Servicios/socket.service';
+import { Fecha } from '../Modelos/fechas';
+import { PerfilEditarComponent } from '../perfil-editar/perfil-editar.component';
+import { MensajesVariosComponent } from '../mensajes-varios/mensajes-varios.component';
 
 @Component({
   selector: 'app-chat',
@@ -21,7 +26,9 @@ import { MensajesEnviarComponent } from '../mensajes-enviar/mensajes-enviar.comp
     ChatDirective,
     GruposComponent,
     InfoGruposComponent,
-    MensajesEnviarComponent
+    MensajesEnviarComponent,
+    PerfilEditarComponent,
+    MensajesVariosComponent
   ],
   templateUrl: './chat.component.html',
   styleUrl: './chat.component.css'
@@ -30,45 +37,84 @@ export class ChatComponent {
   constructor(
     private router: Router,
     private Chat: ChatService,
-    private rutaActiva: ActivatedRoute,
-    protected Sesion: SesionService
+    protected Sesion: SesionService,
+    private socket: SocketService
   ) { }
-  changes = '0';
-  mensaje: Mensaje[] = [];
-  datosUsuario: Usuario = new Usuario('', '', '', '', '', '', '', '', '', '', '', '');
+  datos = new ChatComponentData({ grupos: [], privados: [] }, {}, { changes: '0', loading: false });
   grupoSeleccionado: string | null = '';
   fichaSeleccionada = this.Sesion.get('ficha');
   usuario = this.Sesion.get('documento');
+  grupoElegido: Grupo | any;
 
-
-  ngOnInit(): void {
-    this.Sesion.remove('grupos');
+  ngOnInit() {
+    this.Sesion.remove('grupos'); this.Sesion.set('pestaña', 'grupos');
     if (this.fichaSeleccionada == undefined || this.usuario == undefined) {
       this.router.navigate(['login']);
       this.Sesion.set('error', 'No has iniciado sesion');
     } else {
-      this.Chat.traerUsuario(this.usuario).subscribe((data: any) => this.datosUsuario = data);
+      this.Chat.traerUsuario(this.usuario).subscribe((usuario: any) => this.datos.datosUsuario = usuario);
+      this.Chat.traerGrupos(this.fichaSeleccionada, this.usuario).subscribe((grupos: any) => this.extraerMensajes(grupos, 'grupos'));
+      this.Chat.traerPrivados(this.fichaSeleccionada, this.usuario).subscribe((privados: any) => this.extraerMensajes(privados, 'privados'));
     }
   }
-  actualizarParametro() {
-    return this.grupoSeleccionado = this.Sesion.get('grupos');
+
+  ngAfterViewInit() {
+    this.socket.recibirMensaje().subscribe((data: any) => this.añadirMensaje(data.message, 'meh', data.pn, data.pa));
+    this.socket.notificaMensaje().subscribe((data: any) => this.añadirMensaje(data.message, 'meh', data.pn, data.pa, data.room));
   }
 
-  enviar(mensaje: any) {
-    if (mensaje.contenido_mensaje != '') {
-      let time = new Date();
-      mensaje.fecha_hora = `${time.getFullYear()}-${time.getMonth() + 1}-${time.getDate()} ${time.getHours()}:${time.getMinutes() + 1}:${time.getSeconds()}`;
-      this.Chat.destino(this.grupoSeleccionado, this.usuario).subscribe((id: any) => {
-        mensaje.fk_destino = id[0].id_usuarios_grupos;
-        mensaje.id_tipo = '1';
-        this.Chat.agregarMensaje(mensaje).subscribe((data: any) => {
-          data == 'Enviado' ? this.changes = ChatDirective.seleccionar(this.changes) : undefined;
-        });
+  enviar(mensaje: any, grupo: any) {
+    let pn = this.datos.datosUsuario!.primer_nom;
+    let pa = this.datos.datosUsuario!.primer_apellido;
+    this.añadirMensaje({ ...mensaje }, this.usuario, pn, pa);
+    this.Chat.destino(grupo, this.usuario).subscribe((id: any) => {
+      mensaje.fk_destino = id;
+      mensaje.fecha_hora = Fecha.fechaActual();
+      this.Chat.agregarMensaje(mensaje).subscribe((insertId: any) => {
+        insertId !== undefined && insertId !== null ? mensaje.id_mensaje = insertId : undefined;
+        this.Chat.masNotificaciones({ u: this.usuario, g: grupo }).subscribe((data: any) => data ?
+          this.socket.emitirMensaje({ room: grupo, message: mensaje, pn: pn, pa: pa, u: this.usuario })
+          : undefined);
       });
-    } else {
-      this.Sesion.set('error', 'Ingrese un mensaje 😒');
+    });
+  }
+
+  applyChanges = (newValue: string[]) => {
+    this.datos.other.changes = newValue[0];
+    this.Sesion.set('grupos', newValue[1]);
+    this.grupoSeleccionado = this.Sesion.get('grupos');
+    this.grupoElegido = this.datos.gruposComponent[newValue[3]][newValue[2]];
+  }
+
+  extraerMensajes(data: any, location: string) {
+    data.forEach((element: Grupo) => {
+      this.socket.conectarEnGrupo(element.id_grupos);
+      this.Chat.traerMensajes(element.id_grupos).subscribe((resultado: any) => {
+        resultado ? resultado.forEach((value: MensajeMostrar) => {
+          value.fecha_hora = new Date(value.fecha_hora);
+        }) : undefined;
+        element.mensajes = resultado ? resultado : [];
+        this.datos.gruposComponent[location].push(element);
+      });
+    });
+  }
+
+  añadirMensaje(mensaje: MensajeEmitir, ...values: Array<any>) {
+    const [numerodoc, primer_nom, primer_apellido, grupo] = values;
+    mensaje.numerodoc = numerodoc;
+    mensaje.primer_nom = primer_nom;
+    mensaje.primer_apellido = primer_apellido;
+    mensaje.fecha_hora = new Date();
+
+    if (!grupo) this.grupoElegido.mensajes.push(mensaje);
+    else {
+      this.datos.gruposComponent.grupos.find((g: Grupo) => g.id_grupos == grupo)?.mensajes.push(mensaje)
+      this.datos.gruposComponent.privados.find((p: Grupo) => p.id_grupos == grupo)?.mensajes.push(mensaje)
     }
   }
 
-  applyChanges = (newValue: string[]) => { this.changes = newValue[0]; this.Sesion.set('grupos', newValue[1]); }
+  sinGrupo() {
+    this.grupoSeleccionado = '';
+    this.Sesion.remove('grupos');
+  }
 }

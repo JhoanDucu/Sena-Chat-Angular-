@@ -1,0 +1,40 @@
+<div class="input-group flex-nowrap" id="buscarGrupos">
+    @if (buscando) {<button class="input-group-text" id="addon-wrapping" (click)="cancelar()">
+        <i class='bx bx-x-circle'></i></button>}
+    @else {<label for="buscar" class="input-group-text" id="addon-wrapping"><i class='bx bx-search-alt-2'></i></label>}
+    <input id="buscar" type="text" class="form-control" placeholder="Busca un chat..." aria-label="Username"
+        aria-describedby="addon-wrapping" [(ngModel)]="valorBuscar" (keyup)="busqueda()">
+</div>
+
+<div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" *appChat="changes">
+        @if (buscando && valorBuscar.trim()) {
+        <div class="grupos" id="grupos" role="tablist">
+            <div class="list-group" id="list-tab" role="tablist">
+                @if (coincidencias.Grupos.length) {
+                <a class="list-group-item list-group-item-action">GRUPOS</a>
+                @for (G of coincidencias.Grupos; track G) {
+                <app-grupo [grupo]="G" (click)="seleccionarEnBuscador(G.id_grupos, $index, 'grupos')"
+                    [tiempo]="tiene(G, 'fecha_hora')" [reciente]="tiene(G, 'contenido_mensaje')">
+                </app-grupo>
+                }
+                }
+                @if(coincidencias.Privados.length){
+                <a class="list-group-item list-group-item-action">PRIVADOS</a>
+                @for (P of coincidencias.Privados; track P) {
+                <app-grupo [grupo]="P" (click)="seleccionarEnBuscador(P.id_grupos, $index, 'privados')"
+                    [tiempo]="tiene(P, 'fecha_hora')" [reciente]="tiene(P, 'contenido_mensaje')">
+                </app-grupo>
+                }
+                }
+                @if (coincidencias.Mensajes.length){
+                <a class="list-group-item list-group-item-action">PRIVADOS</a>
+                }
+            </div>
+        </div>
+        @if (!coincidencias.resultados) {
+        <h1>no hay resultados</h1>
+        }
+        }
+    </div>
+</div>

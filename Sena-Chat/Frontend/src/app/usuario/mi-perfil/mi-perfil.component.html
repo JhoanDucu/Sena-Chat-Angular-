@@ -1,0 +1,49 @@
+<div id="perfil-box">
+    <div id="imagen-box">
+        <img src="../../../assets/img/Usuario3.jpg" id="user">
+
+        <div id="text">
+            <span id="nombre-usuario">{{ perfil.nombre_usuario }}</span>
+            @if (rol()) { <p id="ficha">Instructor</p> }
+            @else { <p id="ficha">Aprendiz de la ficha {{perfil.id_fichas}} </p>}
+            <p id="descripcion">{{ perfil.descripcion }}</p>
+        </div>
+    </div>
+    <div id="datos-box">
+        <h5>Detalles</h5>
+        <div class="info">
+            <i class='bx bx-user-circle'></i>
+            <span>
+                {{perfil.primer_apellido}} {{perfil.segundo_apellido}}
+                {{perfil.primer_nom}} {{perfil.segundo_nom}}
+            </span>
+        </div>
+        <div class="info">
+            <i class='bx bx-envelope-open'></i>
+            <span>{{perfil.correo}}</span>
+        </div>
+        <div class="info">
+            <i class='bx bx-id-card'></i>
+            <span>
+                @switch (perfil.fk_id_tipodoc) {
+                @case (1) { C.C }
+                @case (2) { T.I }
+                } {{ perfil.numerodoc }}
+            </span>
+        </div>
+    </div>
+</div>
+
+<div class="position-fixed bottom-0 start-0 p-3" style="z-index: 11">
+    <div id="liveToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+            <img src="../../../assets/img/Usuario3.jpg" class="rounded me-2" id="toastImg">
+            <strong class="me-auto">Bootstrap</strong>
+            <small>11 mins ago</small>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body">
+            Hello, world! This is a toast message.
+        </div>
+    </div>
+</div>

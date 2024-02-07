@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { MensajeEnviar } from '../Modelos/mensaje';
 
 @Injectable({
   providedIn: 'root'
@@ -17,15 +18,21 @@ export class ChatService {
     return this.http.get(`${this.url}/usuario/${documento}`);
   }
   destino(grupo: any, usuario: any) {
-    return this.http.get(`${this.url}/destino/${grupo}/${usuario}`);
+    return this.http.get(`${this.url}/chat/destino/${grupo}/${usuario}`);
   }
-  agregarMensaje(datos: any) {
-    return this.http.post(`${this.url}/mensaje`, datos);
+  agregarMensaje(datos: MensajeEnviar) {
+    return this.http.post(`${this.url}/chat/mensaje`, datos);
   }
   traerPrivados(ficha: any, usuario: any) {
     return this.http.get(`${this.url}/chat/privados/${ficha}/${usuario}`);
   }
   traerMiembros(grupo: any) {
     return this.http.get(`${this.url}/chat/miembros/${grupo}`)
+  }
+  masNotificaciones(datos: any) {
+    return this.http.put(`${this.url}/chat/aumentar/notificaciones`, datos);
+  }
+  sinNotificaciones(datos: any) {
+    return this.http.put(`${this.url}/chat/anular/notificaciones`, datos);
   }
 }
