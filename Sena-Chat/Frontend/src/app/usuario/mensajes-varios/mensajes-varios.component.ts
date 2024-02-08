@@ -3,7 +3,8 @@ import { CommonModule } from '@angular/common';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { FormGroupDirective, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MensajeEnviar } from '../Modelos/mensaje';
-import { Modals } from '../Modelos/modal';
+import { Modal } from 'bootstrap';
+import { BootstrapService } from '../Servicios/bootstrap.service';
 
 @Component({
   selector: 'app-mensajes-varios',
@@ -13,6 +14,7 @@ import { Modals } from '../Modelos/modal';
   styleUrl: './mensajes-varios.component.css'
 })
 export class MensajesVariosComponent {
+  constructor(private B: BootstrapService) {}
   @ViewChild(FormGroupDirective) formDirective !: FormGroupDirective;
   @Input() grupos: any;
   @Output() envioMultiple = new EventEmitter<MensajeEnviar>();
@@ -24,13 +26,14 @@ export class MensajesVariosComponent {
   checked: string[] = [];
   inputSizes = ['mensajeFichas', 'mensajeFichas2', 'mensajeFichas3'];
   idInput = this.inputSizes[0];
+  modal: Modal | any;
 
-  ngOnInit() {}
+  ngAfterViewInit() { }
 
   cerrar() {
     this.checked = [];
     this.mensajes.reset();
-    new Modals().usar('grupos', 2);
+    this.B.modal(false);
   }
 
   emitirEnvios(formValue: any) {

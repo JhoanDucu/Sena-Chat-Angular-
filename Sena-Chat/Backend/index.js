@@ -53,6 +53,7 @@ app.use(bodyParser.json());
 
 app.use("/usuario", Rutas.usuario);
 app.use("/chat", Rutas.chat);
+app.use("/admin", Rutas.admin);
 
 app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerSpec));
 

@@ -15,6 +15,7 @@ import { SocketService } from '../Servicios/socket.service';
 import { Fecha } from '../Modelos/fechas';
 import { PerfilEditarComponent } from '../perfil-editar/perfil-editar.component';
 import { MensajesVariosComponent } from '../mensajes-varios/mensajes-varios.component';
+import { BootstrapService } from '../Servicios/bootstrap.service';
 
 @Component({
   selector: 'app-chat',
@@ -38,7 +39,8 @@ export class ChatComponent {
     private router: Router,
     private Chat: ChatService,
     protected Sesion: SesionService,
-    private socket: SocketService
+    private socket: SocketService,
+    private B: BootstrapService
   ) { }
   datos = new ChatComponentData({ grupos: [], privados: [] }, {}, { changes: '0', loading: false });
   grupoSeleccionado: string | null = '';
@@ -59,6 +61,7 @@ export class ChatComponent {
   }
 
   ngAfterViewInit() {
+    this.B.iniciarInstancias();
     this.socket.recibirMensaje().subscribe((data: any) => this.añadirMensaje(data.message, 'meh', data.pn, data.pa));
     this.socket.notificaMensaje().subscribe((data: any) => this.añadirMensaje(data.message, 'meh', data.pn, data.pa, data.room));
   }

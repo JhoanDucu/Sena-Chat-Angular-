@@ -3,13 +3,13 @@ import { CommonModule } from '@angular/common';
 import { GrupoComponentData, Tabs } from '../Modelos/grupos';
 import { SesionService } from '../Sesiones/sesion.service';
 import { ChatDirective } from '../Directivas/chat.directive';
-import { Modals } from '../Modelos/modal';
 import { SocketService } from '../Servicios/socket.service';
 import { GrupoComponent } from '../grupo/grupo.component';
 import { BuscadorComponent } from '../buscador/buscador.component';
 import { MiPerfilComponent } from '../mi-perfil/mi-perfil.component';
 import { GruposTituloComponent } from '../grupos-titulo/grupos-titulo.component';
 import { GruposPanelComponent } from '../grupos-panel/grupos-panel.component';
+import { BootstrapService } from '../Servicios/bootstrap.service';
 
 @Component({
   selector: 'app-grupos',
@@ -29,7 +29,8 @@ import { GruposPanelComponent } from '../grupos-panel/grupos-panel.component';
 export class GruposComponent {
   constructor(
     protected Sesion: SesionService,
-    private socket: SocketService
+    private socket: SocketService,
+    private B: BootstrapService
   ) { }
   @Input() datos: GrupoComponentData = {grupos: [], privados: []};
   @Input() usuario: any;
@@ -46,7 +47,7 @@ export class GruposComponent {
   }
   enBusqueda = false;
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   seleccionarEnGrupos = (id: any, index: number, type: string) => {
     if (this.Sesion.get('grupos')) this.socket.gestionarSalas({ accion: 'salirSala', id_grupo: this.Sesion.get('grupos') });
@@ -61,7 +62,7 @@ export class GruposComponent {
 
   mostrarBusqueda = (value: boolean) => this.enBusqueda = value;
 
-  abrir = () => new Modals().usar('grupos', 1);
+  abrir = () => this.B.modal(true);
 
   cambiarPosicion(index: any, objeto: any, opcion: number) {
     let tempObjeto = objeto;

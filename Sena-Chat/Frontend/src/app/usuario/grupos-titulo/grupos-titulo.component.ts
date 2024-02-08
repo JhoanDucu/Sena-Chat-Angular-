@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Offcanvas } from 'bootstrap';
+import { BootstrapService } from '../Servicios/bootstrap.service';
 
 @Component({
   selector: 'app-grupos-titulo',
@@ -10,12 +10,10 @@ import { Offcanvas } from 'bootstrap';
   styleUrl: './grupos-titulo.component.css'
 })
 export class GruposTituloComponent {
+  constructor (private B: BootstrapService) {}
   @Input() titulo: any;
-  editar: Offcanvas | undefined;
 
-  ngOnInit(){
-    this.editar = new Offcanvas(document.getElementById('offcanvasRight') as HTMLElement);
-  }
+  ngOnInit(){ }
 
-  editarPerfil = () => this.editar?.show();
+  editarPerfil = () => this.B.editarCanva(true);
 }

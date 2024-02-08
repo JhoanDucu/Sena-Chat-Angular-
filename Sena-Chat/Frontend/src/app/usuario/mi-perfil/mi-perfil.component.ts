@@ -1,7 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Usuario } from '../Modelos/usuarios';
-import { Toast } from 'bootstrap';
 import { SesionService } from '../Sesiones/sesion.service';
 
 @Component({
@@ -14,13 +13,8 @@ import { SesionService } from '../Sesiones/sesion.service';
 export class MiPerfilComponent {
   constructor(private sesion: SesionService) { }
   @Input() perfil: Usuario = {};
-  myToastEl: any;
 
-  ngOnInit(): void {
-    this.myToastEl = new Toast(document.getElementById('liveToast') as HTMLElement);
-  }
-
-  toast = () => this.myToastEl.show();
+  ngOnInit(): void { }
 
   rol = () => this.sesion.get('rol') == '1' ? true : false;
 }
