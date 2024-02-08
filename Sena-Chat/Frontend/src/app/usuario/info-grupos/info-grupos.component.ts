@@ -54,6 +54,8 @@ export class InfoGruposComponent {
 
   cerrar = () => this.B.infoCanva();
 
-  consultarPerfil = () => {this.cerrar(); this.B.perfilCanva();};
-  
+  abrirAgregar = () => { this.cerrar(); this.B.agregarCanva(); }
+
+  consultarPerfil = () => { this.cerrar(); this.B.perfilCanva(); }
+
 }

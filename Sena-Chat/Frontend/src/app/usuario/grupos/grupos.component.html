@@ -68,7 +68,7 @@
                 <app-grupo (click)="seleccionarEnGrupos(g.id_grupos, $index, 'grupos')"
                     [active]="selected.grupo == g.id_grupos ? true : false" [grupo]="g"
                     [tiempo]="tiene(g, 'fecha_hora')" [reciente]="tiene(g, 'contenido_mensaje')"
-                    (moverGrupo)="cambiarPosicion($index, g, 1)">
+                    (moverGrupo)="cambiarPosicion($index, g.fk_tipo_grupo)">
                 </app-grupo>
                 }
             </div>
@@ -84,7 +84,7 @@
                 <app-grupo (click)="seleccionarEnGrupos(p.id_grupos, $index, 'privados')"
                     [active]="selected.grupo == p.id_grupos ? true : false" [grupo]="p"
                     [tiempo]="tiene(p, 'fecha_hora')" [reciente]="tiene(p, 'contenido_mensaje')"
-                    (moverGrupo)="cambiarPosicion($index, p, 2)">
+                    (moverGrupo)="cambiarPosicion($index, p.fk_tipo_grupo)">
                 </app-grupo>
                 }
             </div>

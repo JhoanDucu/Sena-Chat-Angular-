@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, SimpleChanges } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, Output, SimpleChanges, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NotificacionDirective } from '../Directivas/notificacion.directive';
 import { ChatService } from '../Servicios/chat.service';
@@ -36,7 +36,7 @@ export class GrupoComponent {
     if (changes['reciente'] !== undefined) !changes['reciente'].isFirstChange() ? this.moverGrupo.emit() : undefined;
   }
 
-  nuevaNotificacion = () => this.Sesion.get('grupos') != this.idGrupo ? this.contador = (this.contador | 0) + 1 : document.getElementById;
+  nuevaNotificacion = () => this.Sesion.get('grupos') != this.idGrupo ? this.contador = (this.contador | 0) + 1 : null;
 
   restablecer = () => {
     this.contador = undefined;
@@ -46,4 +46,5 @@ export class GrupoComponent {
   }
 
   fecha = (date: Date) => date ? new Fecha(date).retornar() : undefined;
+
 }

@@ -5,6 +5,7 @@ g.id_grupos,
 g.nom_grupos,
 g.descripcion_grupos,
 g.id_ficha,
+g.fk_tipo_grupo,
 ug.sin_leer,
 COALESCE(subquery.fecha_reciente, '') as fecha_reciente
 `;

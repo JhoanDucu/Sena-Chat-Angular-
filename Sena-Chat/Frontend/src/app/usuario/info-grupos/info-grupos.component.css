@@ -76,7 +76,6 @@
 #dropdown {
   font-size: 30px;
   z-index: 2;
-  border: 1px solid black;
 }
 
 #dropdown:focus {

@@ -23,8 +23,8 @@ export class NotificacionDirective implements OnChanges {
     private el: ElementRef,
     private renderer: Renderer2,
     private sound: SonidosService
-  ) {
-  }
+  ) { }
+  
   ngOnChanges(changes: SimpleChanges) {
     if (this.ultimoMensaje[1]) this.cero.emit();
     else if (changes['ultimoMensaje'].currentValue && changes['ultimoMensaje'].previousValue && !this.ultimoMensaje[1]) {

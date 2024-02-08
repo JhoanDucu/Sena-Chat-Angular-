@@ -32,7 +32,7 @@ export class GruposComponent {
     private socket: SocketService,
     private B: BootstrapService
   ) { }
-  @Input() datos: GrupoComponentData = {grupos: [], privados: []};
+  @Input() datos: GrupoComponentData = { grupos: [], privados: [] };
   @Input() usuario: any;
   @Input() changesValue = '';
   @Input() selected: any = {};
@@ -64,18 +64,11 @@ export class GruposComponent {
 
   abrir = () => this.B.modal();
 
-  cambiarPosicion(index: any, objeto: any, opcion: number) {
-    let tempObjeto = objeto;
-    if (opcion != 2) {
-      this.datos.grupos.splice(index, 1);
-      this.datos.grupos.unshift(tempObjeto);
-      this.tabs.grupos.new = true;
-    } else {
-      this.datos.privados.splice(index, 1);
-      this.datos.privados.unshift(tempObjeto);
-      this.tabs.privados.new = true;
-    }
+  cambiarPosicion(index: any, type: any) {
+    let tempObjeto = this.datos[type === 2 ? 'grupos' : 'privados'];
+    tempObjeto.unshift(tempObjeto.splice(index, 1)[0]);
   }
 
   tiene = (g: any, propiedad: string) => ChatDirective.contieneMensajes(g, propiedad);
+
 }
