@@ -62,7 +62,7 @@ export class GruposComponent {
 
   mostrarBusqueda = (value: boolean) => this.enBusqueda = value;
 
-  abrir = () => this.B.modal(true);
+  abrir = () => this.B.modal();
 
   cambiarPosicion(index: any, objeto: any, opcion: number) {
     let tempObjeto = objeto;

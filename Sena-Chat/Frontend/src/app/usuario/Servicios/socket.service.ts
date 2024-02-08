@@ -21,7 +21,7 @@ export class SocketService {
     // ESTE ES UN EJEMPLO DE TEST
   }
 
-  conectarEnGrupo(room: number | string) {
+  conectarEnGrupo(room: any) {
     this.io.emit('disponible', room);
   }
 

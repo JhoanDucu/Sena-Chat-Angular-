@@ -61,9 +61,9 @@ export class ChatComponent {
   }
 
   ngAfterViewInit() {
-    this.B.iniciarInstancias();
     this.socket.recibirMensaje().subscribe((data: any) => this.añadirMensaje(data.message, 'meh', data.pn, data.pa));
     this.socket.notificaMensaje().subscribe((data: any) => this.añadirMensaje(data.message, 'meh', data.pn, data.pa, data.room));
+    this.B.iniciarInstanciasChat();
   }
 
   enviar(mensaje: any, grupo: any) {

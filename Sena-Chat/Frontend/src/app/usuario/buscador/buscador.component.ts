@@ -40,7 +40,7 @@ export class BuscadorComponent {
   enObjeto() {
     Object.keys(this.itemsDeBusqueda).forEach((key: any) =>
       this.itemsDeBusqueda[key].forEach((data: Grupo) => {
-        if (data.nom_grupos.includes(this.valorBuscar)) this.coincidencias[key].push(data)
+        if (data?.nom_grupos?.includes(this.valorBuscar)) this.coincidencias[key].push(data)
       })
     );
     this.estadoBusqueda();

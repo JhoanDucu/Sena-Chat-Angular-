@@ -33,7 +33,7 @@ export class MensajesVariosComponent {
   cerrar() {
     this.checked = [];
     this.mensajes.reset();
-    this.B.modal(false);
+    this.B.modal();
   }
 
   emitirEnvios(formValue: any) {

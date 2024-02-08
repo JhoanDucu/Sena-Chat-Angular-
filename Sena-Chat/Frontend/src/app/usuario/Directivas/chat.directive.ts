@@ -23,6 +23,6 @@ export class ChatDirective implements OnChanges {
   static seleccionar = (value: string) => { return value = value == '0' ? '1' : '0' }
 
   static contieneMensajes = (grupo: Grupo, valor: string) => {
-    return grupo.mensajes.length ? grupo.mensajes[grupo.mensajes.length - 1][valor] : undefined;
+    return grupo?.mensajes?.length ? grupo.mensajes[grupo.mensajes.length - 1][valor] : undefined;
   }
 }

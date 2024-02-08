@@ -2,15 +2,6 @@
   padding-bottom: 1%;
 }
 
-.card-body.chat-box::-webkit-scrollbar {
-  width: 8px;
-}
-
-.card-body.chat-box::-webkit-scrollbar-thumb {
-  background-color: #3d803d;
-  border-radius: 4px;
-}
-
 #componenteMensajes {
   overflow-y: auto;
   max-height: 455px;

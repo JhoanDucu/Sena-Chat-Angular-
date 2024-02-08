@@ -15,5 +15,5 @@ export class GruposTituloComponent {
 
   ngOnInit(){ }
 
-  editarPerfil = () => this.B.editarCanva(true);
+  editarPerfil = () => this.B.editarCanva();
 }

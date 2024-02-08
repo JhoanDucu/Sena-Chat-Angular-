@@ -33,13 +33,16 @@
 /* offCanvas */
 
 #offcanvasNavbar,
-#offcanvasRight {
+#offcanvasRight2 {
   width: 62%;
 }
 
 .offcanvas-body {
   overflow-y: auto;
   scrollbar-width: thin;
+  button {
+    z-index: 1;
+  }
 }
 
 .offcanvas-body::-webkit-scrollbar {
@@ -72,6 +75,8 @@
 
 #dropdown {
   font-size: 30px;
+  z-index: 2;
+  border: 1px solid black;
 }
 
 #dropdown:focus {

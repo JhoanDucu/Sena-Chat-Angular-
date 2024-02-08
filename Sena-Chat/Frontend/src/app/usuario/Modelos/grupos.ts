@@ -1,16 +1,16 @@
 import { MensajeMostrar } from "./mensaje";
 
-export class Grupo {
-  constructor(
-    public id_usuarios_grupos: string,
-    public id_grupos: string,
-    public nom_grupos: string,
-    public descripcion_grupos: string,
-    public id_ficha: string,
-    public mensajes: Array<MensajeMostrar>,
-    public sin_leer: number
-  ) { }
+interface DatosGrupo {
+   id_usuarios_grupos: string,
+   id_grupos: string,
+   nom_grupos: string,
+   descripcion_grupos: string,
+   id_ficha: string,
+   mensajes: Array<MensajeMostrar>,
+   sin_leer: number
 }
+
+export type Grupo = Partial<DatosGrupo>;
 
 export interface GrupoComponentData {
   grupos: Array<Grupo>,
