@@ -10,6 +10,7 @@ import { MiPerfilComponent } from '../mi-perfil/mi-perfil.component';
 import { GruposTituloComponent } from '../grupos-titulo/grupos-titulo.component';
 import { GruposPanelComponent } from '../grupos-panel/grupos-panel.component';
 import { BootstrapService } from '../Servicios/bootstrap.service';
+import { GruposDirective } from '../Directivas/grupos.directive';
 
 @Component({
   selector: 'app-grupos',
@@ -21,7 +22,8 @@ import { BootstrapService } from '../Servicios/bootstrap.service';
     BuscadorComponent,
     MiPerfilComponent,
     GruposTituloComponent,
-    GruposPanelComponent
+    GruposPanelComponent,
+    GruposDirective
   ],
   templateUrl: './grupos.component.html',
   styleUrl: './grupos.component.css'
@@ -57,16 +59,16 @@ export class GruposComponent {
 
   showTab = (tab: string) => {
     this.Sesion.set('pestaña', tab);
-    for (const key in this.tabs) key == tab ? this.tabs[key].class = true : this.tabs[key].class = false;
+    for (const key in this.tabs) key == tab ? this.tabs[key] = { class: true, new: false } : this.tabs[key].class = false;
   };
 
   mostrarBusqueda = (value: boolean) => this.enBusqueda = value;
 
   abrir = () => this.B.modal();
 
-  cambiarPosicion(index: any, type: any) {
-    let tempObjeto = this.datos[type === 2 ? 'grupos' : 'privados'];
-    tempObjeto.unshift(tempObjeto.splice(index, 1)[0]);
+  cambiarPosicion(index: any, type: 'grupos' | 'privados') {
+    if (this.Sesion.get('pestaña') !== type) this.tabs[type].new = true // setTimeout(() => );
+    this.datos[type].unshift(this.datos[type].splice(index, 1)[0]);
   }
 
   tiene = (g: any, propiedad: string) => ChatDirective.contieneMensajes(g, propiedad);
