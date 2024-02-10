@@ -25,4 +25,5 @@ export class ChatDirective implements OnChanges {
   static contieneMensajes = (grupo: Grupo, valor: string) => {
     return grupo?.mensajes?.length ? grupo.mensajes[grupo.mensajes.length - 1][valor] : undefined;
   }
+  
 }

@@ -49,7 +49,7 @@ export class GruposComponent {
   }
   enBusqueda = false;
 
-  ngOnInit(): void { }
+  ngOnInit(): void { this.tabs.grupos.new = true }
 
   seleccionarEnGrupos = (id: any, index: number, type: string) => {
     if (this.Sesion.get('grupos')) this.socket.gestionarSalas({ accion: 'salirSala', id_grupo: this.Sesion.get('grupos') });
@@ -57,17 +57,18 @@ export class GruposComponent {
     this.socket.gestionarSalas({ accion: 'unirSala', id_grupo: String(id) });
   };
 
-  showTab = (tab: string) => {
+  mostrarTab = (tab: string) => {
     this.Sesion.set('pestaña', tab);
     for (const key in this.tabs) key == tab ? this.tabs[key] = { class: true, new: false } : this.tabs[key].class = false;
   };
+
+  animarTab = (tab: string) => this.tabs[tab].new = true;
 
   mostrarBusqueda = (value: boolean) => this.enBusqueda = value;
 
   abrir = () => this.B.modal();
 
-  cambiarPosicion(index: any, type: 'grupos' | 'privados') {
-    if (this.Sesion.get('pestaña') !== type) this.tabs[type].new = true // setTimeout(() => );
+  cambiarPosicion (index: any, type: 'grupos' | 'privados') {
     this.datos[type].unshift(this.datos[type].splice(index, 1)[0]);
   }
 

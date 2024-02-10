@@ -3,7 +3,7 @@
         <li class="nav-item" role="presentation">
             <button class="nav-link active position-relative" id="grupos-tab" data-bs-toggle="tab"
                 data-bs-target="#grupos" type="button" role="tab" aria-controls="grupos" aria-selected="false"
-                [disabled]="enBusqueda" (click)="showTab('grupos')">
+                [disabled]="enBusqueda" (click)="mostrarTab('grupos')">
                 <i [ngClass]="tabs.grupos.new ? 'bx bxs-chat bx-tada' : 'bx bxs-chat'"></i>
                 @if(tabs.grupos.new){<span></span>}
             </button>
@@ -11,7 +11,7 @@
         <li class="nav-item" role="presentation">
             <button class="nav-link" id="privados-tab" data-bs-toggle="tab" data-bs-target="#privados" type="button"
                 role="tab" aria-controls="privados" aria-selected="false" [disabled]="enBusqueda"
-                (click)="showTab('privados')">
+                (click)="mostrarTab('privados')">
                 <i [ngClass]="tabs.privados.new ? 'bx bxs-message bx-tada' : 'bx bxs-message'"></i>
                 @if(tabs.privados.new){<span></span>}
             </button>
@@ -26,7 +26,7 @@
         <li class="nav-item" role="presentation">
             <button class="nav-link" id="ajustes-tab" data-bs-toggle="tab" data-bs-target="#ajustes" type="button"
                 role="tab" aria-controls="ajustes" aria-selected="false" [disabled]="enBusqueda"
-                (click)="showTab('ajustes')">
+                (click)="mostrarTab('ajustes')">
                 <i [ngClass]="tabs.ajustes.new ? 'bx bxs-message-square-dots bx-tada':'bx bxs-message-square-dots'"></i>
                 @if(tabs.ajustes.new){<span></span>}
             </button>
@@ -46,7 +46,7 @@
         <div id="foto-perfil">
             <button class="nav-link" id="perfil-tab" data-bs-toggle="tab" data-bs-target="#perfil" type="button"
                 role="tab" aria-controls="perfil" aria-selected="false" [disabled]="enBusqueda"
-                (click)="showTab('perfil')">
+                (click)="mostrarTab('perfil')">
                 <img src="../../../assets/img/Usuario3.jpg" alt="">
             </button>
         </div>
@@ -61,9 +61,9 @@
 <div class="tab-content" id="myTabContent">
     <div [ngClass]="tabs.grupos.class ? 'tab-pane fade show active' : 'tab-pane fade'" id="grupos" role="tabpanel"
         aria-labelledby="grupos">
-        <div class="tab" role="tablist">
-            @if (datos.grupos[0]) {
-            <div class="list-group" id="list-tab" role="tablist" [appGrupos]="datos.grupos[0]">
+        @if (datos.grupos[0]) {
+        <div class="tab" role="tablist" [appGrupos]="datos.grupos[0]" (notificarTab)="animarTab($event)">
+            <div class="list-group" id="list-tab" role="tablist">
                 <app-grupos-titulo [titulo]="'Grupos'"></app-grupos-titulo>
                 @for ( g of datos.grupos; track g.id_grupos) {
                 <app-grupo (click)="seleccionarEnGrupos(g.id_grupos, $index, 'grupos')"
@@ -72,15 +72,15 @@
                 </app-grupo>
                 }
             </div>
-            }
         </div>
+        }
     </div>
 
     <div [ngClass]="tabs.privados.class ? 'tab-pane fade show active' : 'tab-pane fade'" id="privados" role="tabpanel"
         aria-labelledby="privados">
-        <div class="tab" id="privados" role="tablist">
-            @if (datos.privados[0]) {
-            <div class="list-group" id="list-tab" role="tablist" [appGrupos]="datos.privados[0]">
+        @if (datos.privados[0]) {
+        <div class="tab" id="privados" role="tablist" [appGrupos]="datos.privados[0]">
+            <div class="list-group" id="list-tab" role="tablist">
                 <app-grupos-titulo [titulo]="'Privados'"></app-grupos-titulo>
                 @for (p of datos.privados; track p.id_grupos) {
                 <app-grupo (click)="seleccionarEnGrupos(p.id_grupos, $index, 'privados')"
@@ -89,8 +89,8 @@
                 </app-grupo>
                 }
             </div>
-            }
         </div>
+        }
     </div>
     <div [ngClass]="tabs.perfil.class ? 'tab-pane fade show active' : 'tab-pane fade'" id="perfil" role="tabpanel"
         aria-labelledby="perfil">
