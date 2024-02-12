@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 import { ChatService } from '../Servicios/chat.service';
@@ -42,6 +42,7 @@ export class ChatComponent {
     private socket: SocketService,
     private B: BootstrapService
   ) { }
+  @ViewChild('grupos') grupos: any;
   datos = new ChatComponentData({ grupos: [], privados: [] }, {}, { changes: '0', loading: false });
   grupoSeleccionado: string | null = '';
   fichaSeleccionada = this.Sesion.get('ficha');
@@ -62,7 +63,7 @@ export class ChatComponent {
 
   ngAfterViewInit() {
     this.socket.recibirMensaje().subscribe((data: any) => this.añadirMensaje(data.message, 'meh', data.pn, data.pa));
-    this.socket.notificaMensaje().subscribe((data: any) => this.añadirMensaje(data.message, 'meh', data.pn, data.pa, data.room));
+    this.socket.notificaMensaje().subscribe((data: any) => this.añadirMensaje(data.message, 'meh', data.pn, data.pa, data.room, data.t));
     this.B.iniciarInstanciasChat();
   }
 
@@ -76,7 +77,7 @@ export class ChatComponent {
       this.Chat.agregarMensaje(mensaje).subscribe((insertId: any) => {
         insertId !== undefined && insertId !== null ? mensaje.id_mensaje = insertId : undefined;
         this.Chat.masNotificaciones({ u: this.usuario, g: grupo }).subscribe((data: any) => data ?
-          this.socket.emitirMensaje({ room: grupo, message: mensaje, pn: pn, pa: pa, u: this.usuario })
+          this.socket.emitirMensaje({ room: grupo, message: mensaje, pn: pn, pa: pa, u: this.usuario, t: this.Sesion.get('pestaña') })
           : undefined);
       });
     });
@@ -103,7 +104,7 @@ export class ChatComponent {
   }
 
   añadirMensaje(mensaje: MensajeEmitir, ...values: Array<any>) {
-    const [numerodoc, primer_nom, primer_apellido, grupo] = values;
+    const [numerodoc, primer_nom, primer_apellido, grupo, tipo] = values;
     mensaje.numerodoc = numerodoc;
     mensaje.primer_nom = primer_nom;
     mensaje.primer_apellido = primer_apellido;
@@ -111,8 +112,8 @@ export class ChatComponent {
 
     if (!grupo) this.grupoElegido.mensajes.push(mensaje);
     else {
-      this.datos.gruposComponent.grupos.find((g: Grupo) => g.id_grupos == grupo)?.mensajes.push(mensaje)
-      this.datos.gruposComponent.privados.find((p: Grupo) => p.id_grupos == grupo)?.mensajes.push(mensaje)
+      this.datos.gruposComponent[tipo].find((g: Grupo) => g.id_grupos == grupo)?.mensajes.push(mensaje);
+      this.grupos.animarTab(tipo);
     }
   }
 

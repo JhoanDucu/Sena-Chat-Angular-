@@ -67,7 +67,7 @@
                 <app-grupos-titulo [titulo]="'Grupos'"></app-grupos-titulo>
                 @for ( g of datos.grupos; track g.id_grupos) {
                 <app-grupo (click)="seleccionarEnGrupos(g.id_grupos, $index, 'grupos')"
-                    [active]="selected.g == g.id_grupos ? true : false" [grupo]="g" [tiempo]="tiene(g, 'fecha_hora')"
+                    [active]="picked.g == g.id_grupos ? true : false" [grupo]="g" [tiempo]="tiene(g, 'fecha_hora')"
                     [reciente]="tiene(g, 'contenido_mensaje')" (moverGrupo)="cambiarPosicion($index, 'grupos')">
                 </app-grupo>
                 }
@@ -84,7 +84,7 @@
                 <app-grupos-titulo [titulo]="'Privados'"></app-grupos-titulo>
                 @for (p of datos.privados; track p.id_grupos) {
                 <app-grupo (click)="seleccionarEnGrupos(p.id_grupos, $index, 'privados')"
-                    [active]="selected.g == p.id_grupos ? true : false" [grupo]="p" [tiempo]="tiene(p, 'fecha_hora')"
+                    [active]="picked.g == p.id_grupos ? true : false" [grupo]="p" [tiempo]="tiene(p, 'fecha_hora')"
                     [reciente]="tiene(p, 'contenido_mensaje')" (moverGrupo)="cambiarPosicion($index, 'privados')">
                 </app-grupo>
                 }

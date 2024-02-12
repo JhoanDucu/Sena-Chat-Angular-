@@ -37,7 +37,7 @@ export class GruposComponent {
   @Input() datos: GrupoComponentData = { grupos: [], privados: [] };
   @Input() usuario: any;
   @Input() changesValue = '';
-  @Input() selected: any = {};
+  @Input() picked: any = {};
   @Output() makeChange = new EventEmitter<any[]>();
   tabs: Tabs = {
     grupos: { class: true, new: false },
@@ -49,7 +49,7 @@ export class GruposComponent {
   }
   enBusqueda = false;
 
-  ngOnInit(): void { this.tabs.grupos.new = true }
+  ngOnInit(): void { }
 
   seleccionarEnGrupos = (id: any, index: number, type: string) => {
     if (this.Sesion.get('grupos')) this.socket.gestionarSalas({ accion: 'salirSala', id_grupo: this.Sesion.get('grupos') });
