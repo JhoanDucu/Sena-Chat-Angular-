@@ -43,6 +43,7 @@ export class ChatComponent {
     private B: BootstrapService
   ) { }
   @ViewChild('grupos') grupos: any;
+  @ViewChild('mensajes') mensajes: any;
   datos = new ChatComponentData({ grupos: [], privados: [] }, {}, { changes: '0', loading: false });
   grupoSeleccionado: string | null = '';
   fichaSeleccionada = this.Sesion.get('ficha');
@@ -72,7 +73,8 @@ export class ChatComponent {
     let pa = this.datos.datosUsuario!.primer_apellido;
     this.añadirMensaje({ ...mensaje }, this.usuario, pn, pa);
     this.Chat.destino(grupo, this.usuario).subscribe((id: any) => {
-      mensaje.fk_destino = id;
+    this.mensajes.hacerScroll();
+    mensaje.fk_destino = id; 
       mensaje.fecha_hora = Fecha.fechaActual();
       this.Chat.agregarMensaje(mensaje).subscribe((insertId: any) => {
         insertId !== undefined && insertId !== null ? mensaje.id_mensaje = insertId : undefined;

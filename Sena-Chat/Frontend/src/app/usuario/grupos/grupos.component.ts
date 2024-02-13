@@ -10,7 +10,6 @@ import { MiPerfilComponent } from '../mi-perfil/mi-perfil.component';
 import { GruposTituloComponent } from '../grupos-titulo/grupos-titulo.component';
 import { GruposPanelComponent } from '../grupos-panel/grupos-panel.component';
 import { BootstrapService } from '../Servicios/bootstrap.service';
-import { GruposDirective } from '../Directivas/grupos.directive';
 
 @Component({
   selector: 'app-grupos',
@@ -22,8 +21,7 @@ import { GruposDirective } from '../Directivas/grupos.directive';
     BuscadorComponent,
     MiPerfilComponent,
     GruposTituloComponent,
-    GruposPanelComponent,
-    GruposDirective
+    GruposPanelComponent
   ],
   templateUrl: './grupos.component.html',
   styleUrl: './grupos.component.css'
@@ -62,7 +60,7 @@ export class GruposComponent {
     for (const key in this.tabs) key == tab ? this.tabs[key] = { class: true, new: false } : this.tabs[key].class = false;
   };
 
-  animarTab = (tab: string) => this.tabs[tab].new = true;
+  animarTab = (tab: string) => this.Sesion.get('pestaña') === tab ? 'ANIMAR GRUPO' : this.tabs[tab].new = true;
 
   mostrarBusqueda = (value: boolean) => this.enBusqueda = value;
 

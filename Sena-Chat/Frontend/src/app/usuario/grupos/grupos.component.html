@@ -34,13 +34,15 @@
         <li class="nav-item" role="presentation">
             <button class="nav-link" id="dontk-tab" data-bs-toggle="tab" data-bs-target="#salir" type="button"
                 role="tab" aria-controls="contact" aria-selected="false" [disabled]="enBusqueda">
-                <i class="bx bxs-cog bx-tada"></i><span></span>
+                <i [ngClass]="tabs.ajustes.new ? 'bx bxs-cog bx-tada' : 'bx bxs-cog'"></i>
+                @if(tabs.ajustes.new){<span></span>}
             </button>
         </li>
         <li class="nav-item" role="presentation">
             <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button"
                 role="tab" aria-controls="contact" aria-selected="false" [disabled]="enBusqueda">
-                <i class="bx bxs-help-circle"></i><span></span>
+                <i [ngClass]="tabs.ajustes.new ? 'bx bxs-help-circle bx-tada' : 'bx bxs-help-circle'"></i>
+                @if(tabs.ajustes.new){<span></span>}
             </button>
         </li>
         <div id="foto-perfil">
@@ -62,7 +64,7 @@
     <div [ngClass]="tabs.grupos.class ? 'tab-pane fade show active' : 'tab-pane fade'" id="grupos" role="tabpanel"
         aria-labelledby="grupos">
         @if (datos.grupos[0]) {
-        <div class="tab" role="tablist" [appGrupos]="datos.grupos[0]" (notificarTab)="animarTab($event)">
+        <div class="tab" role="tablist">
             <div class="list-group" id="list-tab" role="tablist">
                 <app-grupos-titulo [titulo]="'Grupos'"></app-grupos-titulo>
                 @for ( g of datos.grupos; track g.id_grupos) {
@@ -79,7 +81,7 @@
     <div [ngClass]="tabs.privados.class ? 'tab-pane fade show active' : 'tab-pane fade'" id="privados" role="tabpanel"
         aria-labelledby="privados">
         @if (datos.privados[0]) {
-        <div class="tab" id="privados" role="tablist" [appGrupos]="datos.privados[0]">
+        <div class="tab" id="privados" role="tablist">
             <div class="list-group" id="list-tab" role="tablist">
                 <app-grupos-titulo [titulo]="'Privados'"></app-grupos-titulo>
                 @for (p of datos.privados; track p.id_grupos) {
