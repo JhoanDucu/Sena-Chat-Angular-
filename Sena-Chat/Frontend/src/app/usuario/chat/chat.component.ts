@@ -129,4 +129,6 @@ export class ChatComponent {
   }
 
   finalizarCarga = () => this.datos.other.cargando = false;
+
+  copiar = (objeto: any) => { return { ...objeto }; };
 }

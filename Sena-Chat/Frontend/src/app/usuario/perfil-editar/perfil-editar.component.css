@@ -8,6 +8,10 @@
 
 .offcanvas-header {
   justify-content: end;
+  #btn {
+    margin-right: auto;
+    padding: 4px;
+  }
 }
 
 img {

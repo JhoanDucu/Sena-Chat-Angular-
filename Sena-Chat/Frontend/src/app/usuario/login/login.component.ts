@@ -4,7 +4,6 @@ import { Router, RouterModule } from '@angular/router';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators, FormsModule } from '@angular/forms';
 import { LogearService } from '../Servicios/logear.service';
 import { SesionService } from '../Sesiones/sesion.service';
-import { ChatService } from '../Servicios/chat.service';
 
 @Component({
   selector: 'app-login',

@@ -1,6 +1,9 @@
 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
     <div class="offcanvas-header">
-        @if (cambios) {<button class="btn btn-outline-primary" type="submit">Guardar cambios</button>}
+        @if (cambios) {
+        <button class="btn btn-outline-primary" type="submit" id="btn">Guardar cambios</button>
+        <button class="btn btn-outline-danger" id="btn" (click)="cancelar()">Cancelar</button>
+        }
         <h5 id="offcanvasRightLabel">Editar Perfil</h5>
         <button id="cerrarEditar" data-bs-dismiss="offcanvas" aria-label="Close">
             <i class='bx bx-right-arrow-alt'></i>
@@ -17,7 +20,7 @@
                 <span id="nombreUsuario">
                     <label for="nombre_usuario"></label>
                     @if (!propsEditar.nombre_usuario) {
-                    {{ usuario.nombre_usuario }}
+                    {{ formEditar.value.nombre_usuario }}
                     <button id="botonTitulo" (click)="activarEditar('nombre_usuario')">
                         <i class='bx bxs-pencil'></i>
                     </button>
@@ -32,19 +35,22 @@
             <div id="informacion">
                 <span class="info-container">
                     <label for="nombres" class="labelEditar"><strong>Nombres:</strong></label>
-                    @if (!propsEditar.nombres) {
-                    {{usuario.primer_nom}} {{usuario.segundo_nom}}
-
-                    <button id="botonTitulo" (click)="activarEditar('nombres')">
+                    @if (!propsEditar.primer_nom) { {{formEditar.value.primer_nom}} } @else {
+                    <input type="text" class="inputEditar" id="nombres" appEditar formControlName="primer_nom">
+                    <button id="botonTitulo" (click)="generarCambios('primer_nom')">
+                        <i class='bx bx-check'></i>
+                    </button>
+                    }
+                    @if (!propsEditar.segundo_nom) { {{formEditar.value.segundo_nom}} } @else {
+                    <input type="text" class="inputEditar" id="nombres" formControlName="segundo_nom">
+                    <button id="botonTitulo" (click)="generarCambios('segundo_nom')">
+                        <i class='bx bx-check'></i>
+                    </button>
+                    }
+                    @if(!propsEditar.primer_nom && !propsEditar.segundo_nom){
+                    <button id="botonTitulo" (click)="activarEditar('primer_nom', 'segundo_nom')">
                         <i class='bx bxs-pencil'></i>
                     </button>
-                    } @else {
-                    <input type="text" class="inputEditar" id="nombres" appEditar formControlName="primer_nom">
-                    <button id="botonTitulo" (click)="generarCambios('primer_nom')"><i class='bx bx-check'></i></button>
-
-                    <input type="text" class="inputEditar" id="nombres" formControlName="segundo_nom">
-                    <button id="botonTitulo" (click)="generarCambios('segundo_nom')"><i
-                            class='bx bx-check'></i></button>
                     }
                 </span>
 
