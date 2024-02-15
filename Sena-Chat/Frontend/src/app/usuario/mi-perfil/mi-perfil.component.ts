@@ -12,7 +12,7 @@ import { SesionService } from '../Sesiones/sesion.service';
 })
 export class MiPerfilComponent {
   constructor(private sesion: SesionService) { }
-  @Input() perfil: Usuario = {};
+  @Input() perfil: any;
 
   ngOnInit(): void { }
 

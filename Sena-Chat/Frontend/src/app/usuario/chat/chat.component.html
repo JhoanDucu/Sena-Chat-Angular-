@@ -1,3 +1,6 @@
+@if (datos.other.cargando) {
+    <span id="ej">cargando...</span>
+} @else {
 <div class="container-fluid" id="allPage">
     <div class="row" id="rowPage">
         <div class="column contenedorGrupos">
@@ -7,6 +10,7 @@
             </app-grupos>
             <app-perfil-editar [usuario]="datos.datosUsuario"></app-perfil-editar>
             <app-mensajes-varios [grupos]="datos.gruposComponent.grupos"></app-mensajes-varios>
+            <app-cerrar-sesion></app-cerrar-sesion>
         </div>
         <div class="column contenedorChat">
             @if(grupoSeleccionado){
@@ -14,7 +18,7 @@
             <div class="Chat container-fluid">
                 <div class="card mensajes-container">
                     <app-mensajes *appChat="datos.other.changes" [mensajes]="grupoElegido.mensajes"
-                    [mensajeFinal]="grupoElegido.mensajes[grupoElegido.mensajes.length - 1]" #mensajes>
+                        [mensajeFinal]="grupoElegido.mensajes[grupoElegido.mensajes.length - 1]" #mensajes>
                     </app-mensajes>
                 </div>
                 <app-mensajes-enviar (emitir)="enviar($event, grupoSeleccionado)"></app-mensajes-enviar>
@@ -23,3 +27,4 @@
         </div>
     </div>
 </div>
+}

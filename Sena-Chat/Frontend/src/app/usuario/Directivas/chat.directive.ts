@@ -13,6 +13,7 @@ export class ChatDirective implements OnChanges {
   ) {
     this.ViewContainerRef.createEmbeddedView(TemplateRef);
   }
+
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['appChat'] && changes['appChat'].previousValue != undefined) {
       this.ViewContainerRef.clear();

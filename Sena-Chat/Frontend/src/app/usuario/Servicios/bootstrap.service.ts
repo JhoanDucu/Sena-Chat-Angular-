@@ -7,6 +7,7 @@ import { Dropdown, Modal, Offcanvas, Toast } from 'bootstrap';
 export class BootstrapService {
   private gruposModal: any;
   private editarOffcanvas: any;
+  private cerrarOffCanvas: any;
   private infoPerfilOffcanvas: any;
   private infoGruposOffCanvas: any;
   private infoAgregarOffCanvas: any;
@@ -18,6 +19,7 @@ export class BootstrapService {
   iniciarInstanciasChat() {
     this.gruposModal = new Modal(document.getElementById('staticBackdrop') as HTMLElement);
     this.editarOffcanvas = new Offcanvas(document.getElementById('offcanvasRight') as HTMLElement);
+    this.cerrarOffCanvas = new Offcanvas(document.getElementById('offcanvasBottom') as HTMLElement);
     this.toastEl = new Toast(document.getElementById('liveToast') as HTMLElement);
   }
 
@@ -30,6 +32,8 @@ export class BootstrapService {
   modal = () => this.gruposModal.toggle();
 
   editarCanva = () => this.editarOffcanvas.toggle();
+
+  cerrarCanva = () => this.cerrarOffCanvas.toggle();
 
   perfilCanva = () => this.infoPerfilOffcanvas.toggle();
 

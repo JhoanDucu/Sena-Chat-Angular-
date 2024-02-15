@@ -7,7 +7,7 @@ export class ChatComponentData {
         public datosUsuario: Usuario,
         public other: {
             changes: any,
-            loading: boolean
+            cargando: boolean,
         }
     ) { }
 }

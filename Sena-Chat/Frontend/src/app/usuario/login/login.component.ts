@@ -4,6 +4,7 @@ import { Router, RouterModule } from '@angular/router';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators, FormsModule } from '@angular/forms';
 import { LogearService } from '../Servicios/logear.service';
 import { SesionService } from '../Sesiones/sesion.service';
+import { ChatService } from '../Servicios/chat.service';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,7 @@ import { SesionService } from '../Sesiones/sesion.service';
 export class LoginComponent {
   constructor(
     private router: Router,
-    private loginServicio: LogearService,
+    private login: LogearService,
     protected Sesion: SesionService,
     ){}
   formLogin = new FormGroup({
@@ -44,13 +45,16 @@ export class LoginComponent {
   }
   logear(datos: {}){
     alert("Esperando respuesta...");
-    this.loginServicio.buscarDatos(datos).subscribe((respuesta: any) => {
+    this.login.buscarDatos(datos).subscribe((respuesta: any) => {
       if (respuesta != 'No existe registro') {
         this.Sesion.set('ficha', respuesta[0]);
         this.Sesion.set('documento', respuesta[1]);
         this.Sesion.set('rol', respuesta[2]);
         if(respuesta[2] == 3) this.router.navigate(['principal']);
-        if(respuesta[2] == 1 || respuesta[2] == 2) this.router.navigate(['chat']);
+        if(respuesta[2] == 1 || respuesta[2] == 2) {
+          this.router.navigate(['chat']);
+          this.login.establecerCarga();
+        };
         // this.loginServicio.mandarCorreo('hello').subscribe((r)=>console.log(r));
        } else {
          alert('Usuario no existe');

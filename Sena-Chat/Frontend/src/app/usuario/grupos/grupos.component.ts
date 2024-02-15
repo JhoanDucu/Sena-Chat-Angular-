@@ -10,6 +10,7 @@ import { MiPerfilComponent } from '../mi-perfil/mi-perfil.component';
 import { GruposTituloComponent } from '../grupos-titulo/grupos-titulo.component';
 import { GruposPanelComponent } from '../grupos-panel/grupos-panel.component';
 import { BootstrapService } from '../Servicios/bootstrap.service';
+import { Usuario } from '../Modelos/usuarios';
 
 @Component({
   selector: 'app-grupos',
@@ -33,7 +34,7 @@ export class GruposComponent {
     private B: BootstrapService
   ) { }
   @Input() datos: GrupoComponentData = { grupos: [], privados: [] };
-  @Input() usuario: any;
+  @Input() usuario: Usuario = {};
   @Input() changesValue = '';
   @Input() picked: any = {};
   @Output() makeChange = new EventEmitter<any[]>();
@@ -47,7 +48,7 @@ export class GruposComponent {
   }
   enBusqueda = false;
 
-  ngOnInit(): void { }
+  ngOnInit(): void { this.B.iniciarInstanciasChat(); }
 
   seleccionarEnGrupos = (id: any, index: number, type: string) => {
     if (this.Sesion.get('grupos')) this.socket.gestionarSalas({ accion: 'salirSala', id_grupo: this.Sesion.get('grupos') });

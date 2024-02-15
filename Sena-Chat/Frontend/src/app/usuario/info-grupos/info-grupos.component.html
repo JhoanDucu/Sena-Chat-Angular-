@@ -1,7 +1,7 @@
 @if (grupoSeleccionado) {
 <nav class="container navbar bg-body-tertiary" id="cabeceraChat">
     <div id="info-basica">
-        <img src="../../../assets/img/Usuario2.jpg" alt="IMAGEN DEL GRUPO" id="logo-grupo" />
+        <img [src]="'../../../assets/img/'+grupoSeleccionado.foto_grupo" alt="IMAGEN DEL GRUPO" id="logo-grupo" />
         <span id="nombre-grupo">{{ grupoSeleccionado.nom_grupos }}</span>
     </div>
     <div id="botones-grupo">
@@ -35,7 +35,7 @@
         </div> -->
         <div class="d-flex">
             <div class="flex-shrink-0">
-                <img src="../../assets/img/Grupo.png" class="imagenGrupo" alt="Agregar" />
+                <img [src]="'../../assets/img/'+grupoSeleccionado.foto_grupo" class="imagenGrupo" alt="Agregar" />
             </div>
             <div class="d-flex flex-column bd-highlight">
                 <div class="p-2 bd-highlight h-25">{{ grupoSeleccionado.nom_grupos }}</div>
@@ -82,4 +82,4 @@
 
 <app-info-perfil></app-info-perfil>
 <app-info-agregar></app-info-agregar>
-<app-info-eliminar></app-info-eliminar>
+<!-- <app-info-eliminar></app-info-eliminar> -->

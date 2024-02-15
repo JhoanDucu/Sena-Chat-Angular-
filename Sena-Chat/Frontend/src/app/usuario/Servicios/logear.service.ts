@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { ChatService } from './chat.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LogearService {
   url = "http://localhost:3000";
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private chat: ChatService) { }
   buscarDatos(datos: any) {
     return this.http.post(`${this.url}/usuario/login`, datos);
   }
@@ -16,4 +17,5 @@ export class LogearService {
   mandarCorreo(datos: any) {
     return this.http.post(`${this.url}/usuario/autenticar`, datos);
   }
+  establecerCarga = () => this.chat.cambiarEstadoCarga(true);
 }

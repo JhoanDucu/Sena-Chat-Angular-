@@ -1,6 +1,7 @@
 import { Component, ElementRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
+import { AppService } from './app.service';
 
 @Component({
   selector: 'app-root',
@@ -10,8 +11,8 @@ import { RouterOutlet } from '@angular/router';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Frontend';
   constructor(private elementRef: ElementRef) { }
+
   ngAfterViewInit() {
     // this.elementRef.nativeElement.ownerDocument.body.style.backgroundColor = '';
   }

@@ -1,13 +1,18 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MensajeEnviar } from '../Modelos/mensaje';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ChatService {
-  constructor(private http: HttpClient) { }
+  private cargandoSubject = new Subject<boolean>();
+  eventoCarga = this.cargandoSubject.asObservable();
   url = "http://localhost:3000";
+  
+  constructor(private http: HttpClient) { }
+
   traerGrupos(ficha: any, usuario: any) {
     return this.http.get(`${this.url}/chat/grupos/${ficha}/${usuario}`);
   }
@@ -34,5 +39,8 @@ export class ChatService {
   }
   sinNotificaciones(datos: any) {
     return this.http.put(`${this.url}/chat/anular/notificaciones`, datos);
+  }
+  cambiarEstadoCarga(estado: boolean) {
+    this.cargandoSubject.next(estado);
   }
 }

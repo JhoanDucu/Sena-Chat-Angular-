@@ -24,7 +24,7 @@ export class MensajesComponent {
   grupoSeleccionado = this.Sesion.get('grupos');
   fichaSeleccionada = this.Sesion.get('ficha');
   usuario = this.Sesion.get('documento');
-
+  
   ngOnChanges(changes: SimpleChanges) {
     if (changes['mensajeFinal'] && !changes['mensajeFinal'].firstChange) this.hacerScroll();
   }

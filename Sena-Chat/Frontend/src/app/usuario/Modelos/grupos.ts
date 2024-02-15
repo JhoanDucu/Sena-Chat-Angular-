@@ -6,6 +6,7 @@ interface DatosGrupo {
    nom_grupos: string,
    descripcion_grupos: string,
    id_ficha: string,
+   foto_grupo: string,
    fk_tipo_grupo: number,
    mensajes: Array<MensajeMostrar>,
    sin_leer: number

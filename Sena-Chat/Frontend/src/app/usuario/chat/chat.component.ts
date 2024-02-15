@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Output, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 import { ChatService } from '../Servicios/chat.service';
@@ -15,7 +15,7 @@ import { SocketService } from '../Servicios/socket.service';
 import { Fecha } from '../Modelos/fechas';
 import { PerfilEditarComponent } from '../perfil-editar/perfil-editar.component';
 import { MensajesVariosComponent } from '../mensajes-varios/mensajes-varios.component';
-import { BootstrapService } from '../Servicios/bootstrap.service';
+import { CerrarSesionComponent } from '../cerrar-sesion/cerrar-sesion.component';
 
 @Component({
   selector: 'app-chat',
@@ -29,7 +29,8 @@ import { BootstrapService } from '../Servicios/bootstrap.service';
     InfoGruposComponent,
     MensajesEnviarComponent,
     PerfilEditarComponent,
-    MensajesVariosComponent
+    MensajesVariosComponent,
+    CerrarSesionComponent
   ],
   templateUrl: './chat.component.html',
   styleUrl: './chat.component.css'
@@ -39,12 +40,12 @@ export class ChatComponent {
     private router: Router,
     private Chat: ChatService,
     protected Sesion: SesionService,
-    private socket: SocketService,
-    private B: BootstrapService
+    private socket: SocketService
   ) { }
   @ViewChild('grupos') grupos: any;
   @ViewChild('mensajes') mensajes: any;
-  datos = new ChatComponentData({ grupos: [], privados: [] }, {}, { changes: '0', loading: false });
+  @Output() carga = new EventEmitter();
+  datos = new ChatComponentData({ grupos: [], privados: [] }, {}, { changes: '0', cargando: true });
   grupoSeleccionado: string | null = '';
   fichaSeleccionada = this.Sesion.get('ficha');
   usuario = this.Sesion.get('documento');
@@ -52,20 +53,23 @@ export class ChatComponent {
 
   ngOnInit() {
     this.Sesion.remove('grupos'); this.Sesion.set('pestaña', 'grupos');
+    this.Chat.eventoCarga.subscribe((estado: boolean) => this.datos.other.cargando = estado);
     if (this.fichaSeleccionada == undefined || this.usuario == undefined) {
       this.router.navigate(['login']);
       this.Sesion.set('error', 'No has iniciado sesion');
     } else {
       this.Chat.traerUsuario(this.usuario).subscribe((usuario: any) => this.datos.datosUsuario = usuario);
       this.Chat.traerGrupos(this.fichaSeleccionada, this.usuario).subscribe((grupos: any) => this.extraerMensajes(grupos, 'grupos'));
-      this.Chat.traerPrivados(this.fichaSeleccionada, this.usuario).subscribe((privados: any) => this.extraerMensajes(privados, 'privados'));
+      this.Chat.traerPrivados(this.fichaSeleccionada, this.usuario).subscribe((privados: any) => {
+        this.extraerMensajes(privados, 'privados');
+        this.finalizarCarga();
+      });
     }
   }
 
   ngAfterViewInit() {
     this.socket.recibirMensaje().subscribe((data: any) => this.añadirMensaje(data.message, 'meh', data.pn, data.pa));
     this.socket.notificaMensaje().subscribe((data: any) => this.añadirMensaje(data.message, 'meh', data.pn, data.pa, data.room, data.t));
-    this.B.iniciarInstanciasChat();
   }
 
   enviar(mensaje: any, grupo: any) {
@@ -73,14 +77,14 @@ export class ChatComponent {
     let pa = this.datos.datosUsuario!.primer_apellido;
     this.añadirMensaje({ ...mensaje }, this.usuario, pn, pa);
     this.Chat.destino(grupo, this.usuario).subscribe((id: any) => {
-    this.mensajes.hacerScroll();
-    mensaje.fk_destino = id; 
+      mensaje.fk_destino = id;
       mensaje.fecha_hora = Fecha.fechaActual();
       this.Chat.agregarMensaje(mensaje).subscribe((insertId: any) => {
         insertId !== undefined && insertId !== null ? mensaje.id_mensaje = insertId : undefined;
         this.Chat.masNotificaciones({ u: this.usuario, g: grupo }).subscribe((data: any) => data ?
           this.socket.emitirMensaje({ room: grupo, message: mensaje, pn: pn, pa: pa, u: this.usuario, t: this.Sesion.get('pestaña') })
           : undefined);
+        this.mensajes.hacerScroll();
       });
     });
   }
@@ -123,4 +127,6 @@ export class ChatComponent {
     this.grupoSeleccionado = '';
     this.Sesion.remove('grupos');
   }
+
+  finalizarCarga = () => this.datos.other.cargando = false;
 }

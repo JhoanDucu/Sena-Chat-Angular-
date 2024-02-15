@@ -49,7 +49,7 @@
             <button class="nav-link" id="perfil-tab" data-bs-toggle="tab" data-bs-target="#perfil" type="button"
                 role="tab" aria-controls="perfil" aria-selected="false" [disabled]="enBusqueda"
                 (click)="mostrarTab('perfil')">
-                <img src="../../../assets/img/Usuario3.jpg" alt="">
+                <img [src]="'../../../assets/img/'+usuario.foto" alt="">
             </button>
         </div>
     </ul>
