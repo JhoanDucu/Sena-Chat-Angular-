@@ -112,9 +112,18 @@
                 </span>
 
                 <span class="info-container">
-                    <label for="exampleInputEmail1" class="labelEditar"><strong>Numero de documento: </strong></label>
-                    <input type="text" class="inputEditar" [value]="usuario.numerodoc">
-                    <button id="botonTitulo"><i class='bx bx-check'></i></button>
+                    <label for="numerodoc" class="labelEditar"><strong>Documento: </strong></label>
+                    @if (!propsEditar.numerodoc) {
+                    {{ formEditar.value.numerodoc }}
+                    <button id="botonTitulo" (click)="activarEditar('numerodoc')">
+                        <i class='bx bxs-pencil'></i>
+                    </button>
+                    } @else {
+                    <input type="text" id="inputTitulo" formControlName="numerodoc" appEditar>
+                    <button id="botonTitulo" (click)="generarCambios('numerodoc')">
+                        <i class='bx bx-check'></i>
+                    </button>
+                    }
                 </span>
 
                 <span class="info-container">
@@ -123,10 +132,32 @@
                 <button id="botonTitulo"><i class='bx bx-check'></i></button> -->
                 </span>
 
+                <!-- <label for="nombre_usuario"></label>
+                    @if (!propsEditar.nombre_usuario) {
+                    {{ formEditar.value.nombre_usuario }}
+                    <button id="botonTitulo" (click)="activarEditar('nombre_usuario')">
+                        <i class='bx bxs-pencil'></i>
+                    </button>
+                    } @else {
+                    <input type="text" id="inputTitulo" formControlName="nombre_usuario" appEditar>
+                    <button id="botonTitulo" (click)="generarCambios('nombre_usuario')">
+                        <i class='bx bx-check'></i>
+                    </button>
+                    } -->
+
                 <span class="info-container">
-                    <label for="exampleInputPassword1" class="labelEditar"><strong>Correo electronico: </strong></label>
-                    <input type="text" class="inputEditar" [value]="usuario.correo">
-                    <button id="botonTitulo"><i class='bx bx-check'></i></button>
+                    <label for="correo" class="labelEditar"><strong>Correo electronico: </strong></label>
+                    @if (!propsEditar.nombre_usuario) {
+                        {{ formEditar.value.correo }}
+                        <button id="botonTitulo" (click)="activarEditar('correo')">
+                            <i class='bx bxs-pencil'></i>
+                        </button>
+                    } @else {
+                        <input type="text" id="inputTitulo" formControlName="correo" appEditar>
+                        <button id="botonTitulo" (click)="generarCambios('correo')">
+                            <i class='bx bx-check'></i>
+                        </button>
+                    }
                 </span>
             </div>
         </form>

@@ -80,6 +80,9 @@ button {
     align-items: center;
     margin-bottom: 5%;
   }
+  textarea {
+    height: 20vh;
+  }
 }
 
 #botonTitulo {

@@ -80,7 +80,8 @@ export class PerfilEditarComponent {
       segundo_nom: this.usuario.segundo_nom,
       primer_apellido: this.usuario.primer_apellido,
       segundo_apellido: this.usuario.segundo_apellido,
-      nombre_usuario: this.usuario.nombre_usuario
+      nombre_usuario: this.usuario.nombre_usuario,
+      numerodoc: this.usuario.numerodoc
     });
   }
 }
