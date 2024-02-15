@@ -19,7 +19,8 @@ export class PerfilEditarComponent {
     correo: false,
     primer_nom: false,
     segundo_nom: false,
-    apellidos: false,
+    primer_apellido: false,
+    segundo_apellido: false,
     contrasena: false,
     nombre_usuario: false,
     descripcion: false,
@@ -53,7 +54,7 @@ export class PerfilEditarComponent {
   activarBoton = () => this.hoverImg = !this.hoverImg;
 
   activarEditar = (prop: string, prop2?: string) => {
-    for (const key in this.propsEditar){ 
+    for (const key in this.propsEditar) {
       if (prop == key) this.propsEditar[prop] = true; else this.propsEditar[key] = false;
       prop2 ? this.propsEditar[prop2] = true : null;
     }
@@ -61,9 +62,10 @@ export class PerfilEditarComponent {
 
   generarCambios(prop: keyof Usuario) {
     this.formEditar.patchValue({ [prop]: this.formEditar.value[prop] });
-    this.propsEditar[prop] = false;
-    console.log(this.propsEditar);
-    this.cambios = this.formEditar.value[prop] != this.usuario[prop] ? true : false;
+    if (this.formEditar.value[prop] != this.usuario[prop]) {
+      this.propsEditar[prop] = false;
+      this.cambios = true;
+    } else this.propsEditar[prop] = false;
   }
 
   editar() {
@@ -76,6 +78,8 @@ export class PerfilEditarComponent {
       correo: this.usuario.correo,
       primer_nom: this.usuario.primer_nom,
       segundo_nom: this.usuario.segundo_nom,
+      primer_apellido: this.usuario.primer_apellido,
+      segundo_apellido: this.usuario.segundo_apellido,
       nombre_usuario: this.usuario.nombre_usuario
     });
   }

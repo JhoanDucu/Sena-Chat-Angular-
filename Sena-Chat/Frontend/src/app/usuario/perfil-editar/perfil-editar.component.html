@@ -35,14 +35,24 @@
             <div id="informacion">
                 <span class="info-container">
                     <label for="nombres" class="labelEditar"><strong>Nombres:</strong></label>
-                    @if (!propsEditar.primer_nom) { {{formEditar.value.primer_nom}} } @else {
-                    <input type="text" class="inputEditar" id="nombres" appEditar formControlName="primer_nom">
+                    @if (!propsEditar.primer_nom) {
+                    <p [id]="!propsEditar.primer_nom && !propsEditar.segundo_nom ? 'sinE' : 'conE'">
+                        {{formEditar.value.primer_nom}}
+                    </p>
+                    } @else {
+                    <input type="text" class="inputEditar" id="nombres" appEditar formControlName="primer_nom"
+                        placeholder="Primer nombre">
                     <button id="botonTitulo" (click)="generarCambios('primer_nom')">
                         <i class='bx bx-check'></i>
                     </button>
                     }
-                    @if (!propsEditar.segundo_nom) { {{formEditar.value.segundo_nom}} } @else {
-                    <input type="text" class="inputEditar" id="nombres" formControlName="segundo_nom">
+                    @if (!propsEditar.segundo_nom) {
+                    <p [id]="!propsEditar.primer_nom && !propsEditar.segundo_nom ? 'sinE' : 'conE'">
+                        {{formEditar.value.segundo_nom}}
+                    </p>
+                    } @else {
+                    <input type="text" class="inputEditar" id="nombres" formControlName="segundo_nom"
+                        placeholder="Segundo nombre">
                     <button id="botonTitulo" (click)="generarCambios('segundo_nom')">
                         <i class='bx bx-check'></i>
                     </button>
@@ -56,31 +66,48 @@
 
                 <span class="info-container">
                     <label for="apellidos" class="labelEditar"><strong>Apellidos:</strong></label>
-                    @if (!propsEditar.apellidos) {
-                    {{usuario.primer_apellido + ' ' + usuario.segundo_apellido}}
-                    <button id="botonTitulo" (click)="activarEditar('apellidos')">
+                    @if (!propsEditar.primer_apellido) {
+                    <p [id]="!propsEditar.primer_apellido && !propsEditar.segundo_apellido ? 'sinE' : 'conE'">
+                        {{formEditar.value.primer_apellido}}
+                    </p>
+                    } @else {
+                    <input type="text" class="inputEditar" id="apellidos" appEditar formControlName="primer_apellido"
+                        placeholder="Primer Apellido">
+                    <button id="botonTitulo" (click)="generarCambios('primer_apellido')">
+                        <i class='bx bx-check'></i>
+                    </button>
+                    }
+                    @if (!propsEditar.segundo_apellido) {
+                    <p [id]="!propsEditar.primer_apellido && !propsEditar.segundo_apellido ? 'sinE' : 'conE'">
+                        {{formEditar.value.segundo_apellido}}
+                    </p>
+                    } @else {
+                    <input type="text" class="inputEditar" id="apellidos" appEditar formControlName="segundo_apellido"
+                        placeholder="Segundo Apellido">
+                    <button id="botonTitulo" (click)="generarCambios('segundo_apellido')">
+                        <i class='bx bx-check'></i>
+                    </button>
+                    }
+                    @if (!propsEditar.primer_apellido && !propsEditar.segundo_apellido) {
+                    <button id="botonTitulo" (click)="activarEditar('primer_apellido', 'segundo_apellido')">
                         <i class='bx bxs-pencil'></i>
                     </button>
-                    } @else {
-                    <input type="text" class="inputEditar" (blur)="activarEditar('apellidos')" id="apellidos"
-                        [value]="usuario.primer_apellido + ' ' + usuario.segundo_apellido" appEditar>
-                    <button id="botonTitulo"><i class='bx bx-check'></i></button>
                     }
                 </span>
-                <audio src="../../../assets/audio/livechat-129007.mp3"></audio>
 
                 <span class="info-container">
-                    <label for="descripcion" class="labelEditar"><strong>Descripcion: </strong></label>
+                    <label for="descripcion" class="labelEditar up"><strong>Descripcion: </strong></label>
                     @if (propsEditar.descripcion) {
-                    <textarea class="inputEditar" (blur)="activarEditar('descripcion')" appEditar id="descripcion">
-                    {{usuario.descripcion}}
-                </textarea>
-                    <button id="botonTitulo"><i class='bx bx-check'></i></button>
+                    <textarea class="inputEditar" appEditar id="descripcion">{{usuario.descripcion}}</textarea>
+                    <button id="botonTitulo" (click)="generarCambios('descripcion')"><i
+                            class='bx bx-check'></i></button>
                     } @else {
-                    {{usuario.descripcion}}
-                    <button id="botonTitulo" (click)="activarEditar('descripcion')">
-                        <i class='bx bxs-pencil'></i>
-                    </button>
+                    <p id="sinE">
+                        {{usuario.descripcion}}
+                        <button id="botonTitulo" (click)="activarEditar('descripcion')">
+                            <i class='bx bxs-pencil'></i>
+                        </button>
+                    </p>
                     }
                 </span>
 

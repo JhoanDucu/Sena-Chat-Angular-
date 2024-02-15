@@ -55,10 +55,19 @@ button {
 #informacion {
   display: flex;
   flex-direction: column;
-  margin: 3vh;
-  /* .labelEditar {
-    width: 100%;
-  } */
+  margin: 5vh;
+  font-size: x-large;
+  strong {
+    margin-right: 4vh;
+  }
+  #sinE {
+    margin: 0 1vh;
+    text-wrap: balance;
+  }
+  #conE {
+    margin: 0 1vh;
+    width: 85%;
+  }
   .inputEditar {
     border: none;
     outline: none;
@@ -75,6 +84,11 @@ button {
 
 #botonTitulo {
   font-size: 25px;
+}
+
+.up {
+  display: flex;
+  align-self: normal;
 }
 
 #labelCambiarImg {
