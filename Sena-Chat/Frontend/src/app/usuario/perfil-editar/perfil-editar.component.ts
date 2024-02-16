@@ -61,11 +61,11 @@ export class PerfilEditarComponent {
   };
 
   generarCambios(prop: keyof Usuario) {
-    // this.formEditar.patchValue({ [prop]: this.formEditar.value[prop] });
-    // if (this.formEditar.value[prop] != this.usuario[prop]) {
-    //   this.propsEditar[prop] = false;
-    //   this.cambios = true;
-    // } else this.propsEditar[prop] = false;
+    this.formEditar.patchValue({ [prop]: this.formEditar.value[prop] });
+    if (this.formEditar.value[prop] != this.usuario[prop]) {
+      this.propsEditar[prop] = false;
+      this.cambios = true;
+    } else this.propsEditar[prop] = false;
   }
 
   editar() {
