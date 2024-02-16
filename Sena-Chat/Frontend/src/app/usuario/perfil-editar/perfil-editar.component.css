@@ -78,7 +78,7 @@ button {
   .info-container {
     display: flex;
     align-items: center;
-    margin-bottom: 5%;
+    margin-bottom: 3%;
   }
   textarea {
     height: 20vh;
@@ -96,8 +96,8 @@ button {
 
 #labelCambiarImg {
   cursor: pointer;
-  width: 70vh;
-  height: 70vh;
+  width: 68vh;
+  height: 68vh;
   display: flex;
   border-radius: 50%;
   background-size: cover;

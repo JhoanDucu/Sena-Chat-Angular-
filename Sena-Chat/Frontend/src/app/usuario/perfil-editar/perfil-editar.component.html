@@ -5,7 +5,7 @@
         <button class="btn btn-outline-danger" id="btn" (click)="cancelar()">Cancelar</button>
         }
         <h5 id="offcanvasRightLabel">Editar Perfil</h5>
-        <button id="cerrarEditar" data-bs-dismiss="offcanvas" aria-label="Close">
+        <button id="cerrarEditar" data-bs-dismiss="offcanvas" aria-label="Close" (click)="cancelar()">
             <i class='bx bx-right-arrow-alt'></i>
         </button>
     </div>
@@ -18,21 +18,43 @@
                     <input type="file" id="cambiarImg" hidden>
                 </label>
                 <span id="nombreUsuario">
-                    <label for="nombre_usuario"></label>
                     @if (!propsEditar.nombre_usuario) {
                     {{ formEditar.value.nombre_usuario }}
                     <button id="botonTitulo" (click)="activarEditar('nombre_usuario')">
                         <i class='bx bxs-pencil'></i>
                     </button>
                     } @else {
+                    <label for="nombre_usuario"></label>
                     <input type="text" id="inputTitulo" formControlName="nombre_usuario" appEditar>
-                    <button id="botonTitulo" (click)="generarCambios('nombre_usuario')">
+                    <button id="botonTitulo" (click)="generarCambios('nombre_usuario')" type="button">
                         <i class='bx bx-check'></i>
                     </button>
                     }
                 </span>
             </div>
             <div id="informacion">
+                <span class="info-container">
+                    <span class="labelEditar"><strong>Ficha: </strong></span>
+                    <p id="sinE">
+                        {{usuario.id_fichas}}
+                    </p>
+                </span>
+
+                <span class="info-container">
+                    <label for="correo" class="labelEditar"><strong>Correo: </strong></label>
+                    @if (!propsEditar.correo) {
+                    {{ formEditar.value.correo }}
+                    <button id="botonTitulo" (click)="activarEditar('correo')">
+                        <i class='bx bxs-pencil'></i>
+                    </button>
+                    } @else {
+                    <input type="text" class="inputEditar" formControlName="correo" appEditar>
+                    <button id="botonTitulo" (click)="generarCambios('correo')" type="button">
+                        <i class='bx bx-check'></i>
+                    </button>
+                    }
+                </span>
+
                 <span class="info-container">
                     <label for="nombres" class="labelEditar"><strong>Nombres:</strong></label>
                     @if (!propsEditar.primer_nom) {
@@ -42,7 +64,7 @@
                     } @else {
                     <input type="text" class="inputEditar" id="nombres" appEditar formControlName="primer_nom"
                         placeholder="Primer nombre">
-                    <button id="botonTitulo" (click)="generarCambios('primer_nom')">
+                    <button id="botonTitulo" (click)="generarCambios('primer_nom')" type="button">
                         <i class='bx bx-check'></i>
                     </button>
                     }
@@ -53,7 +75,7 @@
                     } @else {
                     <input type="text" class="inputEditar" id="nombres" formControlName="segundo_nom"
                         placeholder="Segundo nombre">
-                    <button id="botonTitulo" (click)="generarCambios('segundo_nom')">
+                    <button id="botonTitulo" (click)="generarCambios('segundo_nom')" type="button">
                         <i class='bx bx-check'></i>
                     </button>
                     }
@@ -73,7 +95,7 @@
                     } @else {
                     <input type="text" class="inputEditar" id="apellidos" appEditar formControlName="primer_apellido"
                         placeholder="Primer Apellido">
-                    <button id="botonTitulo" (click)="generarCambios('primer_apellido')">
+                    <button id="botonTitulo" (click)="generarCambios('primer_apellido')" type="button">
                         <i class='bx bx-check'></i>
                     </button>
                     }
@@ -84,7 +106,7 @@
                     } @else {
                     <input type="text" class="inputEditar" id="apellidos" appEditar formControlName="segundo_apellido"
                         placeholder="Segundo Apellido">
-                    <button id="botonTitulo" (click)="generarCambios('segundo_apellido')">
+                    <button id="botonTitulo" (click)="generarCambios('segundo_apellido')" type="button">
                         <i class='bx bx-check'></i>
                     </button>
                     }
@@ -96,22 +118,6 @@
                 </span>
 
                 <span class="info-container">
-                    <label for="descripcion" class="labelEditar up"><strong>Descripcion: </strong></label>
-                    @if (propsEditar.descripcion) {
-                    <textarea class="inputEditar" appEditar id="descripcion">{{usuario.descripcion}}</textarea>
-                    <button id="botonTitulo" (click)="generarCambios('descripcion')"><i
-                            class='bx bx-check'></i></button>
-                    } @else {
-                    <p id="sinE">
-                        {{usuario.descripcion}}
-                        <button id="botonTitulo" (click)="activarEditar('descripcion')">
-                            <i class='bx bxs-pencil'></i>
-                        </button>
-                    </p>
-                    }
-                </span>
-
-                <span class="info-container">
                     <label for="numerodoc" class="labelEditar"><strong>Documento: </strong></label>
                     @if (!propsEditar.numerodoc) {
                     {{ formEditar.value.numerodoc }}
@@ -119,44 +125,26 @@
                         <i class='bx bxs-pencil'></i>
                     </button>
                     } @else {
-                    <input type="text" id="inputTitulo" formControlName="numerodoc" appEditar>
-                    <button id="botonTitulo" (click)="generarCambios('numerodoc')">
+                    <input type="text" class="inputEditar" formControlName="numerodoc" appEditar>
+                    <button id="botonTitulo" (click)="generarCambios('numerodoc')" type="button">
                         <i class='bx bx-check'></i>
                     </button>
                     }
                 </span>
-
                 <span class="info-container">
-                    <span class="labelEditar"><strong>Ficha: </strong> {{usuario.id_fichas}}</span>
-                    <!-- <input type="text" class="inputEditar" [value]="usuario.id_fichas">
-                <button id="botonTitulo"><i class='bx bx-check'></i></button> -->
-                </span>
-
-                <!-- <label for="nombre_usuario"></label>
-                    @if (!propsEditar.nombre_usuario) {
-                    {{ formEditar.value.nombre_usuario }}
-                    <button id="botonTitulo" (click)="activarEditar('nombre_usuario')">
-                        <i class='bx bxs-pencil'></i>
-                    </button>
-                    } @else {
-                    <input type="text" id="inputTitulo" formControlName="nombre_usuario" appEditar>
-                    <button id="botonTitulo" (click)="generarCambios('nombre_usuario')">
+                    <label for="descripcion" class="labelEditar up"><strong>Descripcion: </strong></label>
+                    @if (propsEditar.descripcion) {
+                    <textarea class="inputEditar" appEditar id="descripcion">{{usuario.descripcion}}</textarea>
+                    <button id="botonTitulo" (click)="generarCambios('descripcion')" type="button">
                         <i class='bx bx-check'></i>
                     </button>
-                    } -->
-
-                <span class="info-container">
-                    <label for="correo" class="labelEditar"><strong>Correo electronico: </strong></label>
-                    @if (!propsEditar.nombre_usuario) {
-                        {{ formEditar.value.correo }}
-                        <button id="botonTitulo" (click)="activarEditar('correo')">
+                    } @else {
+                    <p id="sinE">
+                        {{formEditar.value.descripcion}}
+                        <button id="botonTitulo" (click)="activarEditar('descripcion')">
                             <i class='bx bxs-pencil'></i>
                         </button>
-                    } @else {
-                        <input type="text" id="inputTitulo" formControlName="correo" appEditar>
-                        <button id="botonTitulo" (click)="generarCambios('correo')">
-                            <i class='bx bx-check'></i>
-                        </button>
+                    </p>
                     }
                 </span>
             </div>

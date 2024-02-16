@@ -61,15 +61,15 @@ export class PerfilEditarComponent {
   };
 
   generarCambios(prop: keyof Usuario) {
-    this.formEditar.patchValue({ [prop]: this.formEditar.value[prop] });
-    if (this.formEditar.value[prop] != this.usuario[prop]) {
-      this.propsEditar[prop] = false;
-      this.cambios = true;
-    } else this.propsEditar[prop] = false;
+    // this.formEditar.patchValue({ [prop]: this.formEditar.value[prop] });
+    // if (this.formEditar.value[prop] != this.usuario[prop]) {
+    //   this.propsEditar[prop] = false;
+    //   this.cambios = true;
+    // } else this.propsEditar[prop] = false;
   }
 
   editar() {
-
+    console.log(this.formEditar.value);
   }
 
   cancelar() {
@@ -81,7 +81,8 @@ export class PerfilEditarComponent {
       primer_apellido: this.usuario.primer_apellido,
       segundo_apellido: this.usuario.segundo_apellido,
       nombre_usuario: this.usuario.nombre_usuario,
-      numerodoc: this.usuario.numerodoc
+      numerodoc: this.usuario.numerodoc,
+      descripcion: this.usuario.descripcion,
     });
   }
 }
