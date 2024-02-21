@@ -8,7 +8,7 @@ interface DatosUsuario {
     nombre_usuario: string;
     descripcion: string;
     numerodoc: string;
-    fk_id_tipodoc: number;
+    fk_id_tipodoc: number | string;
     id_fichas: string;
     foto: string;
     fk_id_rol: string;

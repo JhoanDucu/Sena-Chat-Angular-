@@ -1,16 +1,16 @@
-<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-    <div class="offcanvas-header">
-        @if (cambios) {
-        <button class="btn btn-outline-primary" type="submit" id="btn">Guardar cambios</button>
-        <button class="btn btn-outline-danger" id="btn" (click)="cancelar()">Cancelar</button>
-        }
-        <h5 id="offcanvasRightLabel">Editar Perfil</h5>
-        <button id="cerrarEditar" data-bs-dismiss="offcanvas" aria-label="Close" (click)="cancelar()">
-            <i class='bx bx-right-arrow-alt'></i>
-        </button>
-    </div>
-    <div class="offcanvas-body">
-        <form [formGroup]="formEditar" (ngSubmit)="editar()">
+<form [formGroup]="formEditar" (ngSubmit)="editar()">
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+        <div class="offcanvas-header">
+            @if (cambios) {
+            <button class="btn btn-outline-primary" type="submit" id="btn">Guardar cambios</button>
+            <button class="btn btn-outline-danger" id="btn" (click)="cancelar()">Cancelar</button>
+            }
+            <h5 id="offcanvasRightLabel">Editar Perfil</h5>
+            <button id="cerrarEditar" data-bs-dismiss="offcanvas" aria-label="Close" (click)="cancelar()" type="button">
+                <i class='bx bx-right-arrow-alt'></i>
+            </button>
+        </div>
+        <div class="offcanvas-body">
             <div id="presentacion">
                 <label for="cambiarImg" id="labelCambiarImg" (mouseleave)="activarBoton()" (mouseenter)="activarBoton()"
                     [style.background-image]="'url('+ '../../../assets/img/' + usuario.foto+')'">
@@ -111,7 +111,8 @@
                     </button>
                     }
                     @if (!propsEditar.primer_apellido && !propsEditar.segundo_apellido) {
-                    <button id="botonTitulo" (click)="activarEditar('primer_apellido', 'segundo_apellido')" type="button">
+                    <button id="botonTitulo" (click)="activarEditar('primer_apellido', 'segundo_apellido')"
+                        type="button">
                         <i class='bx bxs-pencil'></i>
                     </button>
                     }
@@ -134,7 +135,7 @@
                 <span class="info-container">
                     <label for="descripcion" class="labelEditar up"><strong>Descripcion: </strong></label>
                     @if (propsEditar.descripcion) {
-                    <textarea class="inputEditar" appEditar id="descripcion">{{usuario.descripcion}}</textarea>
+                    <textarea class="inputEditar" id="descripcion" formControlName="descripcion" appEditar></textarea>
                     <button id="botonTitulo" (click)="generarCambios('descripcion')" type="button">
                         <i class='bx bx-check'></i>
                     </button>
@@ -148,6 +149,6 @@
                     }
                 </span>
             </div>
-        </form>
+        </div>
     </div>
-</div>
+</form>

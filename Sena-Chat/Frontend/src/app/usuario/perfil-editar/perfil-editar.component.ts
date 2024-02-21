@@ -1,8 +1,10 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { EditarDirective } from '../Directivas/editar.directive';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Usuario } from '../Modelos/usuarios';
+import { ConfigurarService } from '../Servicios/configurar.service';
+import { SesionService } from '../Sesiones/sesion.service';
 
 @Component({
   selector: 'app-perfil-editar',
@@ -12,7 +14,9 @@ import { Usuario } from '../Modelos/usuarios';
   styleUrl: './perfil-editar.component.css'
 })
 export class PerfilEditarComponent {
+  constructor(private Configurar: ConfigurarService) { }
   @Input() usuario: Usuario = {};
+  @Output() actualizar = new EventEmitter();
   hoverImg = false;
   cambios = false;
   propsEditar: any = {
@@ -62,14 +66,22 @@ export class PerfilEditarComponent {
 
   generarCambios(prop: keyof Usuario) {
     this.formEditar.patchValue({ [prop]: this.formEditar.value[prop] });
-    if (this.formEditar.value[prop] != this.usuario[prop]) {
-      this.propsEditar[prop] = false;
-      this.cambios = true;
-    } else this.propsEditar[prop] = false;
+    for (const key in this.formEditar.value) {
+      this.cambios = this.comprobarCambios(key as keyof Usuario);
+      if (this.cambios) break;
+    }
+    this.propsEditar[prop] = false;
   }
 
+  comprobarCambios = (prop: keyof Usuario) => this.usuario[prop] != this.formEditar.value[prop];
+
   editar() {
-    console.log(this.formEditar.value);
+    this.Configurar.actualizarUsuario(this.formEditar.value, this.usuario.numerodoc).subscribe((data: any) => {
+      if(data == 'Actualizado'){
+        alert(data);
+        this.actualizar.emit(this.formEditar.value);
+      } else alert('No actualizado');
+    });
   }
 
   cancelar() {
@@ -78,11 +90,16 @@ export class PerfilEditarComponent {
       correo: this.usuario.correo,
       primer_nom: this.usuario.primer_nom,
       segundo_nom: this.usuario.segundo_nom,
+      nombre_usuario: this.usuario.nombre_usuario,
       primer_apellido: this.usuario.primer_apellido,
       segundo_apellido: this.usuario.segundo_apellido,
-      nombre_usuario: this.usuario.nombre_usuario,
-      numerodoc: this.usuario.numerodoc,
+      contrasena: this.usuario.contrasena,
       descripcion: this.usuario.descripcion,
+      numerodoc: this.usuario.numerodoc,
+      fk_id_tipodoc: this.usuario.fk_id_tipodoc as string,
+      id_fichas: this.usuario.id_fichas,
+      foto: this.usuario.foto,
+      fk_id_rol: this.usuario.fk_id_rol,
     });
   }
 }

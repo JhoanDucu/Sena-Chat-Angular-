@@ -8,7 +8,7 @@
                 (makeChange)="applyChanges($event)" [changesValue]="datos.other.changes"
                 [picked]="{ g: this.Sesion.get('grupos'), p: Sesion.get('pestaña')}">
             </app-grupos>
-            <app-perfil-editar [usuario]="datos.datosUsuario"></app-perfil-editar>
+            <app-perfil-editar [usuario]="datos.datosUsuario" (actualizar)="ajustar($event)"></app-perfil-editar>
             <app-mensajes-varios [grupos]="datos.gruposComponent.grupos"></app-mensajes-varios>
             <app-cerrar-sesion></app-cerrar-sesion>
         </div>

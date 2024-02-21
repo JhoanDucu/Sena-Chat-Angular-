@@ -130,5 +130,10 @@ export class ChatComponent {
 
   finalizarCarga = () => this.datos.other.cargando = false;
 
-  copiar = (objeto: any) => { return { ...objeto }; };
+  ajustar(nuevosDatos: any){
+    this.datos.datosUsuario = nuevosDatos;
+    this.Sesion.set('documento', nuevosDatos.numerodoc);
+  };
+
+  // copiar = (objeto: any) => { return { ...objeto }; };
 }
