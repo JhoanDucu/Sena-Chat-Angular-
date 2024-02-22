@@ -124,6 +124,20 @@
   margin-right: 2.4%;
 }
 
+.resumenUsuario {
+  width: 90%;
+  .nomUsuario {
+    margin: 0;
+    font-weight: bold;
+  }
+  .descUsuario {
+    margin: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+}
+
 .list-group-item-action {
   display: flex;
 }

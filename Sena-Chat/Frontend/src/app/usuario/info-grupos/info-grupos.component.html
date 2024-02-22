@@ -1,7 +1,7 @@
 @if (grupoSeleccionado) {
 <nav class="container navbar bg-body-tertiary" id="cabeceraChat">
     <div id="info-basica">
-        <img [src]="'../../../assets/img/'+grupoSeleccionado.foto_grupo" alt="IMAGEN DEL GRUPO" id="img-grupo" />
+        <img [src]="'../../../assets/img/'+grupoSeleccionado.foto_grupo" id="img-grupo" />
         <span id="nombre-grupo">{{ grupoSeleccionado.nom_grupos }}</span>
     </div>
     <div id="botones-grupo">
@@ -21,9 +21,7 @@
 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
     <div class="offcanvas-header">
         <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Informacion del grupo</h5>
-        <button id="cerrarEditar" (click)="cerrar()">
-            <i class='bx bx-right-arrow-alt'></i>
-        </button>
+        <button id="cerrarEditar" (click)="cerrar()"><i class='bx bx-right-arrow-alt'></i></button>
     </div>
     <div class="offcanvas-body">
         <!-- <div class="">
@@ -37,7 +35,7 @@
             </div>
             <div class="d-flex flex-column bd-highlight">
                 <div id="nomGrupo">{{ grupoSeleccionado.nom_grupos }}</div>
-                <div id="descripcion">{{ t }}</div>
+                <div id="descripcion">{{ grupoSeleccionado.descripcion_grupos }}</div>
             </div>
             <!-- <button class="btn" type="button" (click)="abrirAgregar()">
                 <img src="../../assets/img/User-agregar.png" alt="Agregar" class="img-thumbnail" />
@@ -45,18 +43,17 @@
             </button> -->
         </div>
         <div class="list-group" (mouseleave)="notHover()">
+            <p>Miembros {{ '('+ miembros.length+')'}}</p>
             @for (m of miembros; track m.numerodoc) {
             <button class="list-group-item list-group-item-action" aria-current="true" (mouseenter)="hover(m.numerodoc)"
                 (click)="consultarPerfil()">
                 <img [src]="'../../../assets/img/' + m.foto" class="fotoUsuario">
-                <span>
-                    <div class="d-flex w-100 justify-content-between">
-                        <h5 class="mb-1">
-                            {{ m.primer_nom }} {{ m.segundo_nom }} {{ m.primer_apellido }} {{ m.segundo_apellido }}
-                        </h5>
-                    </div>
-                    <p class="mb-1">Some placeholder content in a paragraph.</p>
-                    <small>And some small print.</small>
+                <span class="resumenUsuario">
+                    <h5 class="nomUsuario">
+                        {{ m.primer_nom }} {{ m.segundo_nom }} {{ m.primer_apellido }} {{ m.segundo_apellido }}
+                    </h5>
+                    <p class="descUsuario">Some placeholder content in a paragraph.Some placeholder content in a paragraph.Some placeholder content in a paragraph.</p>
+                    <small class="">And some small print.</small>
                 </span>
                 @if (mostrarDropdown == m.numerodoc) {
                 <small class="position-absolute top-50 end-0 translate-middle-y">
