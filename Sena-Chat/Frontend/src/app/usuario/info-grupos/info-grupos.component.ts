@@ -27,6 +27,7 @@ export class InfoGruposComponent {
   usuario = this.Sesion.get('documento');
   @Input() grupoSeleccionado: Grupo = {};
   mostrarDropdown: string | undefined = undefined;
+  t = 'This is some content from a media component. You can replace this with any content and adjust it as neededGGG.'
 
   ngOnInit() { this.B.iniciarInstanciasInfo(); }
 

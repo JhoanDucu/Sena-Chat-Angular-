@@ -41,11 +41,36 @@
   width: 62%;
 }
 
+#offcanvasNavbarLabel {
+  margin-left: auto;
+}
+
+#cerrarEditar {
+  background: none;
+  border: none;
+  align-self: end;
+}
+
 .offcanvas-body {
   overflow-y: auto;
   scrollbar-width: thin;
   button {
     z-index: 1;
+  }
+  #presentacion {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  #nomGrupo {
+    padding: 1rem 0;
+    font-weight: bold;
+    font-size: x-large;
+  }
+  #descripcion {
+    padding: 0 10rem;
+    text-wrap: pretty;
   }
 }
 
@@ -69,10 +94,9 @@
   margin-top: 5%;
 }
 
-.imagenGrupo {
-  width: 200px;
-  height: 200px;
-  border: 2px solid #0e882d;
+#imagenGrupo {
+  width: 250px;
+  height: 250px;
   border-radius: 50%;
   object-fit: cover;
   object-position: center center;
@@ -85,4 +109,21 @@
 
 #dropdown:focus {
   border: none;
+}
+
+.list-group {
+  margin-top: 4%;
+}
+
+.fotoUsuario {
+  height: 55px;
+  width: 55px;
+  border-radius: 50%;
+  object-fit: cover;
+  align-self: center;
+  margin-right: 2.4%;
+}
+
+.list-group-item-action {
+  display: flex;
 }
