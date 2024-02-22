@@ -30,7 +30,9 @@ export class MensajesComponent {
   }
 
   ngAfterViewInit(): void {
-    this.finalElement.nativeElement.scrollIntoView({ behavior: 'auto', block: 'end' });
+    if (this.mensajes.length !== 0) {
+      this.finalElement.nativeElement.scrollIntoView({ behavior: 'auto', block: 'end' });
+    }
   }
 
   ngOnDestroy(): void {

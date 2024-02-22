@@ -41,6 +41,8 @@ export class BootstrapService {
 
   infoCanva = () => this.infoGruposOffCanvas.toggle();
 
+  infoCanvaCerrar = () => this.infoGruposOffCanvas.hide();
+
   agregarCanva = () => this.infoAgregarOffCanvas.toggle();
 
   toast = () => this.toastEl.show();

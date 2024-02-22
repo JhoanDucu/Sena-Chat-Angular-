@@ -11,7 +11,7 @@
         <button id="info-boton">
             <i class='bx bx-search-alt-2 bx-flip-horizontal'></i>
         </button>
-        <button id="info-boton" (click)="consultarMiembros()">
+        <button id="info-boton" (click)="abrirInformacion()">
             <i class='bx bx-dots-horizontal-rounded'></i>
         </button>
     </div>
@@ -37,18 +37,26 @@
                 <div id="nomGrupo">{{ grupoSeleccionado.nom_grupos }}</div>
                 <div id="descripcion">{{ grupoSeleccionado.descripcion_grupos }}</div>
             </div>
-            @if (Sesion.get('rol') == '1') {
-                <div id="botonesGrupo">
-                    <button type="button" class="opcionGrupo"><i class='bx bxs-user-plus'></i><br>Añadir</button>
-                    <button type="button" class="opcionGrupo"><i class='bx bxs-user-minus'></i><br>Eliminar</button>
-                    <button type="button" class="opcionGrupo"><i class='bx bxs-message-edit'></i><br>Editar</button>
-                    <button type="button" class="opcionGrupo"><i class='bx bx-angry' ></i><br>Reportar</button>
-                </div>
-            }
-            <!-- <button class="btn" type="button" (click)="abrirAgregar()">
-                <img src="../../assets/img/User-agregar.png" alt="Agregar" class="img-thumbnail" />
-                <h6 style="margin-left: 10px">Agregar</h6>
-            </button> -->
+            <div id="botonesGrupo">
+                @if (Sesion.get('rol') == '1') {
+                <button type="button" class="opcionGrupo" (click)="abrirAgregar()">
+                    <i class='bx bxs-user-plus'></i><br>Agregar
+                </button>
+                <button type="button" class="opcionGrupo">
+                    <i class='bx bxs-user-minus'></i><br>Eliminar
+                </button>
+                <button type="button" class="opcionGrupo">
+                    <i class='bx bxs-message-edit'></i><br>Editar
+                </button>
+                } @else {
+                <button type="button" class="opcionGrupo">
+                    <i class='bx bxs-message-detail'></i><br>Detalles
+                </button>
+                }
+                <button type="button" class="opcionGrupo">
+                    <i class='bx bx-angry'></i><br>Reportar
+                </button>
+            </div>
         </div>
         <div class="list-group" (mouseleave)="notHover()">
             <p id="numeroMiembros">Miembros {{ '('+ miembros.length+')'}}</p>

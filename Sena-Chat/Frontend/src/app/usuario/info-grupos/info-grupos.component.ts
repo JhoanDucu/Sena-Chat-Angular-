@@ -30,6 +30,8 @@ export class InfoGruposComponent {
 
   ngOnInit() { this.B.iniciarInstanciasInfo(); }
 
+  abrirInformacion = () => this.grupoSeleccionado.fk_tipo_grupo == 2 ? this.consultarMiembros() : this.consultarPerfil();
+
   consultarMiembros() {
     this.Chat.traerMiembros(this.grupoSeleccionado.id_grupos).subscribe((data: any) => {
       this.miembros = data;
@@ -52,7 +54,7 @@ export class InfoGruposComponent {
     this.B.drop();
   };
 
-  cerrar = () => this.B.infoCanva();
+  cerrar = () => this.B.infoCanvaCerrar();
 
   abrirAgregar = () => { this.cerrar(); this.B.agregarCanva(); }
 
