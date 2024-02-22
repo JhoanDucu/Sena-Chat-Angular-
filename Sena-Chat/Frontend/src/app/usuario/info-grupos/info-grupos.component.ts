@@ -43,7 +43,7 @@ export class InfoGruposComponent {
   }
 
   notHover = () => {
-    this.mostrarDropdown = undefined
+    this.mostrarDropdown = undefined;
     this.id = '';
   }
 

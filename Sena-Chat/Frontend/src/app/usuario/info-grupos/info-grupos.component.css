@@ -34,6 +34,22 @@
   }
 }
 
+#botonesGrupo {
+  margin: 0;
+  margin-top: 3%;
+  width: 100%;
+  .opcionGrupo {
+    height: 20vh;
+    margin: 0 1vh;
+    width: 23%;
+    background: none;
+    border-radius: 3vh;
+  }
+  i {
+    font-size: xx-large;
+  }
+}
+
 /* offCanvas */
 
 #offcanvasNavbar,
@@ -112,7 +128,12 @@
 }
 
 .list-group {
-  margin-top: 4%;
+  margin-top: 3%;
+  #numeroMiembros {
+    margin: 1% 0;
+    font-size: larger;
+    font-weight: bold;
+  }
 }
 
 .fotoUsuario {
@@ -125,7 +146,7 @@
 }
 
 .resumenUsuario {
-  width: 90%;
+  width: 86%;
   .nomUsuario {
     margin: 0;
     font-weight: bold;
