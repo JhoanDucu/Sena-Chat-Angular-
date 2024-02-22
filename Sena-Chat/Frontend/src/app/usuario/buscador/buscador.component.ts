@@ -53,7 +53,6 @@ export class BuscadorComponent {
   estadoBusqueda() { 
     this.coincidencias.Grupos.length || this.coincidencias.Privados.length || this.coincidencias.Mensajes.length ?
     this.coincidencias.resultados = true : this.coincidencias.resultados = false;
-    console.log(this.coincidencias.resultados);
   }
 
   seleccionarEnBuscador = (id: any, index: number, type: string) => this.seleccion.emit([id, index, type]);

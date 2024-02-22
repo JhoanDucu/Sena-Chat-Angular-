@@ -38,6 +38,12 @@
   padding: 0;
 }
 
+.subtitulo {
+  font-size: larger;
+  font-weight: bold;
+  padding: 1.5% 4%;
+}
+
 .grupos,
 .privados {
   overflow-y: auto;

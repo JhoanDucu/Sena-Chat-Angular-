@@ -12,7 +12,7 @@
         <div class="grupos" id="grupos" role="tablist">
             <div class="list-group" id="list-tab" role="tablist">
                 @if (coincidencias.Grupos.length) {
-                <a class="list-group-item list-group-item-action">GRUPOS</a>
+                <span class="subtitulo">Grupos</span>
                 @for (G of coincidencias.Grupos; track G) {
                 <app-grupo [grupo]="G" (click)="seleccionarEnBuscador(G.id_grupos, $index, 'grupos')"
                     [tiempo]="tiene(G, 'fecha_hora')" [reciente]="tiene(G, 'contenido_mensaje')">
@@ -20,7 +20,7 @@
                 }
                 }
                 @if(coincidencias.Privados.length){
-                <a class="list-group-item list-group-item-action">PRIVADOS</a>
+                <span class="subtitulo">Privados</span>
                 @for (P of coincidencias.Privados; track P) {
                 <app-grupo [grupo]="P" (click)="seleccionarEnBuscador(P.id_grupos, $index, 'privados')"
                     [tiempo]="tiene(P, 'fecha_hora')" [reciente]="tiene(P, 'contenido_mensaje')">
@@ -28,7 +28,7 @@
                 }
                 }
                 @if (coincidencias.Mensajes.length){
-                <a class="list-group-item list-group-item-action">PRIVADOS</a>
+                <span class="subtitulo">Mensajes</span>
                 }
             </div>
         </div>

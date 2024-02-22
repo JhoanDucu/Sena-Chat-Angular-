@@ -1,0 +1,12 @@
+#confirmar {
+  display: flex;
+  align-items: center;
+}
+
+#titulo {
+  font-size: 7vh;
+}
+
+.btn {
+  font-size: 3vh;
+}

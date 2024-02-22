@@ -1,28 +1,20 @@
-@if (active) {
-<a class="list-group-item list-group-item-action active" id="list-profile-list" data-bs-toggle="list" role="tab"
-    aria-controls="list-profile">
+<a [ngClass]="active ? 'list-group-item list-group-item-action active' : 
+'list-group-item list-group-item-action' " id="list-profile-list" data-bs-toggle="list"
+    role="tab" aria-controls="list-profile">
     <div class="tab">
         <img [src]="'../../../assets/img/'+grupo.foto_grupo" class="pic-tab">
         <div id="grupo">
             {{ nomGrupo }} <small>{{ tiempo }}</small>
+            @if (active) {
             <p [appNotificacion]="[grupo.mensajes.length, active]" (-)="restablecer()">
                 {{ reciente }}
             </p>
-        </div>
-    </div>
-</a>
-} @else {
-<a class="list-group-item list-group-item-action" id="list-profile-list" data-bs-toggle="list" role="tab"
-    aria-controls="list-profile">
-    <div class="tab">
-        <img [src]="'../../../assets/img/'+grupo.foto_grupo" class="pic-tab">
-        <div id="grupo">
-            {{ nomGrupo }} <small>{{ tiempo }}</small>
+            } @else {
             <p [appNotificacion]="[grupo.mensajes.length, active]" (+)="nuevaNotificacion()">
                 {{ reciente }}
                 <span class="badge bg-dark text-light">{{ contador > 99 ? '+99' : contador }}</span>
             </p>
+            }
         </div>
     </div>
 </a>
-}
