@@ -4,7 +4,8 @@ import { EditarDirective } from '../Directivas/editar.directive';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Usuario } from '../Modelos/usuarios';
 import { ConfigurarService } from '../Servicios/configurar.service';
-import { SesionService } from '../Sesiones/sesion.service';
+import { BootstrapService } from '../Servicios/bootstrap.service';
+import { Fecha } from '../Modelos/fechas';
 
 @Component({
   selector: 'app-perfil-editar',
@@ -14,7 +15,10 @@ import { SesionService } from '../Sesiones/sesion.service';
   styleUrl: './perfil-editar.component.css'
 })
 export class PerfilEditarComponent {
-  constructor(private Configurar: ConfigurarService) { }
+  constructor(
+    private Configurar: ConfigurarService,
+    private b: BootstrapService
+  ) { }
   @Input() usuario: Usuario = {};
   @Output() actualizar = new EventEmitter();
   hoverImg = false;
@@ -77,10 +81,11 @@ export class PerfilEditarComponent {
 
   editar() {
     this.Configurar.actualizarUsuario(this.formEditar.value, this.usuario.numerodoc).subscribe((data: any) => {
-      if(data == 'Actualizado'){
-        alert(data);
+      if (data == 'Actualizado') {
+        this.b.toastPerfil();
         this.actualizar.emit(this.formEditar.value);
       } else alert('No actualizado');
+      this.cambios = false;
     });
   }
 
@@ -102,4 +107,8 @@ export class PerfilEditarComponent {
       fk_id_rol: this.usuario.fk_id_rol,
     });
   }
+
+  fecha = () => Fecha.momentoAhora();
+
+  hora = () => Fecha.horaActual();
 }

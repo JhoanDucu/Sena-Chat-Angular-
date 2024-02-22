@@ -12,6 +12,7 @@ export class BootstrapService {
   private infoGruposOffCanvas: any;
   private infoAgregarOffCanvas: any;
   private toastEl: any;
+  private toastPerfilEditar: any;
   private infoDropdown: any;
 
   constructor() { }
@@ -21,6 +22,7 @@ export class BootstrapService {
     this.editarOffcanvas = new Offcanvas(document.getElementById('offcanvasRight') as HTMLElement);
     this.cerrarOffCanvas = new Offcanvas(document.getElementById('offcanvasBottom') as HTMLElement);
     this.toastEl = new Toast(document.getElementById('liveToast') as HTMLElement);
+    this.toastPerfilEditar = new Toast(document.getElementById('actualizado') as HTMLElement);
   }
 
   iniciarInstanciasInfo(){
@@ -42,6 +44,8 @@ export class BootstrapService {
   agregarCanva = () => this.infoAgregarOffCanvas.toggle();
 
   toast = () => this.toastEl.show();
+
+  toastPerfil = () => this.toastPerfilEditar.show();
 
   drop = () => {
     this.infoDropdown = new Dropdown(document.getElementById('dropdown') as HTMLElement);

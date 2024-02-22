@@ -10,7 +10,7 @@
   justify-content: end;
   #btn {
     margin-right: auto;
-    padding: 4px;
+    padding: 0.5% 2vh;
   }
 }
 
@@ -21,13 +21,10 @@ img {
   -ms-interpolation-mode: nearest-neighbor;
 }
 
-button {
-  border: none;
-  background: none;
-}
-
 #cerrarEditar {
   font-size: 20px;
+  border: none;
+  background: none;
 }
 
 #presentacion {
@@ -85,7 +82,9 @@ button {
   }
 }
 
-#botonTitulo {
+.botonTitulo {
+  border: none;
+  background: none;
   font-size: 25px;
 }
 
@@ -119,4 +118,7 @@ button {
 
 #nombreUsuario {
   font-size: xxx-large;
+}
+#toastImg {
+  height: 20px;
 }

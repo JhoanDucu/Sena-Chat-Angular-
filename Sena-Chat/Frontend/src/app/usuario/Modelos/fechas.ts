@@ -25,6 +25,10 @@ export class Fecha {
 
     static fechaActual = () => `${format(new Date(), 'yyyy-MM-dd HH:mm:ss')}`;
 
+    static momentoAhora = () => `${format(new Date(), "EEEE, dd 'de' MMMM", { locale: es })}`;
+
+    static horaActual = () => `${format(new Date(), 'hh:mm a')}`;
+
     static obtenerHora = (date: Date) => format(date, 'hh:mm a');
 
     private diaSemana = () => `${format(this.date, 'EEEE', { locale: es })}`;
