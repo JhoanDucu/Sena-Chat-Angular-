@@ -91,6 +91,7 @@ form #c6 {
   pointer-events: none;
   transition: 0.5s;
 }
+
 .login-box .user-box #tipo {
   left: 10%;
 }

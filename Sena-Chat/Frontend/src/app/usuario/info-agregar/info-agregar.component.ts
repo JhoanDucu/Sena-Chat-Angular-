@@ -9,5 +9,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './info-agregar.component.css'
 })
 export class InfoAgregarComponent {
+  invitar(){
 
+  }
 }

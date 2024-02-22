@@ -1,0 +1,39 @@
+.offcanvas {
+  width: 62%;
+}
+
+.agregar-box .user-box label {
+  position: absolute;
+  top: 0;
+  left: 3%;
+  padding: 10px 0;
+  font-size: 16px;
+  color: #000;
+  pointer-events: none;
+  transition: 0.5s;
+}
+
+.agregar-box .user-box {
+  position: relative;
+  margin: 2%;
+}
+
+.agregar-box .user-box input {
+  width: 94%;
+  padding: 10px 0;
+  font-size: 16px;
+  color: #000000;
+  border: none;
+  border-bottom: 1px solid #000000;
+  outline: none;
+  background: transparent;
+  text-align: left;
+}
+
+.agregar-box .user-box input:focus ~ label,
+.agregar-box .user-box input:valid ~ label {
+  top: -20px;
+  left: 3%;
+  color: #000;
+  font-size: 12px;
+}

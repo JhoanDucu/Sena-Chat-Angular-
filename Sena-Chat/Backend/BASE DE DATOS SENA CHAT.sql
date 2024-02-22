@@ -46,7 +46,7 @@ CREATE TABLE grupos
 (
 	id_grupos INT NOT NULL AUTO_INCREMENT,
 	nom_grupos VARCHAR(20) NOT NULL,
-	descripcion_grupos VARCHAR(50) NOT NULL,
+	descripcion_grupos VARCHAR(110) NOT NULL,
 	id_ficha VARCHAR(10) NOT NULL,
 	foto_grupo VARCHAR(100) NULL,
 	fk_tipo_grupo INT NOT NULL,
@@ -220,27 +220,27 @@ INSERT INTO usuarios_fichas VALUES
 -- APRENDICES PARA LA FICHA AQUI
 
 
-INSERT INTO grupos VALUES
-('1','grupo de Heiver','ficha 2558101','2558101', 'Grupo1.jpg',2),
-('2','grupo de Leonardo','ficha 2558101','2558101', 'Grupo2.jpg',2),
-('3','grupo de Isaura','ficha 2558101','2558101', 'Grupo3.jpg',2),
-('4','grupo de Manolo','ficha de 2558102','2558102', 'Grupo4.jpg', 2),
-('5','grupo de Wendy','ficha 2558102','2558102', 'Grupo5.png', 2),
-('6','grupo de Javier','ficha 2558102','2558102', 'Grupo6.jpg', 2),
-('7','grupo de Alejandra','ficha 2558103','2558103', 'Grupo7.jpg', 2),
-('8', 'nicolas_rincon', 'Privado', '2558101', '', 1),
-('9', 'carlosperez', 'Privado', '2558101', '', 1),
-('10', 'Isaura-Juan', 'Privado', '2558101', '', 1),
-('11', 'Isaura-Nicolas', 'Privado', '2558101', '', 1),
-('12', 'Sebastian', 'Privado', '2558102', '', 1),
-('13', 'Isabella', 'Privado', '2558102', '', 1),
-('14', 'Ethan', 'Privado', '2558102', '', 1),
-('15', 'Sophia', 'Privado', '2558102', '', 1),
-('16', 'Alexander', 'Privado', '2558102', '', 1),
-('17', 'Olivia', 'Privado', '2558102', '', 1),
-('18', 'Mia Parker', 'Privado', '2558102', '', 1),
-('19', 'Javier', 'Privado', '2558102', '', 1),
-('20', 'Wendy', 'Privado', '2558102', '', 1);
+INSERT INTO grupos VALUES 
+('1','grupo de Heiver','Exploración de técnicas avanzadas de inteligencia artificial aplicadas al desarrollo de sistemas autónomos.','2558101', 'Grupo1.jpg',2),
+('2','grupo de Leonardo','Estudio de metodologías de seguridad informática en el desarrollo de aplicaciones web y móviles.','2558101', 'Grupo2.jpg',2),
+('3','grupo de Isaura','Análisis comparativo de lenguajes de programación para el desarrollo de aplicaciones en la nube.','2558101', 'Grupo3.jpg',2),
+('4','grupo de Manolo','Estudio del impacto del deporte en la cultura juvenil.','2558102', 'Grupo4.jpg', 2),
+('5','grupo de Wendy','Análisis de tendencias culturales en la industria del entretenimiento.','2558102', 'Grupo5.png', 2),
+('6','grupo de Javier','Exploración de la relación entre arte y tecnología en la era digital.','2558102', 'Grupo6.jpg', 2),
+('7','grupo de Alejandra','Gestión financiera en organizaciones sin fines de lucro.','2558103', 'Grupo7.jpg', 2),
+('8', 'nicolas_rincon', 'Privado', '2558101', NULL, 1),
+('9', 'carlosperez', 'Privado', '2558101', NULL, 1),
+('10', 'Isaura-Juan', 'Privado', '2558101', NULL, 1),
+('11', 'Isaura-Nicolas', 'Privado', '2558101', NULL, 1),
+('12', 'Sebastian', 'Privado', '2558102', NULL, 1),
+('13', 'Isabella', 'Privado', '2558102', NULL, 1),
+('14', 'Ethan', 'Privado', '2558102', NULL, 1),
+('15', 'Sophia', 'Privado', '2558102', NULL, 1),
+('16', 'Alexander', 'Privado', '2558102', NULL, 1),
+('17', 'Olivia', 'Privado', '2558102', NULL, 1),
+('18', 'Mia Parker', 'Privado', '2558102', NULL, 1),
+('19', 'Javier', 'Privado', '2558102', NULL, 1),
+('20', 'Wendy', 'Privado', '2558102', NULL, 1);
 
 INSERT INTO usuarios_grupos VALUES
 ('1', '1', '12345678019', NULL),	 	# Heiver - Grupo 1
