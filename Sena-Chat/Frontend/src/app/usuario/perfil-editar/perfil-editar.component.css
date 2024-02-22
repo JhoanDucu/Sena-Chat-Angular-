@@ -14,13 +14,6 @@
   }
 }
 
-img {
-  image-rendering: -webkit-optimize-contrast;
-  image-rendering: -moz-crisp-edges;
-  image-rendering: crisp-edges;
-  -ms-interpolation-mode: nearest-neighbor;
-}
-
 #cerrarEditar {
   font-size: 20px;
   border: none;

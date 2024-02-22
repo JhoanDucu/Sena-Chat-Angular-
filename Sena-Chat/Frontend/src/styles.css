@@ -8,3 +8,10 @@
   background: #0e882d;
   border-radius: 5px;
 }
+
+img {
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+  -ms-interpolation-mode: nearest-neighbor;
+}
