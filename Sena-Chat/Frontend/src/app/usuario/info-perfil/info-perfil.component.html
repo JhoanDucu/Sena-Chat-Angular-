@@ -1,22 +1,37 @@
 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight3" aria-labelledby="offcanvasRightLabel3">
     <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="offcanvasRightLabel3">PERFIL DE OTRO USUARIO</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        <h5 class="offcanvas-title" id="offcanvasRightLabel3"></h5>
+        <button type="button" data-bs-dismiss="offcanvas" aria-label="Close"><i
+                class='bx bx-right-arrow-alt'></i></button>
     </div>
     <div class="offcanvas-body" id="agregar">
-        <img src="../../assets/img/User-agregar.png" style="width: 35%; height: 25%" alt="Agregar" />
-        <br />
-        <form>
-            <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Email</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
-                <div id="emailHelp" class="form-text">
-                    Ingrese el Email de la persona
-                </div>
-            </div>
-            <button type="submit" id="botonEnviar" class="btn btn-primary">
-                Enviar
-            </button>
-        </form>
+        <div id="presentacion">
+            <img [src]="'../../../assets/img/'+usuario.foto" id="imagenPerfil">
+            <span id="nombreUsuario">{{ usuario.nombre_usuario }}</span>
+        </div>
+        <div id="informacion">
+        <span class="info-container">
+            <span class="labelEditar"><strong>Ficha: </strong></span>
+            <p id="sinE">{{usuario.id_fichas}}</p>
+        </span>
+        <span class="info-container">
+            <span class="labelEditar"><strong>Correo: </strong></span>
+            <p id="sinE">{{ usuario.correo }}</p>
+        </span>
+
+        <span class="info-container">
+            <span class="labelEditar"><strong>Nombre:</strong></span>
+            <p id='sinE'>{{usuario.primer_nom}} {{usuario.segundo_nom}} {{
+            usuario.primer_apellido}} {{usuario.segundo_apellido}}</p>
+        </span>
+
+        <span class="info-container">
+            <span class="labelEditar"><strong>Documento: </strong></span>
+            <p id="sinE">{{ usuario.numerodoc }}</p>
+        </span>
+        <span class="info-container">
+            <span class="labelEditar up"><strong>Descripcion: </strong></span>
+            <p id="sinE">{{usuario.descripcion}}</p>
+        </span>
     </div>
 </div>

@@ -62,7 +62,7 @@
             <p id="numeroMiembros">Miembros {{ '('+ miembros.length+')'}}</p>
             @for (m of miembros; track m.numerodoc) {
             <button class="list-group-item list-group-item-action" aria-current="true" (mouseenter)="hover(m.numerodoc)"
-                (click)="consultarPerfil()">
+                (click)="consultarPerfil(m.numerodoc)">
                 <img [src]="'../../../assets/img/' + m.foto" class="fotoUsuario">
                 <span class="resumenUsuario">
                     <h5 class="nomUsuario">
@@ -93,6 +93,6 @@
     </div>
 </div>
 
-<app-info-perfil></app-info-perfil>
+<app-info-perfil [usuario]="usuarioConsultado"></app-info-perfil>
 <app-info-agregar></app-info-agregar>
 <!-- <app-info-eliminar></app-info-eliminar> -->

@@ -1,3 +1,77 @@
 .offcanvas {
-    width: 62%;
+  width: 62%;
+}
+
+.offcanvas-header {
+  button {
+    background: none;
+    border: none;
+  }
+}
+
+#presentacion {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  #imagenPerfil {
+    height: 100%;
+    border-radius: 50%;
+  }
+  #inputTitulo {
+    width: min-content;
+    font-size: xxx-large;
+    text-align: center;
+    padding: 0;
+    border: none;
+    outline: none;
+    border-bottom: 2px solid black;
+  }
+  #nombreUsuario {
+    font-size: xxx-large;
+  }
+}
+
+#imagenPerfil {
+  width: 68vh;
+  height: 68vh;
+  display: flex;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  justify-content: center;
+  align-items: center;
+}
+
+#informacion {
+  display: flex;
+  flex-direction: column;
+  margin: 5vh;
+  font-size: x-large;
+  strong {
+    margin-right: 4vh;
+  }
+  #sinE {
+    margin: 0 1vh;
+    text-wrap: balance;
+  }
+  .inputEditar {
+    border: none;
+    outline: none;
+    border-bottom: 1.5px solid black;
+    width: 85%;
+    resize: none;
+  }
+  .info-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 3%;
+  }
+  .up {
+    display: flex;
+    align-self: normal;
+  }
 }

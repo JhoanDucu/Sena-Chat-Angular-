@@ -40,6 +40,9 @@
     outline: none;
     border-bottom: 2px solid black;
   }
+  #nombreUsuario {
+    font-size: xxx-large;
+  }
 }
 
 #informacion {
@@ -109,9 +112,6 @@
   opacity: 0.6;
 }
 
-#nombreUsuario {
-  font-size: xxx-large;
-}
 #toastImg {
   height: 20px;
 }
