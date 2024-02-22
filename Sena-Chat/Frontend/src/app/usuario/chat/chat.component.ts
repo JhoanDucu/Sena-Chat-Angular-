@@ -59,9 +59,9 @@ export class ChatComponent {
       this.Sesion.set('error', 'No has iniciado sesion');
     } else {
       this.Chat.traerUsuario(this.usuario).subscribe((usuario: any) => this.datos.datosUsuario = usuario);
-      this.Chat.traerGrupos(this.fichaSeleccionada, this.usuario).subscribe((grupos: any) => this.extraerMensajes(grupos, 'grupos'));
+      this.Chat.traerGrupos(this.fichaSeleccionada, this.usuario).subscribe((grupos: any) => grupos != 'No hay grupos aun' ? this.extraerMensajes(grupos, 'grupos') : undefined);
       this.Chat.traerPrivados(this.fichaSeleccionada, this.usuario).subscribe((privados: any) => {
-        this.extraerMensajes(privados, 'privados');
+        if (privados != 'No hay grupos aun') this.extraerMensajes(privados, 'privados');
         this.finalizarCarga();
       });
     }
@@ -130,7 +130,7 @@ export class ChatComponent {
 
   finalizarCarga = () => this.datos.other.cargando = false;
 
-  ajustar(nuevosDatos: any){
+  ajustar(nuevosDatos: any) {
     this.datos.datosUsuario = nuevosDatos;
     this.Sesion.set('documento', nuevosDatos.numerodoc);
   };

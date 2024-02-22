@@ -53,16 +53,33 @@ exports.enviarEmail = (req, res) => {
 
 exports.registrarUsuario = (req, res) => {
   const usuario = req.body;
-  usuario.fk_id_ficha = "2558104";
-  usuario.foto = "NULL";
+  // usuario.fk_id_ficha = "2558104";
   usuario.fk_id_rol = "2";
   delete usuario?.confirmar;
   usuario.contrasena = md5(usuario.contrasena);
 
-  const query = "INSERT INTO usuarios SET ?";
-  conexion.query(query, usuario, (error, resultado) => {
-    if (error) return console.error(error.message);
-    res.json(["Se inserto correctamente el usuario", usuario.numerodoc]);
+  // Realizar la inserción en la tabla 'usuarios'
+  const queryUsuario = "INSERT INTO usuarios SET ?";
+  conexion.query(queryUsuario, usuario, (errorUsuario, resultadoUsuario) => {
+    if (errorUsuario) {
+      return console.error(errorUsuario.message);
+    }
+
+    // Realizar la inserción en la tabla 'usuarios_fichas'
+    const queryUsuarioFichas = "INSERT INTO usuarios_fichas (id_fichas, numerodoc) VALUES (?, ?)";
+    conexion.query(queryUsuarioFichas, ['0000000', usuario.numerodoc], (errorUsuarioFichas, resultadoUsuarioFichas) => {
+      if (errorUsuarioFichas) {
+        return console.error(errorUsuarioFichas.message);
+      }
+      
+      // Ambas inserciones fueron exitosas
+      res.json(["Se inserto correctamente el usuario", usuario.nombre_usuario]);
+    });
+  
+  // const query = "INSERT INTO usuarios SET ?; INSERT INTO usuarios_fichas (id_fichas, numerodoc) VALUES (?, ?);";
+  // conexion.query(query, [usuario, '0000000', usuario.numerodoc], (error, resultado) => {
+  //   if (error) return console.error(error.message);
+  //   res.json(["Se inserto correctamente el usuario", usuario.nombre_usuario]);
   });
 };
 

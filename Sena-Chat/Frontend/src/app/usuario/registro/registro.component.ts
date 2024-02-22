@@ -83,6 +83,7 @@ export class RegistroComponent {
       if (respuesta[0] == 'Se inserto correctamente el usuario') {
         alert(respuesta[0]);
         this.Sesion.set('documento', respuesta[1]);
+        this.Sesion.set('ficha', '0000000');
         this.router.navigate(['chat']);
       } else {
         alert('No se agrego el usuario');
