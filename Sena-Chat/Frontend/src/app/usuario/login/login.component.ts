@@ -23,6 +23,7 @@ export class LoginComponent {
     contrasena: new FormControl('', Validators.required),
     tipodoc: new FormControl('', Validators.required)
   });
+  valido = true;
  
   Label(){
     let valid = document.getElementById("tipo");
@@ -42,8 +43,12 @@ export class LoginComponent {
       invalid?.setAttribute('style','left: 15%; top: -20px; left: 0; color: #000; font-size: 12px; margin-left: 10%;');
     }
   }
+
+  validar(){
+    this.valido ? this.logear : alert('nop');
+  }
+  
   logear(datos: {}){
-    alert("Esperando respuesta...");
     this.login.buscarDatos(datos).subscribe((respuesta: any) => {
       if (respuesta != 'No existe registro') {
         this.Sesion.set('ficha', respuesta[0]);
@@ -58,6 +63,6 @@ export class LoginComponent {
        } else {
          alert('Usuario no existe');
        }
-     })
+     }) 
   }
 }

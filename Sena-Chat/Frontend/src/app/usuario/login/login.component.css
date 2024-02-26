@@ -149,17 +149,24 @@ form #c6 {
     0 0 100px #3a813a;
 }
 
+.ingreso:disabled:hover {
+  background: none;
+  color: #000;
+  box-shadow: none;
+  border-color: #000;
+}
+
 .Cont {
   cursor: pointer;
   text-shadow: 0 0 9px #000000;
 }
 
-.login-box .Cont {
+/* .login-box .Cont {
   position: relative;
   display: inline-block;
   padding: 20px 20px;
   color: #000000;
-}
+} */
 
 .crear-cuenta {
   cursor: pointer;
@@ -194,7 +201,7 @@ form #c6 {
   text-decoration: none;
   color: #117311;
   text-shadow: none;
-  margin-left: 70%;
+  /* margin-left: 70%; */
 }
 
 #c4 #c6 p a {
