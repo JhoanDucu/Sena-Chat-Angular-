@@ -29,9 +29,9 @@ export class InfoGruposComponent {
   mostrarDropdown: string | undefined = undefined;
   usuarioConsultado: any;
 
-  ngOnInit() { this.B.iniciarInstanciasInfo(); }
+  ngAfterViewInit() { this.B.iniciarInstanciasInfo();}
 
-  abrirInformacion = () => this.grupoSeleccionado.fk_tipo_grupo == 2 ? this.consultarMiembros() : this.consultarPerfil(1131104356);
+  abrirInformacion = () => this.grupoSeleccionado.fk_tipo_grupo == 2 ? this.consultarMiembros() : this.consultarPerfil(this.grupoSeleccionado.doc);
 
   consultarMiembros() {
     this.Chat.traerMiembros(this.grupoSeleccionado.id_grupos).subscribe((data: any) => {
@@ -59,11 +59,11 @@ export class InfoGruposComponent {
 
   abrirAgregar = () => { this.cerrar(); this.B.agregarCanva(); }
 
-  consultarPerfil = (numerodoc: any) => { 
+  consultarPerfil = (numerodoc: any) => {
     this.cerrar();
     this.Chat.traerUsuario(numerodoc).subscribe((data: Usuario) => {
       this.usuarioConsultado = data;
-      this.B.perfilCanva(); 
+      this.B.perfilCanva();
     });
   }
 

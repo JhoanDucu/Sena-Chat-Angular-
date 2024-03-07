@@ -25,7 +25,7 @@ export class BootstrapService {
     this.toastPerfilEditar = new Toast(document.getElementById('actualizado') as HTMLElement);
   }
 
-  iniciarInstanciasInfo(){
+  iniciarInstanciasInfo() {
     this.infoGruposOffCanvas = new Offcanvas(document.getElementById('offcanvasNavbar') as HTMLElement);
     this.infoAgregarOffCanvas = new Offcanvas(document.getElementById('offcanvasRight2') as HTMLElement);
     this.infoPerfilOffcanvas = new Offcanvas(document.getElementById('offcanvasRight3') as HTMLElement);

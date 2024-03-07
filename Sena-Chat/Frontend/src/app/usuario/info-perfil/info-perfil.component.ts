@@ -10,5 +10,5 @@ import { Usuario } from '../Modelos/usuarios';
   styleUrl: './info-perfil.component.css'
 })
 export class InfoPerfilComponent {
-  @Input() usuario: Usuario = {}
+  @Input() usuario: Usuario = {};
 }

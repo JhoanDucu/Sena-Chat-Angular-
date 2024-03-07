@@ -41,7 +41,7 @@
                 </span>
 
                 <span class="info-container">
-                    <label for="correo" class="labelEditar"><strong>Correo: </strong></label>
+                    <span for="correo" class="labelEditar"><strong>Correo: </strong></span>
                     @if (!propsEditar.correo) {
                     {{ formEditar.value.correo }}
                     <button class="botonTitulo" (click)="activarEditar('correo')" type="button">
@@ -56,7 +56,7 @@
                 </span>
 
                 <span class="info-container">
-                    <label for="nombres" class="labelEditar"><strong>Nombres:</strong></label>
+                    <span for="nombres" class="labelEditar"><strong>Nombres:</strong></span>
                     @if (!propsEditar.primer_nom) {
                     <p [id]="!propsEditar.primer_nom && !propsEditar.segundo_nom ? 'sinE' : 'conE'">
                         {{formEditar.value.primer_nom}}
@@ -87,7 +87,7 @@
                 </span>
 
                 <span class="info-container">
-                    <label for="apellidos" class="labelEditar"><strong>Apellidos:</strong></label>
+                    <span for="apellidos" class="labelEditar"><strong>Apellidos:</strong></span>
                     @if (!propsEditar.primer_apellido) {
                     <p [id]="!propsEditar.primer_apellido && !propsEditar.segundo_apellido ? 'sinE' : 'conE'">
                         {{formEditar.value.primer_apellido}}
@@ -119,7 +119,7 @@
                 </span>
 
                 <span class="info-container">
-                    <label for="numerodoc" class="labelEditar"><strong>Documento: </strong></label>
+                    <span for="numerodoc" class="labelEditar"><strong>Documento: </strong></span>
                     @if (!propsEditar.numerodoc) {
                     {{ formEditar.value.numerodoc }}
                     <button class="botonTitulo" (click)="activarEditar('numerodoc')" type="button">
@@ -133,7 +133,7 @@
                     }
                 </span>
                 <span class="info-container">
-                    <label for="descripcion" class="labelEditar up"><strong>Descripcion: </strong></label>
+                    <span for="descripcion" class="labelEditar up"><strong>Descripcion: </strong></span>
                     @if (propsEditar.descripcion) {
                     <textarea class="inputEditar" id="descripcion" formControlName="descripcion" appEditar></textarea>
                     <button class="botonTitulo" (click)="generarCambios('descripcion')" type="button">

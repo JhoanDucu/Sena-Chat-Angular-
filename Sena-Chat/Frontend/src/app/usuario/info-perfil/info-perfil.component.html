@@ -5,33 +5,36 @@
                 class='bx bx-right-arrow-alt'></i></button>
     </div>
     <div class="offcanvas-body" id="agregar">
+        @if (usuario) {
         <div id="presentacion">
             <img [src]="'../../../assets/img/'+usuario.foto" id="imagenPerfil">
             <span id="nombreUsuario">{{ usuario.nombre_usuario }}</span>
         </div>
         <div id="informacion">
-        <span class="info-container">
-            <span class="labelEditar"><strong>Ficha: </strong></span>
-            <p id="sinE">{{usuario.id_fichas}}</p>
-        </span>
-        <span class="info-container">
-            <span class="labelEditar"><strong>Correo: </strong></span>
-            <p id="sinE">{{ usuario.correo }}</p>
-        </span>
+            <span class="info-container">
+                <span class="labelEditar"><strong>Ficha: </strong></span>
+                <p id="sinE">{{usuario.id_fichas}}</p>
+            </span>
+            <span class="info-container">
+                <span class="labelEditar"><strong>Correo: </strong></span>
+                <p id="sinE">{{ usuario.correo }}</p>
+            </span>
 
-        <span class="info-container">
-            <span class="labelEditar"><strong>Nombre:</strong></span>
-            <p id='sinE'>{{usuario.primer_nom}} {{usuario.segundo_nom}} {{
-            usuario.primer_apellido}} {{usuario.segundo_apellido}}</p>
-        </span>
+            <span class="info-container">
+                <span class="labelEditar"><strong>Nombre:</strong></span>
+                <p id='sinE'>{{usuario.primer_nom}} {{usuario.segundo_nom}} {{
+                    usuario.primer_apellido}} {{usuario.segundo_apellido}}</p>
+            </span>
 
-        <span class="info-container">
-            <span class="labelEditar"><strong>Documento: </strong></span>
-            <p id="sinE">{{ usuario.numerodoc }}</p>
-        </span>
-        <span class="info-container">
-            <span class="labelEditar up"><strong>Descripcion: </strong></span>
-            <p id="sinE">{{usuario.descripcion}}</p>
-        </span>
+            <span class="info-container">
+                <span class="labelEditar"><strong>Documento: </strong></span>
+                <p id="sinE">{{ usuario.numerodoc }}</p>
+            </span>
+            <span class="info-container">
+                <span class="labelEditar up"><strong>Descripcion: </strong></span>
+                <p id="sinE">{{usuario.descripcion}}</p>
+            </span>
+        </div>
+        }
     </div>
 </div>
