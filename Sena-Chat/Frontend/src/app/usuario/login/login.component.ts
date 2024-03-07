@@ -28,19 +28,19 @@ export class LoginComponent {
   Label(){
     let valid = document.getElementById("tipo");
     if (this.formLogin.value.tipodoc === '') {
-      valid?.setAttribute('style','left: 15%; top: -20px; left: 0; color: #000; font-size: 12px; margin-left: 10%;');
+      valid?.setAttribute('style','top: -20px; left: 6%; color: #000; font-size: 12px;');
     } else if (this.formLogin.value.tipodoc === '0'){
-      valid?.setAttribute('style','left: 15%; top: -20px; left: 0; color: #000; font-size: 12px; margin-left: 10%;');
+      valid?.setAttribute('style','top: -20px; left: 6%; color: #000; font-size: 12px;');
     }
   }
   noLabel(){
     let invalid = document.getElementById("tipo");
     if (this.formLogin.value.tipodoc === '0') {
-      invalid?.setAttribute('style','top: 0; left: 10%; padding: 10px 0; font-size: 16px; color: #000;');
+      invalid?.setAttribute('style','top: 0; left: 6.2%; padding: 10px 0; font-size: 16px; color: #000;');
     } else if (this.formLogin.value.tipodoc === '') {
-      invalid?.setAttribute('style','top: 0; left: 10%; padding: 10px 0; font-size: 16px; color: #000;');
+      invalid?.setAttribute('style','top: 0; left: 6.2%; padding: 10px 0; font-size: 16px; color: #000;');
     } else {
-      invalid?.setAttribute('style','left: 15%; top: -20px; left: 0; color: #000; font-size: 12px; margin-left: 10%;');
+      invalid?.setAttribute('style','top: -20px; left: 6%; color: #000; font-size: 12px;');
     }
   }
 

@@ -15,21 +15,15 @@
         <option value="4">PEP</option>
         <option value="5">Permiso por Protección Temporal</option>
       </select>
-      @if (formLogin.valid) {
-        <div class="alert alert-primary d-flex align-items-center" role="alert">
-          <i class='bx bxs-error' style="font-size: 28px; margin-right: 12px;"></i>
-          <div></div>
-        </div>
-      }
     </div>
     <br>
     <div class="user-box" id="c2">
       <input type="text" name="numerodoc" id="numerodoc" maxlength="20" required formControlName="numerodoc">
-      <label for="numerodoc">Numero de documento</label>
+      <label for="numerodoc" id="num">Numero de documento</label>
     </div>
     <div class="user-box" id="c3">
       <input type="password" name="contrasena" id="contrasena" required formControlName="contrasena">
-      <label for="contrasena">Contraseña</label>
+      <label for="contrasena" id="con">Contraseña</label>
       <p><a class="Cont" [routerLink]="['/contrasena']" routerLinkActive="buttonactive">¿Olvidaste tu contraseña?</a></p>
     </div>
     <div id="c4">

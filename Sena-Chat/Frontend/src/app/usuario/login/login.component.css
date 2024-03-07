@@ -9,7 +9,7 @@
   transform: translate(-50%, -50%);
   background-color: #ebebeb;
   /* box-sizing: border-box; */
-  /* box-shadow: 0 5px 13px rgba(0, 0, 0, 0.6); */
+  box-shadow: 0 5px 13px rgba(0, 0, 0, 0.6);
   border-radius: 4%;
   text-align: center;
   /* justify-content: center; */
@@ -22,6 +22,7 @@ form #tipodoc {
 }
 form #c2 {
   grid-area: numerodoc;
+  text-align: left;
 }
 form #c3 {
   grid-area: password;
@@ -29,29 +30,22 @@ form #c3 {
 form #c4 {
   grid-area: other;
 }
-form #c5 {
-  grid-area: ingreso;
-}
-form #c6 {
-  grid-area: olvidaste;
-}
 
 .login-box form #c4 {
   grid-area: other;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 20px;
 }
 
 .login-box form {
   margin-top: 2%;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   grid-template-areas:
-    "tipodoc numerodoc numerodoc"
-    "password password password"
-    "other other other";
+    "tipodoc numerodoc"
+    "password password"
+    "other other";
 }
 
 .login-box h1 {
@@ -63,6 +57,12 @@ form #c6 {
 
 .login-box .user-box {
   position: relative;
+  #num {
+    left: 0;
+  }
+  #con {
+    left: 3%;
+  }
 }
 
 .login-box .user-box input {
@@ -80,7 +80,7 @@ form #c6 {
 .login-box .user-box label {
   position: absolute;
   top: 0;
-  left: 3%;
+  /* left: 3%; */
   padding: 10px 0;
   font-size: 16px;
   color: #000;
@@ -89,7 +89,7 @@ form #c6 {
 }
 
 .login-box .user-box #tipo {
-  left: 10%;
+  left: 6.2%;
 }
 
 .login-box .user-box #tipodoc {
@@ -117,32 +117,24 @@ form #c6 {
 
 .ingreso {
   position: relative;
+  width: 94%;
   font-weight: bold;
-  display: inline-block;
-  padding: 20px 20px;
-  color: #000;
-  font-size: 16px;
-  align-items: center;
+  padding: 15px;
   text-decoration: none;
   text-transform: uppercase;
+  background: #237023;
+  color: #fff;
   overflow: hidden;
   transition: 0.5s;
-  margin-top: 30px;
-  letter-spacing: 4px;
-  background: transparent;
-  border-color: #000;
-  border-radius: 5px;
-  border: 1.7px solid #000;
-  box-shadow: inset 0 0 0 0 #000;
+  margin-top: 2rem;
+  border: none;
+  letter-spacing: 2px;
+  text-align: center;
+  border-radius: 15px;
 }
 
 .ingreso:hover {
-  background: #237023;
-  color: #fff;
-  border-color: #237023;
-  border-radius: 5px;
-  box-shadow: 0 0 5px #3a813a, 0 0 25px #3a813a, 0 0 50px #3a813a,
-    0 0 100px #3a813a;
+  opacity: 0.6;
 }
 
 .ingreso:disabled:hover {
@@ -156,13 +148,6 @@ form #c6 {
   cursor: pointer;
   text-shadow: 0 0 9px #000000;
 }
-
-/* .login-box .Cont {
-  position: relative;
-  display: inline-block;
-  padding: 20px 20px;
-  color: #000000;
-} */
 
 .crear-cuenta {
   cursor: pointer;
@@ -178,7 +163,7 @@ form #c6 {
 
 .user-box select {
   text-align: left;
-  width: 80%;
+  /* width: 80%; */
   background: transparent;
   border: none;
   border-bottom: 1px solid #000000;
@@ -195,6 +180,7 @@ form #c6 {
 
 #c3 p {
   text-align: end;
+  margin: 0;
   margin-right: 3%;
 }
 
@@ -209,6 +195,13 @@ form #c6 {
   text-decoration: none;
   color: #117311;
   text-shadow: none;
+}
+
+#c6 {
+  p {
+    margin: 0;
+    margin-top: 1rem;
+  }
 }
 
 @media (min-width: 576px) and (max-width: 991.98px) and (orientation: portrait) {
@@ -293,13 +286,6 @@ form #c6 {
   }
   center p {
     margin: 0% 0%;
-  }
-  .login-box form #c4 {
-    margin-top: -1rem;
-    margin-right: -1rem;
-  }
-  .login-box form #c5 {
-    display: flex;
   }
   .login-box form #c6 {
     padding-top: 0%;
