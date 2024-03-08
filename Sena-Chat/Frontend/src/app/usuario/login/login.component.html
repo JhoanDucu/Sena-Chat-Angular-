@@ -5,8 +5,6 @@
   <form [formGroup]="formLogin" (ngSubmit)="logear(formLogin.value)">
     <div class="user-box" id="ajustar-select">
       <label id="tipo" for="tipodoc">Tipo de Documento</label>
-      <br>
-      <br>
       <select required id="tipodoc" name="tipodoc" formControlName="tipodoc" (focus)="Label();" (blur)="noLabel();">
         <option value="0"></option>
         <option value="1">Cedula de ciudadania</option>
@@ -16,7 +14,6 @@
         <option value="5">Permiso por Protección Temporal</option>
       </select>
     </div>
-    <br>
     <div class="user-box" id="c2">
       <input type="text" name="numerodoc" id="numerodoc" maxlength="20" required formControlName="numerodoc">
       <label for="numerodoc" id="num">Numero de documento</label>

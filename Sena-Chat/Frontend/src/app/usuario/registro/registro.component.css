@@ -3,17 +3,14 @@ body {
 }
 
 .login-box {
-  text-align: center;
   position: absolute;
-  background-color: #ebebeb;
+  top: 50%;
   left: 50%;
-  width: 45rem;
-  height: 72rem;
-  margin-top: 45%;
-  padding-top: 4%;
-  padding-bottom: 4%;
-  padding-left: 2%;
-  padding-right: 2%;
+  text-align: center;
+  background-color: #ebebeb;
+  width: 50rem;
+  height: 90%;
+  padding: 2%;
   transform: translate(-50%, -50%);
   box-sizing: border-box;
   box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
@@ -39,11 +36,7 @@ form {
 .login-box img {
   position: relative;
   padding-top: 0.5rem;
-  width: 12rem;
-}
-
-.login-box #center1 {
-  height: 8.5rem;
+  width: 11rem;
 }
 
 .login-box .user-box {
@@ -55,12 +48,17 @@ form {
   padding: 10px 0;
   font-size: 16px;
   color: #000000;
-  margin-bottom: 30px;
+  margin-bottom: 1rem;
   border: none;
   border-bottom: 1px solid #000000;
   outline: none;
   background: transparent;
   text-align: left;
+}
+
+#c2, #c3, #c4, #c5 {
+  width: 88%;
+  margin: 0 6.5%;
 }
 
 .login-box .user-box label {
@@ -105,33 +103,26 @@ form {
   background-color: #70b470;
 }
 
-.ingreso {
+.registro {
   position: relative;
+  width: 94%;
   font-weight: bold;
-  display: inline-block;
-  padding: 20px 20px;
-  color: #000;
-  font-size: 16px;
+  padding: 15px;
   text-decoration: none;
   text-transform: uppercase;
-  overflow: hidden;
-  transition: 0.5s;
-  margin-top: 20px;
-  letter-spacing: 4px;
-  background: transparent;
-  border-color: #000;
-  border-radius: 5px;
-  border: 1.7px solid #000;
-  box-shadow: inset 0 0 0 0 #000;
-}
-
-.ingreso:hover {
   background: #237023;
   color: #fff;
-  border-radius: 5px;
-  border-color: #237023;
-  box-shadow: 0 0 5px #3a813a, 0 0 25px #3a813a, 0 0 50px #3a813a,
-    0 0 100px #3a813a;
+  overflow: hidden;
+  transition: 0.5s;
+  /* margin-top: 2rem; */
+  border: none;
+  letter-spacing: 2px;
+  text-align: center;
+  border-radius: 15px;
+}
+
+.registro:hover {
+  opacity: 0.6;
 }
 
 .crear-cuenta {
@@ -168,11 +159,11 @@ form #c7 {
   border: none;
   border-bottom: 1px solid #000000;
   outline: none;
+  padding: 10.5px 0;
 }
 
 form #c8 {
   grid-area: documento;
-  margin-top: 25px;
 }
 form #c9 {
   grid-area: password;
@@ -187,17 +178,12 @@ form #c11 {
 form {
   display: grid;
   grid-template-areas:
-    "primernom "
-    "segundonom"
-    "primerape "
-    "segundoape"
-    "tipodoc"
-    "documento "
-    "correo "
-    "username "
-    "password "
-    "confirm"
-    "boton";
+    "primernom segundonom primerape segundoape"
+    "tipodoc tipodoc documento documento"
+    "correo correo username username"
+    "password password confirm confirm"
+    "boton boton boton boton";
+  margin-top:  2%;
 }
 
 @media (min-width: 576px) and (max-width: 991.98px) and (orientation: portrait) {

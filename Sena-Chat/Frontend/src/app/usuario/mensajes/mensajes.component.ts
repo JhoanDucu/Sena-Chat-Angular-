@@ -26,7 +26,7 @@ export class MensajesComponent {
   usuario = this.Sesion.get('documento');
 
   ngOnChanges(changes: SimpleChanges) {
-    // if (changes['mensajeFinal'] && !changes['mensajeFinal'].firstChange) this.hacerScroll(2);
+    if (changes['mensajeFinal'] && !changes['mensajeFinal'].firstChange) setTimeout(() => this.hacerScroll(2), 0);
   }
 
   ngAfterViewInit(): void {

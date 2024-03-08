@@ -43,7 +43,6 @@ export class ChatComponent {
     private socket: SocketService
   ) { }
   @ViewChild('grupos') grupos: any;
-  @ViewChild('mensajes') mensajes: any;
   @Output() carga = new EventEmitter();
   datos = new ChatComponentData({ grupos: [], privados: [] }, {}, { changes: '0', cargando: true });
   grupoSeleccionado: string | null = '';
@@ -120,7 +119,6 @@ export class ChatComponent {
       this.datos.gruposComponent[tipo].find((g: Grupo) => g.id_grupos == grupo)?.mensajes.push(mensaje);
       this.grupos.animarTab(tipo);
     }
-    this.mensajes.hacerScroll(2);
   }
 
   sinGrupo() {

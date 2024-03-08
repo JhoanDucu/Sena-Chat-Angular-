@@ -18,7 +18,7 @@
             <div class="Chat container-fluid">
                 <div class="card mensajes-container">
                     <app-mensajes *appChat="datos.other.changes" [mensajes]="grupoElegido.mensajes"
-                        [mensajeFinal]="grupoElegido.mensajes[grupoElegido.mensajes.length - 1]" #mensajes>
+                        [mensajeFinal]="grupoElegido.mensajes[grupoElegido.mensajes.length - 1]">
                     </app-mensajes>
                 </div>
                 <app-mensajes-enviar (emitir)="enviar($event, grupoSeleccionado)"></app-mensajes-enviar>

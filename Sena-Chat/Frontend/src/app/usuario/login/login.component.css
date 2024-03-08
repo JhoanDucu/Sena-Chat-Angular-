@@ -87,9 +87,8 @@ form #c4 {
 }
 
 .login-box .user-box #tipodoc {
-  padding: 10px 0;
-  position: relative;
-  top: -2.7rem;
+  padding: 12.5px 0;
+  margin-bottom: 2rem;
 }
 
 .login-box .user-box input:focus ~ label,
