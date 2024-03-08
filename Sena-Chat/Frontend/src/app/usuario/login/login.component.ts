@@ -26,7 +26,7 @@ export class LoginComponent {
   valido = true;
  
   Label(){
-    let valid = document.getElementById("tipo");
+    let valid = document.getElementById("tipodoc");
     if (this.formLogin.value.tipodoc === '') {
       valid?.setAttribute('style','top: -20px; left: 6%; color: #000; font-size: 12px;');
     } else if (this.formLogin.value.tipodoc === '0'){
@@ -34,7 +34,7 @@ export class LoginComponent {
     }
   }
   noLabel(){
-    let invalid = document.getElementById("tipo");
+    let invalid = document.getElementById("tipodoc");
     if (this.formLogin.value.tipodoc === '0') {
       invalid?.setAttribute('style','top: 0; left: 6.2%; padding: 10px 0; font-size: 16px; color: #000;');
     } else if (this.formLogin.value.tipodoc === '') {

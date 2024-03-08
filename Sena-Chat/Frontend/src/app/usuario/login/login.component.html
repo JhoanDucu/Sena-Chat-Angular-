@@ -1,11 +1,11 @@
 <div class="login-box">
-  <div id="c0">
+  <div id="c1">
     <img src="../../assets/img/Logo-sesion.png">
   </div>
   <form [formGroup]="formLogin" (ngSubmit)="logear(formLogin.value)">
-    <div class="user-box" id="ajustar-select">
-      <label id="tipo" for="tipodoc">Tipo de Documento</label>
-      <select required id="tipodoc" name="tipodoc" formControlName="tipodoc" (focus)="Label();" (blur)="noLabel();">
+    <div class="user-box" id="c2">
+      <label id="tipodoc" for="tipo">Tipo de Documento</label>
+      <select required id="tipo" formControlName="tipodoc" (focus)="Label();" (blur)="noLabel();">
         <option value="0"></option>
         <option value="1">Cedula de ciudadania</option>
         <option value="2">Tarjeta de identidad</option>
@@ -14,20 +14,20 @@
         <option value="5">Permiso por Protección Temporal</option>
       </select>
     </div>
-    <div class="user-box" id="c2">
+    <div class="user-box" id="c3">
       <input type="text" name="numerodoc" id="numerodoc" maxlength="20" required formControlName="numerodoc">
       <label for="numerodoc" id="num">Numero de documento</label>
     </div>
-    <div class="user-box" id="c3">
+    <div class="user-box" id="c4">
       <input type="password" name="contrasena" id="contrasena" required formControlName="contrasena">
       <label for="contrasena" id="con">Contraseña</label>
-      <p><a class="Cont" [routerLink]="['/contrasena']" routerLinkActive="buttonactive">¿Olvidaste tu contraseña?</a></p>
+      <p><a [routerLink]="['/contrasena']" routerLinkActive="buttonactive">¿Olvidaste tu contraseña?</a></p>
     </div>
-    <div id="c4">
-      <input type="submit" value="Iniciar sesion" class="ingreso" id="c5" name="sesion">
-      <div id="c6">
+    <div id="c5">
+      <input type="submit" value="Iniciar sesion" class="ingreso">
+      <div>
         <p>¿Nuevo en Sena Chat?
-          <a class="button crear-cuenta" [routerLink]="['/registro']" routerLinkActive="buttonactive">Crear Cuenta</a>
+          <a class="crear-cuenta" [routerLink]="['/registro']" routerLinkActive="buttonactive">Crear Cuenta</a>
         </p>  
       </div>
     </div>

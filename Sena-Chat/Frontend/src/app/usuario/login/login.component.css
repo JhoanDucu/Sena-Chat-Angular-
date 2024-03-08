@@ -1,4 +1,7 @@
 .login-box {
+  width: 50%;
+  height: 82%;
+  padding: 2%;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -7,32 +10,20 @@
   box-shadow: 0 5px 13px rgba(0, 0, 0, 0.6);
   border-radius: 4%;
   text-align: center;
-  border: 1.2px solid;
+  border: 1px solid;
   font-family: sans-serif;
 }
 
-form #tipodoc {
-  grid-area: tipodoc;
-}
-form #c2 {
-  grid-area: numerodoc;
-  text-align: left;
-}
-form #c3 {
-  grid-area: password;
-}
-form #c4 {
-  grid-area: other;
+#c1 {
+  margin-bottom: 3%;
+  padding-top: 1%;
+  img {
+    width: 30%;
+    height: 30%;
+  }
 }
 
-.login-box form #c4 {
-  grid-area: other;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.login-box form {
+form {
   margin-top: 2%;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -40,17 +31,58 @@ form #c4 {
     "tipodoc numerodoc"
     "password password"
     "other other";
+  #c2 {
+    grid-area: tipodoc;
+    margin-bottom: 2rem;
+  }
+  #c3 {
+    grid-area: numerodoc;
+    text-align: left;
+  }
+  #c4 {
+    grid-area: password;
+  }
+  #c5 {
+    grid-area: other;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
-.login-box h1 {
-  margin: 0 0 30px;
-  padding: 0;
-  color: #117311;
-  text-align: center;
-}
-
-.login-box .user-box {
+.user-box {
   position: relative;
+  input {
+    width: 94%;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #000000;
+    border: none;
+    border-bottom: 1px solid #000000;
+    outline: none;
+    background: transparent;
+    text-align: left;
+  }
+  select {
+    text-align: left;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #000000;
+    outline: none;
+    padding: 12.5px 0;
+  }
+  label {
+    position: absolute;
+    top: 0;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #000;
+    pointer-events: none;
+    transition: 0.5s;
+  }
+  #tipodoc {
+    left: 6.2%;
+  }
   #num {
     left: 0;
   }
@@ -59,71 +91,68 @@ form #c4 {
   }
 }
 
-.login-box .user-box input {
-  width: 94%;
-  padding: 10px 0;
-  font-size: 16px;
-  color: #000000;
-  border: none;
-  border-bottom: 1px solid #000000;
-  outline: none;
-  background: transparent;
-  text-align: left;
+#c4 {
+  p {
+    text-align: end;
+    margin: 0;
+    margin-right: 3%;
+  }
+  a {
+    cursor: pointer;
+    text-decoration: none;
+    color: #117311;
+    text-shadow: none;
+  }
 }
 
-.login-box .user-box label {
-  position: absolute;
-  top: 0;
-  /* left: 3%; */
-  padding: 10px 0;
-  font-size: 16px;
-  color: #000;
-  pointer-events: none;
-  transition: 0.5s;
-}
-
-.login-box .user-box #tipo {
-  left: 6.2%;
-}
-
-.login-box .user-box #tipodoc {
-  padding: 12.5px 0;
-  margin-bottom: 2rem;
-}
-
-.login-box .user-box input:focus ~ label,
-.login-box .user-box input:valid ~ label {
+input:focus ~ label,
+input:valid ~ label {
   top: -20px;
   left: 3%;
   color: #000;
   font-size: 12px;
 }
 
-.user-box select:focus {
+select:focus {
   border-color: #237023;
   box-shadow: 0 0 5px rgba(81, 173, 68, 0.5);
 }
 
-.user-box select option {
+select option {
   background-color: #70b470;
 }
 
-.ingreso {
-  position: relative;
-  width: 94%;
-  font-weight: bold;
-  padding: 15px;
-  text-decoration: none;
-  text-transform: uppercase;
-  background: #237023;
-  color: #fff;
-  overflow: hidden;
-  transition: 0.5s;
-  margin-top: 2rem;
-  border: none;
-  letter-spacing: 2px;
-  text-align: center;
-  border-radius: 15px;
+#c5 {
+  .ingreso {
+    position: relative;
+    width: 94%;
+    font-weight: bold;
+    padding: 15px;
+    text-decoration: none;
+    text-transform: uppercase;
+    background: #237023;
+    color: #fff;
+    overflow: hidden;
+    transition: 0.5s;
+    margin-top: 2rem;
+    border: none;
+    letter-spacing: 2px;
+    text-align: center;
+    border-radius: 15px;
+  }
+  p {
+    margin: 0;
+    margin-top: 1rem;
+  }
+  .crear-cuenta {
+    cursor: pointer;
+    text-shadow: 0 0 9px #000000;
+    display: inline-block;
+    padding: 10px;
+    text-decoration: none;
+    color: #117311;
+    text-shadow: none;
+  }
 }
 
 .ingreso:hover {
@@ -135,155 +164,4 @@ form #c4 {
   color: #000;
   box-shadow: none;
   border-color: #000;
-}
-
-.Cont {
-  cursor: pointer;
-  text-shadow: 0 0 9px #000000;
-}
-
-.crear-cuenta {
-  cursor: pointer;
-  text-shadow: 0 0 9px #000000;
-}
-
-.login-box .crear-cuenta {
-  position: relative;
-  display: inline-block;
-  padding: 10px;
-  color: #000000;
-}
-
-.user-box select {
-  text-align: left;
-  /* width: 80%; */
-  background: transparent;
-  border: none;
-  border-bottom: 1px solid #000000;
-  outline: none;
-}
-
-.user-box i {
-  position: absolute;
-  right: 0;
-  top: 40%;
-  color: #ffffff;
-  font-size: 18px;
-}
-
-#c3 p {
-  text-align: end;
-  margin: 0;
-  margin-right: 3%;
-}
-
-#c3 p a {
-  text-decoration: none;
-  color: #117311;
-  text-shadow: none;
-  /* margin-left: 70%; */
-}
-
-#c4 #c6 p a {
-  text-decoration: none;
-  color: #117311;
-  text-shadow: none;
-}
-
-#c6 {
-  p {
-    margin: 0;
-    margin-top: 1rem;
-  }
-}
-
-@media (min-width: 576px) and (max-width: 991.98px) and (orientation: portrait) {
-  .login-box {
-    width: 32rem;
-    height: 80%;
-  }
-  .login-box h1 {
-    margin-bottom: 12%;
-  }
-}
-/*fin tablet*/
-
-/*movil*/
-/*Portrait*/
-/*Default*/
-@media (min-width: 260px) and (max-width: 720px) and (orientation: portrait) {
-  .login-box {
-    width: 26rem;
-    height: 90%;
-    overflow-y: auto;
-  }
-  .login-box form {
-    text-align: left;
-    grid-template-columns: 1fr;
-    grid-template-areas:
-      "tipodoc"
-      "numerodoc"
-      "password"
-      "other";
-  }
-  .login-box::-webkit-scrollbar {
-    width: 2%;
-  }
-  .login-box h1 {
-    margin-bottom: 12%;
-  }
-  .login-box .user-box input:focus ~ label,
-  .login-box .user-box input:valid ~ label {
-    left: 0px;
-  }
-  .login-box .user-box #tipo {
-    left: -10%;
-  }
-  .login-box .user-box label {
-    left: 0%;
-  }
-}
-/*landscape*/
-@media (min-width: 576px) and (max-width: 991.98px) and (orientation: landscape) {
-  .login-box {
-    width: 40rem;
-  }
-  .login-box h1 {
-    margin-bottom: 10%;
-  }
-}
-/*fin movil*/
-/*laptop*/
-@media (min-height: 480px) and (max-height: 720px) {
-  .login-box center {
-    margin: 0%;
-  }
-  .login-box img {
-    width: 30%;
-    height: 30%;
-  }
-  .login-box {
-    width: 50%;
-    height: 82%;
-    padding: 2%;
-  }
-  .login-box #c0 {
-    width: 100%;
-    display: flex;
-    margin-bottom: 3%;
-    padding-top: 1%;
-    justify-content: center;
-  }
-  html {
-    height: 100%;
-  }
-  center p {
-    margin: 0% 0%;
-  }
-  .login-box form #c6 {
-    padding-top: 0%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
 }

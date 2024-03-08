@@ -33,6 +33,7 @@ export class RegistroComponent {
     fk_id_tipodoc: this.Tdoc,
     confirmar: new FormControl('', Validators.required)
   });
+
   Label() {
     let valid = document.getElementById("tipo");
     if (this.Tdoc.value === '') {
@@ -78,6 +79,7 @@ export class RegistroComponent {
       sA?.setAttribute('readonly', '');
     }
   }
+
   registrar() {
     this.formRegistro.value.contrasena === this.formRegistro.value.confirmar ? this.registroServicio.enviarDatos(this.formRegistro.value).subscribe((respuesta: any) => {
       if (respuesta[0] == 'Se inserto correctamente el usuario') {
