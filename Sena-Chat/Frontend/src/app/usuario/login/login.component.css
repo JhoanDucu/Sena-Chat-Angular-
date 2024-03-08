@@ -91,6 +91,23 @@ form {
   }
 }
 
+.withError {
+  input {
+    border-bottom-color: #ff0000;
+  }
+  select {
+    border-bottom-color: #ff0000;
+  }
+  .error {
+    width: 100%;
+    position: absolute;
+    margin: 0;
+    text-align: center;
+    font-size: 0.8em;
+    color: #ff0000;
+  }
+}
+
 #c4 {
   p {
     text-align: end;
@@ -102,6 +119,10 @@ form {
     text-decoration: none;
     color: #117311;
     text-shadow: none;
+  }
+  .errorc4 {
+    color: #ff0000;
+    text-align: center;
   }
 }
 

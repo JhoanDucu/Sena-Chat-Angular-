@@ -2,34 +2,40 @@
   <div id="c1">
     <img src="../../assets/img/Logo-sesion.png">
   </div>
-  <form [formGroup]="formLogin" (ngSubmit)="logear(formLogin.value)">
-    <div class="user-box" id="c2">
+  <form [formGroup]="formLogin" (ngSubmit)="validar()">
+    <div [ngClass]="tdoc ? 'user-box withError' : 'user-box'" id="c2">
       <label id="tipodoc" for="tipo">Tipo de Documento</label>
       <select required id="tipo" formControlName="tipodoc" (focus)="Label();" (blur)="noLabel();">
-        <option value="0"></option>
         <option value="1">Cedula de ciudadania</option>
         <option value="2">Tarjeta de identidad</option>
         <option value="3">Cédula de Extranjería</option>
         <option value="4">PEP</option>
         <option value="5">Permiso por Protección Temporal</option>
       </select>
+      @if (tdoc){<p class="error">{{tdoc}}</p>}
     </div>
-    <div class="user-box" id="c3">
-      <input type="text" name="numerodoc" id="numerodoc" maxlength="20" required formControlName="numerodoc">
+    <div [ngClass]="ndoc ? 'user-box withError' : 'user-box'" id="c3">
+      <input type="text" id="numerodoc" maxlength="20" required formControlName="numerodoc" (click)="comprobar(2)">
       <label for="numerodoc" id="num">Numero de documento</label>
+      @if (ndoc){<p class="error">{{ndoc}}</p>}
     </div>
-    <div class="user-box" id="c4">
-      <input type="password" name="contrasena" id="contrasena" required formControlName="contrasena">
+    <div [ngClass]="pass ? 'user-box withError' : 'user-box'" id="c4">
+      <input type="password" id="contrasena" required formControlName="contrasena" (click)="comprobar(3)">
       <label for="contrasena" id="con">Contraseña</label>
-      <p><a [routerLink]="['/contrasena']" routerLinkActive="buttonactive">¿Olvidaste tu contraseña?</a></p>
+      <p [ngClass]="pass ? 'errorc4' : undefined">
+        @if (pass){ {{pass}} } @else {
+        <a [routerLink]="['/contrasena']" routerLinkActive="buttonactive">¿Olvidaste tu contraseña?</a>
+        }
+      </p>
     </div>
     <div id="c5">
-      <input type="submit" value="Iniciar sesion" class="ingreso">
-      <div>
-        <p>¿Nuevo en Sena Chat?
-          <a class="crear-cuenta" [routerLink]="['/registro']" routerLinkActive="buttonactive">Crear Cuenta</a>
-        </p>  
-      </div>
+      <button type="submit" class="ingreso">
+        @if (cargando) { <i class='bx bx-loader-alt bx-spin'></i> }
+        @else { Iniciar sesion }
+      </button>
+      <p>¿Nuevo en Sena Chat?
+        <a class="crear-cuenta" [routerLink]="['/registro']" routerLinkActive="buttonactive">Crear Cuenta</a>
+      </p>
     </div>
     <!-- @if (Sesion.get('error')) {
     <div class="alert alert-primary d-flex align-items-center" role="alert">
