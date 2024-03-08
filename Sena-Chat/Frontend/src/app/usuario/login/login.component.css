@@ -2,17 +2,11 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  /* width: 50rem; */
-  /* padding: 3rem; */
-  /* padding-left: 2rem; */
-  /* padding-right: 2rem; */
   transform: translate(-50%, -50%);
   background-color: #ebebeb;
-  /* box-sizing: border-box; */
   box-shadow: 0 5px 13px rgba(0, 0, 0, 0.6);
   border-radius: 4%;
   text-align: center;
-  /* justify-content: center; */
   border: 1.2px solid;
   font-family: sans-serif;
 }

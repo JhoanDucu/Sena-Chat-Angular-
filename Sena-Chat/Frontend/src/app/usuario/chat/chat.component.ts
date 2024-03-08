@@ -84,7 +84,6 @@ export class ChatComponent {
         this.Chat.masNotificaciones({ u: this.usuario, g: grupo }).subscribe((data: any) => data ?
           this.socket.emitirMensaje({ room: grupo, message: mensaje, pn: pn, pa: pa, u: this.usuario, t: this.Sesion.get('pestaña') })
           : undefined);
-        this.mensajes.hacerScroll();
       });
     });
   }
@@ -121,6 +120,7 @@ export class ChatComponent {
       this.datos.gruposComponent[tipo].find((g: Grupo) => g.id_grupos == grupo)?.mensajes.push(mensaje);
       this.grupos.animarTab(tipo);
     }
+    this.mensajes.hacerScroll(2);
   }
 
   sinGrupo() {

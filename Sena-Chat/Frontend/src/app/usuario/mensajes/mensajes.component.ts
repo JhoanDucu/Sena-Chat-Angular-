@@ -17,22 +17,20 @@ export class MensajesComponent {
     // private rutaActiva: ActivatedRoute,
     protected Sesion: SesionService
   ) { }
-  @ViewChild('final', { static: false }) finalElement!: ElementRef;
+  @ViewChild('componente', { static: false }) mensajesElement!: ElementRef;
   @Input() mensajes: MensajeMostrar[] = [];
   @Input() mensajeFinal: any;
   @Output() detectarMensaje = new EventEmitter();
   grupoSeleccionado = this.Sesion.get('grupos');
   fichaSeleccionada = this.Sesion.get('ficha');
   usuario = this.Sesion.get('documento');
-  
+
   ngOnChanges(changes: SimpleChanges) {
-    if (changes['mensajeFinal'] && !changes['mensajeFinal'].firstChange) this.hacerScroll();
+    // if (changes['mensajeFinal'] && !changes['mensajeFinal'].firstChange) this.hacerScroll(2);
   }
 
   ngAfterViewInit(): void {
-    if (this.mensajes.length !== 0) {
-      this.finalElement.nativeElement.scrollIntoView({ behavior: 'auto', block: 'end' });
-    }
+    if (this.mensajes.length !== 0) this.hacerScroll(1);
   }
 
   ngOnDestroy(): void {
@@ -41,5 +39,10 @@ export class MensajesComponent {
 
   obtenerHora = (date: Date) => `${date.toLocaleTimeString('en-US', { hour: "2-digit", minute: "2-digit" })}`;
 
-  hacerScroll = () => this.finalElement.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'end' });
+  hacerScroll = (behavior: 1 | 2) => {
+    this.mensajesElement.nativeElement.scrollTo({
+      top: this.mensajesElement.nativeElement.scrollHeight,
+      behavior: behavior == 1 ? 'auto' : 'smooth',
+    });
+  }
 }

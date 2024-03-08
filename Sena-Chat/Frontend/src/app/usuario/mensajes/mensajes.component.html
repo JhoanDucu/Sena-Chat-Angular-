@@ -1,4 +1,4 @@
-<div class="card-body chat-box" id="componenteMensajes">
+<div class="card-body chat-box" id="componenteMensajes" #componente>
     @for ( m of mensajes; track m.id_mensaje) {
     @if (m.numerodoc == usuario) {
     <div class="d-flex justify-content-end mb-1">
@@ -21,7 +21,6 @@
         </div>
     </div>
     }
-    @if ($last) { <span id="final" #final></span> }
     } @empty {
     <div class="d-flex justify-content-start">
         <div class="alert alert-warning alert-dismissible fade show" role="alert">

@@ -4,7 +4,7 @@
 
 #componenteMensajes {
   overflow-y: auto;
-  max-height: 455px;
+  max-height: 29rem;
   width: 100%;
 }
 
