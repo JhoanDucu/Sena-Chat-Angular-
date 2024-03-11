@@ -20,7 +20,7 @@ export class LoginComponent {
   ) { }
   formLogin = new FormGroup({
     tipodoc: new FormControl('', Validators.required),
-    numerodoc: new FormControl('', Validators.required),
+    numerodoc: new FormControl('', [Validators.required, Validators.pattern(/^\d+$/)]),
     contrasena: new FormControl('', Validators.required),
   });
   tdoc: any;
@@ -56,6 +56,8 @@ export class LoginComponent {
   validar() {
     if(this.formLogin.get('tipodoc')?.hasError('required')) this.tdoc = 'Seleccione su tipo de documento';
     if(this.formLogin.get('numerodoc')?.hasError('required')) this.ndoc = 'Digite su numero de documento';
+    if (this.formLogin.get('numerodoc')?.hasError('pattern')) this.ndoc = `${this.formLogin.value.tipodoc == '1' ?
+     'C.C' : this.formLogin.value.tipodoc == '2' ? 'T.I' : undefined} Debe ser un numero`;
     if(this.formLogin.get('contrasena')?.hasError('required')) this.pass = 'Digite su contraseña';
     !this.tdoc && !this.ndoc && !this.pass ? this.logear() : undefined;
   }

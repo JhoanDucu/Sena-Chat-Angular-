@@ -6,12 +6,10 @@ exports.inicioSesion = (req, res) => {
   const { tipodoc, numerodoc, contrasena } = req.body;
   const query = `SELECT * FROM usuarios u INNER JOIN usuarios_fichas uf 
                     ON u.numerodoc = uf.numerodoc
-                    WHERE uf.numerodoc = ${numerodoc} AND
-                    fk_id_tipodoc = ${tipodoc} AND contrasena = '${md5(
-    contrasena
-  )}'`;
+                    WHERE uf.numerodoc = ? AND
+                    fk_id_tipodoc = ? AND contrasena = ?`;
 
-  conexion.query(query, (error, resultado) => {
+  conexion.query(query, [numerodoc, tipodoc, md5(contrasena)], (error, resultado) => {
     if (error) return console.error(error.message);
     if (resultado.length > 0) {
       res.json([

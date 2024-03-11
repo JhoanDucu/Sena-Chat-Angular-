@@ -6,8 +6,8 @@
     <div [ngClass]="tdoc ? 'user-box withError' : 'user-box'" id="c2">
       <label id="tipodoc" for="tipo">Tipo de Documento</label>
       <select required id="tipo" formControlName="tipodoc" (focus)="Label();" (blur)="noLabel();">
-        <option value="1">Cedula de ciudadania</option>
-        <option value="2">Tarjeta de identidad</option>
+        <option value="1">Cedula de ciudadania (C.C)</option>
+        <option value="2">Tarjeta de identidad (T.I)</option>
         <option value="3">Cédula de Extranjería</option>
         <option value="4">PEP</option>
         <option value="5">Permiso por Protección Temporal</option>
