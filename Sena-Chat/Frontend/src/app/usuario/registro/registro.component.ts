@@ -81,7 +81,8 @@ export class RegistroComponent {
   }
 
   registrar() {
-    this.formRegistro.value.contrasena === this.formRegistro.value.confirmar ? this.registroServicio.enviarDatos(this.formRegistro.value).subscribe((respuesta: any) => {
+    this.formRegistro.value.contrasena === this.formRegistro.value.confirmar ? 
+    this.registroServicio.enviarDatos(this.formRegistro.value).subscribe((respuesta: any) => {
       if (respuesta[0] == 'Se inserto correctamente el usuario') {
         alert(respuesta[0]);
         this.Sesion.set('documento', respuesta[1]);

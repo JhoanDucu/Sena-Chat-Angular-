@@ -58,26 +58,21 @@ exports.registrarUsuario = (req, res) => {
 
   // Realizar la inserción en la tabla 'usuarios'
   const queryUsuario = "INSERT INTO usuarios SET ?";
-  conexion.query(queryUsuario, usuario, (errorUsuario, resultadoUsuario) => {
+  conexion.query(queryUsuario, usuario, (errorUsuario, resultadoU) => {
     if (errorUsuario) {
       return console.error(errorUsuario.message);
     }
 
     // Realizar la inserción en la tabla 'usuarios_fichas'
     const queryUsuarioFichas = "INSERT INTO usuarios_fichas (id_fichas, numerodoc) VALUES (?, ?)";
-    conexion.query(queryUsuarioFichas, ['0000000', usuario.numerodoc], (errorUsuarioFichas, resultadoUsuarioFichas) => {
+    conexion.query(queryUsuarioFichas, ['0000000', usuario.numerodoc], (errorUsuarioFichas, resultadoUF) => {
       if (errorUsuarioFichas) {
         return console.error(errorUsuarioFichas.message);
       }
       
       // Ambas inserciones fueron exitosas
-      res.json(["Se inserto correctamente el usuario", usuario.nombre_usuario]);
+      res.json(["Se inserto correctamente el usuario", usuario.numerodoc]);
     });
-  
-  // const query = "INSERT INTO usuarios SET ?; INSERT INTO usuarios_fichas (id_fichas, numerodoc) VALUES (?, ?);";
-  // conexion.query(query, [usuario, '0000000', usuario.numerodoc], (error, resultado) => {
-  //   if (error) return console.error(error.message);
-  //   res.json(["Se inserto correctamente el usuario", usuario.nombre_usuario]);
   });
 };
 

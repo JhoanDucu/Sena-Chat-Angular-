@@ -1,4 +1,4 @@
-npm i bootstrap@next @types/bootstrap jquery popper.js @4keys/date-fns-utc-locale-es --save
+npm i bootstrap --save-dev @types/bootstrap jquery popper.js @4keys/date-fns-utc-locale-es --save
 npm install socket.io-client date-fns
 npm install boxicons --save
 

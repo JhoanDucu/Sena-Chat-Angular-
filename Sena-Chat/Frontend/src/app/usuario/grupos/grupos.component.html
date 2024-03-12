@@ -50,7 +50,7 @@
                 role="tab" aria-controls="perfil" aria-selected="false" [disabled]="enBusqueda"
                 (click)="mostrarTab('perfil')">
                 @if (usuario.foto) {<img [src]="'../../../assets/img/'+usuario.foto">}
-                @else {<img src="../../../assets/img/usuario.png">}
+                @else {<img src="../../../assets/img/perfil3.jpg">}
             </button>
         </div>
     </ul>
@@ -64,7 +64,6 @@
 <div class="tab-content" id="myTabContent">
     <div [ngClass]="tabs.grupos.class ? 'tab-pane fade show active' : 'tab-pane fade'" id="grupos" role="tabpanel"
         aria-labelledby="grupos">
-        @if (datos.grupos[0]) {
         <div class="tab" role="tablist">
             <div class="list-group" id="list-tab" role="tablist">
                 <app-grupos-titulo [titulo]="'Grupos'"></app-grupos-titulo>
@@ -73,15 +72,20 @@
                     [active]="picked.g == g.id_grupos ? true : false" [grupo]="g" [tiempo]="tiene(g, 'fecha_hora')"
                     [reciente]="tiene(g, 'contenido_mensaje')" (moverGrupo)="cambiarPosicion($index, 'grupos')">
                 </app-grupo>
+                } @empty {
+                    <h4>No hay grupos por mostrar...</h4>
+                    <div class="aviso">
+                        @if (usuario.id_fichas == '0000000') {
+                        <span>Pida a su instructor que lo incluyan en una ficha</span>
+                        }
+                    </div>
                 }
             </div>
         </div>
-        }
     </div>
 
     <div [ngClass]="tabs.privados.class ? 'tab-pane fade show active' : 'tab-pane fade'" id="privados" role="tabpanel"
         aria-labelledby="privados">
-        @if (datos.privados[0]) {
         <div class="tab" id="privados" role="tablist">
             <div class="list-group" id="list-tab" role="tablist">
                 <app-grupos-titulo [titulo]="'Privados'"></app-grupos-titulo>
@@ -90,10 +94,11 @@
                     [active]="picked.g == p.id_grupos ? true : false" [grupo]="p" [tiempo]="tiene(p, 'fecha_hora')"
                     [reciente]="tiene(p, 'contenido_mensaje')" (moverGrupo)="cambiarPosicion($index, 'privados')">
                 </app-grupo>
+                } @empty {
+                    <h1>A trabajar</h1>
                 }
             </div>
         </div>
-        }
     </div>
     <div [ngClass]="tabs.perfil.class ? 'tab-pane fade show active' : 'tab-pane fade'" id="perfil" role="tabpanel"
         aria-labelledby="perfil">

@@ -101,15 +101,28 @@
   justify-content: center;
   align-items: center;
   color: white;
-  font-size: x-large;
   i {
-    font-size: 30px;
-    margin-left: 10px;
+    font-size: 2rem;
+    margin-left: 0.5rem;
+    align-self: center;
   }
 }
 
-#labelCambiarImg:hover {
-  opacity: 0.6;
+#spanCambiarImg {
+  display: flex;
+  width: 68vh;
+  height: 68vh;
+  border-radius: 50%;
+  font-size: x-large;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.3s;
+  opacity: 0;
+}
+
+#spanCambiarImg:hover {
+  opacity: 1;
 }
 
 #toastImg {

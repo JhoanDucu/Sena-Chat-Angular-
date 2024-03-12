@@ -12,9 +12,10 @@
         </div>
         <div class="offcanvas-body">
             <div id="presentacion">
-                <label for="cambiarImg" id="labelCambiarImg" (mouseleave)="activarBoton()" (mouseenter)="activarBoton()"
-                    [style.background-image]="'url('+ '../../../assets/img/' + usuario.foto+')'">
-                    @if (hoverImg) { <span>Cambiar foto </span><i class='bx bxs-camera'></i> }
+                <label for="cambiarImg" id="labelCambiarImg" (mouseleave)="activarBoton()"(mouseenter)="activarBoton()"
+                    [style.background-image]="usuario.foto ? 'url('+'../../../assets/img/'+usuario.foto+')' : 
+                    'url(../../../assets/img/perfil3.jpg)'">
+                    @if (hoverImg) { <span id="spanCambiarImg">Cambiar foto <i class='bx bxs-camera'></i></span> }
                     <input type="file" id="cambiarImg" hidden>
                 </label>
                 <span id="nombreUsuario">
