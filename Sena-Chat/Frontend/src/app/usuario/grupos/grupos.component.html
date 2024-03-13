@@ -73,11 +73,18 @@
                     [reciente]="tiene(g, 'contenido_mensaje')" (moverGrupo)="cambiarPosicion($index, 'grupos')">
                 </app-grupo>
                 } @empty {
-                    <h4>No hay grupos por mostrar...</h4>
+                    <h4 id="tituloAviso">No hay grupos por mostrar...</h4>
                     <div class="aviso">
-                        @if (usuario.id_fichas == '0000000') {
+                        <div class="espacioIcono"><i class='bx bx-error' ></i></div>
+                        <div class="espacioTexto">
+                            <h4>Aviso!</h4>
+                            <p>No se te ha asignado una ficha</p>
+                            <button>Más información</button>
+                        </div>
+                        <!-- @if (usuario.id_fichas == '0000000') {
                         <span>Pida a su instructor que lo incluyan en una ficha</span>
-                        }
+                        
+                        } -->
                     </div>
                 }
             </div>

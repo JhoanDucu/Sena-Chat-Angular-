@@ -1,0 +1,41 @@
+#escoger {
+  display: flex;
+  flex-direction: row;
+}
+
+.variasFichas {
+  border: 1px solid;
+  width: 24px;
+  height: 24px;
+  margin: 0;
+}
+
+.modal-footer {
+  display: block;
+  .col {
+    padding: 0;
+  }
+
+  .mensajesFichas {
+    width: 88%;
+    resize: none;
+    outline: none;
+    margin-right: 0.9rem;
+  }
+
+  #mensajeFichas {
+    height: 6vh;
+  }
+
+  .mensajesFichas::-webkit-scrollbar {
+    width: 0px;
+  }
+
+  #mensajeFichas2 {
+    height: 12vh;
+  }
+
+  #mensajeFichas3 {
+    height: 18vh;
+  }
+}
