@@ -1,0 +1,34 @@
+#offcanvasScrolling {
+  width: 62%;
+}
+#enviar {
+  height: 45px;
+  width: 45px;
+  border-radius: 50%;
+  background-color: transparent;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* border: 1px solid black; */
+  margin: 0 1%;
+}
+
+#iconoEnviar {
+  font-size: 30px;
+  color: black;
+}
+
+#iconoEnviar:hover {
+  color: #0e882d;
+}
+
+.carousel-inner {
+  background-color: black;
+}
+
+.carousel-item img {
+  width: 500px;
+  height: 400px;
+  object-fit: contain;
+}

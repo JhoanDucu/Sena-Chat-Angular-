@@ -1,0 +1,51 @@
+<div class="offcanvas offcanvas-end show" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1"
+    id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasScrollingLabel">
+            Colored with scrolling
+        </h5>
+        <button type="button" class="btn-close text-reset" (click)="emitirCerrar()"></button>
+    </div>
+    <div class="offcanvas-body">
+        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                @for (a of imagenes; track a) { @if (imagenes.indexOf(a) == 0) {
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+                    aria-current="true" aria-label="Slide 1"></button>
+                } @else {
+                <button type="button" data-bs-target="#carouselExampleIndicators"
+                    attr.data-bs-slide-to="{{ imagenes.indexOf(a) }}"
+                    attr.aria-label="Slide {{imagenes.indexOf(a)+1}}"></button>
+                } }
+            </div>
+            <div class="carousel-inner">
+                @for (a of imagenes; track a) { @if (imagenes.indexOf(a) == 0) {
+                <div class="carousel-item active">
+                    <img [src]="a" class="d-block w-100" alt="..." />
+                </div>
+                } @else {
+                <div class="carousel-item">
+                    <img [src]="a" class="d-block w-100" alt="..." />
+                </div>
+                } }
+            </div>
+            @if (imagenes.length > 1) {
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+            }
+        </div>
+        <div class="position-absolute bottom-0 end-0">
+            <button class="btn btn-success" type="submit" id="enviar">
+                <i class="bx bxs-send" id="iconoEnviar"></i>
+            </button>
+        </div>
+    </div>
+</div>

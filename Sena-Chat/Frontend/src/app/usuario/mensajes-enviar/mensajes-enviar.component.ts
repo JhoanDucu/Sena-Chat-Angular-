@@ -4,11 +4,12 @@ import { FormControl, FormGroup, FormGroupDirective, FormsModule, ReactiveFormsM
 import { SesionService } from '../Sesiones/sesion.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MensajeEmitir } from '../Modelos/mensaje';
+import { MensajesImagenComponent } from '../mensajes-imagen/mensajes-imagen.component';
 
 @Component({
   selector: 'app-mensajes-enviar',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, FormsModule],
+  imports: [CommonModule, ReactiveFormsModule, FormsModule, MensajesImagenComponent],
   templateUrl: './mensajes-enviar.component.html',
   styleUrl: './mensajes-enviar.component.css'
 })
