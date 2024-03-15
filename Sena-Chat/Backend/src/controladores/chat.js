@@ -1,4 +1,5 @@
 const conexion = require("./conexion");
+
 const selectGrupos = 
 `ug.id_usuarios_grupos, 
 g.id_grupos,
@@ -165,3 +166,8 @@ exports.reiniciarSinLeer = (req, res) => {
     }
   });
 };
+
+exports.subirImagen = (req, res) => {
+  // Aquí puedes manejar la lógica después de la subida del archivo
+  res.send('¡Imagen subida con éxito!');
+}

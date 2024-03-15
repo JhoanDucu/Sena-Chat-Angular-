@@ -1,6 +1,6 @@
 npm init
 npm install express mysql2 body-parser nodemailer cors md5 swagger-ui-express swagger-jsdoc --save
-npm i nodemon socket.io --save-dev
+npm i nodemon socket.io --save-dev multer
 "scripts" : "dev": "nodemon server.js"
 npm run dev
 

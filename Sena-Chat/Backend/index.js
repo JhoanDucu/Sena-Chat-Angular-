@@ -17,6 +17,7 @@ const Rutas = {
 
 const swaggerUI = require("swagger-ui-express");
 const swaggerJsDoc = require("swagger-jsdoc");
+
 const swaggerDefinition = {
   openapi: "3.0.0",
   info: {
@@ -56,6 +57,7 @@ app.use("/chat", Rutas.chat);
 app.use("/admin", Rutas.admin);
 
 app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerSpec));
+app.use("imagenes", express.static(path.join(__dirname, 'imagenes')));
 
 const puerto = 3000;
 http.listen(puerto, () => {
