@@ -2,9 +2,9 @@ import { Component, EventEmitter, Output, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormControl, FormGroup, FormGroupDirective, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { SesionService } from '../Sesiones/sesion.service';
-import { DomSanitizer } from '@angular/platform-browser';
 import { MensajeEmitir } from '../Modelos/mensaje';
 import { MensajesImagenComponent } from '../mensajes-imagen/mensajes-imagen.component';
+import { ChatService } from '../Servicios/chat.service';
 
 @Component({
   selector: 'app-mensajes-enviar',
@@ -16,7 +16,7 @@ import { MensajesImagenComponent } from '../mensajes-imagen/mensajes-imagen.comp
 export class MensajesEnviarComponent {
   constructor(
     protected Sesion: SesionService,
-    private sanitizer: DomSanitizer
+    private Chat: ChatService
   ) { }
 
   @ViewChild(FormGroupDirective)
@@ -27,42 +27,48 @@ export class MensajesEnviarComponent {
     archivo: new FormControl('')
   });
   archivos: string[] = [];
+  imagenes: Array<File> = [];
   noEnviar: boolean | undefined = true;
   offcanvasClass = '';
 
   longitud() {
-    this.form.get('contenido_mensaje')?.value?.trim().length 
-    ? this.noEnviar = false : this.noEnviar = true;
+    this.form.get('contenido_mensaje')?.value?.trim().length
+      ? this.noEnviar = false : this.noEnviar = true;
   }
 
   emitirEnvio(formValue: any) {
-    formValue.archivo ? formValue.id_tipo = 'incluir tipo de mensaje' : formValue.id_tipo = '1';
-    formValue.archivo ? formValue.contenido_mensaje = formValue.archivo : delete formValue.archivo;
     formValue.id_mensaje = undefined;
-    this.emitir.emit(formValue);
-    this.form.reset();
+    if (formValue.archivo) {
+      this.imagenes.forEach((element) => {
+        const formData = new FormData();
+        formData.append('file', element);
+        formValue.id_tipo = '2';
+        this.Chat.subirImagen(formData).subscribe(data => formValue.contenido_mensaje = data);
+        this.emitir.emit(formValue);
+      });
+    } else {
+      formValue.id_tipo = '1';
+      delete formValue.archivo;
+      this.emitir.emit(formValue);
+    }
+    this.cerrar();
   }
 
   obtenerArchivo(event: any) {
     for (const key in event.files) {
-      key !== 'length' && key !== 'item' ? this.convertFile(event.files[key]).then(
-        (image: any) => {
-          this.archivos.push(image);
-        }
-      ) : undefined;
+      if (key !== 'length' && key !== 'item') {
+        this.convertFile(event.files[key]).then((image: any) => this.archivos.push(image));
+        this.imagenes.push(event.files[key]);
+      }
     }
   }
 
   convertFile = async (file: File) => new Promise((resolve, reject) => {
     try {
-      // const insegura = window.URL.createObjectURL(file);
-      // const segura = this.sanitizer.bypassSecurityTrustUrl(insegura);
       const reader = new FileReader();
       reader.readAsDataURL(file);
       reader.onload = () => { resolve(reader.result) };
-    } catch (error) {
-      console.error(error);
-    }
+    } catch (error) { console.error(error); }
   });
 
   cerrar() {

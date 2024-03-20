@@ -43,4 +43,7 @@ export class ChatService {
   cambiarEstadoCarga(estado: boolean) {
     this.cargandoSubject.next(estado);
   }
+  subirImagen(datos: FormData) {
+    return this.http.post(`${this.url}/chat/subir-imagen`, datos);
+  }
 }
