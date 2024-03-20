@@ -1,39 +1,40 @@
--- drop database sena_chat;   PA BORRAR POR SI ES EXISTENTE
-create database SENA_CHAT;
-	use SENA_CHAT;
+DROP DATABASE IF EXISTS sena_chat;    
+CREATE DATABASE SENA_CHAT;
+	USE SENA_CHAT;
 
-create table ficha
+CREATE TABLE ficha
 (
-	id_ficha INT NOT NULL,
+	id_ficha VARCHAR(10) NOT NULL,
 	programa_formacion VARCHAR(50) NOT NULL,
+	trimestre INT NOT NULL,
 	PRIMARY KEY (id_ficha)
 );
 
-create table roles
+CREATE TABLE roles
 (
 	id_rol INT NOT NULL,
 	nombre_rol VARCHAR(20) NOT NULL,
 	PRIMARY KEY (id_rol)
 );
 
-create table tipo_documento
+CREATE TABLE tipo_documento
 (
 	id_tipodoc INT NOT NULL,
 	descripcion_tipodoc VARCHAR (60) NOT NULL,
 	PRIMARY KEY (id_tipodoc)
 );
 
-create table mensaje 
+CREATE TABLE mensaje 
 (
 	id_mensaje INT NOT NULL AUTO_INCREMENT,
 	fecha_hora DATETIME NOT NULL,
 	contenido_mensaje VARCHAR(10000) NOT NULL,
-	fk_destino INT NOT NULL,
+	fk_destino VARCHAR(50) NOT NULL,
 	id_tipo INT NOT NULL,
 	PRIMARY KEY (id_mensaje)
 );
 
-create table tipo_mensaje9*+
+CREATE TABLE tipo_mensaje
 (
 	id_tipo INT NOT NULL,
 	Nom_tipo VARCHAR(20) NOT NULL,
@@ -41,17 +42,18 @@ create table tipo_mensaje9*+
 	PRIMARY KEY (id_tipo)
 );
 
-create table grupos
+CREATE TABLE grupos
 (
 	id_grupos INT NOT NULL AUTO_INCREMENT,
 	nom_grupos VARCHAR(20) NOT NULL,
-	descripcion_grupos VARCHAR(50) NOT NULL,
-	id_ficha INT NOT NULL,
+	descripcion_grupos VARCHAR(110) NOT NULL,
+	id_ficha VARCHAR(10) NOT NULL,
+	foto_grupo VARCHAR(100) NULL,
 	fk_tipo_grupo INT NOT NULL,
 	PRIMARY KEY (id_grupos)
 );
 
-create table usuarios
+CREATE TABLE usuarios
 (
 	correo VARCHAR(100) NOT NULL,
 	primer_nom VARCHAR(20) NOT NULL,
@@ -59,28 +61,36 @@ create table usuarios
 	primer_apellido VARCHAR(20) NOT NULL,
 	segundo_apellido VARCHAR(20) NULL,
 	contrasena VARCHAR(100) NOT NULL,
-	nombre_usuario VARCHAR(50) NOT NULL,
-	foto VARCHAR(30) NULL,
+	nombre_usuario VARCHAR(20) NOT NULL,
+	descripcion VARCHAR(140) NULL,
+	foto VARCHAR(100) NULL,
 	fk_id_rol INT NOT NULL,
 	numerodoc VARCHAR(20) NOT NULL,
 	fk_id_tipodoc INT NOT NULL,
-	fk_id_ficha INT NOT NULL,
 	PRIMARY KEY (numerodoc, fk_id_rol, fk_id_tipodoc)
 );
 
-create table usuarios_grupos 
+CREATE TABLE usuarios_grupos 
 (
-	id_usuarios_grupos INT NOT NULL AUTO_INCREMENT,
+	id_usuarios_grupos VARCHAR(50) NOT NULL,
 	id_grupos INT NOT NULL,
 	numerodoc VARCHAR(20) NOT NULL,
-	PRIMARY KEY (id_usuarios_grupos, id_grupos, numerodoc)
+	sin_leer INT NULL,
+	PRIMARY KEY (id_usuarios_grupos)
 );
 
-create table tipo_grupo
+CREATE TABLE tipo_grupo
 (
 	id_tipo_grupo INT NOT NULL,
 	descripcion_tipo_grupos VARCHAR(20) NOT NULL,
 	PRIMARY KEY(id_tipo_grupo)
+);
+
+CREATE TABLE usuarios_fichas 
+(
+	id_fichas VARCHAR(10) NOT NULL,
+	numerodoc VARCHAR(20) NOT NULL,
+	PRIMARY KEY (id_fichas, numerodoc)
 );
 
 ALTER TABLE grupos 
@@ -101,7 +111,7 @@ REFERENCES grupos (id_grupos);
 ALTER TABLE usuarios_grupos
 ADD CONSTRAINT FK_PK_id_usuarios 
 FOREIGN KEY (numerodoc)
-REFERENCES usuarios (numerodoc);
+REFERENCES usuarios (numerodoc) ON DELETE CASCADE ON UPDATE CASCADE;
 
 ALTER TABLE usuarios
 ADD CONSTRAINT FK_PK_id_rol
@@ -113,11 +123,6 @@ ADD CONSTRAINT FK_PK_id_documento
 FOREIGN KEY (fk_id_tipodoc)
 REFERENCES tipo_documento (id_tipodoc);
 
-ALTER TABLE usuarios
-ADD CONSTRAINT FK_id_ficha
-FOREIGN KEY (fk_id_ficha)
-REFERENCES ficha (id_ficha);
-
 ALTER TABLE mensaje
 ADD CONSTRAINT FK_Destino
 FOREIGN KEY (fk_destino)
@@ -128,16 +133,29 @@ ADD CONSTRAINT FK_PK_id_tipo
 FOREIGN KEY (id_tipo)
 REFERENCES tipo_mensaje (id_tipo);
 
+ALTER TABLE usuarios_fichas
+ADD CONSTRAINT FK_PK_id_fichas
+FOREIGN KEY (id_fichas)
+REFERENCES ficha (id_ficha);
+
+ALTER TABLE usuarios_fichas
+ADD CONSTRAINT FK_PK_usuarios 
+FOREIGN KEY (numerodoc)
+REFERENCES usuarios (numerodoc) ON DELETE CASCADE ON UPDATE CASCADE;
+
 INSERT INTO ficha VALUES 
-('2558101','Analisis Y Desarrollo De Software'),
-('2558102','Arte, cultura, esparcimiento y deportes'),
-('2558103','Tecnologías de la Información'),
-('2558104','Finanzas'),
-('2558105','Administración');
+('0000000', 'Sin ficha en el sistema',0),
+('2558101','Analisis Y Desarrollo De Software', 1),
+('2558102','Arte, cultura, esparcimiento y deportes', 4),
+('2558103','Finanzas', 2),
+('2558104','Analisis Y Desarrollo De Software', 2),
+('2558105','Arte, cultura, esparcimiento y deportes', 4),
+('2558106','Arte, cultura, esparcimiento y deportes', 3);
 
 INSERT INTO roles VALUES 
 ('1','INSTRUCTOR'),
-('2','APRENDIZ');
+('2','APRENDIZ'),
+('3', 'ADMINISTRADOR');
 
 INSERT INTO tipo_documento VALUES 
 ('1','Cédula de Ciudadanía'),
@@ -156,112 +174,139 @@ INSERT INTO tipo_grupo VALUES
 (2, 'Grupal');
 
 INSERT INTO usuarios VALUES 
-('juan.cardenas34@misena.edu.co','Juan','David','Cardenas','Perez',MD5('123'),'juan_cardenas',NULL,'2',1131104356,1, '2558101'),
-('camilo@gmail.com','Camilo',NULL,'Perez',NULL,MD5('123'),'carlosperez',NULL,'2','1234567911',1,'2558101'),
-('sebastian@gmail.com','Sebastian',NULL,'Carrillo',NULL,MD5('123'),'sebastian_123',NULL,'2','12345678912',1,'2558102'),
-('isabella.mitchell@example.com','Isabella',NULL,'Mitchell',NULL,MD5('123'),'isabella',NULL,'2','12345678913',1,'2558102'),
-('ethan.johnson@example.com','Ethan',NULL,'Johnson',NULL,MD5('123'),'ethan',NULL,'2','12345678914',1,'2558102'),
-('sophia.anderson@example.com','Sophia',NULL,'Anderson',NULL,MD5('123'),'sophia',NULL,'2','12345678916',1,'2558102'),
-('alexander.turner@example.com','Alexander',NULL,'Turner',NULL,MD5('123'),'alexander',NULL,'2','12345678917',1,'2558102'),
-('olivia.brooks@example.com','Olivia',NULL,'Brooks',NULL,MD5('123'),'oliva',NULL,'2','12345678918',1,'2558102'),
-('mia.parker@example.com','Mia',NULL,'Parker',NULL,MD5('123'),'mia',NULL,'2','12345678919',1,'2558102'),
-('Minnick@gmail.com','Nicolas',NULL,'Rincon',NULL,MD5('minnick'),'nicolas_rincon',NULL,'2','1021392807',1,'2558101'),
-('johndoe@example.com', 'John', 'David', 'Doe', NULL, MD5('password123'), 'johndoe', 'john.jpg', '2', '12345678001', 1, '2558102'),
-('isaura@example.com', 'Isaura', 'Maria', 'Suarez', 'Novoa', MD5('789'), 'Isaura', NULL, '1', '12345678018', 2, '2558101'),
-('heivercuesta@misena.edu.co', 'Heiver', NULL, 'Cuesta', 'Davila', MD5('abc'), 'Heiver', NULL, '1', '12345678019', 2, '2558101'),
-('leonardo@example.com', 'Leonardo', NULL, 'Pineda', NULL, MD5('xyz'), 'Leonardo', NULL, '1', '12345678020', 2, '2558101'),
-('Manolo@example.com', 'Manolo', 'Esteban', 'Olivo', 'Rodrigez', MD5('789'), 'Manolo', NULL, '1', '12345678021', 2, '2558102'),
-('wendybohorquez1987@gmail.com', 'Wendy', NULL, 'Bohorquez', NULL, MD5('abc'), 'Wendy', NULL, '1', '12345678022', 2, '2558102'),
-('javier@example.com', 'Javier', NULL, 'Almanza', 'Vela', MD5('xyz'), 'Javier', NULL, '1', '12345678023', 2, '2558102'),
-('Alejandro@example.com', 'Maria', 'Alejandra', 'Garcia', 'Romero', MD5('789'), 'Alejandra', NULL, '1', '12345678024', 2, '2558103');
+('j', 'j', 'j', 'j', 'j', MD5('321'), 'JHOAN', 'Entusiasta de la tecnología y los videojuegos. Siempre en busca de nuevas aventuras en la web.', NULL, '3', 1024471018, 1),
+('juan.cardenas34@misena.edu.co','Juan','David','Cardenas','Perez',MD5('123'),'juan_cardenas','Apasionado por la programación y el desarrollo web. ¡Listo para aprender y crecer en este mundo digital!', 'Usuario11.jpg', '2', 1131104356, 1),
+('camilo@gmail.com','Camilo',NULL,'Perez',NULL,MD5('123'),'carlosperez','Amante de los deportes y la música. Siempre dispuesto a charlar sobre los últimos lanzamientos en la industria musical.', 'Usuario10.jpg','2','1234567911',1),
+('sebastian@gmail.com','Sebastian',NULL,'Carrillo',NULL,MD5('123'),'sebastian_123','Fanático de los viajes y la fotografía. Compartamos historias y experiencias de viaje mientras exploramos el mundo juntos.', 'Usuario9.jpg','2','12345678912',1),
+('isabella.mitchell@example.com','Isabella',NULL,'Mitchell',NULL,MD5('123'),'isabella','Adicta a los libros y al café. Siempre buscando nuevas lecturas y lugares acogedores para disfrutar de una buena taza.', 'Usuario8.jpg','2','12345678913',1),
+('ethan.johnson@example.com','Ethan',NULL,'Johnson',NULL,MD5('123'),'ethan','Entusiasta del cine y la cultura pop. ¡Hablemos de películas, series y todo lo relacionado con el mundo del entretenimiento!', 'Usuario7.jpg','2','12345678914',1),
+('sophia.anderson@example.com','Sophia',NULL,'Anderson',NULL,MD5('123'),'sophia','Amante de la naturaleza y los animales. Siempre buscando nuevas aventuras al aire libre y amigos peludos para acompañarme.', 'Usuario6.jpg','2','12345678916',1),
+('alexander.turner@example.com','Alexander',NULL,'Turner',NULL,MD5('123'),'alexander','Aventurero y amante de la adrenalina. Siempre listo para nuevas experiencias y desafíos emocionantes.', 'Usuario5.jpg','2','12345678917',1),
+('olivia.brooks@example.com','Olivia',NULL,'Brooks',NULL,MD5('123'),'oliva','Apasionada por la cocina y la gastronomía. ¡Hablemos de recetas, restaurantes y todo lo relacionado con el mundo culinario!', 'Usuario4.jpg','2','12345678918',1),
+('mia.parker@example.com','Mia',NULL,'Parker',NULL,MD5('123'),'mia','Fanática del fitness y el bienestar. Siempre buscando nuevas formas de mantenerme activa y saludable.', 'Usuario3.jpg','2','12345678919',1),
+('Minnick@gmail.com','Nicolas',NULL,'Rincon',NULL,MD5('minnick'),'nicolas_rincon','Emprendedor y amante de la tecnología. Siempre en busca de nuevas oportunidades para innovar y crecer profesionalmente.', 'Usuario2.jpg','2','1021392807',1),
+('johndoe@example.com', 'John', 'David', 'Doe', NULL, MD5('password123'), 'johndoe', 'Entusiasta de la música y los conciertos en vivo. Siempre buscando nuevas bandas para escuchar y experiencias musicales para disfrutar.', 'Usuario10.jpg', '2', '12345678001', 1),
+('isaura@example.com', 'Isaura', 'Maria', 'Suarez', 'Novoa', MD5('789'), 'Isaura', 'Apasionada por el arte y la creatividad. Siempre buscando inspiración en cada rincón del mundo para mis proyectos artísticos.', 'Usuario1.jpg', '1', '12345678018', 2),
+('heivercuesta@misena.edu.co', 'Heiver', NULL, 'Cuesta', 'Davila', MD5('abc'), 'Heiver', 'Estudiante dedicado y amante del aprendizaje. ¡Siempre listo para adquirir nuevos conocimientos y enfrentar desafíos académicos!', 'Usuario8.jpg', '1', '12345678019', 2),
+('leonardo@example.com', 'Leonardo', NULL, 'Pineda', NULL, MD5('xyz'), 'Leonardo', 'Amante de los deportes extremos y la naturaleza. Siempre en busca de nuevas aventuras al aire libre y experiencias emocionantes.', 'Usuario6.jpg', '1', '12345678020', 2),
+('Manolo@example.com', 'Manolo', 'Esteban', 'Olivo', 'Rodrigez', MD5('789'), 'Manolo', 'Fanático de los videojuegos y la tecnología. Siempre buscando nuevos desafíos en el mundo digital y conectando con otros gamers.', 'Usuario5.jpg', '1', '12345678021', 2),
+('wendybohorquez1987@gmail.com', 'Wendy', NULL, 'Bohorquez', NULL, MD5('abc'), 'Wendy', 'Entusiasta de la moda y el estilo. Siempre buscando las últimas tendencias y compartiendo consejos de moda con amigos.', 'Usuario7.jpg', '1', '12345678022', 2),
+('javier@example.com', 'Javier', NULL, 'Almanza', 'Vela', MD5('xyz'), 'Javier', 'Amante de la música y la guitarra. Siempre buscando inspiración en cada nota y compartiendo melodías con otros aficionados.', 'Usuario4.jpg', '1', '12345678023', 2),
+('Alejandro@example.com', 'Maria', 'Alejandra', 'Garcia', 'Romero', MD5('789'), 'Alejandra', 'Apasionado por los viajes y la fotografía. Siempre en busca de nuevos destinos para explorar y capturar momentos memorables con mi cámara.', 'Usuario9.jpg', '1', '12345678024', 2);
 
-INSERT INTO grupos VALUES
-('1','grupo 1','grupo de Heiver, ficha 2558101','2558101',2),
-('2','grupo 2','grupo de Leonardo, ficha 2558101','2558101',2),
-('3','grupo 3','grupo de Isaura, ficha 2558101','2558101',2),
-('4','grupo 4','grupo de Manolo, ficha de 2558102','2558102',2),
-('5','grupo 5','grupo de Wendy, ficha 2558102','2558102',2),
-('6','grupo 6','grupo de Javier, ficha 2558102','2558102',2),
-('7','grupo 7','grupo de Alejandra, ficha 2558103','2558103',2),
-('8', 'nicolas_rincon', 'Privado', '2558101',1),
-('9', 'carlosperez', 'Privado', '2558101',1),
-('10', 'Isaura-Juan', 'Privado', '2558101',1),
-('11', 'Isaura-Nicolas', 'Privado', '2558101',1),
-('12', 'Sebastian', 'Privado', '2558102',1),
-('13', 'Isabella', 'Privado', '2558102',1),
-('14', 'Ethan', 'Privado', '2558102',1),
-('15', 'Sophia', 'Privado', '2558102',1),
-('16', 'Alexander', 'Privado', '2558102',1),
-('17', 'Olivia', 'Privado', '2558102',1),
-('18', 'Mia Parker', 'Privado', '2558102',1),
-('19', 'Javier', 'Privado', '2558102',1),
-('20', 'Wendy', 'Privado', '2558102',1);
+
+INSERT INTO usuarios_fichas VALUES
+('0000000', '1024471018'),
+('2558101', '1131104356'),
+('2558101', '1021392807'),
+('2558101', '1234567911'),
+('2558101', '12345678019'),
+('2558101', '12345678020'),
+('2558101', '12345678018'),
+('2558102', '12345678021'),
+('2558102', '12345678022'),
+('2558102', '12345678023'),
+('2558102', '12345678912'),
+('2558102', '12345678913'),
+('2558102', '12345678914'),
+('2558102', '12345678916'),
+('2558102', '12345678917'),
+('2558102', '12345678918'),
+('2558102', '12345678919'),
+('2558102', '12345678001'),
+('2558103', '12345678024'),
+('2558104', '12345678019'),
+('2558104', '12345678020');
+-- APRENDICES PARA LA FICHA AQUI
+
+
+INSERT INTO grupos VALUES 
+('1','grupo de Heiver','Exploración de técnicas avanzadas de inteligencia artificial aplicadas al desarrollo de sistemas autónomos.','2558101', 'Grupo1.jpg',2),
+('2','grupo de Leonardo','Estudio de metodologías de seguridad informática en el desarrollo de aplicaciones web y móviles.','2558101', 'Grupo2.jpg',2),
+('3','grupo de Isaura','Análisis comparativo de lenguajes de programación para el desarrollo de aplicaciones en la nube.','2558101', 'Grupo3.jpg',2),
+('4','grupo de Manolo','Estudio del impacto del deporte en la cultura juvenil.','2558102', 'Grupo4.jpg', 2),
+('5','grupo de Wendy','Análisis de tendencias culturales en la industria del entretenimiento.','2558102', 'Grupo5.png', 2),
+('6','grupo de Javier','Exploración de la relación entre arte y tecnología en la era digital.','2558102', 'Grupo6.jpg', 2),
+('7','grupo de Alejandra','Gestión financiera en organizaciones sin fines de lucro.','2558103', 'Grupo7.jpg', 2),
+('8', 'nicolas_rincon', 'Privado', '2558101', NULL, 1),
+('9', 'carlosperez', 'Privado', '2558101', NULL, 1),
+('10', 'Isaura-Juan', 'Privado', '2558101', NULL, 1),
+('11', 'Isaura-Nicolas', 'Privado', '2558101', NULL, 1),
+('12', 'Sebastian', 'Privado', '2558102', NULL, 1),
+('13', 'Isabella', 'Privado', '2558102', NULL, 1),
+('14', 'Ethan', 'Privado', '2558102', NULL, 1),
+('15', 'Sophia', 'Privado', '2558102', NULL, 1),
+('16', 'Alexander', 'Privado', '2558102', NULL, 1),
+('17', 'Olivia', 'Privado', '2558102', NULL, 1),
+('18', 'Mia Parker', 'Privado', '2558102', NULL, 1),
+('19', 'Javier', 'Privado', '2558102', NULL, 1),
+('20', 'Wendy', 'Privado', '2558102', NULL, 1);
 
 INSERT INTO usuarios_grupos VALUES
-('1', '1', '12345678019'),	 	# Heiver - Grupo 1
-('2', '1', '1131104356'), 		# Juan - Grupo 1
-('3', '1', '1021392807'),  		# Nicolas - Grupo 1
-('4', '1', '1234567911'),  		# Camilo - Grupo 1
-('5', '2', '12345678020'), 		# Leonardo - Grupo 2
-('6', '2', '1131104356'),  		# Juan - Grupo 2
-('7', '2', '1021392807'),  		# Nicolas - Grupo 2
-('8', '2', '1234567911'),  		# Camilo - Grupo 2
-('9', '3', '12345678018'), 		# Isaura - Grupo 3
-('10', '3', '1131104356'),  	# Juan - Grupo 3
-('11', '3', '1021392807'),  	# Nicolas - Grupo 3
-('12', '4', '12345678021'), 	# Manolo - Grupo 4
-('13', '4', '12345678912'), 	# Sebastian -  Grupo 4
-('14', '4', '12345678913'), 	# Isabella - Grupo 4
-('15', '4', '12345678914'),		# Ethan - Grupo 4
-('16', '4', '12345678916'), 	# Sophia - Grupo 4
-('17', '4', '12345678917'),		# Alexander - Grupo 4
-('18', '4', '12345678918'),		# Olivia - Grupo 4
-('19', '4', '12345678919'), 	# Mia - Grupo 4
-('20', '4', '12345678001'),		# John - Grupo 4
-('21', '5', '12345678022'), 	# Wendy - Grupo 5
-('22', '5', '12345678912'), 	# Sebastian -  Grupo 5
-('23', '5', '12345678913'), 	# Isabella - Grupo 5
-('24', '5', '12345678914'),		# Ethan - Grupo 5
-('25', '5', '12345678916'), 	# Sophia - Grupo 5
-('26', '5', '12345678917'),		# Alexander - Grupo 5
-('27', '5', '12345678918'),		# Olivia - Grupo 5
-('28', '5', '12345678919'), 	# Mia - Grupo 5
-('29', '5', '12345678001'),		# John - Grupo 5
-('30', '6', '12345678023'), 	# Javier - Grupo 6
-('31', '6', '12345678912'), 	# Sebastian -  Grupo 6
-('32', '6', '12345678913'), 	# Isabella - Grupo 6
-('33', '6', '12345678914'),		# Ethan - Grupo 6
-('34', '6', '12345678916'), 	# Sophia - Grupo 6
-('35', '6', '12345678917'),		# Alexander - Grupo 6
-('36', '6', '12345678918'),		# Olivia - Grupo 6
-('37', '6', '12345678919'), 	# Mia - Grupo 6
-('38', '6', '12345678001'),		# John - Grupo 6
-('39', '8', '1131104356'),		# Juan - Privado 8
-('40', '8', '1021392807'),		# Nicolas - Privado 8
-('41', '9', '1131104356'),		# Juan - Privado 9
-('42', '9', '1234567911'),		# Camilo - Privado 9
-('43', '10', '1131104356'),		# Juan - Privado 10
-('44', '10', '12345678018'),	# Isaura - Privado 10
-('45', '11', '1021392807'),		# Nicolas - Privado 11
-('46', '11', '12345678018'),	# Isaura - Privado 11
-('47', '12', '12345678001'),	# John - Privado 12
-('48', '12', '12345678912'),	# Sebastian - Privado 12
-('49', '13', '12345678001'),	# John - Privado 13
-('50', '13', '12345678913'),	# Isabella - Privado 13
-('51', '14', '12345678001'),	# John - Privado 14
-('52', '14', '12345678914'),	# Ethan - Privado 14
-('53', '15', '12345678001'),	# John - Privado 15
-('54', '15', '12345678916'),	# Sophia - Privado 15
-('55', '16', '12345678001'),	# John - Privado 16
-('56', '16', '12345678917'),	# Alexander - Priavdo 16
-('57', '17', '12345678001'),	# John - Privado 17
-('58', '17', '12345678918'),	# Olivia - Privado 17
-('59', '18', '12345678001'),	# John - Privado 18
-('60', '18', '12345678919'),	# Mia - Privado 18
-('61', '19', '12345678001'),	# John - Privado 19
-('62', '19', '12345678023'),	# Javier - Privado 19
-('63', '20', '12345678001'),	# John - Privado 20
-('64', '20', '12345678022');	# Wendy - Privado 20
+('1', '1', '12345678019', NULL),	 	# Heiver - Grupo 1
+('2', '1', '1131104356', 2), 		# Juan - Grupo 1
+('3', '1', '1021392807', NULL),  		# Nicolas - Grupo 1
+('4', '1', '1234567911', NULL),  		# Camilo - Grupo 1
+('5', '2', '12345678020', NULL), 		# Leonardo - Grupo 2
+('6', '2', '1131104356', NULL),  		# Juan - Grupo 2
+('7', '2', '1021392807', NULL),  		# Nicolas - Grupo 2
+('8', '2', '1234567911', NULL),  		# Camilo - Grupo 2
+('9', '3', '12345678018', NULL), 		# Isaura - Grupo 3
+('10', '3', '1131104356', NULL),  	# Juan - Grupo 3
+('11', '3', '1021392807', NULL),  	# Nicolas - Grupo 3
+('12', '4', '12345678021', NULL), 	# Manolo - Grupo 4
+('13', '4', '12345678912', NULL), 	# Sebastian -  Grupo 4
+('14', '4', '12345678913', NULL), 	# Isabella - Grupo 4
+('15', '4', '12345678914', NULL),		# Ethan - Grupo 4
+('16', '4', '12345678916', NULL), 	# Sophia - Grupo 4
+('17', '4', '12345678917', NULL),		# Alexander - Grupo 4
+('18', '4', '12345678918', NULL),		# Olivia - Grupo 4
+('19', '4', '12345678919', NULL), 	# Mia - Grupo 4
+('20', '4', '12345678001', NULL),		# John - Grupo 4 
+('21', '5', '12345678022', NULL), 	# Wendy - Grupo 5
+('22', '5', '12345678912', NULL), 	# Sebastian -  Grupo 5
+('23', '5', '12345678913', NULL), 	# Isabella - Grupo 5
+('24', '5', '12345678914', NULL),		# Ethan - Grupo 5
+('25', '5', '12345678916', NULL), 	# Sophia - Grupo 5
+('26', '5', '12345678917', NULL),		# Alexander - Grupo 5
+('27', '5', '12345678918', NULL),		# Olivia - Grupo 5
+('28', '5', '12345678919', NULL), 	# Mia - Grupo 5
+('29', '5', '12345678001', NULL),		# John - Grupo 5
+('30', '6', '12345678023', NULL), 	# Javier - Grupo 6
+('31', '6', '12345678912', NULL), 	# Sebastian -  Grupo 6
+('32', '6', '12345678913', NULL), 	# Isabella - Grupo 6
+('33', '6', '12345678914', NULL),		# Ethan - Grupo 6
+('34', '6', '12345678916', NULL), 	# Sophia - Grupo 6
+('35', '6', '12345678917', NULL),		# Alexander - Grupo 6
+('36', '6', '12345678918', NULL),		# Olivia - Grupo 6
+('37', '6', '12345678919', NULL), 	# Mia - Grupo 6
+('38', '6', '12345678001', NULL),		# John - Grupo 6
+('39', '8', '1131104356', NULL),		# Juan - Privado 8
+('40', '8', '1021392807', NULL),		# Nicolas - Privado 8
+('41', '9', '1131104356', NULL),		# Juan - Privado 9
+('42', '9', '1234567911', NULL),		# Camilo - Privado 9
+('43', '10', '1131104356', NULL),		# Juan - Privado 10
+('44', '10', '12345678018', NULL),	# Isaura - Privado 10
+('45', '11', '1021392807', NULL),		# Nicolas - Privado 11
+('46', '11', '12345678018', NULL),	# Isaura - Privado 11
+('47', '12', '12345678001', NULL),	# John - Privado 12
+('48', '12', '12345678912', NULL),	# Sebastian - Privado 12
+('49', '13', '12345678001', NULL),	# John - Privado 13
+('50', '13', '12345678913', NULL),	# Isabella - Privado 13
+('51', '14', '12345678001', NULL),	# John - Privado 14
+('52', '14', '12345678914', NULL),	# Ethan - Privado 14
+('53', '15', '12345678001', NULL),	# John - Privado 15
+('54', '15', '12345678916', NULL),	# Sophia - Privado 15
+('55', '16', '12345678001', NULL),	# John - Privado 16
+('56', '16', '12345678917', NULL),	# Alexander - Priavdo 16
+('57', '17', '12345678001', NULL),	# John - Privado 17
+('58', '17', '12345678918', NULL),	# Olivia - Privado 17
+('59', '18', '12345678001', NULL),	# John - Privado 18
+('60', '18', '12345678919', NULL),	# Mia - Privado 18
+('61', '19', '12345678001', NULL),	# John - Privado 19
+('62', '19', '12345678023', NULL),	# Javier - Privado 19
+('63', '20', '12345678001', NULL),	# John - Privado 20
+('64', '20', '12345678022', NULL);	# Wendy - Privado 20
 
 INSERT INTO mensaje VALUES
 ('1', '2023-11-25 10:30:00','HOLA','1','1'),

@@ -1,30 +1,34 @@
 const conexion = require("./conexion");
-const selectGrupos = `
-ug.id_usuarios_grupos, 
+
+const selectGrupos = 
+`ug.id_usuarios_grupos, 
 g.id_grupos,
 g.nom_grupos,
 g.descripcion_grupos,
 g.id_ficha,
+g.fk_tipo_grupo,
 ug.sin_leer,
-COALESCE(subquery.fecha_reciente, '') as fecha_reciente
-`;
+COALESCE(subquery.fecha_reciente, '') as fecha_reciente,`;
 
-const subconsultaGrupos = `
-(SELECT ug.id_grupos, 
-COALESCE(MAX(m.fecha_hora), '') as fecha_reciente
-FROM usuarios_grupos ug
+const subconsultaGrupos = 
+`( SELECT ug.id_grupos, COALESCE(MAX(m.fecha_hora), '') as fecha_reciente
+FROM usuarios_grupos ug LEFT JOIN mensaje m 
+ON m.fk_destino = ug.id_usuarios_grupos GROUP BY ug.id_grupos)`;
+
+const subconsultaPrivados = 
+`( SELECT ug.id_grupos, u.foto as foto_grupo, u.numerodoc as doc, COALESCE(MAX(m.fecha_hora), '') as fecha_reciente
+FROM usuarios_grupos ug INNER JOIN usuarios u ON u.numerodoc = ug.numerodoc
 LEFT JOIN mensaje m ON m.fk_destino = ug.id_usuarios_grupos
-GROUP BY ug.id_grupos)
-`;
+WHERE u.numerodoc <> '1131104356' GROUP BY ug.id_grupos, u.foto, u.numerodoc)`;
 
 exports.obtenerGrupos = (req, res) => {
   const numerodoc = req.params.usuario;
-  const query = `SELECT ${selectGrupos} FROM grupos g
+  const query = `SELECT ${selectGrupos} g.foto_grupo FROM grupos g
                   LEFT JOIN ${subconsultaGrupos} subquery ON g.id_grupos = subquery.id_grupos
                   LEFT JOIN usuarios_grupos ug ON g.id_grupos = ug.id_grupos
                   WHERE numerodoc = ? AND fk_tipo_grupo <> 1
                   ORDER BY fecha_reciente DESC`;
-  
+
   conexion.query(query, [numerodoc], (error, result) => {
     if (error) console.error(error.message);
 
@@ -38,8 +42,8 @@ exports.obtenerGrupos = (req, res) => {
 
 exports.obtenerMiembros = (req, res) => {
   const grupo = req.params.grupo;
-  const query = `SELECT primer_nom, segundo_nom, primer_apellido, segundo_apellido, ug.numerodoc, u.fk_id_rol
-          FROM usuarios_grupos ug INNER JOIN usuarios u 
+  const query = `SELECT primer_nom, segundo_nom, primer_apellido, segundo_apellido, ug.numerodoc, 
+          u.fk_id_rol, foto, descripcion FROM usuarios_grupos ug INNER JOIN usuarios u 
           ON u.numerodoc = ug.numerodoc WHERE ug.id_grupos = ${grupo} ORDER BY u.fk_id_rol`;
 
   conexion.query(query, (error, result) => {
@@ -70,7 +74,8 @@ exports.obtenerInformacion = (req, res) => {
 
 exports.obtenerMensajes = (req, res) => {
   const grupo = req.params.grupo;
-  const query = `SELECT id_mensaje, primer_nom, primer_apellido, fecha_hora, contenido_mensaje, id_tipo, u.numerodoc FROM usuarios_grupos ug
+  const query = `SELECT id_mensaje, primer_nom, primer_apellido, fecha_hora, contenido_mensaje, id_tipo, u.numerodoc 
+          FROM usuarios_grupos ug
           INNER JOIN grupos g ON ug.id_grupos = g.id_grupos 
           INNER JOIN usuarios u ON u.numerodoc = ug.numerodoc
           INNER JOIN mensaje m ON m.fk_destino = ug.id_usuarios_grupos
@@ -114,13 +119,13 @@ exports.insertarMensaje = (req, res) => {
 
 exports.obtenerPrivados = (req, res) => {
   const numerodoc = req.params.documento;
-  const query = `SELECT ${selectGrupos} FROM grupos g
-                  LEFT JOIN ${subconsultaGrupos} subquery ON g.id_grupos = subquery.id_grupos
+  const query = `SELECT ${selectGrupos} subquery.foto_grupo, subquery.doc FROM grupos g
+                  LEFT JOIN ${subconsultaPrivados} subquery ON g.id_grupos = subquery.id_grupos
                   LEFT JOIN usuarios_grupos ug ON g.id_grupos = ug.id_grupos
                   WHERE numerodoc = ? AND fk_tipo_grupo <> 2
                   ORDER BY fecha_reciente DESC`;
-  
-  conexion.query(query, [numerodoc], (error, result) => {
+
+  conexion.query(query, [numerodoc, numerodoc], (error, result) => {
     if (error) console.error(error.message);
 
     if (result.length > 0) {
@@ -161,3 +166,8 @@ exports.reiniciarSinLeer = (req, res) => {
     }
   });
 };
+
+exports.subirImagen = (req, res) => {
+  // Aquí puedes manejar la lógica después de la subida del archivo
+  res.send('¡Imagen subida con éxito!');
+}
