@@ -30,8 +30,7 @@
     </div>
     <div id="c5">
       <button type="submit" class="ingreso">
-        @if (cargando) { <i class='bx bx-loader-alt bx-spin'></i> }
-        @else { Iniciar sesion }
+        @if (cargando) { <i class='bx bx-loader-alt bx-spin'></i> } @else { Iniciar sesion }
       </button>
       <p>¿Nuevo en Sena Chat?
         <a class="crear-cuenta" [routerLink]="['/registro']" routerLinkActive="buttonactive">Crear Cuenta</a>

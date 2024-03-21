@@ -11,7 +11,7 @@
   width: 100%;
   margin: 2vh 4vh;
   .nav-link {
-    color: rebeccapurple;
+    color: black;
     span {
       position: absolute;
       background-color: red;

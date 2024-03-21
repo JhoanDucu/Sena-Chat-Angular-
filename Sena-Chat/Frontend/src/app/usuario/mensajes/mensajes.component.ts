@@ -12,9 +12,7 @@ import { SesionService } from '../Sesiones/sesion.service';
 })
 export class MensajesComponent {
   constructor(
-    // private router: Router,
-    // private Chat: ChatService,
-    // private rutaActiva: ActivatedRoute,
+    // private Chat: ChatService
     protected Sesion: SesionService
   ) { }
   @ViewChild('componente', { static: false }) mensajesElement!: ElementRef;

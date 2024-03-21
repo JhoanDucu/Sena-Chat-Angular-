@@ -32,13 +32,14 @@ export class MensajesEnviarComponent {
   offcanvasClass = '';
 
   longitud() {
-    this.form.get('contenido_mensaje')?.value?.trim().length
-      ? this.noEnviar = false : this.noEnviar = true;
+    this.form.get('contenido_mensaje')?.value?.trim().length ?
+    this.noEnviar = false : this.noEnviar = true;
   }
 
   emitirEnvio(formValue: any) {
     formValue.id_mensaje = undefined;
     if (formValue.archivo) {
+      delete formValue.archivo;
       this.imagenes.forEach((element) => {
         const formData = new FormData();
         formData.append('file', element);

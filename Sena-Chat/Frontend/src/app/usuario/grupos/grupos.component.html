@@ -73,19 +73,18 @@
                     [reciente]="tiene(g, 'contenido_mensaje')" (moverGrupo)="cambiarPosicion($index, 'grupos')">
                 </app-grupo>
                 } @empty {
-                    <h4 id="tituloAviso">No hay grupos por mostrar...</h4>
-                    <div class="aviso">
-                        <div class="espacioIcono"><i class='bx bx-error' ></i></div>
-                        <div class="espacioTexto">
-                            <h4>Aviso!</h4>
-                            <p>No se te ha asignado una ficha</p>
-                            <button>Más información</button>
-                        </div>
-                        <!-- @if (usuario.id_fichas == '0000000') {
-                        <span>Pida a su instructor que lo incluyan en una ficha</span>
-                        
-                        } -->
+                <h4 id="tituloAviso">No hay grupos por mostrar...</h4>
+                @if (usuario.id_fichas == '0000000') {
+                <div class="aviso">
+                    <div class="espacioIcono"><i class='bx bx-error'></i></div>
+                    <div class="espacioTexto">
+                        <h4>Aviso!</h4>
+                        <p>No se te ha asignado una ficha</p>
+                        <!-- <button>Más información</button> -->
                     </div>
+                    <!-- <span>Pida a su instructor que lo incluyan en una ficha</span> -->
+                </div>
+                }
                 }
             </div>
         </div>
@@ -102,7 +101,18 @@
                     [reciente]="tiene(p, 'contenido_mensaje')" (moverGrupo)="cambiarPosicion($index, 'privados')">
                 </app-grupo>
                 } @empty {
-                    <h1>A trabajar</h1>
+                <h4 id="tituloAviso">No hay privados por mostrar...</h4>
+                @if (usuario.id_fichas == '0000000') {
+                <div class="aviso">
+                    <div class="espacioIcono"><i class='bx bx-error'></i></div>
+                    <div class="espacioTexto">
+                        <h4>Aviso!</h4>
+                        <p>No se te ha asignado una ficha</p>
+                        <!-- <button>Más información</button> -->
+                    </div>
+                    <!-- <span>Pida a su instructor que lo incluyan en una ficha</span> -->
+                </div>
+                }
                 }
             </div>
         </div>

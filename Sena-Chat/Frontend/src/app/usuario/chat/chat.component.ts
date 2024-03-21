@@ -16,6 +16,7 @@ import { Fecha } from '../Modelos/fechas';
 import { PerfilEditarComponent } from '../perfil-editar/perfil-editar.component';
 import { MensajesVariosComponent } from '../mensajes-varios/mensajes-varios.component';
 import { CerrarSesionComponent } from '../cerrar-sesion/cerrar-sesion.component';
+import { ChatAnimacionComponent } from '../chat-animacion/chat-animacion.component';
 
 @Component({
   selector: 'app-chat',
@@ -30,7 +31,8 @@ import { CerrarSesionComponent } from '../cerrar-sesion/cerrar-sesion.component'
     MensajesEnviarComponent,
     PerfilEditarComponent,
     MensajesVariosComponent,
-    CerrarSesionComponent
+    CerrarSesionComponent,
+    ChatAnimacionComponent
   ],
   templateUrl: './chat.component.html',
   styleUrl: './chat.component.css'

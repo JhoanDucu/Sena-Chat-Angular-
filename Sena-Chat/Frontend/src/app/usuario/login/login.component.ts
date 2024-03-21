@@ -27,6 +27,7 @@ export class LoginComponent {
   ndoc: any;
   pass: any;
   cargando = false;
+  textoBotonIngreso = '';
 
   Label() {
     this.comprobar(1);
@@ -76,7 +77,7 @@ export class LoginComponent {
         };
         // this.loginServicio.mandarCorreo('hello').subscribe((r)=>console.log(r));
       } else {
-        // alert('Usuario no existe');
+        this.pass = 'Datos de inicio de sesión inválidos';
         this.cargando = false;
       }
     });

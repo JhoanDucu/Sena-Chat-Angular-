@@ -4,22 +4,17 @@ const nodeMailer = require("nodemailer");
 
 exports.inicioSesion = (req, res) => {
   const { tipodoc, numerodoc, contrasena } = req.body;
-  const query = `SELECT * FROM usuarios u INNER JOIN usuarios_fichas uf 
-                    ON u.numerodoc = uf.numerodoc
-                    WHERE uf.numerodoc = ? AND
-                    fk_id_tipodoc = ? AND contrasena = ?`;
+  const query = 
+  `SELECT uf.id_fichas, uf.numerodoc, u.fk_id_rol FROM usuarios u
+  INNER JOIN usuarios_fichas uf ON u.numerodoc = uf.numerodoc
+  WHERE uf.numerodoc = ? AND fk_id_tipodoc = ? AND contrasena = ?`;
 
   conexion.query(query, [numerodoc, tipodoc, md5(contrasena)], (error, resultado) => {
     if (error) return console.error(error.message);
     if (resultado.length > 0) {
-      res.json([
-        resultado[0].id_fichas,
-        resultado[0].numerodoc,
-        resultado[0].fk_id_rol,
-      ]);
-    } else {
-      res.json("No existe registro");
-    }
+      const { id_fichas, numerodoc, fk_id_rol } = resultado[0];
+      res.json([id_fichas, numerodoc, fk_id_rol]);
+    } else res.json("No existe registro");
   });
 };
 
