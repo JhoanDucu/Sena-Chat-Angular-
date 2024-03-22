@@ -4,7 +4,7 @@ export interface MensajeEnviar {
     contenido_mensaje: string | undefined,
     archivo?: string,
     fk_destino: string,
-    id_tipo: string,
+    id_tipo: number,
 }
 
 export interface MensajeMostrar {
@@ -14,7 +14,7 @@ export interface MensajeMostrar {
     fecha_hora: any,
     contenido_mensaje: string | undefined,
     numerodoc: any,
-    id_tipo: string,
+    id_tipo: number,
     [key: string]: any;
 }
 

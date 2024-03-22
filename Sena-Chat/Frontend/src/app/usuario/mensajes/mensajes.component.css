@@ -1,15 +1,24 @@
 .card-body {
   padding-bottom: 1%;
-}
-
-#componenteMensajes {
   overflow-y: auto;
   max-height: 29rem;
   width: 100%;
 }
 
-#mensajesPropios {
-  max-width: 50%;
+.Propio {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 0.25rem;
+}
+
+.Ajeno {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 0.25rem;
+}
+
+.mensajesPropios {
+  max-width: 55%;
   margin-bottom: 3px;
   background: #3d803d;
   border-top-left-radius: 10px;
@@ -17,45 +26,43 @@
   border-top-right-radius: 5px;
   border-bottom-right-radius: 1px;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: end;
   word-wrap: break-word;
   overflow-x: hidden;
+  padding: 0.5rem;
+  color: #ffffff;
 }
 
-#contenido {
-  padding-right: 10px;
-  word-wrap: break-word;
-  word-break: break-word;
-}
-
-#horaPropios {
+.horaPropios {
   margin: 0;
-  bottom: 100%;
-  margin-top: 7%;
+  margin-top: 2%;
   padding: 0;
   font-size: 0.7em;
   text-align: right;
   font-weight: bold;
 }
 
-#mensajesAjenos {
+.mensajesAjenos {
+  max-width: 55%;
   background: #ffffff;
   margin-bottom: 3px;
   border-top-left-radius: 5px;
   border-bottom-left-radius: 1px;
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
-  max-width: 50%;
+  padding: 0.5rem;
+  color: black;
 }
 
-#nombreEmisor {
+.nombreEmisor {
   margin: 0;
   font-size: 0.8em;
   font-weight: bold;
 }
 
-#horaAjenos {
+.horaAjenos {
   margin: 0;
   font-size: 0.7em;
   font-weight: bold;
@@ -65,13 +72,7 @@
   bottom: -3%;
 }
 
-/* DETECCION DE ERRORES */
-
-/* #iconoInformacion {
-  font-size: 30px;
-  margin-right: 10px;
-} */
-
-/* #sinMensaje {
-  font-size: 20px;
-} */
+span {
+  word-wrap: break-word;
+  word-break: break-word;
+}

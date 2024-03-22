@@ -45,7 +45,7 @@ export class MensajesVariosComponent {
           fecha_hora: '',
           contenido_mensaje: formValue.mensajeFichas,
           fk_destino: value,
-          id_tipo: '1'
+          id_tipo: 1
         });
         this.deseleccionar.emit();
       });

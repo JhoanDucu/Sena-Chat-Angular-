@@ -1,42 +1,23 @@
-<div class="card-body chat-box" id="componenteMensajes" #componente>
+<div class="card-body" #componente>
     @for ( m of mensajes; track m.id_mensaje) {
-    @if (m.numerodoc == usuario) {
-    <div class="d-flex justify-content-end mb-1">
-        <div class="text-white p-2" id="mensajesPropios">
-            <span id="contenido"> {{ m.contenido_mensaje }} </span>
-            @if (m.fecha_hora) {
-            <p id="horaPropios"> {{ obtenerHora(m.fecha_hora) }}</p>
-            } @else {
-            <p id="horaPropios"><i class='bx bx-message-square-error'></i></p>
+    <div [ngClass]="m.numerodoc == usuario ? 'Propio' : 'Ajeno'">
+        <div [ngClass]="m.numerodoc == usuario ? 'mensajesPropios' : 'mensajesAjenos'">
+            @if (m.numerodoc != usuario) { <p class="nombreEmisor">~~ {{ m.primer_nom }} </p> }
+            @if (m.id_tipo === 1) { <span> {{ m.contenido_mensaje  }} </span> }
+            @if (m.id_tipo === 2) {
+                <img src="../../../assets/img/Grupo.png">
             }
+            <p [ngClass]="m.numerodoc == usuario ? 'horaPropios' : 'horaAjenos'">
+                {{ obtenerHora(m.fecha_hora) }}
+            </p>
         </div>
     </div>
-    } @else {
-    <div class="d-flex justify-content-start mb-1">
-        <div class="text-dark p-2" id="mensajesAjenos">
-            <p id="nombreEmisor">~~ {{ m.primer_nom }} </p>
-            <span> {{ m.contenido_mensaje }} </span>
-            <p id="horaAjenos">{{ obtenerHora(m.fecha_hora) }}</p>
-        </div>
-    </div>
-    }
     } @empty {
-    <div class="d-flex justify-content-start">
+    <div class="Ajeno">
         <div class="alert alert-warning alert-dismissible fade show" role="alert">
             <strong>Envia un mensaje!</strong> para comenzar 😁
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     </div>
     }
-
-    <!-- DETECCION DE ERRORES -->
-
-    <!-- @if (Sesion.get('error')) {
-        <div class="alert alert-primary d-flex align-items-center" role="alert">
-            <i class='bx bx-error-alt' id="iconoInformacion"></i>
-            <div id="sinMensaje">
-                {{ Sesion.get('error') }}
-            </div>
-        </div>
-    } -->
 </div>
