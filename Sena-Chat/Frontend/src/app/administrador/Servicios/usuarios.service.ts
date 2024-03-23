@@ -5,10 +5,9 @@ import { url } from '../../../servidor';
 @Injectable({
   providedIn: 'root'
 })
-export class ConfigurarService {
+export class UsuariosService {
   constructor(private http: HttpClient) { }
-  
-  actualizarUsuario(Datos: any, numerodoc: any) {
-    return this.http.put(`${url}/usuario/configurar/${numerodoc}`, Datos);
+  traerUsuarios(){
+    return this.http.get(`${url}/admin/usuarios`);
   }
 }

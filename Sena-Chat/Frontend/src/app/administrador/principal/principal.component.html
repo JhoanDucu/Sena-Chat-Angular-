@@ -3,8 +3,7 @@
     <nav class="navbar bg-body-tertiary">
         <div class="container-fluid d-flex justify-content-center">
             <a class="navbar-brand position-absolute top-50 start-0 translate-middle-y">
-                <img src="../../../assets/img/Logo-sesion.png"
-                    alt="Logo" class="logo-img">
+                <img src="../../../assets/img/Logo-sesion.png" alt="Logo" class="logo-img">
                 <span class="ms-3 text-success my-custom-font fw-medium mt-2">ADMIN</span>
             </a>
         </div>
@@ -68,6 +67,13 @@
             <div class="row">
                 <div class="col-12" style="margin-top: 90px;">
                     <!-- Contenido dinámico -->
+                    <div class="search-container" style="position: absolute; top: 20px; right: 20px;">
+                        <input class="form-control" type="search" placeholder="Busca">
+                        <i class="bi bi-search" style="position: absolute; right: 10px; top: 7px;"></i>
+                    </div>
+                    <!-- (click)="mostrarCrear()" -->
+                    <button  class="btn-crear" style="position: absolute; top: 20px; left: 20px;">Crear
+                        nuevo</button>
                     @if (opcion === 'grupos') { <app-vis-grupos></app-vis-grupos> }
                     @if (opcion === 'usuarios') { <app-vis-usuario></app-vis-usuario> }
                     @if (opcion === 'mensajes') { <app-vis-mensaje></app-vis-mensaje> }

@@ -5,10 +5,9 @@ import { url } from '../../../servidor';
 @Injectable({
   providedIn: 'root'
 })
-export class ConfigurarService {
+export class GruposService {
   constructor(private http: HttpClient) { }
-  
-  actualizarUsuario(Datos: any, numerodoc: any) {
-    return this.http.put(`${url}/usuario/configurar/${numerodoc}`, Datos);
+  traerGrupos(){
+    return this.http.get(`${url}/admin/grupos`);
   }
 }

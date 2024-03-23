@@ -24,12 +24,12 @@ export class PrincipalComponent implements OnInit {
     this.message = '';
   }
 
-  opcion: string = 'grupos';
+  opcion: 'grupos' | 'usuarios' | 'mensajes' | 'fichas' = 'grupos';
 
   message!: string;
 
   ngOnInit() { }
 
-  seleccionarOpcion = (opcion: string) => this.opcion = opcion;
+  seleccionarOpcion = (opcion: any) => this.opcion = opcion;
 
 }

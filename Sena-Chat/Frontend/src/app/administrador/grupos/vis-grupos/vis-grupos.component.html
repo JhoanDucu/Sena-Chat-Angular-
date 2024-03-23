@@ -1,81 +1,75 @@
 @if(mostrar){
-    <app-crear-grupo (mostrar)="mostrarCrear()"></app-crear-grupo>
+<app-crear-grupo (mostrar)="mostrarCrear()"></app-crear-grupo>
 }@else{
-    <div class="search-container" style="position: absolute; top: 20px; right: 20px;">
-        <input class="form-control" type="search" placeholder="Busca">
-    <i class="bi bi-search" style="position: absolute; right: 10px; top: 7px;"></i>
-    </div>
-    
-    <button (click)="mostrarCrear()" class="btn-crear" style="position: absolute; top: 20px; left: 20px;">Crear nuevo</button>
-    
-    <div class="contenedor-padre">
-        <!-- Tus contenedores aquí -->
-        <div class="contenedor">
-            <div class="header">
-                <img src="https://github.com/JhoanDucu/Sena-Chat-Angular-/blob/main/Sena-Chat/Frontend/src/assets/img/Grupo.png?raw=true" alt="Imagen del grupos" class="imagen">
-                <h2 class="titulo">Titulo del grupos aquí</h2>
-            </div>
-            <p class="texto-completo">Tu texto largo aquí</p>
-            <div class="parrafos">
-                <p class="parrafo">Num. Miembros: <span>20</span></p>
-                <p class="parrafo">Ficha: <span>22558104</span></p>
-            </div>
-            <button class="btn-info" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Más Información</button>
-            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-                <div class="offcanvas-header">
-                    <h5 class="offcanvas-title" id="offcanvasRightLabel">Información adicional</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                </div>
-                <div class="offcanvas-body">
-                    <span>Nombre del grupo</span>
-                    <p class="parrafo">Nombre del grupo</p>
-                    <p class="texto-completo">Tu texto largo aquí</p>
-                    <p class="parrafo">Num. Miembros: <span>20</span></p>
-                    <p class="parrafo">Ficha: <span>22558104</span></p>
-                    <p class="parrafo">Miembros:</p>
-
-                    <div class="miembro">
-                        <img src="https://github.com/JhoanDucu/Sena-Chat-Angular-/blob/main/Sena-Chat/Frontend/src/assets/img/User.png?raw=true" alt="Imagen del miembro" class="miembro-imagen">
-                        <div class="miembro-info">
-                            <h5 class="miembro-nombre">Juan David Cardenas Perez</h5>
-                            <p class="miembro-detalle">Detalle del miembro</p>
-                        </div>
-                        <button class="btn-eliminar-miembro">Eliminar</button>
-                    </div>
-                    <!-- Mas de ejemplo -->
-
-                    <div class="miembro">
-                        <img src="https://github.com/JhoanDucu/Sena-Chat-Angular-/blob/main/Sena-Chat/Frontend/src/assets/img/User.png?raw=true" alt="Imagen del miembro" class="miembro-imagen">
-                        <div class="miembro-info">
-                            <h5 class="miembro-nombre">Juan David Cardenas Perez</h5>
-                            <p class="miembro-detalle">Detalle del miembro</p>
-                        </div>
-                        <button class="btn-eliminar-miembro">Eliminar</button>
-                    </div>
-
-                    <div class="miembro">
-                        <img src="https://github.com/JhoanDucu/Sena-Chat-Angular-/blob/main/Sena-Chat/Frontend/src/assets/img/User.png?raw=true" alt="Imagen del miembro" class="miembro-imagen">
-                        <div class="miembro-info">
-                            <h5 class="miembro-nombre">Juan David Cardenas Perez</h5>
-                            <p class="miembro-detalle">Detalle del miembro</p>
-                        </div>
-                        <button class="btn-eliminar-miembro">Eliminar</button>
-                    </div>
-
-                    <div class="miembro">
-                        <img src="https://github.com/JhoanDucu/Sena-Chat-Angular-/blob/main/Sena-Chat/Frontend/src/assets/img/User.png?raw=true" alt="Imagen del miembro" class="miembro-imagen">
-                        <div class="miembro-info">
-                            <h5 class="miembro-nombre">Juan David Cardenas Perez</h5>
-                            <p class="miembro-detalle">Detalle del miembro</p>
-                        </div>
-                        <button class="btn-eliminar-miembro">Eliminar</button>
-                    </div>
-                </div>
-            </div>
-            <button class="btn-editar">Editar</button>
-            <button class="btn-eliminar">Eliminar</button>
+<div class="contenedor-padre">
+    @for (g of grupos; track g.id_grupos) {
+    <div class="contenedor">
+        <div class="header">
+            <img [src]="'../../../../assets/img/'+g.foto_grupo" alt="Imagen del grupos" class="imagen">
+            <h2 class="titulo">{{g.nom_grupos}}</h2>
         </div>
+        <p class="texto-completo">{{g.descripcion_grupos}}</p>
+        <div class="parrafos">
+            <p class="parrafo">Num. Miembros: <span>{{g.num_usuarios}}</span></p>
+            <p class="parrafo">Ficha: <span>{{g.id_ficha}}</span></p>
+        </div>
+        <button class="btn-info" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
+            aria-controls="offcanvasRight">Más Información</button>
+        <button class="btn-editar">Editar</button>
+        <button class="btn-eliminar">Eliminar</button>
     </div>
+    }
+</div>
 }
 
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasRightLabel">Información adicional</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        <span>Nombre del grupo</span>
+        <p class="parrafo">Nombre del grupo</p>
+        <p class="texto-completo">Tu texto largo aquí</p>
+        <p class="parrafo">Num. Miembros: <span>20</span></p>
+        <p class="parrafo">Ficha: <span>22558104</span></p>
+        <p class="parrafo">Miembros:</p>
 
+        <div class="miembro">
+            <img src="../../../../assets/img/perfil3.jpg" alt="Imagen del miembro" class="miembro-imagen">
+            <div class="miembro-info">
+                <h5 class="miembro-nombre">Juan David Cardenas Perez</h5>
+                <p class="miembro-detalle">Detalle del miembro</p>
+            </div>
+            <button class="btn-eliminar-miembro">Eliminar</button>
+        </div>
+        <!-- Mas de ejemplo -->
+
+        <div class="miembro">
+            <img src="../../../../assets/img/perfil3.jpg" alt="Imagen del miembro" class="miembro-imagen">
+            <div class="miembro-info">
+                <h5 class="miembro-nombre">Juan David Cardenas Perez</h5>
+                <p class="miembro-detalle">Detalle del miembro</p>
+            </div>
+            <button class="btn-eliminar-miembro">Eliminar</button>
+        </div>
+
+        <div class="miembro">
+            <img src="../../../../assets/img/perfil3.jpg" alt="Imagen del miembro" class="miembro-imagen">
+            <div class="miembro-info">
+                <h5 class="miembro-nombre">Juan David Cardenas Perez</h5>
+                <p class="miembro-detalle">Detalle del miembro</p>
+            </div>
+            <button class="btn-eliminar-miembro">Eliminar</button>
+        </div>
+
+        <div class="miembro">
+            <img src="../../../../assets/img/perfil3.jpg" alt="Imagen del miembro" class="miembro-imagen">
+            <div class="miembro-info">
+                <h5 class="miembro-nombre">Juan David Cardenas Perez</h5>
+                <p class="miembro-detalle">Detalle del miembro</p>
+            </div>
+            <button class="btn-eliminar-miembro">Eliminar</button>
+        </div>
+    </div>
+</div>

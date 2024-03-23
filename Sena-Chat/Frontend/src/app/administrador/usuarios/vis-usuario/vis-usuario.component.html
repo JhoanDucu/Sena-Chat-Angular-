@@ -1,38 +1,31 @@
 @if(mostrar){
-    <app-crear-usuario (mostrar)="mostrarCrear()"></app-crear-usuario>
+<app-crear-usuario (mostrar)="mostrarCrear()"></app-crear-usuario>
 }@else{
-    <div class="search-container" style="position: absolute; top: 20px; right: 20px;">
-        <input class="form-control" type="search" placeholder="Busca">
-    <i class="bi bi-search" style="position: absolute; right: 10px; top: 7px;"></i>
+<div class="contenedor-padre">
+    <!-- Tus contenedores aquí -->
+    <div class="contenedor">
+        <div class="header">
+            <img src="../../../../assets/img/perfil3.jpg" alt="Imagen del grupos" class="imagen">
+            <h2 class="nameUser">Nombre de usuario</h2>
+        </div>
+        <p class="name">Juan david Cardenas Perez</p>
+        <div class="parrafos">
+            <p class="numDocumentos">Numero de documento: <span>0000000000</span></p>
+            <p class="ficha">Ficha: <span>22558104</span></p>
+        </div>
+        <button class="btn-info" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
+            aria-controls="offcanvasRight">Mas Información</button>
+        <button class="btn-editar">Editar</button>
+        <button class="btn-eliminar">Eliminar</button>
     </div>
-    
-    <button (click)="mostrarCrear()" class="btn-crear" style="position: absolute; top: 20px; left: 20px;">Crear nuevo</button>
-    
-    <div class="contenedor-padre">
-        <!-- Tus contenedores aquí -->
-            <div class="contenedor">
-                <div class="header">
-                    <img src="https://github.com/JhoanDucu/Sena-Chat-Angular-/blob/main/Sena-Chat/Frontend/src/assets/img/User.png?raw=true" alt="Imagen del grupos" class="imagen">
-                    <h2 class="nameUser">Nombre de usuario</h2>
-                </div>
-                <p class="name">Juan david Cardenas Perez</p>
-                <div class="parrafos">
-                    <p class="numDocumentos">Numero de documento: <span>0000000000</span></p>
-                    <p class="ficha">Ficha: <span>22558104</span></p>
-                </div>
-                <button class="btn-info" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Mas Información</button>
-                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-                <div class="offcanvas-header">
-                    <h5 class="offcanvas-title" id="offcanvasRightLabel">Offcanvas right</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                </div>
-                <div class="offcanvas-body">
-                    
-                </div>
-                </div>
-                <button class="btn-editar">Editar</button>
-                <button class="btn-eliminar">Eliminar</button>
-            </div>
-        
-    </div>
+</div>
 }
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasRightLabel">Offcanvas right</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+
+    </div>
+</div>
