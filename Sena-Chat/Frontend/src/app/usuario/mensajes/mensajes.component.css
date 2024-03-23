@@ -1,7 +1,7 @@
 .card-body {
   padding-bottom: 1%;
   overflow-y: auto;
-  max-height: 29rem;
+  max-height: 78vh;
   width: 100%;
 }
 

@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { EditarFormGrupoComponent } from './editar-form-grupo.component';
+import { EditarMensajeComponent } from './editar-mensaje.component';
 
-describe('EditarFormGrupoComponent', () => {
-  let component: EditarFormGrupoComponent;
-  let fixture: ComponentFixture<EditarFormGrupoComponent>;
+describe('EditarMensajeComponent', () => {
+  let component: EditarMensajeComponent;
+  let fixture: ComponentFixture<EditarMensajeComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [EditarFormGrupoComponent]
+      imports: [EditarMensajeComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(EditarFormGrupoComponent);
+    fixture = TestBed.createComponent(EditarMensajeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
