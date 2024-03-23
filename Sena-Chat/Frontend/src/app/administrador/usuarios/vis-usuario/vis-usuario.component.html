@@ -2,22 +2,23 @@
 <app-crear-usuario (mostrar)="mostrarCrear()"></app-crear-usuario>
 }@else{
 <div class="contenedor-padre">
-    <!-- Tus contenedores aquí -->
+    @for (u of usuarios; track u.numerodoc) {
     <div class="contenedor">
         <div class="header">
-            <img src="../../../../assets/img/perfil3.jpg" alt="Imagen del grupos" class="imagen">
+            <img [src]="'../../../../assets/img/'+u.foto" alt="Imagen del grupos" class="imagen">
             <h2 class="nameUser">Nombre de usuario</h2>
         </div>
-        <p class="name">Juan david Cardenas Perez</p>
+        <p class="name">{{u.primer_nom}} {{u.segundo_nom}} {{u.primer_apellido}} {{u.segundo_apellido}}</p>
         <div class="parrafos">
-            <p class="numDocumentos">Numero de documento: <span>0000000000</span></p>
-            <p class="ficha">Ficha: <span>22558104</span></p>
+            <p class="numDocumentos">Numero de documento: <span>{{u.numerodoc}}</span></p>
+            <p class="ficha">Ficha: <span>{{u.id_fichas}}</span></p>
         </div>
         <button class="btn-info" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
             aria-controls="offcanvasRight">Mas Información</button>
         <button class="btn-editar">Editar</button>
         <button class="btn-eliminar">Eliminar</button>
     </div>
+    }
 </div>
 }
 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
