@@ -61,9 +61,8 @@ span {
   font-weight: normal;
 }
 
-.btn-eliminar {
+.boton {
   font-family: "Josefin Sans", sans-serif;
-  background-color: #c9847b;
   color: rgb(0, 0, 0);
   border: none;
   padding: 10px;
@@ -79,41 +78,28 @@ span {
   border: 1px solid rgb(23, 23, 23);
 }
 
-.btn-editar {
-  font-family: "Josefin Sans", sans-serif;
-  background-color: #7bc4c9;
-  color: rgb(0, 0, 0);
-  border: none;
-  padding: 10px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-weight: 500;
-  font-size: 1em;
-  margin: 4px auto;
-  cursor: pointer;
-  border-radius: 12px;
-  width: 80%;
-  border: 1px solid rgb(23, 23, 23);
-}
-
-/* Botón de información */
-.btn-info {
-  font-family: "Josefin Sans", sans-serif;
+.info {
   background-color: #c9b47b;
-  color: rgb(0, 0, 0);
-  border: none;
-  padding: 10px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-weight: 500;
-  font-size: 1em;
-  margin: 4px auto;
-  cursor: pointer;
-  border-radius: 12px;
-  width: 80%;
-  border: 1px solid rgb(23, 23, 23);
+}
+
+.editar {
+  background-color: #7bc4c9;
+}
+
+.eliminar {
+  background-color: #c9847b;
+}
+
+.eliminar:hover {
+  background-color: #f77c6c;
+}
+
+.editar:hover {
+  background-color: #30b2b9;
+}
+
+.info:hover {
+  background-color: #debd63;
 }
 
 /* Información dentro del Offcanvas */

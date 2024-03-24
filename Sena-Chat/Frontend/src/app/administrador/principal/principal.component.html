@@ -1,20 +1,13 @@
-<div class="Pantalla Principal">
+<div id="pantallaPrincipal">
     <!-- Barra de navegación -->
-    <nav class="navbar bg-body-tertiary">
-        <div class="container-fluid d-flex justify-content-center">
-            <a class="navbar-brand position-absolute top-50 start-0 translate-middle-y">
-                <img src="../../../assets/img/Logo-sesion.png" alt="Logo" class="logo-img">
-                <span class="ms-3 text-success my-custom-font fw-medium mt-2">ADMIN</span>
-            </a>
-        </div>
-    </nav>
-
+    <div class="cabecera">
+        <img src="../../../assets/img/Logo-sesion.png" alt="Logo" class="logo-img">
+        <span class="logo-texto">ADMIN</span>
+    </div>
     <!-- Barra lateral -->
     <div class="sidebar">
-
         <!-- Menu -->
         <div class="accordion" id="sidebarAccordion">
-
             <!-- Grupo 1: Grupos -->
             <div class="accordion-item" style="border: none;">
                 <h2 class="accordion-header" id="headingOne">
@@ -25,7 +18,6 @@
                     </button>
                 </h2>
             </div>
-
             <!-- Grupo 2: Usuarios -->
             <div class="accordion-item">
                 <h2 class="accordion-header" id="headingThree">
@@ -36,7 +28,6 @@
                     </button>
                 </h2>
             </div>
-
             <!-- Grupo 3: Mensajes -->
             <div class="accordion-item">
                 <h2 class="accordion-header" id="headingTwo">
@@ -47,7 +38,6 @@
                     </button>
                 </h2>
             </div>
-
             <!-- Grupo 4: Fichas -->
             <div class="accordion-item">
                 <h2 class="accordion-header" id="headingFour">
@@ -64,22 +54,20 @@
     <!-- Contenido -->
     <div class="contenido">
         <div class="container-fluid">
-            <div class="row">
-                <div class="col-12" style="margin-top: 90px;">
-                    <!-- Contenido dinámico -->
-                    <div class="search-container" style="position: absolute; top: 20px; right: 20px;">
-                        <input class="form-control" type="search" placeholder="Busca">
-                        <i class="bi bi-search" style="position: absolute; right: 10px; top: 7px;"></i>
-                    </div>
-                    <!-- (click)="mostrarCrear()" -->
-                    <button  class="btn-crear" style="position: absolute; top: 20px; left: 20px;">Crear
-                        nuevo</button>
-                    @if (opcion === 'grupos') { <app-vis-grupos></app-vis-grupos> }
-                    @if (opcion === 'usuarios') { <app-vis-usuario></app-vis-usuario> }
-                    @if (opcion === 'mensajes') { <app-vis-mensaje></app-vis-mensaje> }
-                    @if (opcion === 'fichas') { <app-vis-ficha></app-vis-ficha> }
-                </div>
+            <!-- Contenido dinámico -->
+            <div class="search-container">
+                <input class="form-control" type="search" placeholder="Busca">
+                <i class="bi bi-search"></i>
             </div>
+            <button (click)="mostrarCrear()" class="btn-crear">Crear nuevo</button>
+            @if (opcion === 'grupos') { <app-vis-grupos></app-vis-grupos> }
+            @if (opcion === 'usuarios') { <app-vis-usuario></app-vis-usuario> }
+            @if (opcion === 'mensajes') { <app-vis-mensaje></app-vis-mensaje> }
+            @if (opcion === 'fichas') { <app-vis-ficha></app-vis-ficha> }
+            @if (opcion === 'crearGrupo') { <app-crear-grupo></app-crear-grupo> }
+            @if (opcion === 'crearUsuario') { <app-crear-usuario></app-crear-usuario> }
+            @if (opcion === 'crearMensaje') { <app-crear-mensaje></app-crear-mensaje> }
+            @if (opcion === 'crearFicha') { <app-crear-ficha></app-crear-ficha> }
         </div>
     </div>
 </div>

@@ -18,6 +18,4 @@ export class VisGruposComponent {
   ngOnInit(){
     this.servicio.traerGrupos().subscribe((data: any) => this.grupos = data);
   }
-
-  mostrarCrear = () => this.mostrar = !this.mostrar;
 }

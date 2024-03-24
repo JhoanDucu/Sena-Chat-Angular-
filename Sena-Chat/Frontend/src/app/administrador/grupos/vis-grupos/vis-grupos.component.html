@@ -1,6 +1,3 @@
-@if(mostrar){
-<app-crear-grupo (mostrar)="mostrarCrear()"></app-crear-grupo>
-}@else{
 <div class="contenedor-padre">
     @for (g of grupos; track g.id_grupos) {
     <div class="contenedor">
@@ -13,14 +10,13 @@
             <p class="parrafo">Num. Miembros: <span>{{g.num_usuarios}}</span></p>
             <p class="parrafo">Ficha: <span>{{g.id_ficha}}</span></p>
         </div>
-        <button class="btn-info" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
+        <button class="boton info" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
             aria-controls="offcanvasRight">Más Información</button>
-        <button class="btn-editar">Editar</button>
-        <button class="btn-eliminar">Eliminar</button>
+        <button class="boton editar">Editar</button>
+        <button class="boton eliminar">Eliminar</button>
     </div>
     }
 </div>
-}
 
 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
     <div class="offcanvas-header">
