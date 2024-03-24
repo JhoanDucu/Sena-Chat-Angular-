@@ -56,7 +56,9 @@
         <div class="contenido">
             <!-- Contenido dinámico -->
             <div class="botones">
+                @if (!opcion.includes('crear')) {
                 <button (click)="mostrarCrear()" class="btn-crear">Crear nuevo</button>
+                }
                 <div class="search-container">
                     <input class="form-control" type="search" placeholder="Busca">
                     <i class="bi bi-search"></i>
@@ -66,10 +68,10 @@
             @if (opcion === 'usuarios') { <app-vis-usuario /> }
             @if (opcion === 'mensajes') { <app-vis-mensaje /> }
             @if (opcion === 'fichas') { <app-vis-ficha /> }
-            @if (opcion === 'crearGrupo') { <app-crear-grupo (volver)="mostrarCrear()"/> }
-            @if (opcion === 'crearUsuario') { <app-crear-usuario (volver)="mostrarCrear()"/> }
-            @if (opcion === 'crearMensaje') { <app-crear-mensaje (volver)="mostrarCrear()"/> }
-            @if (opcion === 'crearFicha') { <app-crear-ficha (volver)="mostrarCrear()"/> }
+            @if (opcion === 'crearGrupo') { <app-crear-grupo (volver)="mostrarCrear()" /> }
+            @if (opcion === 'crearUsuario') { <app-crear-usuario (volver)="mostrarCrear()" /> }
+            @if (opcion === 'crearMensaje') { <app-crear-mensaje (volver)="mostrarCrear()" /> }
+            @if (opcion === 'crearFicha') { <app-crear-ficha (volver)="mostrarCrear()" /> }
         </div>
     </div>
 </div>

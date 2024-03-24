@@ -1,7 +1,7 @@
 .form-container {
     background-color: #D0D0D0;
     padding: 20px;
-    width: 50%;
+    width: 55%;
     margin: 0 auto;
     border-radius: 10px;
     border: 1px solid gray;
@@ -22,13 +22,13 @@
 .form-group label {
     font-family: 'Josefin Sans', sans-serif;
     font-weight: 500;
-    font-size: 1.2em;
+    font-size: 1.1em;
 }
 
 .form-group .form-control {
     font-family: 'Josefin Sans', sans-serif;
     font-weight: 500;
-    font-size: 1.2em;
+    font-size: 1em;
     border: 1px solid gray;
 }
 
@@ -38,7 +38,7 @@
     width: 100%;
     font-family: 'Josefin Sans', sans-serif;
     font-weight: 500;
-    font-size: 1.2em;
+    font-size: 1.1em;
     border: 1px solid gray;
 }
 

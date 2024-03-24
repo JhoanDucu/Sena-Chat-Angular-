@@ -2,10 +2,17 @@ DROP DATABASE IF EXISTS sena_chat;
 CREATE DATABASE SENA_CHAT;
 	USE SENA_CHAT;
 
+CREATE TABLE programa_formacion
+(
+    id_programa INT NOT NULL AUTO_INCREMENT,
+    nombre_programa VARCHAR(50) NOT NULL,
+    PRIMARY KEY (id_programa)
+);
+
 CREATE TABLE ficha
 (
 	id_ficha VARCHAR(10) NOT NULL,
-	programa_formacion VARCHAR(50) NOT NULL,
+	fk_programa INT NOT NULL,
 	trimestre INT NOT NULL,
 	PRIMARY KEY (id_ficha)
 );
@@ -90,8 +97,14 @@ CREATE TABLE usuarios_fichas
 (
 	id_fichas VARCHAR(10) NOT NULL,
 	numerodoc VARCHAR(20) NOT NULL,
+	principal BOOLEAN NOT NULL DEFAULT FALSE,
 	PRIMARY KEY (id_fichas, numerodoc)
 );
+
+ALTER TABLE ficha
+ADD CONSTRAINT FK_ficha_programa
+FOREIGN KEY (fk_programa)
+REFERENCES programa_formacion (id_programa);
 
 ALTER TABLE grupos 
 ADD CONSTRAINT PK_FK_id_ficha 
@@ -143,14 +156,20 @@ ADD CONSTRAINT FK_PK_usuarios
 FOREIGN KEY (numerodoc)
 REFERENCES usuarios (numerodoc) ON DELETE CASCADE ON UPDATE CASCADE;
 
+INSERT INTO programa_formacion VALUES
+(NULL, 'Analisis Y Desarrollo De Software'),
+(NULL, 'Arte, cultura, esparcimiento y deportes'),
+(NULL, 'Finanzas');
+
+
 INSERT INTO ficha VALUES 
-('0000000', 'Sin ficha en el sistema',0),
-('2558101','Analisis Y Desarrollo De Software', 1),
-('2558102','Arte, cultura, esparcimiento y deportes', 4),
-('2558103','Finanzas', 2),
-('2558104','Analisis Y Desarrollo De Software', 2),
-('2558105','Arte, cultura, esparcimiento y deportes', 4),
-('2558106','Arte, cultura, esparcimiento y deportes', 3);
+('0000000', 1, 0),
+('2558101', 1, 1),
+('2558102', 2, 4),
+('2558103', 3, 2),
+('2558104', 1, 2),
+('2558105', 2, 4),
+('2558106', 2, 3);
 
 INSERT INTO roles VALUES 
 ('1','INSTRUCTOR'),

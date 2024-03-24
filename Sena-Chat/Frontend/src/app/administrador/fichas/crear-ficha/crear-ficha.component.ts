@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { FichasService } from '../../Servicios/fichas.service';
 
 @Component({
   selector: 'app-crear-ficha',
@@ -8,10 +9,13 @@ import { Component, EventEmitter, Output } from '@angular/core';
   styleUrl: './crear-ficha.component.css'
 })
 export class CrearFichaComponent {
+  constructor(private servicio: FichasService){}
+  @Output() volver = new EventEmitter();
+  programas: any[] = [];
 
-  @Output() mostrar = new EventEmitter();
+  ngOnInit(){
+    this.servicio.traerProgramas().subscribe((data: any) => this.programas = data);
+  }
 
-  cancelar = () => this.mostrar.emit();
-
-
+  cancelar = () => this.volver.emit();
 }

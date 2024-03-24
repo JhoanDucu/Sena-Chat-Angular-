@@ -10,4 +10,7 @@ export class FichasService {
   traerFichas(){
     return this.http.get(`${url}/admin/fichas`);
   }
+  traerProgramas(){
+    return this.http.get(`${url}/admin/programas`);
+  }
 }

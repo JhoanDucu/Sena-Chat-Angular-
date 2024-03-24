@@ -31,7 +31,7 @@ exports.obtenerMensajes = (req, res) => {
   `SELECT m.id_mensaje, m.fecha_hora, m.contenido_mensaje, ug.id_grupos AS destino,
   tm.Nom_tipo AS tipo_mensaje FROM mensaje m INNER JOIN tipo_mensaje tm ON m.id_tipo = tm.id_tipo
   LEFT JOIN usuarios_grupos ug ON m.fk_destino = ug.id_usuarios_grupos LEFT JOIN usuarios u 
-  ON m.fk_destino = u.numerodoc OR ug.id_usuarios_grupos IS NULL;`;
+  ON m.fk_destino = u.numerodoc OR ug.id_usuarios_grupos IS NULL ORDER BY m.id_mensaje DESC;`;
 
   conexion.query(query, (error, resultado) => {
     if (error) console.error(error.message);
@@ -42,9 +42,20 @@ exports.obtenerMensajes = (req, res) => {
 
 exports.obtenerFichas = (req, res) => {
   const query = 
-  `SELECT f.*, COUNT(DISTINCT g.id_grupos) AS cantidad_grupos FROM 
-  ficha f LEFT JOIN grupos AS g ON f.id_ficha = g.id_ficha
-  WHERE g.fk_tipo_grupo = 2 GROUP BY f.id_ficha;`;
+  `SELECT f.*, COUNT(DISTINCT g.id_grupos) AS cantidad_grupos 
+  FROM ficha f LEFT JOIN grupos g ON f.id_ficha = g.id_ficha 
+  AND g.fk_tipo_grupo = 2 GROUP BY f.id_ficha;`;
+
+  conexion.query(query, (error, resultado) => {
+    if (error) console.error(error.message);
+    if (resultado.length > 0) res.json(resultado);
+    else res.json("No hay fichas aun");
+  });
+};
+
+exports.obtenerProgramas = (req, res) => {
+  const query = 
+  ` SELECT * FROM programa_formacion; `;
 
   conexion.query(query, (error, resultado) => {
     if (error) console.error(error.message);
