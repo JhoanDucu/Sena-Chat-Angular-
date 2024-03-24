@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
-import { CrearGrupoComponent } from '../crear-grupo/crear-grupo.component';
 import { GruposService } from '../../Servicios/grupos.service';
 import { Grupo } from '../../Modelos/grupos';
 
 @Component({
   selector: 'app-vis-grupos',
   standalone: true,
-  imports: [CrearGrupoComponent,],
+  imports: [],
   templateUrl: './vis-grupos.component.html',
   styleUrl: './vis-grupos.component.css'
 })

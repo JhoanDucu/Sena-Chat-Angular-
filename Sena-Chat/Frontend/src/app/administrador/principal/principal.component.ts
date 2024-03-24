@@ -45,6 +45,10 @@ export class PrincipalComponent implements OnInit {
     if (this.opcion == 'usuarios') this.opcion = 'crearUsuario';
     if (this.opcion == 'mensajes') this.opcion = 'crearMensaje';
     if (this.opcion == 'fichas') this.opcion = 'crearFicha';
+    if (this.opcion == 'crearGrupo') this.opcion = 'grupos';
+    if (this.opcion == 'crearUsuario') this.opcion = 'usuarios';
+    if (this.opcion == 'crearMensaje') this.opcion = 'mensajes';
+    if (this.opcion == 'crearFicha') this.opcion = 'fichas';
   };
 
 }

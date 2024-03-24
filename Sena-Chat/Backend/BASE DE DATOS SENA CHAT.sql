@@ -63,7 +63,7 @@ CREATE TABLE usuarios
 	contrasena VARCHAR(100) NOT NULL,
 	nombre_usuario VARCHAR(20) NOT NULL,
 	descripcion VARCHAR(140) NULL,
-	foto VARCHAR(100) NULL,
+	foto VARCHAR(100) NOT NULL,
 	fk_id_rol INT NOT NULL,
 	numerodoc VARCHAR(20) NOT NULL,
 	fk_id_tipodoc INT NOT NULL,
@@ -174,7 +174,7 @@ INSERT INTO tipo_grupo VALUES
 (2, 'Grupal');
 
 INSERT INTO usuarios VALUES 
-('j', 'j', 'j', 'j', 'j', MD5('321'), 'JHOAN', 'Entusiasta de la tecnología y los videojuegos. Siempre en busca de nuevas aventuras en la web.', NULL, '3', 1024471018, 1),
+('j', 'j', 'j', 'j', 'j', MD5('321'), 'JHOAN', 'Entusiasta de la tecnología y los videojuegos. Siempre en busca de nuevas aventuras en la web.', 'usuario.jpg', '3', 1024471018, 1),
 ('juan.cardenas34@misena.edu.co','Juan','David','Cardenas','Perez',MD5('123'),'juan_cardenas','Apasionado por la programación y el desarrollo web. ¡Listo para aprender y crecer en este mundo digital!', 'Usuario11.jpg', '2', 1131104356, 1),
 ('camilo@gmail.com','Camilo',NULL,'Perez',NULL,MD5('123'),'carlosperez','Amante de los deportes y la música. Siempre dispuesto a charlar sobre los últimos lanzamientos en la industria musical.', 'Usuario10.jpg','2','1234567911',1),
 ('sebastian@gmail.com','Sebastian',NULL,'Carrillo',NULL,MD5('123'),'sebastian_123','Fanático de los viajes y la fotografía. Compartamos historias y experiencias de viaje mientras exploramos el mundo juntos.', 'Usuario9.jpg','2','12345678912',1),

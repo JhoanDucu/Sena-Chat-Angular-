@@ -4,70 +4,72 @@
         <img src="../../../assets/img/Logo-sesion.png" alt="Logo" class="logo-img">
         <span class="logo-texto">ADMIN</span>
     </div>
-    <!-- Barra lateral -->
-    <div class="sidebar">
-        <!-- Menu -->
-        <div class="accordion" id="sidebarAccordion">
-            <!-- Grupo 1: Grupos -->
-            <div class="accordion-item" style="border: none;">
-                <h2 class="accordion-header" id="headingOne">
-                    <button class="accordion-button collapsed" type="button" (click)="seleccionarOpcion('grupos')"
-                        data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false"
-                        aria-controls="collapseOne">
-                        <i class="bi bi-people"></i> Grupos
-                    </button>
-                </h2>
-            </div>
-            <!-- Grupo 2: Usuarios -->
-            <div class="accordion-item">
-                <h2 class="accordion-header" id="headingThree">
-                    <button class="accordion-button collapsed" type="button" (click)="seleccionarOpcion('usuarios')"
-                        data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false"
-                        aria-controls="collapseThree">
-                        <i class="bi bi-person"></i> Usuarios
-                    </button>
-                </h2>
-            </div>
-            <!-- Grupo 3: Mensajes -->
-            <div class="accordion-item">
-                <h2 class="accordion-header" id="headingTwo">
-                    <button class="accordion-button collapsed" type="button" (click)="seleccionarOpcion('mensajes')"
-                        data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false"
-                        aria-controls="collapseTwo">
-                        <i class="bi bi-chat"></i> Mensajes
-                    </button>
-                </h2>
-            </div>
-            <!-- Grupo 4: Fichas -->
-            <div class="accordion-item">
-                <h2 class="accordion-header" id="headingFour">
-                    <button class="accordion-button collapsed" type="button" (click)="seleccionarOpcion('fichas')"
-                        data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false"
-                        aria-controls="collapseFour">
-                        <i class="bi bi-folder"></i> Fichas
-                    </button>
-                </h2>
+    <div class="sidebar-contenido">
+        <!-- Barra lateral -->
+        <div class="sidebar">
+            <!-- Menu -->
+            <div class="accordion" id="sidebarAccordion">
+                <!-- Grupo 1: Grupos -->
+                <div class="accordion-item" style="border: none;">
+                    <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button collapsed" type="button" (click)="seleccionarOpcion('grupos')"
+                            data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false"
+                            aria-controls="collapseOne">
+                            <i class="bi bi-people"></i> Grupos
+                        </button>
+                    </h2>
+                </div>
+                <!-- Grupo 2: Usuarios -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingThree">
+                        <button class="accordion-button collapsed" type="button" (click)="seleccionarOpcion('usuarios')"
+                            data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false"
+                            aria-controls="collapseThree">
+                            <i class="bi bi-person"></i> Usuarios
+                        </button>
+                    </h2>
+                </div>
+                <!-- Grupo 3: Mensajes -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingTwo">
+                        <button class="accordion-button collapsed" type="button" (click)="seleccionarOpcion('mensajes')"
+                            data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false"
+                            aria-controls="collapseTwo">
+                            <i class="bi bi-chat"></i> Mensajes
+                        </button>
+                    </h2>
+                </div>
+                <!-- Grupo 4: Fichas -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingFour">
+                        <button class="accordion-button collapsed" type="button" (click)="seleccionarOpcion('fichas')"
+                            data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false"
+                            aria-controls="collapseFour">
+                            <i class="bi bi-folder"></i> Fichas
+                        </button>
+                    </h2>
+                </div>
             </div>
         </div>
-    </div>
 
-    <!-- Contenido -->
-    <div class="contenido">
-        <div class="container-fluid">
+        <!-- Contenido -->
+        <div class="contenido">
             <!-- Contenido dinámico -->
-            <div class="search-container">
-                <input class="form-control" type="search" placeholder="Busca">
-                <i class="bi bi-search"></i>
+            <div class="botones">
+                <button (click)="mostrarCrear()" class="btn-crear">Crear nuevo</button>
+                <div class="search-container">
+                    <input class="form-control" type="search" placeholder="Busca">
+                    <i class="bi bi-search"></i>
+                </div>
             </div>
-            <button (click)="mostrarCrear()" class="btn-crear">Crear nuevo</button>
-            @if (opcion === 'grupos') { <app-vis-grupos></app-vis-grupos> }
-            @if (opcion === 'usuarios') { <app-vis-usuario></app-vis-usuario> }
-            @if (opcion === 'mensajes') { <app-vis-mensaje></app-vis-mensaje> }
-            @if (opcion === 'fichas') { <app-vis-ficha></app-vis-ficha> }
-            @if (opcion === 'crearGrupo') { <app-crear-grupo></app-crear-grupo> }
-            @if (opcion === 'crearUsuario') { <app-crear-usuario></app-crear-usuario> }
-            @if (opcion === 'crearMensaje') { <app-crear-mensaje></app-crear-mensaje> }
-            @if (opcion === 'crearFicha') { <app-crear-ficha></app-crear-ficha> }
+            @if (opcion === 'grupos') { <app-vis-grupos /> }
+            @if (opcion === 'usuarios') { <app-vis-usuario /> }
+            @if (opcion === 'mensajes') { <app-vis-mensaje /> }
+            @if (opcion === 'fichas') { <app-vis-ficha /> }
+            @if (opcion === 'crearGrupo') { <app-crear-grupo (volver)="mostrarCrear()"/> }
+            @if (opcion === 'crearUsuario') { <app-crear-usuario /> }
+            @if (opcion === 'crearMensaje') { <app-crear-mensaje /> }
+            @if (opcion === 'crearFicha') { <app-crear-ficha /> }
         </div>
     </div>
 </div>

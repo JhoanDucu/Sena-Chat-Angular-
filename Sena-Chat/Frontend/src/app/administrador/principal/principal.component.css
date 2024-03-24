@@ -1,4 +1,6 @@
 #pantallaPrincipal {
+  display: flex;
+  flex-direction: column;
   height: 100vh;
   width: 100%;
 }
@@ -17,14 +19,19 @@
   font-family: "Josefin Sans", sans-serif;
 }
 
+.sidebar-contenido {
+  display: flex;
+  height: 88.3vh;
+}
+
 /* Barra lateral */
 .sidebar {
+  width: 22%;
   background-color: #4e4e4e;
 }
 
 .accordion {
   border: none;
-  margin-top: 5%;
   border-radius: 0;
 }
 
@@ -82,10 +89,6 @@
   border-radius: 0; /* Quitar el borde redondeado */
 }
 
-#sidebarAccordion {
-  border-radius: none;
-}
-
 .accordion-item {
   border-radius: none;
 }
@@ -103,16 +106,11 @@
 /* CONTENIDO */
 
 .contenido {
-  position: absolute;
-  top: 60px; /* Ajusta este valor según el alto de tu navbar */
-  bottom: 0;
-  left: 250px; /* Ajusta este valor según el ancho de tu barra lateral */
-  right: 0;
-  margin: 5px; /* Ajusta este valor para cambiar el margen alrededor del contenido */
-  background-color: rgb(255, 255, 255);
-  border-radius: 10px;
-  overflow-y: auto; /* Agrega un scrollbar vertical cuando el contenido se desborde */
-  height: calc(98vh - 60px);
+  overflow-y: auto;
+  width: 78%;
+  --bs-gutter-x: 1.5rem;
+  padding-right: calc(var(--bs-gutter-x) * 0.5);
+  padding-left: calc(var(--bs-gutter-x) * 0.5);
 }
 
 .contenido::-webkit-scrollbar {
@@ -132,10 +130,8 @@
   border-radius: 5px; /* Ajusta este valor para cambiar el borde redondeado del scrollbar */
 }
 
-.search-container {
-  position: absolute;
-  top: 20px;
-  right: 1px;
+.botones {
+  display: flex;
 }
 
 .search-container .form-control {

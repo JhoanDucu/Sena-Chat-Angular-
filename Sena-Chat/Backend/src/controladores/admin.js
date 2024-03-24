@@ -22,6 +22,33 @@ exports.obtenerUsuarios = (req, res) => {
   conexion.query(query, (error, resultado) => {
     if (error) console.error(error.message);
     if (resultado.length > 0) res.json(resultado);
-    else res.json("No hay grupos aun");
+    else res.json("No hay usuarios aun");
+  });
+};
+
+exports.obtenerMensajes = (req, res) => {
+  const query = 
+  `SELECT m.id_mensaje, m.fecha_hora, m.contenido_mensaje, ug.id_grupos AS destino,
+  tm.Nom_tipo AS tipo_mensaje FROM mensaje m INNER JOIN tipo_mensaje tm ON m.id_tipo = tm.id_tipo
+  LEFT JOIN usuarios_grupos ug ON m.fk_destino = ug.id_usuarios_grupos LEFT JOIN usuarios u 
+  ON m.fk_destino = u.numerodoc OR ug.id_usuarios_grupos IS NULL;`;
+
+  conexion.query(query, (error, resultado) => {
+    if (error) console.error(error.message);
+    if (resultado.length > 0) res.json(resultado);
+    else res.json("No hay mensajes aun");
+  });
+};
+
+exports.obtenerFichas = (req, res) => {
+  const query = 
+  `SELECT f.*, COUNT(DISTINCT g.id_grupos) AS cantidad_grupos FROM 
+  ficha f LEFT JOIN grupos AS g ON f.id_ficha = g.id_ficha
+  WHERE g.fk_tipo_grupo = 2 GROUP BY f.id_ficha;`;
+
+  conexion.query(query, (error, resultado) => {
+    if (error) console.error(error.message);
+    if (resultado.length > 0) res.json(resultado);
+    else res.json("No hay fichas aun");
   });
 };

@@ -1,20 +1,18 @@
-import { Component, OnInit } from '@angular/core';
-import { CrearFichaComponent } from '../crear-ficha/crear-ficha.component';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FichasService } from '../../Servicios/fichas.service';
 
 @Component({
   selector: 'app-vis-ficha',
   standalone: true,
-  imports: [
-    CrearFichaComponent,
-    CommonModule,
-  ],
+  imports: [CommonModule],
   templateUrl: './vis-ficha.component.html',
   styleUrl: './vis-ficha.component.css'
 })
 export class VisFichaComponent {
-
-  mostrar = false;
-  mostrarCrear = () => this.mostrar = !this.mostrar;
-
+  constructor(private servicio: FichasService){ }
+  fichas = [];
+  ngOnInit(){
+    this.servicio.traerFichas().subscribe((data: any) => this.fichas = data);
+  }
 }

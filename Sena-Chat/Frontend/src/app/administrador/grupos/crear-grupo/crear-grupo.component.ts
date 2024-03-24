@@ -8,8 +8,7 @@ import { Component, Output, EventEmitter } from '@angular/core';
   styleUrl: './crear-grupo.component.css'
 })
 export class CrearGrupoComponent {
+  @Output() volver = new EventEmitter();
 
-  @Output() mostrar = new EventEmitter();
-
-  cancelar = () => this.mostrar.emit();
+  cancelar = () => this.volver.emit();
 }

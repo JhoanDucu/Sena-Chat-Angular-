@@ -4,5 +4,7 @@ const adminController = require('../controladores/admin');
 
 router.get("/grupos", adminController.obtenerGrupos);
 router.get("/usuarios", adminController.obtenerUsuarios);
+router.get("/mensajes", adminController.obtenerMensajes);
+router.get("/fichas", adminController.obtenerFichas);
 
 module.exports = router;
