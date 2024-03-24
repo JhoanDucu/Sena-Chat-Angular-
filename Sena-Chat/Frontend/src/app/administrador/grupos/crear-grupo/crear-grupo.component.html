@@ -11,8 +11,9 @@
         </div>
         <div class="form-group">
             <select class="form-control" id="groupCards">
-                <option selected>Fichas</option>
-                <br>
+                @for (f of fichas; track f) {
+                <option [value]="f.id_ficha">{{f.id_ficha}}</option>
+                }
             </select>
         </div>
         <div class="form-group">

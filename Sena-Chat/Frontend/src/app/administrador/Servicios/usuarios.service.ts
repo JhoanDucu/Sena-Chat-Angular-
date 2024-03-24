@@ -10,4 +10,7 @@ export class UsuariosService {
   traerUsuarios(){
     return this.http.get(`${url}/admin/usuarios`);
   }
+  agregarUsuario(datos: any){
+    return this.http.post(`${url}/admin/agregar-usuario`, datos);
+  }
 }

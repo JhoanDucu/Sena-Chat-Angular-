@@ -10,4 +10,7 @@ export class MensajesService {
   traerMensajes(){
     return this.http.get(`${url}/admin/mensajes`);
   }
+  agregarMensaje(datos: any){
+    return this.http.post(`${url}/admin/agregar-mensaje`, datos);
+  }
 }

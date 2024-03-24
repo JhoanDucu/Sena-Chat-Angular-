@@ -13,4 +13,7 @@ export class FichasService {
   traerProgramas(){
     return this.http.get(`${url}/admin/programas`);
   }
+  agregarFicha(datos: any){
+    return this.http.post(`${url}/admin/agregar-ficha`, datos);
+  }
 }

@@ -1,13 +1,13 @@
 <div class="form-container">
     <h2 class="form-title">Crear Ficha</h2>
-    <form>
+    <form (ngSubmit)="validar()" [formGroup]="formFicha">
         <div class="form-group">
             <label for="idFicha">Numero de ficha</label>
-            <input type="text" class="form-control" id="idFicha">
+            <input type="text" class="form-control" id="idFicha" formControlName="id_ficha" [placeholder]="ficha">
         </div>
         <div class="form-group">
             <label for="NameFicha">Programa</label>
-            <select class="form-control" id="NameFicha">
+            <select class="form-control" id="NameFicha" formControlName="fk_programa" [ariaPlaceholder]="programa">
                 @for (p of programas; track p) {
                 <option [value]="p.id_programa">{{p.nombre_programa}}</option>
                 }
@@ -15,7 +15,7 @@
         </div>
         <div class="form-group">
             <label for="NameFicha">Trimestre</label>
-            <select class="form-control" id="NameFicha">
+            <select class="form-control" id="NameFicha" formControlName="trimestre" [ariaPlaceholder]="trimestre">
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>

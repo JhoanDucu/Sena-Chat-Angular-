@@ -10,4 +10,10 @@ export class GruposService {
   traerGrupos(){
     return this.http.get(`${url}/admin/grupos`);
   }
+  traerIdFichas(){
+    return this.http.get(`${url}/admin/num-fichas`);
+  }
+  agregarGrupo(datos: any){
+    return this.http.post(`${url}/admin/agregar-grupo`, datos);
+  }
 }

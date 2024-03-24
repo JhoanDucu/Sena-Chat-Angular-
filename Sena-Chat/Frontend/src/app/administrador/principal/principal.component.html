@@ -58,11 +58,11 @@
             <div class="botones">
                 @if (!opcion.includes('crear')) {
                 <button (click)="mostrarCrear()" class="btn-crear">Crear nuevo</button>
-                }
                 <div class="search-container">
                     <input class="form-control" type="search" placeholder="Busca">
                     <i class="bi bi-search"></i>
                 </div>
+                }
             </div>
             @if (opcion === 'grupos') { <app-vis-grupos /> }
             @if (opcion === 'usuarios') { <app-vis-usuario /> }
