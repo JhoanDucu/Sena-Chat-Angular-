@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { GrupoComponentData, Tabs } from '../Modelos/grupos';
+import { GrupoComponentData, Tabs } from '../../Modelos/grupos';
 import { SesionService } from '../Sesiones/sesion.service';
 import { ChatDirective } from '../Directivas/chat.directive';
 import { SocketService } from '../Servicios/socket.service';
@@ -10,7 +10,7 @@ import { MiPerfilComponent } from '../mi-perfil/mi-perfil.component';
 import { GruposTituloComponent } from '../grupos-titulo/grupos-titulo.component';
 import { GruposPanelComponent } from '../grupos-panel/grupos-panel.component';
 import { BootstrapService } from '../Servicios/bootstrap.service';
-import { Usuario } from '../Modelos/usuarios';
+import { Usuario } from '../../Modelos/usuarios';
 
 @Component({
   selector: 'app-grupos',

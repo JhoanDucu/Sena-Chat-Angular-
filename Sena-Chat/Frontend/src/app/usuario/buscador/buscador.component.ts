@@ -1,9 +1,9 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Buscar } from '../Modelos/buscar';
+import { Buscar } from '../../Modelos/buscar';
 import { FormsModule } from '@angular/forms';
 import { ChatDirective } from '../Directivas/chat.directive';
-import { Grupo } from '../Modelos/grupos';
+import { Grupo } from '../../Modelos/grupos';
 import { GrupoComponent } from '../grupo/grupo.component';
 
 @Component({

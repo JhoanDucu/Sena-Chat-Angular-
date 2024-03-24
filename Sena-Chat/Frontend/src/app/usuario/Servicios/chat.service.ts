@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { MensajeEnviar } from '../Modelos/mensaje';
+import { MensajeEnviar } from '../../Modelos/mensaje';
 import { Subject } from 'rxjs';
 import { url } from '../../../servidor';
 

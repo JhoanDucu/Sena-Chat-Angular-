@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { io } from 'socket.io-client';
-import { MensajeEmitir } from '../Modelos/mensaje';
+import { MensajeEmitir } from '../../Modelos/mensaje';
 import { url } from '../../../servidor';
 
 @Injectable({

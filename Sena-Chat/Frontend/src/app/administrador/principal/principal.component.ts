@@ -40,15 +40,15 @@ export class PrincipalComponent implements OnInit {
 
   seleccionarOpcion = (opcion: any) => this.opcion = opcion;
 
-  mostrarCrear(){
+  mostrarCrear() {
     if (this.opcion == 'grupos') this.opcion = 'crearGrupo';
-    if (this.opcion == 'usuarios') this.opcion = 'crearUsuario';
-    if (this.opcion == 'mensajes') this.opcion = 'crearMensaje';
-    if (this.opcion == 'fichas') this.opcion = 'crearFicha';
-    if (this.opcion == 'crearGrupo') this.opcion = 'grupos';
-    if (this.opcion == 'crearUsuario') this.opcion = 'usuarios';
-    if (this.opcion == 'crearMensaje') this.opcion = 'mensajes';
-    if (this.opcion == 'crearFicha') this.opcion = 'fichas';
+    else if (this.opcion == 'usuarios') this.opcion = 'crearUsuario';
+    else if (this.opcion == 'mensajes') this.opcion = 'crearMensaje';
+    else if (this.opcion == 'fichas') this.opcion = 'crearFicha';
+    else if (this.opcion == 'crearGrupo') this.opcion = 'grupos';
+    else if (this.opcion == 'crearUsuario') this.opcion = 'usuarios';
+    else if (this.opcion == 'crearMensaje') this.opcion = 'mensajes';
+    else if (this.opcion == 'crearFicha') this.opcion = 'fichas';
   };
 
 }

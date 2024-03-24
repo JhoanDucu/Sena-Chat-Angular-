@@ -132,6 +132,8 @@
 
 .botones {
   display: flex;
+  align-items: center;
+  margin: 3vh 2vh;
 }
 
 .search-container .form-control {

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FichasService } from '../../Servicios/fichas.service';
+import { Ficha } from '../../../Modelos/fichas';
 
 @Component({
   selector: 'app-vis-ficha',
@@ -11,7 +12,7 @@ import { FichasService } from '../../Servicios/fichas.service';
 })
 export class VisFichaComponent {
   constructor(private servicio: FichasService){ }
-  fichas = [];
+  fichas: Ficha[] = [];
   ngOnInit(){
     this.servicio.traerFichas().subscribe((data: any) => this.fichas = data);
   }

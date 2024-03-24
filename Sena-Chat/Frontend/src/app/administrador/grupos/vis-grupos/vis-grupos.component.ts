@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { GruposService } from '../../Servicios/grupos.service';
-import { Grupo } from '../../Modelos/grupos';
+import { Grupo } from '../../../Modelos/grupos'; 
 
 @Component({
   selector: 'app-vis-grupos',

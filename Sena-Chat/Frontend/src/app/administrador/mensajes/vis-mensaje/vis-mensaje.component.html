@@ -2,13 +2,13 @@
 @for (m of mensajes; track m) {
     <div class="contenedor">
         <div class="header">
-            <h5 class="idMensaje">ID del mensaje: <span>121322434234</span></h5>
+            <h5 class="idMensaje">ID del mensaje: <span>{{m.id_mensaje}}</span></h5>
         </div>
         <div class="parrafos">
-            <p class="contenidoMensaje">Contenido del mensaje: <span>Mensaje de ejemplo</span></p>
-            <p class="fechaHoraEnvio">Fecha/Hora del envío: <span>2022-01-01 12:00:00</span></p>
+            <p class="contenidoMensaje">Contenido del mensaje: <span>{{m.contenido_mensaje}}</span></p>
+            <p class="fechaHoraEnvio">Fecha/Hora del envío: <span>{{m.fecha_hora}}</span></p>
             <p class="ubicacion">Ubicación: <span>Ubicación de ejemplo</span></p>
-            <p class="tipoMensaje">Tipo de mensaje: <span>Tipo de ejemplo</span></p>
+            <p class="tipoMensaje">Tipo de mensaje: <span>{{m.tipo_mensaje}}</span></p>
         </div>
         <button class="btn-info" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
             aria-controls="offcanvasRight">Más Información</button>

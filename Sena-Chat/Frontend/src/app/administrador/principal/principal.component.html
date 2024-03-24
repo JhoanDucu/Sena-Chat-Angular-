@@ -15,7 +15,7 @@
                         <button class="accordion-button collapsed" type="button" (click)="seleccionarOpcion('grupos')"
                             data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false"
                             aria-controls="collapseOne">
-                            <i class="bi bi-people"></i> Grupos
+                            <i class='bx bx-group'></i> Grupos
                         </button>
                     </h2>
                 </div>
@@ -25,7 +25,7 @@
                         <button class="accordion-button collapsed" type="button" (click)="seleccionarOpcion('usuarios')"
                             data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false"
                             aria-controls="collapseThree">
-                            <i class="bi bi-person"></i> Usuarios
+                            <i class='bx bx-user'></i> Usuarios
                         </button>
                     </h2>
                 </div>
@@ -35,7 +35,7 @@
                         <button class="accordion-button collapsed" type="button" (click)="seleccionarOpcion('mensajes')"
                             data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false"
                             aria-controls="collapseTwo">
-                            <i class="bi bi-chat"></i> Mensajes
+                            <i class='bx bx-chat'></i> Mensajes
                         </button>
                     </h2>
                 </div>
@@ -45,7 +45,7 @@
                         <button class="accordion-button collapsed" type="button" (click)="seleccionarOpcion('fichas')"
                             data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false"
                             aria-controls="collapseFour">
-                            <i class="bi bi-folder"></i> Fichas
+                            <i class='bx bx-folder'></i> Fichas
                         </button>
                     </h2>
                 </div>
@@ -67,9 +67,9 @@
             @if (opcion === 'mensajes') { <app-vis-mensaje /> }
             @if (opcion === 'fichas') { <app-vis-ficha /> }
             @if (opcion === 'crearGrupo') { <app-crear-grupo (volver)="mostrarCrear()"/> }
-            @if (opcion === 'crearUsuario') { <app-crear-usuario /> }
-            @if (opcion === 'crearMensaje') { <app-crear-mensaje /> }
-            @if (opcion === 'crearFicha') { <app-crear-ficha /> }
+            @if (opcion === 'crearUsuario') { <app-crear-usuario (volver)="mostrarCrear()"/> }
+            @if (opcion === 'crearMensaje') { <app-crear-mensaje (volver)="mostrarCrear()"/> }
+            @if (opcion === 'crearFicha') { <app-crear-ficha (volver)="mostrarCrear()"/> }
         </div>
     </div>
 </div>

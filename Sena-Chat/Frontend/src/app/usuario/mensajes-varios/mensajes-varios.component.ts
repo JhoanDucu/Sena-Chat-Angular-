@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core
 import { CommonModule } from '@angular/common';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { FormGroupDirective, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MensajeEnviar } from '../Modelos/mensaje';
+import { MensajeEnviar } from '../../Modelos/mensaje';
 import { Modal } from 'bootstrap';
 import { BootstrapService } from '../Servicios/bootstrap.service';
 

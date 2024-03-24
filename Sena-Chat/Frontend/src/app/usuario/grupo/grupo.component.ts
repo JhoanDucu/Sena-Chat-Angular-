@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { NotificacionDirective } from '../Directivas/notificacion.directive';
 import { ChatService } from '../Servicios/chat.service';
 import { SesionService } from '../Sesiones/sesion.service';
-import { Fecha } from '../Modelos/fechas';
+import { Fecha } from '../../Modelos/fechas';
 
 @Component({
   selector: 'app-grupo',

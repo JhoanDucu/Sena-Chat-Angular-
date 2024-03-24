@@ -1,5 +1,5 @@
 import { Directive, Input, OnChanges, TemplateRef, ViewContainerRef, SimpleChanges } from '@angular/core';
-import { Grupo } from '../Modelos/grupos';
+import { Grupo } from '../../Modelos/grupos';
 
 @Directive({
   selector: '[appChat]',

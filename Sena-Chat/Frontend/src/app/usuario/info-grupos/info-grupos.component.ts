@@ -1,9 +1,9 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SesionService } from '../Sesiones/sesion.service';
-import { Usuario } from '../Modelos/usuarios';
+import { Usuario } from '../../Modelos/usuarios';
 import { ChatService } from '../Servicios/chat.service';
-import { Grupo } from '../Modelos/grupos';
+import { Grupo } from '../../Modelos/grupos';
 import { BootstrapService } from '../Servicios/bootstrap.service';
 import { InfoPerfilComponent } from '../info-perfil/info-perfil.component';
 import { InfoAgregarComponent } from '../info-agregar/info-agregar.component';

@@ -1,6 +1,6 @@
 import { Component, ElementRef, EventEmitter, Input, Output, SimpleChanges, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MensajeMostrar } from '../Modelos/mensaje';
+import { MensajeMostrar } from '../../Modelos/mensaje';
 import { SesionService } from '../Sesiones/sesion.service';
 
 @Component({

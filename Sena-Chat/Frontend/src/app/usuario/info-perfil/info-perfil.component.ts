@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Usuario } from '../Modelos/usuarios';
+import { Usuario } from '../../Modelos/usuarios';
 
 @Component({
   selector: 'app-info-perfil',

@@ -15,6 +15,7 @@ export interface MensajeMostrar {
     contenido_mensaje: string | undefined,
     numerodoc: any,
     id_tipo: number,
+    tipo_mensaje: string,
     [key: string]: any;
 }
 

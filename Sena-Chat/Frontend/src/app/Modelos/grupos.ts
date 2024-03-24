@@ -10,7 +10,8 @@ interface DatosGrupo {
    fk_tipo_grupo: number,
    mensajes: Array<MensajeMostrar>,
    sin_leer: number,
-   doc?: string
+   doc?: string,
+   num_usuarios?: number
 }
 
 export type Grupo = Partial<DatosGrupo>;

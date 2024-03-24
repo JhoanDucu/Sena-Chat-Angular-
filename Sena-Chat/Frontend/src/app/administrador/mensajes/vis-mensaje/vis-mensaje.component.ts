@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CrearMensajeComponent } from '../crear-mensaje/crear-mensaje.component';
 import { MensajesService } from '../../Servicios/mensajes.service';
+import { MensajeMostrar } from '../../../Modelos/mensaje';
 
 @Component({
   selector: 'app-vis-mensaje',
@@ -13,7 +14,7 @@ import { MensajesService } from '../../Servicios/mensajes.service';
 })
 export class VisMensajeComponent {
   constructor(private servicio: MensajesService){ }
-  mensajes = [];
+  mensajes: MensajeMostrar[] = [];
   ngOnInit(){
     this.servicio.traerMensajes().subscribe((data: any) => this.mensajes = data);
   }

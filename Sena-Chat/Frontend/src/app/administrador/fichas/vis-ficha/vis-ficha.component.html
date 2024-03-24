@@ -3,11 +3,11 @@
     <!-- Tus contenedores aquí -->
     <div class="contenedor">
         <div class="header">
-            <h5 class="idFicha">Numero de ficha: <span>123424212312</span></h5>
+            <h5 class="idFicha">Numero de ficha: <span>{{f.id_ficha}}</span></h5>
         </div>
         <div>
-            <p class="NameFicha">Nombre: <span>Análisis y desarrollo de software</span> </p>
-            <p class="cantGrupos">Cantidad de grupos: <span>30</span> </p>
+            <p class="NameFicha">Programa: <span>{{f.programa_formacion}}</span> </p>
+            <p class="cantGrupos">Cantidad de grupos: <span>{{f.cantidad_grupos}}</span> </p>
         </div>
         <br>
         <button class="btn-editar">Editar</button>

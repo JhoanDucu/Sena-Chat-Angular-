@@ -2,10 +2,10 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { EditarDirective } from '../Directivas/editar.directive';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Usuario } from '../Modelos/usuarios';
+import { Usuario } from '../../Modelos/usuarios';
 import { ConfigurarService } from '../Servicios/configurar.service';
 import { BootstrapService } from '../Servicios/bootstrap.service';
-import { Fecha } from '../Modelos/fechas';
+import { Fecha } from '../../Modelos/fechas';
 
 @Component({
   selector: 'app-perfil-editar',

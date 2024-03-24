@@ -2,7 +2,7 @@ import { Component, EventEmitter, Output, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormControl, FormGroup, FormGroupDirective, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { SesionService } from '../Sesiones/sesion.service';
-import { MensajeEmitir } from '../Modelos/mensaje';
+import { MensajeEmitir } from '../../Modelos/mensaje';
 import { MensajesImagenComponent } from '../mensajes-imagen/mensajes-imagen.component';
 import { ChatService } from '../Servicios/chat.service';
 
