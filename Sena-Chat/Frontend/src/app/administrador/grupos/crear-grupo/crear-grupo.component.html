@@ -1,16 +1,15 @@
 
 <div class="form-container">
     <h1 class="form-title">CREAR GRUPO</h1>
-    <form>
+    <form (ngSubmit)="validar()" [formGroup]="formGrupo">
         <div class="form-group">
-            <input type="text" class="form-control" id="groupName" placeholder="Nombre del grupo">
-            <br>
+            <input type="text" class="form-control" id="groupName" placeholder="Nombre del grupo" formControlName="nom_grupos">
         </div>
         <div class="form-group">
-            <textarea class="form-control" id="groupDescription" placeholder="Descripción del grupo"></textarea>            <br>
+            <textarea class="form-control" id="groupDescription" placeholder="Descripción del grupo" formControlName="descripcion_grupos"></textarea>
         </div>
         <div class="form-group">
-            <select class="form-control" id="groupCards">
+            <select class="form-control" id="groupCards" formControlName="id_ficha">
                 @for (f of fichas; track f) {
                 <option [value]="f.id_ficha">{{f.id_ficha}}</option>
                 }
@@ -18,7 +17,6 @@
         </div>
         <div class="form-group">
             <button type="submit" class="btn btn-create">Crear</button>
-                <br>
             <button (click)="cancelar()" type="button" class="btn btn-cancel">Cancelar</button>
         </div>
     </form>

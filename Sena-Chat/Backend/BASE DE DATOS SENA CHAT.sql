@@ -55,7 +55,7 @@ CREATE TABLE grupos
 	nom_grupos VARCHAR(20) NOT NULL,
 	descripcion_grupos VARCHAR(110) NOT NULL,
 	id_ficha VARCHAR(10) NOT NULL,
-	foto_grupo VARCHAR(100) NULL,
+	foto_grupo VARCHAR(100) NULL DEFAULT 'Grupo.png',
 	fk_tipo_grupo INT NOT NULL,
 	PRIMARY KEY (id_grupos)
 );
@@ -70,7 +70,7 @@ CREATE TABLE usuarios
 	contrasena VARCHAR(100) NOT NULL,
 	nombre_usuario VARCHAR(20) NOT NULL,
 	descripcion VARCHAR(140) NULL,
-	foto VARCHAR(100) NOT NULL,
+	foto VARCHAR(100) NOT NULL DEFAULT 'Usuario.jpg',
 	fk_id_rol INT NOT NULL,
 	numerodoc VARCHAR(20) NOT NULL,
 	fk_id_tipodoc INT NOT NULL,
@@ -193,7 +193,7 @@ INSERT INTO tipo_grupo VALUES
 (2, 'Grupal');
 
 INSERT INTO usuarios VALUES 
-('j', 'j', 'j', 'j', 'j', MD5('321'), 'JHOAN', 'Entusiasta de la tecnología y los videojuegos. Siempre en busca de nuevas aventuras en la web.', 'usuario.jpg', '3', 1024471018, 1),
+('j', 'j', 'j', 'j', 'j', MD5('321'), 'JHOAN', 'Entusiasta de la tecnología y los videojuegos. Siempre en busca de nuevas aventuras en la web.', 'Usuario.jpg', '3', 1024471018, 1),
 ('juan.cardenas34@misena.edu.co','Juan','David','Cardenas','Perez',MD5('123'),'juan_cardenas','Apasionado por la programación y el desarrollo web. ¡Listo para aprender y crecer en este mundo digital!', 'Usuario11.jpg', '2', 1131104356, 1),
 ('camilo@gmail.com','Camilo',NULL,'Perez',NULL,MD5('123'),'carlosperez','Amante de los deportes y la música. Siempre dispuesto a charlar sobre los últimos lanzamientos en la industria musical.', 'Usuario10.jpg','2','1234567911',1),
 ('sebastian@gmail.com','Sebastian',NULL,'Carrillo',NULL,MD5('123'),'sebastian_123','Fanático de los viajes y la fotografía. Compartamos historias y experiencias de viaje mientras exploramos el mundo juntos.', 'Usuario9.jpg','2','12345678912',1),
@@ -215,27 +215,27 @@ INSERT INTO usuarios VALUES
 
 
 INSERT INTO usuarios_fichas VALUES
-('0000000', '1024471018'),
-('2558101', '1131104356'),
-('2558101', '1021392807'),
-('2558101', '1234567911'),
-('2558101', '12345678019'),
-('2558101', '12345678020'),
-('2558101', '12345678018'),
-('2558102', '12345678021'),
-('2558102', '12345678022'),
-('2558102', '12345678023'),
-('2558102', '12345678912'),
-('2558102', '12345678913'),
-('2558102', '12345678914'),
-('2558102', '12345678916'),
-('2558102', '12345678917'),
-('2558102', '12345678918'),
-('2558102', '12345678919'),
-('2558102', '12345678001'),
-('2558103', '12345678024'),
-('2558104', '12345678019'),
-('2558104', '12345678020');
+('0000000', '1024471018', 1),
+('2558101', '1131104356', 1),
+('2558101', '1021392807', 1),
+('2558101', '1234567911', 1),
+('2558101', '12345678019', 1),
+('2558101', '12345678020', 1),
+('2558101', '12345678018', 1),
+('2558102', '12345678021', 1),
+('2558102', '12345678022', 1),
+('2558102', '12345678023', 1),
+('2558102', '12345678912', 1),
+('2558102', '12345678913', 1),
+('2558102', '12345678914', 1),
+('2558102', '12345678916', 1),
+('2558102', '12345678917', 1),
+('2558102', '12345678918', 1),
+('2558102', '12345678919', 1),
+('2558102', '12345678001', 1),
+('2558103', '12345678024', 1),
+('2558104', '12345678019', 1),
+('2558104', '12345678020', 1);
 -- APRENDICES PARA LA FICHA AQUI
 
 

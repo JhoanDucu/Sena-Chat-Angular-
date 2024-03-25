@@ -2,18 +2,31 @@
     <h1 class="form-title">CREAR USUARIO</h1>
     <form>
         <div class="form-group">
-            <input type="text" class="form-control" id="groupName" placeholder="Primer nombre">
-            <input type="text" class="form-control" id="groupName" placeholder="Segundo nombre">
-            <input type="text" class="form-control" id="groupName" placeholder="Primer apellido">
-            <input type="text" class="form-control" id="groupName" placeholder="Segundo apellido">
-            <select class="form-control" id="groupCards">
-                <option selected>Tipo de documento</option>
+            <input type="text" class="form-control" id="groupName" placeholder="Primer nombre"
+                formControlName="primer_nom">
+            <input type="text" class="form-control" id="groupName" placeholder="Segundo nombre"
+                formControlName="segundo_nom">
+            <input type="text" class="form-control" id="groupName" placeholder="Primer apellido"
+                formControlName="primer_apellido">
+            <input type="text" class="form-control" id="groupName" placeholder="Segundo apellido"
+                formControlName="segundo_apellido">
+            <select class="form-control" id="groupCards" formControlName="">
+                <option value="1">Cedula de ciudadania</option>
+                <option value="2">Tarjeta de identidad</option>
+                <option value="3">Cédula de Extranjería</option>
+                <option value="4">PEP</option>
+                <option value="5">Permiso por Protección Temporal</option>
             </select>
-            <input type="text" class="form-control" id="groupName" placeholder="Numero de documento">
-            <input type="text" class="form-control" id="groupName" placeholder="Correo electrónico">
-            <input type="text" class="form-control" id="groupName" placeholder="Nombre de usuario">
-            <input type="text" class="form-control" id="groupName" placeholder="Contraseña">
-            <input type="text" class="form-control" id="groupName" placeholder="Confirmar contraseña">            
+            <input type="text" class="form-control" id="groupName" placeholder="Numero de documento"
+                formControlName="numerodoc">
+            <input type="text" class="form-control" id="groupName" placeholder="Correo electrónico"
+                formControlName="correo">
+            <input type="text" class="form-control" id="groupName" placeholder="Nombre de usuario"
+                formControlName="nombre_usuario">
+            <!-- <input type="text" class="form-control" id="groupName" placeholder="Contraseña"
+                formControlName="contrasena">
+            <input type="text" class="form-control" id="groupName" placeholder="Confirmar contraseña"
+                formControlName="confirmar"> -->
         </div>
         <div class="form-group">
             <select class="form-control" id="groupCards">
@@ -23,7 +36,7 @@
         </div>
         <div class="form-group">
             <button type="submit" class="btn btn-create">Crear</button>
-                <br>
+            <br>
             <button (click)="cancelar()" type="button" class="btn btn-cancel">Cancelar</button>
         </div>
     </form>

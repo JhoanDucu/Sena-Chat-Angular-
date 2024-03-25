@@ -1,30 +1,36 @@
 <div class="form-container">
     <h1 class="form-title">CREAR MENSAJE</h1>
-    <form>
+    <form (ngSubmit)="validar()" [formGroup]="formMensaje">
         <div class="form-group">
-            <label for="ficha">Seleccionar ficha</label>
-            <select class="form-control" id="ficha">
-                <option selected>Seleccione la ficha</option>
-            </select>
-
             <label for="grupo">Seleccionar grupo</label>
             <select class="form-control" id="grupo">
                 <option selected>Seleccione el grupo</option>
             </select>
         </div>
         <div class="form-group">
+            <select class="form-control" id="groupCards" formControlName="id_tipo">
+                <option value="1">Mensaje de texto</option>
+                <option value="2">Imagen</option>
+                <option value="3">Archivo</option>
+            </select>
+        </div>
+        <div class="form-group">
+            @if (formMensaje.value.id_tipo == '1') {
             <label for="mensaje">Mensaje</label>
             <div class="input-group">
                 <textarea class="form-control" id="mensaje" rows="3"></textarea>
             </div>
+            } @if (formMensaje.value.id_tipo == '2') {
             <label for="inputGroupFile01">Imagen</label>
             <div class="input-group">
                 <input type="file" class="form-control" id="inputGroupFile01" accept="image/*">
             </div>
+            } @if (formMensaje.value.id_tipo == '3') {
             <label for="inputGroupFile02">Archivo</label>
             <div class="input-group">
                 <input type="file" class="form-control" id="inputGroupFile02">
             </div>
+            }
         </div>
         <div class="form-group">
             <button type="submit" class="btn btn-create">Crear</button>

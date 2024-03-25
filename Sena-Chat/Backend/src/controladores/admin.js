@@ -60,6 +60,53 @@ exports.obtenerProgramas = (req, res) => {
   conexion.query(query, (error, resultado) => {
     if (error) console.error(error.message);
     if (resultado.length > 0) res.json(resultado);
+    else res.json("No hay programas aun");
+  });
+};
+
+exports.obtenerFichasId = (req, res) => {
+  const query = 
+  ` select id_ficha FROM ficha; `;
+
+  conexion.query(query, (error, resultado) => {
+    if (error) console.error(error.message);
+    if (resultado.length > 0) res.json(resultado);
     else res.json("No hay fichas aun");
+  });
+};
+
+exports.insertarFicha = (req, res) => {
+  const ficha = req.body;
+  const query = "INSERT INTO ficha SET ?;";
+  conexion.query(query, ficha, (error, resultado) => {
+    if (error) return console.error(error.message);
+    if (resultado.affectedRows) res.json(ficha.id_ficha);
+  });
+};
+
+exports.insertarGrupo = (req, res) => {
+  const grupo = req.body;
+  const query = "INSERT INTO grupos SET ?";
+  conexion.query(query, grupo, (error, resultado) => {
+    if (error) return console.error(error.message);
+    res.json(resultado.insertId);
+  });
+};
+
+exports.insertarMensaje = (req, res) => {
+  const mensaje = req.body;
+  const query = "INSERT INTO mensaje SET ?";
+  conexion.query(query, mensaje, (error, resultado) => {
+    if (error) return console.error(error.message);
+    res.json(resultado.insertId);
+  });
+};
+
+exports.insertarUsuario = (req, res) => {
+  const usuario = req.body;
+  const query = "INSERT INTO usuarios SET ?";
+  conexion.query(query, usuario, (error, resultado) => {
+    if (error) return console.error(error.message);
+    res.json(resultado.insertId);
   });
 };
