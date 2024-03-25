@@ -1,4 +1,5 @@
 const conexion = require("./conexion");
+const md5 = require('md5');
 
 exports.obtenerGrupos = (req, res) => {
   const query = 
@@ -44,7 +45,7 @@ exports.obtenerFichas = (req, res) => {
   const query = 
   `SELECT f.*, COUNT(DISTINCT g.id_grupos) AS cantidad_grupos 
   FROM ficha f LEFT JOIN grupos g ON f.id_ficha = g.id_ficha 
-  AND g.fk_tipo_grupo = 2 GROUP BY f.id_ficha;`;
+  AND g.fk_tipo_grupo = 2 WHERE f.id_ficha <> '0000000' GROUP BY f.id_ficha;`;
 
   conexion.query(query, (error, resultado) => {
     if (error) console.error(error.message);
@@ -66,7 +67,7 @@ exports.obtenerProgramas = (req, res) => {
 
 exports.obtenerFichasId = (req, res) => {
   const query = 
-  ` select id_ficha FROM ficha; `;
+  ` select id_ficha FROM ficha WHERE id_ficha <> '0000000'; `;
 
   conexion.query(query, (error, resultado) => {
     if (error) console.error(error.message);
@@ -104,9 +105,16 @@ exports.insertarMensaje = (req, res) => {
 
 exports.insertarUsuario = (req, res) => {
   const usuario = req.body;
+  usuario.contrasena = md5(usuario.contrasena);
+  const usuarioFicha = usuario.id_fichas;
+  delete usuario.id_fichas;
   const query = "INSERT INTO usuarios SET ?";
-  conexion.query(query, usuario, (error, resultado) => {
-    if (error) return console.error(error.message);
-    res.json(resultado.insertId);
+  conexion.query(query, usuario, (errorUsuario, resultadoU) => {
+    if (errorUsuario) return console.error(errorUsuario.message);
+    const queryUF = "INSERT INTO usuarios_fichas (id_fichas, numerodoc, principal) VALUES (?, ?, ?)";
+    conexion.query(queryUF, [usuarioFicha, usuario.numerodoc, 1], (errorUsuarioFichas, resultadoUF) => {
+      if (errorUsuarioFichas) return console.error(errorUsuarioFichas.message);
+      res.json(["Se inserto correctamente el usuario", usuario.numerodoc]);
+    });
   });
 };

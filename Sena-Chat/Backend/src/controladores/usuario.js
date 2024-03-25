@@ -46,7 +46,6 @@ exports.enviarEmail = (req, res) => {
 
 exports.registrarUsuario = (req, res) => {
   const usuario = req.body;
-  // usuario.fk_id_ficha = "2558104";
   usuario.fk_id_rol = "2";
   delete usuario?.confirmar;
   usuario.contrasena = md5(usuario.contrasena);
@@ -59,11 +58,11 @@ exports.registrarUsuario = (req, res) => {
     }
 
     // Realizar la inserción en la tabla 'usuarios_fichas'
-    const queryUsuarioFichas = "INSERT INTO usuarios_fichas (id_fichas, numerodoc) VALUES (?, ?)";
-    conexion.query(queryUsuarioFichas, ['0000000', usuario.numerodoc], (errorUsuarioFichas, resultadoUF) => {
+    const queryUsuarioFichas = "INSERT INTO usuarios_fichas (id_fichas, numerodoc, principal) VALUES (?, ?, ?)";
+    conexion.query(queryUsuarioFichas, ['0000000', usuario.numerodoc, 1], (errorUsuarioFichas, resultadoUF) => {
       if (errorUsuarioFichas) {
         return console.error(errorUsuarioFichas.message);
-      }
+      } 
       
       // Ambas inserciones fueron exitosas
       res.json(["Se inserto correctamente el usuario", usuario.numerodoc]);
