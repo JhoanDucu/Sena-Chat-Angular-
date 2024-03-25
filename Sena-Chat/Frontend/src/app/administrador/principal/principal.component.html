@@ -56,22 +56,26 @@
         <div class="contenido">
             <!-- Contenido dinámico -->
             <div class="botones">
-                @if (!opcion.includes('crear')) {
-                <button (click)="mostrarCrear()" class="btn-crear">Crear nuevo</button>
+                @if (!opcion.includes('crear') && !opcion.includes('editar')) {
+                <button (click)="mostrar()" class="btn-crear">Crear nuevo</button>
                 <div class="search-container">
                     <input class="form-control" type="search" placeholder="Busca">
                     <i class="bi bi-search"></i>
                 </div>
                 }
             </div>
-            @if (opcion === 'grupos') { <app-vis-grupos /> }
-            @if (opcion === 'usuarios') { <app-vis-usuario /> }
-            @if (opcion === 'mensajes') { <app-vis-mensaje /> }
-            @if (opcion === 'fichas') { <app-vis-ficha /> }
-            @if (opcion === 'crearGrupo') { <app-crear-grupo (volver)="mostrarCrear()" /> }
-            @if (opcion === 'crearUsuario') { <app-crear-usuario (volver)="mostrarCrear()" /> }
-            @if (opcion === 'crearMensaje') { <app-crear-mensaje (volver)="mostrarCrear()" /> }
-            @if (opcion === 'crearFicha') { <app-crear-ficha (volver)="mostrarCrear()" /> }
+            @if (opcion === 'grupos') { <app-vis-grupos (mostrar)="seleccionarOpcion('editarGrupo', $event)" /> }
+            @if (opcion === 'usuarios') { <app-vis-usuario (mostrar)="seleccionarOpcion('editarUsuario', $event)" /> }
+            @if (opcion === 'mensajes') { <app-vis-mensaje (mostrar)="seleccionarOpcion('editarMensaje', $event)" /> }
+            @if (opcion === 'fichas') { <app-vis-ficha (mostrar)="seleccionarOpcion('editarFicha', $event)" /> }
+            @if (opcion === 'crearGrupo') { <app-crear-grupo (volver)="mostrar()" /> }
+            @if (opcion === 'crearUsuario') { <app-crear-usuario (volver)="mostrar()" /> }
+            @if (opcion === 'crearMensaje') { <app-crear-mensaje (volver)="mostrar()" /> }
+            @if (opcion === 'crearFicha') { <app-crear-ficha (volver)="mostrar()" /> }
+            @if (opcion === 'editarGrupo') { <app-editar-grupo (volver)="mostrar()" [id_grupo]="id"/> }
+            @if (opcion === 'editarUsuario') { <app-editar-usuario (volver)="mostrar()" [numerodoc]="id"/> }
+            @if (opcion === 'editarMensaje') { <app-editar-mensaje (volver)="mostrar()" [id_mensaje]="id"/> }
+            @if (opcion === 'editarFicha') { <app-editar-ficha (volver)="mostrar()" [id_ficha]="id" /> }
         </div>
     </div>
 </div>

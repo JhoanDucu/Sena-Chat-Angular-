@@ -8,6 +8,10 @@ import { CrearGrupoComponent } from '../grupos/crear-grupo/crear-grupo.component
 import { CrearUsuarioComponent } from '../usuarios/crear-usuario/crear-usuario.component';
 import { CrearMensajeComponent } from '../mensajes/crear-mensaje/crear-mensaje.component';
 import { CrearFichaComponent } from '../fichas/crear-ficha/crear-ficha.component';
+import { EditarGrupoComponent } from '../grupos/editar-grupo/editar-grupo.component';
+import { EditarUsuarioComponent } from '../usuarios/editar-usuario/editar-usuario.component';
+import { EditarMensajeComponent } from '../mensajes/editar-mensaje/editar-mensaje.component';
+import { EditarFichaComponent } from '../fichas/editar-ficha/editar-ficha.component';
 
 @Component({
   selector: 'app-principal',
@@ -21,26 +25,28 @@ import { CrearFichaComponent } from '../fichas/crear-ficha/crear-ficha.component
     CrearGrupoComponent,
     CrearUsuarioComponent,
     CrearMensajeComponent,
-    CrearFichaComponent
+    CrearFichaComponent,
+    EditarGrupoComponent,
+    EditarUsuarioComponent,
+    EditarMensajeComponent,
+    EditarFichaComponent
   ],
   templateUrl: './principal.component.html',
   styleUrls: ['./principal.component.css']
 })
 export class PrincipalComponent implements OnInit {
-
-  constructor() {
-    this.message = '';
-  }
-
+  constructor() { }
   opcion: string = 'grupos';
-
-  message!: string;
+  id: any;
 
   ngOnInit() { }
 
-  seleccionarOpcion = (opcion: any) => this.opcion = opcion;
+  seleccionarOpcion(opcion: any, idBuscar?: any) {
+    this.opcion = opcion;
+    if (idBuscar) this.id = idBuscar;
+  };
 
-  mostrarCrear() {
+  mostrar() {
     if (this.opcion == 'grupos') this.opcion = 'crearGrupo';
     else if (this.opcion == 'usuarios') this.opcion = 'crearUsuario';
     else if (this.opcion == 'mensajes') this.opcion = 'crearMensaje';
