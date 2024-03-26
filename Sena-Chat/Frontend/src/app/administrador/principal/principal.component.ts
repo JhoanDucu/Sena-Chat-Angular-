@@ -51,10 +51,10 @@ export class PrincipalComponent implements OnInit {
     else if (this.opcion == 'usuarios') this.opcion = 'crearUsuario';
     else if (this.opcion == 'mensajes') this.opcion = 'crearMensaje';
     else if (this.opcion == 'fichas') this.opcion = 'crearFicha';
-    else if (this.opcion == 'crearGrupo' || 'editarGrupo') this.opcion = 'grupos';
-    else if (this.opcion == 'crearUsuario' || 'editarUsuario') this.opcion = 'usuarios';
-    else if (this.opcion == 'crearMensaje' || 'editarMensaje') this.opcion = 'mensajes';
-    else if (this.opcion == 'crearFicha' || 'editarFicha') this.opcion = 'fichas';
+    else if (this.opcion == 'crearGrupo' || this.opcion == 'editarGrupo') this.opcion = 'grupos';
+    else if (this.opcion == 'crearUsuario' || this.opcion == 'editarUsuario') this.opcion = 'usuarios';
+    else if (this.opcion == 'crearMensaje' || this.opcion == 'editarMensaje') this.opcion = 'mensajes';
+    else if (this.opcion == 'crearFicha' || this.opcion == 'editarFicha') this.opcion = 'fichas';
   };
 
 }

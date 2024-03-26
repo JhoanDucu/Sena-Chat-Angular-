@@ -21,7 +21,7 @@
                 Aquí estará la información adicional del mensaje
             </div>
         </div>
-        <button class="btn-editar">Editar</button>
+        <button class="btn-editar" (click)="mostrar.emit(m.id_mensaje)">Editar</button>
         <button class="btn-eliminar">Eliminar</button>
     </div>
 }

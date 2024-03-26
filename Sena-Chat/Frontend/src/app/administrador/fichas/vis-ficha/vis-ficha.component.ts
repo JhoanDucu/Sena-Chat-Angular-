@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FichasService } from '../../Servicios/fichas.service';
 import { Ficha } from '../../../Modelos/fichas';
@@ -12,7 +12,9 @@ import { Ficha } from '../../../Modelos/fichas';
 })
 export class VisFichaComponent {
   constructor(private servicio: FichasService){ }
+  @Output() mostrar = new EventEmitter();
   fichas: Ficha[] = [];
+
   ngOnInit(){
     this.servicio.traerFichas().subscribe((data: any) => this.fichas = data);
   }
