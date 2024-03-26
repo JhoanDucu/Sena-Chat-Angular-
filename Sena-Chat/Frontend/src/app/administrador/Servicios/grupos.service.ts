@@ -19,4 +19,7 @@ export class GruposService {
   traerGrupoPorId(id: any){
     return this.http.get(`${url}/admin/grupo/${id}`);
   }
+  editarGrupo(datos: any, id: any){
+    return this.http.put(`${url}/admin/editar-grupo/${id}`, datos);
+  }
 }

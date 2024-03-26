@@ -7,7 +7,7 @@
         </div>
         <div class="form-group">
             <label for="NameFicha">Programa</label>
-            <select class="form-control" id="NameFicha" formControlName="fk_programa" [ariaPlaceholder]="programa">
+            <select class="form-control" id="NameFicha" formControlName="fk_programa">
                 @for (p of programas; track p) {
                 <option [value]="p.id_programa">{{p.nombre_programa}}</option>
                 }
@@ -15,7 +15,7 @@
         </div>
         <div class="form-group">
             <label for="NameFicha">Trimestre</label>
-            <select class="form-control" id="NameFicha" formControlName="trimestre" [ariaPlaceholder]="trimestre">
+            <select class="form-control" id="NameFicha" formControlName="trimestre">
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>

@@ -43,6 +43,6 @@ export class EditarGrupoComponent {
   }
 
   editar(datos: any){
-    this.servicio
+    this.servicio.editarGrupo(datos, this.id_grupo).subscribe(data => {if (data) this.cancelar(); });
   }
 }

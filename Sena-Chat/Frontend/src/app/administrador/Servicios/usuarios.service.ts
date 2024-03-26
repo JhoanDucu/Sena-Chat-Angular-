@@ -19,4 +19,7 @@ export class UsuariosService {
   traerUsuarioPorId(numdoc: any){
     return this.http.get(`${url}/admin/usuario/${numdoc}`);
   }
+  editarUsuario(datos: any){
+    return this.http.put(`${url}/admin/editar-usuario`, datos);
+  }
 }

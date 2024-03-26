@@ -16,4 +16,7 @@ export class MensajesService {
   traerMensajePorId(id: any){
     return this.http.get(`${url}/admin/grupo/${id}`);
   }
+  editarFicha(datos: any){
+    return this.http.put(`${url}/admin/editar-ficha`, datos);
+  }
 }

@@ -19,4 +19,7 @@ export class FichasService {
   traerFichaPorId(id: any){
     return this.http.get(`${url}/admin/ficha/${id}`);
   }
+  editarFicha(datos: any, id: any){
+    return this.http.put(`${url}/admin/editar-ficha/${id}`, datos);
+  }
 }
