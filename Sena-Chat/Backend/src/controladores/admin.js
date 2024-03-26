@@ -118,3 +118,103 @@ exports.insertarUsuario = (req, res) => {
     });
   });
 };
+
+exports.obtenerUnGrupo = (req, res) => {
+  const { id_grupo } = req.params;
+  const query = 
+  `SELECT * FROM grupos WHERE fk_tipo_grupo = 2 AND id_grupos = ?`;
+
+  conexion.query(query, id_grupo,(error, resultado) => {
+    if (error) console.error(error.message);
+    if (resultado.length > 0) res.json(resultado[0]);
+    else res.json("No hay grupos aun");
+  });
+};
+
+exports.obtenerUnUsuario = (req, res) => {
+  const { numerodoc } = req.params;
+  const query = 
+  `SELECT primer_nom, segundo_nom, primer_apellido, segundo_apellido, u.numerodoc, 
+  fk_id_tipodoc, id_fichas, foto, fk_id_rol FROM usuarios u INNER JOIN usuarios_fichas uf
+  ON u.numerodoc = uf.numerodoc WHERE u.numerodoc = ?;`;
+
+  conexion.query(query, numerodoc, (error, resultado) => {
+    if (error) console.error(error.message);
+    if (resultado.length > 0) res.json(resultado);
+    else res.json("No hay usuarios aun");
+  });
+};
+
+exports.obtenerUnMensaje = (req, res) => {
+  const query = 
+  `SELECT m.id_mensaje, m.fecha_hora, m.contenido_mensaje, ug.id_grupos AS destino,
+  tm.Nom_tipo AS tipo_mensaje FROM mensaje m INNER JOIN tipo_mensaje tm ON m.id_tipo = tm.id_tipo
+  LEFT JOIN usuarios_grupos ug ON m.fk_destino = ug.id_usuarios_grupos LEFT JOIN usuarios u 
+  ON m.fk_destino = u.numerodoc OR ug.id_usuarios_grupos IS NULL ORDER BY m.id_mensaje DESC;`;
+
+  conexion.query(query, (error, resultado) => {
+    if (error) console.error(error.message);
+    if (resultado.length > 0) res.json(resultado);
+    else res.json("No hay mensajes aun");
+  });
+};
+
+exports.obtenerUnaFicha = (req, res) => {
+  const query = 
+  `SELECT f.*, COUNT(DISTINCT g.id_grupos) AS cantidad_grupos 
+  FROM ficha f LEFT JOIN grupos g ON f.id_ficha = g.id_ficha 
+  AND g.fk_tipo_grupo = 2 WHERE f.id_ficha <> '0000000' GROUP BY f.id_ficha;`;
+
+  conexion.query(query, (error, resultado) => {
+    if (error) console.error(error.message);
+    if (resultado.length > 0) res.json(resultado);
+    else res.json("No hay fichas aun");
+  });
+};
+
+exports.actualizarGrupo = (req, res) => {
+  const grupo = req.body;
+  const { id_grupo } = req.params;
+  const query = "UPDATE grupos SET ? WHERE id_grupos = ?";
+  conexion.query(query, [grupo, id_grupo], (error, resultado) => {
+    if (error) return console.error(error.message);
+    if(resultado.affectedRows) res.json(id_grupo);
+    else res.json('Grupo no actualizado');
+  });
+};
+
+exports.actualizarFicha = (req, res) => {
+  const { id_ficha } = req.params;
+  const ficha = req.body;
+  const query = "INSERT INTO ficha SET ? WHERE id_ficha = ?;";
+  conexion.query(query, [ficha, id_ficha], (error, resultado) => {
+    if (error) return console.error(error.message);
+    if (resultado.affectedRows) res.json(ficha.id_ficha);
+    else res.json('Ficha no actualizado');
+  });
+};
+
+// exports.insertarMensaje = (req, res) => {
+//   const mensaje = req.body;
+//   const query = "INSERT INTO mensaje SET ?";
+//   conexion.query(query, mensaje, (error, resultado) => {
+//     if (error) return console.error(error.message);
+//     res.json(resultado.insertId);
+//   });
+// };
+
+// exports.insertarUsuario = (req, res) => {
+//   const usuario = req.body;
+//   usuario.contrasena = md5(usuario.contrasena);
+//   const usuarioFicha = usuario.id_fichas;
+//   delete usuario.id_fichas;
+//   const query = "INSERT INTO usuarios SET ?";
+//   conexion.query(query, usuario, (errorUsuario, resultadoU) => {
+//     if (errorUsuario) return console.error(errorUsuario.message);
+//     const queryUF = "INSERT INTO usuarios_fichas (id_fichas, numerodoc, principal) VALUES (?, ?, ?)";
+//     conexion.query(queryUF, [usuarioFicha, usuario.numerodoc, 1], (errorUsuarioFichas, resultadoUF) => {
+//       if (errorUsuarioFichas) return console.error(errorUsuarioFichas.message);
+//       res.json(["Se inserto correctamente el usuario", usuario.numerodoc]);
+//     });
+//   });
+// };
