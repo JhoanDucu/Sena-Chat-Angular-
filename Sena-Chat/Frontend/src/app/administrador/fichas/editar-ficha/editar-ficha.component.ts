@@ -38,10 +38,10 @@ export class EditarFichaComponent {
   cancelar = () => this.volver.emit();
 
   validar() {
-    this.editar(this.formFicha.value);
+    this.editar(this.formFicha.value, this.id_ficha);
   }
 
-  editar(datos: any) {
-    this.servicio
+  editar(datos: any, id: any) {
+    this.servicio.editarFicha(datos, id).subscribe((data) => { if (data) this.cancelar(); });
   }
 }

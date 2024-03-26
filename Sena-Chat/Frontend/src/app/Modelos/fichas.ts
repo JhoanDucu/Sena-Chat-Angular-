@@ -4,4 +4,5 @@ export interface Ficha {
     programa_formacion: string,
     trimestre: number,
     cantidad_grupos: number,
+    nombre_programa: string
 }
