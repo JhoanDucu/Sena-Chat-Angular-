@@ -1,36 +1,44 @@
 <div class="form-container">
     <h1 class="form-title">ACTUALIZAR INFORMACIÓN DE USUARIO</h1>
-    <p>Usuario seleccionado: <strong>Nombre del usuario</strong></p>
 
-    <form>
+    <form (ngSubmit)="validar()" [formGroup]="formUsuario">
         <div class="form-group">
             <span>Primer nombre</span>
-            <input type="text" class="form-control" id="groupName" placeholder="juan">
+            <input type="text" class="form-control" id="groupName" formControlName="primer_nom">
             <br>
             <span>Segundo nombre</span>
-            <input type="text" class="form-control" id="groupName" placeholder="david"><br>
+            <input type="text" class="form-control" id="groupName" formControlName="segundo_nom"><br>
             <span>Primer apellido</span>
-            <input type="text" class="form-control" id="groupName" placeholder="Cardenas"><br>
+            <input type="text" class="form-control" id="groupName" formControlName="primer_apellido"><br>
             <span>Segundo apellido</span>
-            <input type="text" class="form-control" id="groupName" placeholder="Perez"><br>
+            <input type="text" class="form-control" id="groupName" formControlName="segundo_apellido"><br>
             <span>Tipo de documento</span>
-            <select class="form-control" id="groupCards">
+            <select class="form-control" id="groupCards" formControlName="fk_id_tipodoc">
                 <option selected>Tipo de documento</option>
                 <option value="1">Cédula de ciudadanía</option>
+                <option value="2">Tarjeta de identidad</option>
+                <option value="3">Cédula de Extranjería</option>
+                <option value="4">PEP</option>
+                <option value="5">Permiso por Protección Temporal</option>
             </select><br>
             <span>Numero de documento</span>
-            <input type="text" class="form-control" id="groupName" placeholder="0000000000"><br>
+            <input type="text" class="form-control" id="groupName" formControlName="numerodoc"><br>
             <span>Correo electrónico</span>
-            <input type="text" class="form-control" id="groupName" placeholder="juan@gmail.com"><br>
+            <input type="text" class="form-control" id="groupName" formControlName="correo"><br>
             <span>Nombre de usuario</span>
-            <input type="text" class="form-control" id="groupName" placeholder="juancho"><br>
+            <input type="text" class="form-control" id="groupName" formControlName="nombre_usuario"><br>
             <span>Fichas</span>
             <div class="form-group">
-                <select class="form-control" id="groupCards">
-                    <option selected>Fichas</option>
-                    <option value="1">2558104</option>
+                <select class="form-control" id="groupCards" formControlName="id_fichas">
+                    @for (f of fichas; track f) {<option [value]="f.id_ficha">{{f.id_ficha}}</option>}
                 </select>
             </div>
+            <span>Rol</span>
+            <select class="form-control" id="groupCards" formControlName="fk_id_rol">
+                <option value="1">Instructor</option>
+                <option value="2">Aprendiz</option>
+                <option value="3">Administrador</option>
+            </select>
         </div>
 
         <div class="form-group">

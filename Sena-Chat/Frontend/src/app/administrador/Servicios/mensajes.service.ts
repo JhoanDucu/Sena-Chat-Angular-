@@ -14,9 +14,9 @@ export class MensajesService {
     return this.http.post(`${url}/admin/agregar-mensaje`, datos);
   }
   traerMensajePorId(id: any){
-    return this.http.get(`${url}/admin/grupo/${id}`);
+    return this.http.get(`${url}/admin/mensaje/${id}`);
   }
-  editarFicha(datos: any){
-    return this.http.put(`${url}/admin/editar-ficha`, datos);
+  editarMensaje(datos: any, id: any){
+    return this.http.put(`${url}/admin/editar-mensaje/${id}`, datos);
   }
 }

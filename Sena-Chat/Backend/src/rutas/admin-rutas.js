@@ -18,7 +18,7 @@ router.post("/agregar-mensaje", adminController.insertarMensaje);
 router.post("/agregar-usuario", adminController.insertarUsuario);
 router.put("/editar-ficha/:id_ficha", adminController.actualizarFicha);
 router.put("/editar-grupo/:id_grupo", adminController.actualizarGrupo);
-router.put("/editar-mensaje/:id_mensaje", adminController.insertarMensaje);
+router.put("/editar-mensaje/:id_mensaje", adminController.actualizarMensaje);
 router.put("/editar-usuario/:numerodoc", adminController.actualizarUsuario);
 
 module.exports = router;

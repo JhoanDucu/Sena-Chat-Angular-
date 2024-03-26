@@ -104,22 +104,22 @@ CREATE TABLE usuarios_fichas
 ALTER TABLE ficha
 ADD CONSTRAINT FK_ficha_programa
 FOREIGN KEY (fk_programa)
-REFERENCES programa_formacion (id_programa);
+REFERENCES programa_formacion (id_programa) ON DELETE CASCADE ON UPDATE CASCADE;
 
 ALTER TABLE grupos 
 ADD CONSTRAINT PK_FK_id_ficha 
 FOREIGN KEY (id_ficha) 
-REFERENCES ficha (id_ficha);
+REFERENCES ficha (id_ficha) ON DELETE CASCADE ON UPDATE CASCADE;
 
 ALTER TABLE grupos 
 ADD CONSTRAINT tipoGrupo 
 FOREIGN KEY (fk_tipo_grupo) 
-REFERENCES tipo_grupo(id_tipo_grupo);
+REFERENCES tipo_grupo(id_tipo_grupo) ON DELETE CASCADE ON UPDATE CASCADE;
 
 ALTER TABLE usuarios_grupos
 ADD CONSTRAINT FK_PK_id_grupos
 FOREIGN KEY (id_grupos)
-REFERENCES grupos (id_grupos);
+REFERENCES grupos (id_grupos) ON DELETE CASCADE ON UPDATE CASCADE;
 
 ALTER TABLE usuarios_grupos
 ADD CONSTRAINT FK_PK_id_usuarios 
@@ -129,27 +129,27 @@ REFERENCES usuarios (numerodoc) ON DELETE CASCADE ON UPDATE CASCADE;
 ALTER TABLE usuarios
 ADD CONSTRAINT FK_PK_id_rol
 FOREIGN KEY (fk_id_rol)
-REFERENCES roles (id_rol);
+REFERENCES roles (id_rol) ON DELETE CASCADE ON UPDATE CASCADE;
 
 ALTER TABLE usuarios
 ADD CONSTRAINT FK_PK_id_documento
 FOREIGN KEY (fk_id_tipodoc)
-REFERENCES tipo_documento (id_tipodoc);
+REFERENCES tipo_documento (id_tipodoc) ON DELETE CASCADE ON UPDATE CASCADE;
 
 ALTER TABLE mensaje
 ADD CONSTRAINT FK_Destino
 FOREIGN KEY (fk_destino)
-REFERENCES usuarios_grupos(id_usuarios_grupos);
+REFERENCES usuarios_grupos(id_usuarios_grupos) ON DELETE CASCADE ON UPDATE CASCADE;
 
 ALTER TABLE mensaje
 ADD CONSTRAINT FK_PK_id_tipo
 FOREIGN KEY (id_tipo)
-REFERENCES tipo_mensaje (id_tipo);
+REFERENCES tipo_mensaje (id_tipo) ON DELETE CASCADE ON UPDATE CASCADE;
 
 ALTER TABLE usuarios_fichas
 ADD CONSTRAINT FK_PK_id_fichas
 FOREIGN KEY (id_fichas)
-REFERENCES ficha (id_ficha);
+REFERENCES ficha (id_ficha) ON DELETE CASCADE ON UPDATE CASCADE;
 
 ALTER TABLE usuarios_fichas
 ADD CONSTRAINT FK_PK_usuarios 

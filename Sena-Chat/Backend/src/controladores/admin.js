@@ -132,8 +132,8 @@ exports.obtenerUnGrupo = (req, res) => {
 
 exports.obtenerUnUsuario = (req, res) => {
   const { numerodoc } = req.params;
-  const query = `SELECT primer_nom, segundo_nom, primer_apellido, segundo_apellido, u.numerodoc, 
-  fk_id_tipodoc, id_fichas, foto, fk_id_rol FROM usuarios u INNER JOIN usuarios_fichas uf
+  const query = `SELECT correo, primer_nom, segundo_nom, primer_apellido, segundo_apellido, u.numerodoc, 
+  fk_id_tipodoc, id_fichas, foto, fk_id_rol, u.nombre_usuario FROM usuarios u INNER JOIN usuarios_fichas uf
   ON u.numerodoc = uf.numerodoc WHERE u.numerodoc = ?;`;
 
   conexion.query(query, numerodoc, (error, resultado) => {
@@ -144,12 +144,10 @@ exports.obtenerUnUsuario = (req, res) => {
 };
 
 exports.obtenerUnMensaje = (req, res) => {
-  const query = `SELECT m.id_mensaje, m.fecha_hora, m.contenido_mensaje, ug.id_grupos AS destino,
-  tm.Nom_tipo AS tipo_mensaje FROM mensaje m INNER JOIN tipo_mensaje tm ON m.id_tipo = tm.id_tipo
-  LEFT JOIN usuarios_grupos ug ON m.fk_destino = ug.id_usuarios_grupos LEFT JOIN usuarios u 
-  ON m.fk_destino = u.numerodoc OR ug.id_usuarios_grupos IS NULL ORDER BY m.id_mensaje DESC;`;
+  const { id_mensaje } = req.params;
+  const query = `SELECT contenido_mensaje FROM mensaje WHERE id_mensaje = ?`;
 
-  conexion.query(query, (error, resultado) => {
+  conexion.query(query, id_mensaje, (error, resultado) => {
     if (error) console.error(error.message);
     if (resultado.length > 0) res.json(resultado[0]);
     else res.json("No hay mensajes aun");
@@ -189,18 +187,22 @@ exports.actualizarFicha = (req, res) => {
   });
 };
 
-// exports.insertarMensaje = (req, res) => {
-//   const mensaje = req.body;
-//   const query = "INSERT INTO mensaje SET ?";
-//   conexion.query(query, mensaje, (error, resultado) => {
-//     if (error) return console.error(error.message);
-//     res.json(resultado.insertId);
-//   });
-// };
+exports.actualizarMensaje = (req, res) => {
+  const { id_mensaje } = req.params;
+  const mensaje = req.body;
+  const query = "UPDATE mensaje SET ? WHERE id_mensaje = ?";
+  conexion.query(query, [mensaje, id_mensaje], (error, resultado) => {
+    if (error) return console.error(error.message);
+    if (resultado.affectedRows) res.json(id_mensaje);
+    else res.json('Mensaje no actualizado');
+  });
+};
 
 exports.actualizarUsuario = (req, res) => {
   const { numerodoc } = req.params;
   const usuario = req.body;
+  usuario['u.numerodoc'] = usuario.numerodoc;
+  delete usuario.numerodoc;
 
   const query = `UPDATE usuarios_fichas f INNER JOIN usuarios u ON
     u.numerodoc = f.numerodoc SET ? WHERE u.numerodoc = ?`;
