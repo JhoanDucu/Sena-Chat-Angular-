@@ -13,4 +13,7 @@ export class MensajesService {
   agregarMensaje(datos: any){
     return this.http.post(`${url}/admin/agregar-mensaje`, datos);
   }
+  traerMensajePorId(id: any){
+    return this.http.get(`${url}/admin/grupo/${id}`);
+  }
 }

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { GruposService } from '../../Servicios/grupos.service';
 import { Grupo } from '../../../Modelos/grupos';
@@ -15,6 +15,7 @@ import { Ficha } from '../../../Modelos/fichas';
 export class EditarGrupoComponent {
   constructor(private servicio: GruposService) { }
   @Input() id_grupo: any;
+  @Output() volver = new EventEmitter();
   grupo: Grupo = {};
   fichas: Ficha[] = [];
   formGrupo = new FormGroup({
@@ -35,7 +36,13 @@ export class EditarGrupoComponent {
     this.servicio.traerIdFichas().subscribe((data: any) => this.fichas = data);
   }
 
-  editar(){
+  cancelar = () => this.volver.emit();
 
+  validar(){
+    this.editar(this.formGrupo.value);
+  }
+
+  editar(datos: any){
+    this.servicio
   }
 }

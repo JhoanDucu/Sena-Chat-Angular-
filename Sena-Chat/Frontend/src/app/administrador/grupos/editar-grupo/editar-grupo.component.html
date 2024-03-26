@@ -1,6 +1,6 @@
 <div class="form-container">
     <h1 class="form-title">Editar Grupo</h1>
-    <form (ngSubmit)="editar()" [formGroup]="formGrupo">
+    <form (ngSubmit)="validar()" [formGroup]="formGrupo">
         <div class="form-group">
             <span>Nombre del grupo</span>
             <input type="text" id="newGroupName" name="newGroupName" class="form-control"
@@ -14,8 +14,9 @@
         <div class="form-group">
             <span>Ficha</span>
             <select id="newGroupTag" name="newGroupTag" class="form-control" formControlName="id_ficha">
-                <option selected>Fichas</option>
-                <option value="1">232542671</option>
+                @for (f of fichas; track f) {
+                    <option [value]="f.id_ficha">{{f.id_ficha}}</option>  
+                }
             </select>
         </div>
         <div class="form-group">
@@ -26,7 +27,7 @@
         <div class="form-group">
             <button type="submit" class="btn btn-create">Guardar Cambios</button>
             <br>
-            <button type="button" class="btn btn-cancel">Cancelar</button>
+            <button type="button" class="btn btn-cancel" (click)="cancelar()">Cancelar</button>
         </div>
     </form>
 </div>
