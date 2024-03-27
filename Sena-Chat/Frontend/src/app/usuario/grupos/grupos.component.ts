@@ -71,6 +71,6 @@ export class GruposComponent {
     this.datos[type].unshift(this.datos[type].splice(index, 1)[0]);
   }
 
-  tiene = (g: any, propiedad: string) => ChatDirective.contieneMensajes(g, propiedad);
+  tiene = (objeto: any) => ChatDirective.contieneMensajes(objeto);
 
 }

@@ -13,13 +13,12 @@ import { Fecha } from '../../Modelos/fechas';
   styleUrl: './grupo.component.css'
 })
 export class GrupoComponent {
-
   constructor(private Chat: ChatService, private Sesion: SesionService) { }
-
   @Input() grupo: any = {};
   @Input() active = false;
   @Input() tiempo: any;
-  @Input() reciente: any;
+  @Input() contenido: any;
+  @Input() tipo: any;
   @Output() moverGrupo = new EventEmitter();
   nomGrupo: any;
   idGrupo: any;
@@ -33,7 +32,7 @@ export class GrupoComponent {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['tiempo']) this.tiempo = this.fecha(changes['tiempo'].currentValue);
-    if (changes['reciente'] !== undefined) !changes['reciente'].isFirstChange() ? this.moverGrupo.emit() : undefined;
+    if (changes['contenido'] !== undefined) !changes['contenido'].isFirstChange() ? this.moverGrupo.emit() : undefined;
   }
 
   nuevaNotificacion = () => this.Sesion.get('grupos') != this.idGrupo ? this.contador = (this.contador | 0) + 1 : null;

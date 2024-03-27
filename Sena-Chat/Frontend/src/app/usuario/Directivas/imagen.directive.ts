@@ -16,10 +16,13 @@ export class ImagenDirective {
       const height = imageElement.naturalHeight;
 
       if (width > height) {
-        console.log(imageElement.parentElement);
-        this.renderer.addClass(imageElement.parentElement?.parentElement, 'imagen'); // horizontal
+        // this.renderer.addClass(imageElement, 'imagen-horizontal');
+        this.renderer.addClass(imageElement.parentElement, 'imagen-horizontal');
+      } else if (width === height) {
+        this.renderer.addClass(imageElement.parentElement, 'imagen-cuadrada');
       } else {
-        this.renderer.addClass(imageElement.parentElement?.parentElement, 'imagen'); // vertical
+        // this.renderer.addClass(imageElement, 'imagen-vertical');
+        this.renderer.addClass(imageElement.parentElement, 'imagen-vertical');
       }
     };
   }

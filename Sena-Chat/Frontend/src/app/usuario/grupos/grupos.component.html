@@ -24,14 +24,6 @@
         </li>
         }
         <li class="nav-item" role="presentation">
-            <button class="nav-link" id="ajustes-tab" data-bs-toggle="tab" data-bs-target="#ajustes" type="button"
-                role="tab" aria-controls="ajustes" aria-selected="false" [disabled]="enBusqueda"
-                (click)="mostrarTab('ajustes')">
-                <i [ngClass]="tabs.ajustes.new ? 'bx bxs-message-square-dots bx-tada':'bx bxs-message-square-dots'"></i>
-                @if(tabs.ajustes.new){<span></span>}
-            </button>
-        </li>
-        <li class="nav-item" role="presentation">
             <button class="nav-link" id="dontk-tab" data-bs-toggle="tab" data-bs-target="#salir" type="button"
                 role="tab" aria-controls="contact" aria-selected="false" [disabled]="enBusqueda">
                 <i [ngClass]="tabs.ajustes.new ? 'bx bxs-cog bx-tada' : 'bx bxs-cog'"></i>
@@ -68,9 +60,10 @@
             <div class="list-group" id="list-tab" role="tablist">
                 <app-grupos-titulo [titulo]="'Grupos'"></app-grupos-titulo>
                 @for ( g of datos.grupos; track g.id_grupos) {
-                <app-grupo (click)="seleccionarEnGrupos(g.id_grupos, $index, 'grupos')"
-                    [active]="picked.g == g.id_grupos ? true : false" [grupo]="g" [tiempo]="tiene(g, 'fecha_hora')"
-                    [reciente]="tiene(g, 'contenido_mensaje')" (moverGrupo)="cambiarPosicion($index, 'grupos')">
+                <app-grupo (click)="seleccionarEnGrupos(g.id_grupos, $index, 'grupos')" [grupo]="g"
+                    [active]="picked.g == g.id_grupos ? true : false" [tipo]="tiene(g)?.id_tipo"
+                    [tiempo]="tiene(g)?.fecha_hora" [contenido]="tiene(g)?.contenido_mensaje"
+                    (moverGrupo)="cambiarPosicion($index, 'grupos')">
                 </app-grupo>
                 } @empty {
                 <h4 id="tituloAviso">No hay grupos por mostrar...</h4>
@@ -96,9 +89,10 @@
             <div class="list-group" id="list-tab" role="tablist">
                 <app-grupos-titulo [titulo]="'Privados'"></app-grupos-titulo>
                 @for (p of datos.privados; track p.id_grupos) {
-                <app-grupo (click)="seleccionarEnGrupos(p.id_grupos, $index, 'privados')"
-                    [active]="picked.g == p.id_grupos ? true : false" [grupo]="p" [tiempo]="tiene(p, 'fecha_hora')"
-                    [reciente]="tiene(p, 'contenido_mensaje')" (moverGrupo)="cambiarPosicion($index, 'privados')">
+                <app-grupo (click)="seleccionarEnGrupos(p.id_grupos, $index, 'privados')" [grupo]="p"
+                    [active]="picked.g == p.id_grupos ? true : false" [tipo]="tiene(p)?.id_tipo"
+                    [contenido]="tiene(p)?.contenido_mensaje" [tiempo]="tiene(p)?.fecha_hora"
+                    (moverGrupo)="cambiarPosicion($index, 'privados')">
                 </app-grupo>
                 } @empty {
                 <h4 id="tituloAviso">No hay privados por mostrar...</h4>

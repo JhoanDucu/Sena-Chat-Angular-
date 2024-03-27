@@ -62,5 +62,5 @@ export class BuscadorComponent {
     this.valorBuscar = '';
   }
 
-  tiene = (g: any, propiedad: string) => ChatDirective.contieneMensajes(g, propiedad);
+  tiene = (objeto: any) => ChatDirective.contieneMensajes(objeto);
 }
