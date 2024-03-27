@@ -43,9 +43,11 @@ export class MensajesEnviarComponent {
       this.imagenes.forEach((element) => {
         const formData = new FormData();
         formData.append('file', element);
-        formValue.id_tipo = 2;
-        this.Chat.subirImagen(formData).subscribe(data => formValue.contenido_mensaje = data);
-        this.emitir.emit(formValue);
+        this.Chat.subirImagen(formData).subscribe((data) => {
+          formValue.id_tipo = 2;
+          formValue.contenido_mensaje = data;
+          this.emitir.emit(formValue);
+        });
       });
     } else {
       formValue.id_tipo = 1;

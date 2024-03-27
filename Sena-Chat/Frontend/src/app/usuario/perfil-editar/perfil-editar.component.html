@@ -12,11 +12,11 @@
         </div>
         <div class="offcanvas-body">
             <div id="presentacion">
-                <label for="cambiarImg" id="labelCambiarImg" (mouseleave)="activarBoton()"(mouseenter)="activarBoton()"
-                    [style.background-image]="usuario.foto ? 'url('+'../../../assets/img/'+usuario.foto+')' : 
-                    'url(../../../assets/img/usuario.jpg)'">
+                <label for="cambiarImg" id="labelCambiarImg" (mouseleave)="activarBoton()" (mouseenter)="activarBoton()"
+                    [style.background-image]="fotoPerfil">
                     @if (hoverImg) { <span id="spanCambiarImg">Cambiar foto <i class='bx bxs-camera'></i></span> }
-                    <input type="file" id="cambiarImg" hidden>
+                    <input type="file" id="cambiarImg" hidden (change)="cambiarPerfil($event.target)"
+                        formControlName="foto">
                 </label>
                 <span id="nombreUsuario">
                     @if (!propsEditar.nombre_usuario) {

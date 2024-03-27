@@ -54,6 +54,7 @@ export class PerfilEditarComponent {
     foto: new FormControl('', Validators.required),
     fk_id_rol: new FormControl('', Validators.required),
   });
+  fotoPerfil: any;
 
   ngOnInit() {
     this.cancelar();
@@ -89,6 +90,19 @@ export class PerfilEditarComponent {
     });
   }
 
+  cambiarPerfil(event: any){
+    this.convertFile(event.files[0]).then((image: any) => this.fotoPerfil = 'url('+image+')');
+    this.cambios = true;
+  }
+
+  convertFile = async (file: File) => new Promise((resolve, reject) => {
+    try {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => { resolve(reader.result) };
+    } catch (error) { console.error(error); }
+  });
+
   cancelar() {
     this.cambios = false;
     this.formEditar.patchValue({
@@ -103,9 +117,10 @@ export class PerfilEditarComponent {
       numerodoc: this.usuario.numerodoc,
       fk_id_tipodoc: this.usuario.fk_id_tipodoc as string,
       id_fichas: this.usuario.id_fichas,
-      foto: this.usuario.foto,
+      foto: '',
       fk_id_rol: this.usuario.fk_id_rol,
     });
+    this.fotoPerfil = 'url(../../../assets/img/'+this.usuario.foto+')';
   }
 
   fecha = () => Fecha.momentoAhora();

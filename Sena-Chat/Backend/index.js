@@ -57,7 +57,7 @@ app.use("/chat", Rutas.chat);
 app.use("/admin", Rutas.admin);
 
 app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerSpec));
-app.use("imagenes", express.static(path.join(__dirname, 'imagenes')));
+app.use("/imagenes", express.static(path.join(__dirname, 'imagenes')));
 
 const puerto = process.env.port || 3000;
 http.listen(puerto, () => {
