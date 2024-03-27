@@ -3,9 +3,9 @@
     <div [ngClass]="m.numerodoc == usuario ? 'Propio' : 'Ajeno'">
         <div [ngClass]="m.numerodoc == usuario ? 'mensajesPropios' : 'mensajesAjenos'">
             @if (m.numerodoc != usuario) { <p class="nombreEmisor">~~ {{ m.primer_nom }} </p> }
-            @if (m.id_tipo === 1) { <span> {{ m.contenido_mensaje  }} </span> }
+            @if (m.id_tipo === 1) { <span> {{ m.contenido_mensaje }} </span> }
             @if (m.id_tipo === 2) {
-                <img src="http://localhost:3000/imagenes/1711068755010-IMG-20220327-WA0004.jpg">
+            <img [src]="'http://localhost:3000/imagenes/'+m.contenido_mensaje" appImagen>
             }
             <p [ngClass]="m.numerodoc == usuario ? 'horaPropios' : 'horaAjenos'">
                 {{ obtenerHora(m.fecha_hora) }}

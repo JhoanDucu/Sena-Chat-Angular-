@@ -1,3 +1,4 @@
+
 .card-body {
   padding-bottom: 1%;
   overflow-y: auto;
@@ -75,4 +76,9 @@
 span {
   word-wrap: break-word;
   word-break: break-word;
+}
+
+.imagen {
+  max-width: 100%;
+  height: auto;
 }

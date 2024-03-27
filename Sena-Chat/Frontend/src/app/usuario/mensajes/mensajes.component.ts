@@ -2,11 +2,12 @@ import { Component, ElementRef, EventEmitter, Input, Output, SimpleChanges, View
 import { CommonModule } from '@angular/common';
 import { MensajeMostrar } from '../../Modelos/mensaje';
 import { SesionService } from '../Sesiones/sesion.service';
+import { ImagenDirective } from '../Directivas/imagen.directive';
 
 @Component({
   selector: 'app-mensajes',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, ImagenDirective],
   templateUrl: './mensajes.component.html',
   styleUrl: './mensajes.component.css'
 })
