@@ -7,7 +7,7 @@
     <div class="offcanvas-body" id="agregar">
         @if (usuario) {
         <div id="presentacion">
-            <img [src]="'../../../assets/img/'+usuario.foto" id="imagenPerfil">
+            <img [src]="url+usuario.foto" id="imagenPerfil">
             <span id="nombreUsuario">{{ usuario.nombre_usuario }}</span>
         </div>
         <div id="informacion">

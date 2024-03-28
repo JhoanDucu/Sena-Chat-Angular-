@@ -4,6 +4,7 @@ import { NotificacionDirective } from '../Directivas/notificacion.directive';
 import { ChatService } from '../Servicios/chat.service';
 import { SesionService } from '../Sesiones/sesion.service';
 import { Fecha } from '../../Modelos/fechas';
+import { urlImagenes } from '../../../servidor';
 
 @Component({
   selector: 'app-grupo',
@@ -23,6 +24,7 @@ export class GrupoComponent {
   nomGrupo: any;
   idGrupo: any;
   contador: any = undefined;
+  url = urlImagenes;
 
   ngOnInit() {
     this.nomGrupo = this.grupo.nom_grupos;

@@ -2,7 +2,7 @@
 'list-group-item list-group-item-action' " id="list-profile-list" data-bs-toggle="list" role="tab"
     aria-controls="list-profile">
     <div class="tab">
-        <img [src]="'../../../assets/img/'+grupo.foto_grupo" class="pic-tab">
+        <img [src]="url+grupo.foto_grupo" class="pic-tab">
         <div id="grupo">
             {{ nomGrupo }} <small>{{ tiempo }}</small>
             @if (active) {

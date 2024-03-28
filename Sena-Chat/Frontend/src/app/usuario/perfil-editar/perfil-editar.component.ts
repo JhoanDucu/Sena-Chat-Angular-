@@ -6,7 +6,7 @@ import { Usuario } from '../../Modelos/usuarios';
 import { ConfigurarService } from '../Servicios/configurar.service';
 import { BootstrapService } from '../Servicios/bootstrap.service';
 import { Fecha } from '../../Modelos/fechas';
-import { url } from '../../../servidor';
+import { urlImagenes } from '../../../servidor';
 
 @Component({
   selector: 'app-perfil-editar',
@@ -55,7 +55,7 @@ export class PerfilEditarComponent {
     foto: new FormControl('', Validators.required),
     fk_id_rol: new FormControl('', Validators.required),
   });
-  url = url+'/imagenes/';
+  url = urlImagenes;
   fotoPerfil: any;
   fotoSeleccionada: any;
 
