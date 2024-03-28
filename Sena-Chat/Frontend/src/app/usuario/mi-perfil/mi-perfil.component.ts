@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Usuario } from '../../Modelos/usuarios';
 import { SesionService } from '../Sesiones/sesion.service';
+import { url } from '../../../servidor';
 
 @Component({
   selector: 'app-mi-perfil',
@@ -12,7 +13,8 @@ import { SesionService } from '../Sesiones/sesion.service';
 })
 export class MiPerfilComponent {
   constructor(private sesion: SesionService) { }
-  @Input() perfil: any;
+  @Input() perfil: Usuario = {};
+  url = url + '/imagenes/';
 
   ngOnInit(): void { }
 

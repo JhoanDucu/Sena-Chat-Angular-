@@ -6,6 +6,7 @@ import { Usuario } from '../../Modelos/usuarios';
 import { ConfigurarService } from '../Servicios/configurar.service';
 import { BootstrapService } from '../Servicios/bootstrap.service';
 import { Fecha } from '../../Modelos/fechas';
+import { url } from '../../../servidor';
 
 @Component({
   selector: 'app-perfil-editar',
@@ -54,7 +55,9 @@ export class PerfilEditarComponent {
     foto: new FormControl('', Validators.required),
     fk_id_rol: new FormControl('', Validators.required),
   });
+  url = url+'/imagenes/';
   fotoPerfil: any;
+  fotoSeleccionada: any;
 
   ngOnInit() {
     this.cancelar();
@@ -80,18 +83,29 @@ export class PerfilEditarComponent {
 
   comprobarCambios = (prop: keyof Usuario) => this.usuario[prop] != this.formEditar.value[prop];
 
-  editar() {
-    this.Configurar.actualizarUsuario(this.formEditar.value, this.usuario.numerodoc).subscribe((data: any) => {
-      if (data == 'Actualizado') {
-        this.b.toastPerfil();
-        this.actualizar.emit(this.formEditar.value);
-      } else alert('No actualizado');
-      this.cambios = false;
+  validar() {
+    this.editar(this.formEditar.value, this.usuario.numerodoc);
+  }
+
+  editar(datos: any, numdoc: any) {
+    const formData = new FormData();
+    formData.append('file', this.fotoSeleccionada);
+    this.Configurar.subirImagen(formData).subscribe((data) => {
+      if (data !== 'No hay archivos')
+        datos.foto = data;
+      this.Configurar.actualizarUsuario(datos, numdoc).subscribe((data: any) => {
+        if (data == 'Actualizado') {
+          this.b.toastPerfil();
+          this.actualizar.emit(this.formEditar.value);
+        } else alert('No actualizado');
+        this.cambios = false;
+      });
     });
   }
 
-  cambiarPerfil(event: any){
-    this.convertFile(event.files[0]).then((image: any) => this.fotoPerfil = 'url('+image+')');
+  cambiarPerfil(event: any) {
+    this.fotoSeleccionada = event.files[0];
+    this.convertFile(event.files[0]).then((image: any) => this.fotoPerfil = 'url(' + image + ')');
     this.cambios = true;
   }
 
@@ -120,7 +134,7 @@ export class PerfilEditarComponent {
       foto: '',
       fk_id_rol: this.usuario.fk_id_rol,
     });
-    this.fotoPerfil = 'url(../../../assets/img/'+this.usuario.foto+')';
+    this.fotoPerfil = `url('${this.url}${this.usuario.foto}')`;
   }
 
   fecha = () => Fecha.momentoAhora();

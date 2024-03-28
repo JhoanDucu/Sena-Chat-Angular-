@@ -11,6 +11,7 @@ import { GruposTituloComponent } from '../grupos-titulo/grupos-titulo.component'
 import { GruposPanelComponent } from '../grupos-panel/grupos-panel.component';
 import { BootstrapService } from '../Servicios/bootstrap.service';
 import { Usuario } from '../../Modelos/usuarios';
+import { url } from '../../../servidor';
 
 @Component({
   selector: 'app-grupos',
@@ -47,6 +48,7 @@ export class GruposComponent {
     otra2: { class: false, new: false }
   }
   enBusqueda = false;
+  url = url+'/imagenes/';
 
   ngOnInit(): void { this.B.iniciarInstanciasChat(); }
 

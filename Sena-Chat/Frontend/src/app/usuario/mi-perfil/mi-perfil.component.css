@@ -36,7 +36,9 @@
 }
 
 #user {
-  height: 82%;
+  height: 23vh;
+  width: 23vh;
+  object-fit: cover;
   border-radius: 50%;
   margin: 3%;
 }

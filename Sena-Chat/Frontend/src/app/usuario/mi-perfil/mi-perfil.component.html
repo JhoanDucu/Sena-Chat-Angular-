@@ -1,6 +1,6 @@
 <div id="perfil-box">
     <div id="imagen-box">
-        <img [src]="perfil.foto ? '../../../assets/img/'+perfil.foto : '../../../assets/img/perfil3.jpg'" id="user">
+        <img [src]="url+perfil.foto" id="user">
         <div id="text">
             <span id="nombre-usuario">{{ perfil.nombre_usuario }}</span>
             @if (rol()) { <p id="ficha">Instructor</p> }

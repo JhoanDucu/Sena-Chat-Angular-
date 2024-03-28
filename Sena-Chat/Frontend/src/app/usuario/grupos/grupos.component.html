@@ -41,8 +41,7 @@
             <button class="nav-link" id="perfil-tab" data-bs-toggle="tab" data-bs-target="#perfil" type="button"
                 role="tab" aria-controls="perfil" aria-selected="false" [disabled]="enBusqueda"
                 (click)="mostrarTab('perfil')">
-                @if (usuario.foto) {<img [src]="'../../../assets/img/'+usuario.foto">}
-                @else {<img src="../../../assets/img/Usuario.jpg">}
+                <img [src]="url+usuario.foto">
             </button>
         </div>
     </ul>
