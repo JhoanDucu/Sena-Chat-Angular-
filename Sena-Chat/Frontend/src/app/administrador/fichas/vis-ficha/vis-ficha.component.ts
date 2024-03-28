@@ -20,6 +20,9 @@ export class VisFichaComponent {
     this.servicio.traerFichas().subscribe((data: any) => this.fichas = data);
   }
 
-  abrirInfo = () => this.b.infoMensajes();
+  abrirInfo = (ficha: Ficha) => {
+    this.b.infoFichas();
+    this.mostrar.emit([,,ficha]);
+  };
 
 }

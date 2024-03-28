@@ -22,4 +22,7 @@ export class FichasService {
   editarFicha(datos: any, id: any){
     return this.http.put(`${url}/admin/editar-ficha/${id}`, datos);
   }
+  traerGrupos(id: any) {
+    return this.http.get(`${url}/admin/grupos/${id}`);
+  }
 }

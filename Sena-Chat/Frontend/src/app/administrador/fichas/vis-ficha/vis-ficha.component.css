@@ -10,10 +10,10 @@
   display: flex;
   flex-direction: column;
   background: rgba(99, 183, 97, 0.6);
-  width: calc((100% / 3) - 10px - 2%);
+  width: 31%;
   flex: 0 0 auto;
-  margin: 5px;
-  padding: 1%;
+  margin: 1.6vh;
+  padding: 2%;
   border-radius: 20px;
   border: 2px solid #4e4e4e;
   font-family: "Josefin Sans", sans-serif;
@@ -22,6 +22,7 @@
 .header {
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 h5 {
@@ -32,6 +33,7 @@ p {
   margin: 0;
   font-size: large;
   font-weight: bold;
+  text-align: center;
 }
 
 span {
@@ -51,7 +53,7 @@ span {
   margin: 4px auto;
   cursor: pointer;
   border-radius: 12px;
-  width: 80%;
+  width: 72%;
   border: 1px solid rgb(23, 23, 23);
 }
 

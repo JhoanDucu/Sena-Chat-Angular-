@@ -23,6 +23,6 @@ export class VisGruposComponent {
 
   abrirInfo(grupo: Grupo){
     this.b.infoGrupos();
-    this.mostrar.emit([ , , grupo]);
+    this.mostrar.emit([,,grupo]);
   };
 }
