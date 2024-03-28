@@ -1,5 +1,5 @@
 <div class="contenedor-padre">
-@for (m of mensajes; track m) {
+    @for (m of mensajes; track m) {
     <div class="contenedor">
         <div class="header">
             <h5 class="idMensaje">ID del mensaje: <span>{{m.id_mensaje}}</span></h5>
@@ -10,19 +10,9 @@
             <p class="ubicacion">Ubicación: <span>Ubicación de ejemplo</span></p>
             <p class="tipoMensaje">Tipo de mensaje: <span>{{m.tipo_mensaje}}</span></p>
         </div>
-        <button class="btn-info" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
-            aria-controls="offcanvasRight">Más Información</button>
-        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-            <div class="offcanvas-header">
-                <h5 class="offcanvas-title" id="offcanvasRightLabel">Información adicional</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-            </div>
-            <div class="offcanvas-body">
-                Aquí estará la información adicional del mensaje
-            </div>
-        </div>
-        <button class="btn-editar" (click)="mostrar.emit(m.id_mensaje)">Editar</button>
+        <button class="btn-info" type="button" (click)="abrirInfo()">Más Información</button>
+        <button class="btn-editar" (click)="mostrar.emit(['editarMensaje', m.id_mensaje])">Editar</button>
         <button class="btn-eliminar">Eliminar</button>
     </div>
-}
+    }
 </div>

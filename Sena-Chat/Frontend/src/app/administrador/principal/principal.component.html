@@ -64,18 +64,30 @@
                 </div>
                 }
             </div>
-            @if (opcion === 'grupos') { <app-vis-grupos (mostrar)="seleccionarOpcion('editarGrupo', $event)" /> }
-            @if (opcion === 'usuarios') { <app-vis-usuario (mostrar)="seleccionarOpcion('editarUsuario', $event)" /> }
-            @if (opcion === 'mensajes') { <app-vis-mensaje (mostrar)="seleccionarOpcion('editarMensaje', $event)" /> }
-            @if (opcion === 'fichas') { <app-vis-ficha (mostrar)="seleccionarOpcion('editarFicha', $event)" /> }
+            @if (opcion === 'grupos') {
+            <app-vis-grupos (mostrar)="seleccionarOpcion($event[0], $event[1], $event[2])" />
+            }
+            @if (opcion === 'usuarios') {
+            <app-vis-usuario (mostrar)="seleccionarOpcion($event[0], $event[1], $event[2])" />
+            }
+            @if (opcion === 'mensajes') {
+            <app-vis-mensaje (mostrar)="seleccionarOpcion($event[0], $event[1], $event[2])" />
+            }
+            @if (opcion === 'fichas') {
+            <app-vis-ficha (mostrar)="seleccionarOpcion($event[0], $event[1], $event[2])" />
+            }
             @if (opcion === 'crearGrupo') { <app-crear-grupo (volver)="mostrar()" /> }
             @if (opcion === 'crearUsuario') { <app-crear-usuario (volver)="mostrar()" /> }
             @if (opcion === 'crearMensaje') { <app-crear-mensaje (volver)="mostrar()" /> }
             @if (opcion === 'crearFicha') { <app-crear-ficha (volver)="mostrar()" /> }
-            @if (opcion === 'editarGrupo') { <app-editar-grupo (volver)="mostrar()" [id_grupo]="id"/> }
-            @if (opcion === 'editarUsuario') { <app-editar-usuario (volver)="mostrar()" [numerodoc]="id"/> }
-            @if (opcion === 'editarMensaje') { <app-editar-mensaje (volver)="mostrar()" [id_mensaje]="id"/> }
+            @if (opcion === 'editarGrupo') { <app-editar-grupo (volver)="mostrar()" [id_grupo]="id" /> }
+            @if (opcion === 'editarUsuario') { <app-editar-usuario (volver)="mostrar()" [numerodoc]="id" /> }
+            @if (opcion === 'editarMensaje') { <app-editar-mensaje (volver)="mostrar()" [id_mensaje]="id" /> }
             @if (opcion === 'editarFicha') { <app-editar-ficha (volver)="mostrar()" [id_ficha]="id" /> }
+            <app-info-grupos [grupo]="info"></app-info-grupos>
+            <app-info-usuarios [usuario]="info"></app-info-usuarios>
+            <app-info-mensajes [mensaje]="info"></app-info-mensajes>
+            <app-info-fichas [ficha]="info"></app-info-fichas>
         </div>
     </div>
 </div>

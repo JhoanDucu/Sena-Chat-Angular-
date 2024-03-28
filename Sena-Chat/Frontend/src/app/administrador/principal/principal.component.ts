@@ -12,6 +12,11 @@ import { EditarGrupoComponent } from '../grupos/editar-grupo/editar-grupo.compon
 import { EditarUsuarioComponent } from '../usuarios/editar-usuario/editar-usuario.component';
 import { EditarMensajeComponent } from '../mensajes/editar-mensaje/editar-mensaje.component';
 import { EditarFichaComponent } from '../fichas/editar-ficha/editar-ficha.component';
+import { InfoGruposComponent } from '../grupos/info-grupos/info-grupos.component';
+import { InfoUsuariosComponent } from '../usuarios/info-usuarios/info-usuarios.component';
+import { InfoMensajesComponent } from '../mensajes/info-mensajes/info-mensajes.component';
+import { InfoFichasComponent } from '../fichas/info-fichas/info-fichas.component';
+import { BootstrapService } from '../Servicios/bootstrap.service';
 
 @Component({
   selector: 'app-principal',
@@ -29,21 +34,27 @@ import { EditarFichaComponent } from '../fichas/editar-ficha/editar-ficha.compon
     EditarGrupoComponent,
     EditarUsuarioComponent,
     EditarMensajeComponent,
-    EditarFichaComponent
+    EditarFichaComponent,
+    InfoGruposComponent,
+    InfoUsuariosComponent,
+    InfoMensajesComponent,
+    InfoFichasComponent
   ],
   templateUrl: './principal.component.html',
   styleUrls: ['./principal.component.css']
 })
 export class PrincipalComponent implements OnInit {
-  constructor() { }
+  constructor( private b: BootstrapService) { }
   opcion: string = 'grupos';
   id: any;
+  info: any;
 
-  ngOnInit() { }
+  ngOnInit() { this.b.iniciarInstanciasAdmin(); }
 
-  seleccionarOpcion(opcion: any, idBuscar?: any) {
-    this.opcion = opcion;
+  seleccionarOpcion(opcion?: any, idBuscar?: any, objeto?: any) {
+    if (opcion) this.opcion = opcion;
     if (idBuscar) this.id = idBuscar;
+    if (objeto) this.info = objeto;
   };
 
   mostrar() {

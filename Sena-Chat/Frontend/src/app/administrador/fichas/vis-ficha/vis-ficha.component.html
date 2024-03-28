@@ -10,8 +10,9 @@
             <p class="cantGrupos">Cantidad de grupos: <span>{{f.cantidad_grupos}}</span> </p>
         </div>
         <br>
-        <button class="btn-editar" (click)="mostrar.emit(f.id_ficha)">Editar</button>
-        <button class="btn-eliminar">Eliminar</button>
+        <button class="boton info" type="button" (click)="abrirInfo()">Más Información</button>
+        <button class="boton editar" (click)="mostrar.emit(['editarFicha', f.id_ficha])">Editar</button>
+        <button class="boton eliminar">Eliminar</button>
     </div>
     }
 </div>

@@ -1,0 +1,54 @@
+.img-grupo {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  img {
+    width: 50vh;
+    height: 50vh;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+}
+
+.miembro {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.miembro-imagen {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.miembro-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.miembro-nombre {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.miembro-detalle {
+  font-size: 0.9em;
+  color: #666;
+}
+
+.btn-eliminar-miembro {
+  background-color: transparent;
+  color: red;
+  border: 1px solid red;
+  border-radius: 5%;
+  width: 22%;
+  height: 30px;
+  text-align: center;
+  line-height: 20px;
+  cursor: pointer;
+}

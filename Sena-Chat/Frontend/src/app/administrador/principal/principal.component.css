@@ -136,6 +136,10 @@
   margin: 3vh 2vh;
 }
 
+.search-container {
+  margin-left: auto;
+}
+
 .search-container .form-control {
   padding-right: 20px; /* Ajusta este valor para dar espacio al ícono de búsqueda */
 }

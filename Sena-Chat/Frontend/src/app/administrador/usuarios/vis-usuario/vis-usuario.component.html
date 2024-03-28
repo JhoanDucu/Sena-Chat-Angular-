@@ -2,7 +2,7 @@
     @for (u of usuarios; track u.numerodoc) {
     <div class="contenedor">
         <div class="header">
-            <img [src]="'../../../../assets/img/'+u.foto" alt="Imagen del grupos" class="imagen">
+            <img [src]="url+u.foto" alt="Imagen del grupos" class="imagen">
             <h2 class="nameUser">Nombre de usuario</h2>
         </div>
         <p class="name">{{u.primer_nom}} {{u.segundo_nom}} {{u.primer_apellido}} {{u.segundo_apellido}}</p>
@@ -10,20 +10,9 @@
             <p class="parrafo">Num. Documento: <span>{{u.numerodoc}}</span></p>
             <p class="parrafo">Ficha: <span>{{u.id_fichas}}</span></p>
         </div>
-        <button class="boton info" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
-            aria-controls="offcanvasRight">Mas Información</button>
-        <button class="boton editar" (click)="mostrar.emit(u.numerodoc)">Editar</button>
+        <button class="boton info" type="button" (click)="abrirInfo()">Mas Información</button>
+        <button class="boton editar" (click)="mostrar.emit(['editarUsuario', u.numerodoc])">Editar</button>
         <button class="boton eliminar">Eliminar</button>
     </div>
     }
-</div>
-
-<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-    <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="offcanvasRightLabel">Offcanvas right</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-    </div>
-    <div class="offcanvas-body">
-
-    </div>
 </div>

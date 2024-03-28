@@ -22,4 +22,7 @@ export class GruposService {
   editarGrupo(datos: any, id: any){
     return this.http.put(`${url}/admin/editar-grupo/${id}`, datos);
   }
+  traerMiembros(id: any) {
+    return this.http.get(`${url}/admin/miembros/${id}`);
+  }
 }
