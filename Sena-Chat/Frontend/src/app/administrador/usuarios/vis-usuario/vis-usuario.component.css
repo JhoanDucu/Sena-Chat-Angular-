@@ -35,11 +35,10 @@
 }
 
 .name {
-  margin-top: 5px;
+  margin: 0;
+  margin-left: 3%;
   width: 100%;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  text-wrap: balance;
 }
 
 span {

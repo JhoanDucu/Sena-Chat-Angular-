@@ -3,9 +3,9 @@
     <div class="contenedor">
         <div class="header">
             <img [src]="url+u.foto" alt="Imagen del grupos" class="imagen">
-            <h2 class="nameUser">Nombre de usuario</h2>
+            <!-- <h2 class="nameUser">{{u.nombre_usuario}}</h2> -->
+            <p class="name">{{u.primer_nom}} {{u.segundo_nom}} {{u.primer_apellido}} {{u.segundo_apellido}}</p>
         </div>
-        <p class="name">{{u.primer_nom}} {{u.segundo_nom}} {{u.primer_apellido}} {{u.segundo_apellido}}</p>
         <div class="parrafos">
             <p class="parrafo">Num. Documento: <span>{{u.numerodoc}}</span></p>
             <p class="parrafo">Ficha: <span>{{u.id_fichas}}</span></p>

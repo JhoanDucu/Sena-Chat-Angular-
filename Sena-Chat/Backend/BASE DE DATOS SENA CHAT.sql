@@ -172,9 +172,9 @@ INSERT INTO ficha VALUES
 ('2558106', 2, 3);
 
 INSERT INTO roles VALUES 
-('1','INSTRUCTOR'),
-('2','APRENDIZ'),
-('3', 'ADMINISTRADOR');
+('1','Instructor'),
+('2','Aprendiz'),
+('3', 'Administrador');
 
 INSERT INTO tipo_documento VALUES 
 ('1','Cédula de Ciudadanía'),
@@ -234,19 +234,19 @@ INSERT INTO usuarios_fichas VALUES
 ('2558102', '12345678919', 1),
 ('2558102', '12345678001', 1),
 ('2558103', '12345678024', 1),
-('2558104', '12345678019', 1),
-('2558104', '12345678020', 1);
+('2558104', '12345678019', 2),
+('2558104', '12345678020', 2);
 -- APRENDICES PARA LA FICHA AQUI
 
 
 INSERT INTO grupos VALUES 
-('1','grupo de Heiver','Exploración de técnicas avanzadas de inteligencia artificial aplicadas al desarrollo de sistemas autónomos.','2558101', 'Grupo1.jpg',2),
-('2','grupo de Leonardo','Estudio de metodologías de seguridad informática en el desarrollo de aplicaciones web y móviles.','2558101', 'Grupo2.jpg',2),
-('3','grupo de Isaura','Análisis comparativo de lenguajes de programación para el desarrollo de aplicaciones en la nube.','2558101', 'Grupo3.jpg',2),
-('4','grupo de Manolo','Estudio del impacto del deporte en la cultura juvenil.','2558102', 'Grupo4.jpg', 2),
-('5','grupo de Wendy','Análisis de tendencias culturales en la industria del entretenimiento.','2558102', 'Grupo5.png', 2),
-('6','grupo de Javier','Exploración de la relación entre arte y tecnología en la era digital.','2558102', 'Grupo6.jpg', 2),
-('7','grupo de Alejandra','Gestión financiera en organizaciones sin fines de lucro.','2558103', 'Grupo7.jpg', 2),
+('1','Grupo de Heiver','Exploración de técnicas avanzadas de inteligencia artificial aplicadas al desarrollo de sistemas autónomos.','2558101', 'Grupo1.jpg',2),
+('2','Grupo de Leonardo','Estudio de metodologías de seguridad informática en el desarrollo de aplicaciones web y móviles.','2558101', 'Grupo2.jpg',2),
+('3','Grupo de Isaura','Análisis comparativo de lenguajes de programación para el desarrollo de aplicaciones en la nube.','2558101', 'Grupo3.jpg',2),
+('4','Grupo de Manolo','Estudio del impacto del deporte en la cultura juvenil.','2558102', 'Grupo4.jpg', 2),
+('5','Grupo de Wendy','Análisis de tendencias culturales en la industria del entretenimiento.','2558102', 'Grupo5.png', 2),
+('6','Grupo de Javier','Exploración de la relación entre arte y tecnología en la era digital.','2558102', 'Grupo6.jpg', 2),
+('7','Grupo de Alejandra','Gestión financiera en organizaciones sin fines de lucro.','2558103', 'Grupo7.jpg', 2),
 ('8', 'nicolas_rincon', 'Privado', '2558101', NULL, 1),
 ('9', 'carlosperez', 'Privado', '2558101', NULL, 1),
 ('10', 'Isaura-Juan', 'Privado', '2558101', NULL, 1),

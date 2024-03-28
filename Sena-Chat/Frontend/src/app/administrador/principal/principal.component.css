@@ -161,3 +161,9 @@
   padding: 10px 20px;
   border-radius: 5px;
 }
+
+.btn-crear:disabled {
+  background: rgba(169, 169, 169, 0.6);
+  color: rgba(0, 0, 0, 0.5);
+  cursor: not-allowed;
+}

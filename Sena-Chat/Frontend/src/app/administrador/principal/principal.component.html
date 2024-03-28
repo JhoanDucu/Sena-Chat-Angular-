@@ -57,7 +57,9 @@
             <!-- Contenido dinámico -->
             <div class="botones">
                 @if (!opcion.includes('crear') && !opcion.includes('editar')) {
-                <button (click)="mostrar()" class="btn-crear">Crear nuevo</button>
+                <button (click)="mostrar()" class="btn-crear" [disabled]="opcion.includes('mensajes')">
+                    Crear nuevo
+                </button>
                 <div class="search-container">
                     <input class="form-control" type="search" placeholder="Busca">
                     <i class="bi bi-search"></i>

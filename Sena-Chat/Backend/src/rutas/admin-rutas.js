@@ -8,6 +8,7 @@ router.get("/mensajes", adminController.obtenerMensajes);
 router.get("/fichas", adminController.obtenerFichas);
 router.get("/programas", adminController.obtenerProgramas);
 router.get("/grupo/:id_grupo", adminController.obtenerUnGrupo);
+router.get("/miembros/:id_grupo", adminController.obtenerMiembros);
 router.get("/usuario/:numerodoc", adminController.obtenerUnUsuario);
 router.get("/mensaje/:id_mensaje", adminController.obtenerUnMensaje);
 router.get("/ficha/:id_ficha", adminController.obtenerUnaFicha);

@@ -14,9 +14,10 @@ exports.obtenerGrupos = (req, res) => {
 };
 
 exports.obtenerUsuarios = (req, res) => {
-  const query = `SELECT primer_nom, segundo_nom, primer_apellido, segundo_apellido, 
-  u.numerodoc, fk_id_tipodoc, id_fichas, foto, fk_id_rol FROM usuarios u
-  INNER JOIN usuarios_fichas uf ON u.numerodoc = uf.numerodoc;`;
+  const query = 
+  `SELECT primer_nom, segundo_nom, primer_apellido, segundo_apellido, u.numerodoc, 
+  nombre_usuario, fk_id_tipodoc, id_fichas, foto, fk_id_rol FROM usuarios u
+  INNER JOIN usuarios_fichas uf ON u.numerodoc = uf.numerodoc WHERE uf.principal = 1;`;
 
   conexion.query(query, (error, resultado) => {
     if (error) console.error(error.message);
@@ -210,5 +211,18 @@ exports.actualizarUsuario = (req, res) => {
     if (error) return console.error(error.message);
     if (resultado.affectedRows > 0) res.json(numerodoc);
     else res.json("Usuario no actualizado");
+  });
+};
+
+exports.obtenerMiembros = (req, res) => {
+  const { id_grupo } = req.params;
+  const query = `SELECT primer_nom, segundo_nom, primer_apellido, segundo_apellido, ug.numerodoc, 
+          u.fk_id_rol, foto, descripcion FROM usuarios_grupos ug INNER JOIN usuarios u 
+          ON u.numerodoc = ug.numerodoc WHERE ug.id_grupos = ? ORDER BY u.fk_id_rol`;
+
+  conexion.query(query, id_grupo, (error, result) => {
+    if (error) console.error(error.message);
+    if (result.length > 0) res.json(result); 
+    else res.json("No hay miembros aun");
   });
 };
