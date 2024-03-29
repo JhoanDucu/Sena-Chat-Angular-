@@ -2,17 +2,31 @@
     @for (m of mensajes; track m) {
     <div class="contenedor">
         <div class="header">
-            <h5 class="idMensaje">ID del mensaje: <span>{{m.id_mensaje}}</span></h5>
+            <h4 class="idMensaje">ID: </h4> <span>{{m.id_mensaje}}</span>
+            <small class="">
+                <div class="btn-group dropup">
+                    <button type="button" class="btn dropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        <!-- [id]="id" (click)="abrirDrop($event)" -->
+                        <i class='bx bx-dots-vertical-rounded'></i>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <!-- [attr.aria-labelledby]="id" -->
+                        <li><button class="dropdown-item" type="button">Action</button></li>
+                        <li><button class="dropdown-item" type="button">Enviar Mensaje</button></li>
+                        <li><button class="dropdown-item" type="button">Eliminar del grupo</button></li>
+                    </ul>
+                </div>
+            </small>
         </div>
         <div class="parrafos">
-            <p class="contenidoMensaje">Contenido del mensaje: <span>{{m.contenido_mensaje}}</span></p>
-            <p class="fechaHoraEnvio">Fecha/Hora del envío: <span>{{m.fecha_hora}}</span></p>
-            <p class="ubicacion">Ubicación: <span>Ubicación de ejemplo</span></p>
-            <p class="tipoMensaje">Tipo de mensaje: <span>{{m.tipo_mensaje}}</span></p>
+            <p class="contenidoMensaje"><span>{{m.contenido_mensaje}}</span></p>
+            <p class="fechaHoraEnvio"><span>{{conversion(m.fecha_hora)}}</span></p>
+            <!-- <p class="ubicacion">Ubicación: <span>Ubicación de ejemplo</span></p> -->
+            <!-- <p class="tipoMensaje">Tipo de mensaje: <span>{{m.tipo_mensaje}}</span></p> -->
         </div>
-        <button class="btn-info" type="button" (click)="abrirInfo()">Más Información</button>
-        <button class="btn-editar" (click)="mostrar.emit(['editarMensaje', m.id_mensaje])">Editar</button>
-        <button class="btn-eliminar">Eliminar</button>
+        <!-- <button class="boton info" type="button" (click)="abrirInfo(m)">Más Información</button>
+        <button class="boton editar" (click)="mostrar.emit(['editarMensaje', m.id_mensaje])">Editar</button>
+        <button class="boton eliminar">Eliminar</button> -->
     </div>
     }
 </div>

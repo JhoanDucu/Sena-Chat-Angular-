@@ -2,6 +2,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { MensajesService } from '../../Servicios/mensajes.service';
 import { MensajeMostrar } from '../../../Modelos/mensaje';
 import { BootstrapService } from '../../Servicios/bootstrap.service';
+import { Fecha } from '../../../Modelos/fechas';
 
 @Component({
   selector: 'app-vis-mensaje',
@@ -19,5 +20,10 @@ export class VisMensajeComponent {
     this.servicio.traerMensajes().subscribe((data: any) => this.mensajes = data);
   }
 
-  abrirInfo = () => this.b.infoMensajes();
+  conversion = (date: any) => Fecha.fechaAdmin(new Date(date));
+
+  abrirInfo = (mensaje: any) => {
+    this.b.infoMensajes();
+    this.mostrar.emit([,,mensaje]);
+  }
 }

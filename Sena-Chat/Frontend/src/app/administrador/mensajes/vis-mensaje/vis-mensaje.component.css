@@ -1,7 +1,7 @@
 .contenedor-padre {
   display: flex;
   flex-wrap: wrap;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: flex-start;
 }
 
@@ -10,9 +10,8 @@
   display: flex;
   flex-direction: column;
   background: rgba(99, 183, 97, 0.6);
-  width: calc((100% / 3) - 10px - 2%);
   flex: 0 0 auto;
-  margin: 5px;
+  margin: 1.6vh;
   padding: 1%;
   border-radius: 20px;
   border: 2px solid #4e4e4e;
@@ -22,17 +21,18 @@
 .header {
   display: flex;
   align-items: center;
-  margin-bottom: 20px;
 }
 
-.contenedor .header .idMensaje {
-  margin-left: 10px;
-  font-size: 18px;
+.idMensaje {
+  /* margin-left: 10px; */
+  margin: 0;
+  font-size: 1rem;
   font-weight: bold;
 }
 
 p {
-  font-size: 18px;
+  margin: 0;
+  font-size: 1.2rem;
   font-weight: bolder;
   font-family: "Josefin Sans", sans-serif;
 }
@@ -48,9 +48,8 @@ p span {
   white-space: nowrap;
 }
 
-.btn-eliminar {
+.boton {
   font-family: "Josefin Sans", sans-serif;
-  background-color: #c9847b;
   color: rgb(0, 0, 0);
   border: none;
   padding: 10px;
@@ -58,7 +57,7 @@ p span {
   text-decoration: none;
   display: inline-block;
   font-weight: 500;
-  font-size: 1.2em;
+  font-size: 1em;
   margin: 4px auto;
   cursor: pointer;
   border-radius: 12px;
@@ -66,61 +65,26 @@ p span {
   border: 1px solid rgb(23, 23, 23);
 }
 
-.btn-editar {
-  font-family: "Josefin Sans", sans-serif;
-  background-color: #7bc4c9;
-  color: rgb(0, 0, 0);
-  border: none;
-  padding: 10px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-weight: 500;
-  font-size: 1.2em;
-  margin: 4px auto;
-  cursor: pointer;
-  border-radius: 12px;
-  width: 80%;
-  border: 1px solid rgb(23, 23, 23);
-}
-
-.btn-info {
-  font-family: "Josefin Sans", sans-serif;
+.info {
   background-color: #c9b47b;
-  color: rgb(0, 0, 0);
-  border: none;
-  padding: 10px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-weight: 500;
-  font-size: 1.2em;
-  margin: 4px auto;
-  cursor: pointer;
-  border-radius: 12px;
-  width: 80%;
-  border: 1px solid rgb(23, 23, 23);
 }
 
-.btn-eliminar:hover {
+.editar {
+  background-color: #7bc4c9;
+}
+
+.eliminar {
+  background-color: #c9847b;
+}
+
+.eliminar:hover {
   background-color: #f77c6c;
 }
 
-.btn-editar:hover {
+.editar:hover {
   background-color: #30b2b9;
 }
 
-.btn-info:hover {
+.info:hover {
   background-color: #debd63;
-}
-
-.btn-crear {
-  font-family: "Josefin Sans", sans-serif;
-  font-weight: 500;
-  font-size: 1.2em;
-  border: 1px solid gray;
-  background: rgba(99, 183, 97, 0.6);
-  color: rgb(0, 0, 0);
-  padding: 10px 20px;
-  border-radius: 5px;
 }
