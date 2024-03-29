@@ -19,4 +19,7 @@ export class MensajesService {
   editarMensaje(datos: any, id: any){
     return this.http.put(`${url}/admin/editar-mensaje/${id}`, datos);
   }
+  datosMensaje(id: any){
+    return this.http.get(`${url}/admin/ubicacion-mensaje/${id}`);
+  }
 }

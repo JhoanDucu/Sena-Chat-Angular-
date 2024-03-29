@@ -27,8 +27,8 @@ exports.obtenerUsuarios = (req, res) => {
 };
 
 exports.obtenerMensajes = (req, res) => {
-  const query = `SELECT m.id_mensaje, m.fecha_hora, m.contenido_mensaje, ug.id_grupos AS destino,
-  tm.Nom_tipo AS tipo_mensaje FROM mensaje m INNER JOIN tipo_mensaje tm ON m.id_tipo = tm.id_tipo
+  const query = `SELECT m.*, ug.id_grupos AS destino, tm.Nom_tipo AS tipo_mensaje 
+  FROM mensaje m INNER JOIN tipo_mensaje tm ON m.id_tipo = tm.id_tipo
   LEFT JOIN usuarios_grupos ug ON m.fk_destino = ug.id_usuarios_grupos LEFT JOIN usuarios u 
   ON m.fk_destino = u.numerodoc OR ug.id_usuarios_grupos IS NULL ORDER BY m.id_mensaje DESC;`;
 
@@ -229,12 +229,26 @@ exports.obtenerMiembros = (req, res) => {
 
 exports.obtenerGruposDeFicha = (req, res) => {
   const { id_ficha } = req.params;
-  console.log(id_ficha);
   const query = `SELECT * FROM grupos WHERE fk_tipo_grupo = 2 AND id_ficha = ?`;
 
   conexion.query(query, id_ficha, (error, resultado) => {
     if (error) console.error(error.message);
     if (resultado.length > 0) res.json(resultado);
     else res.json("No hay grupos aun");
+  });
+};
+
+exports.obtenerDatosMensaje = (req, res) => {
+  const { id_mensaje } = req.params;
+  const query = 
+  `SELECT u.primer_nom, u.primer_apellido, u.foto, g.nom_grupos, g.id_ficha, g.foto_grupo, 
+  FROM mensaje m INNER JOIN usuarios_grupos ug ON m.fk_destino = ug.id_usuarios_grupos 
+  INNER JOIN usuarios u ON ug.numerodoc = u.numerodoc INNER JOIN grupos g 
+  ON ug.id_grupos = g.id_grupos WHERE id_mensaje = ?;`;
+
+  conexion.query(query, id_mensaje, (error, resultado) => {
+    if (error) console.error(error.message);
+    if (resultado.length > 0) res.json(resultado[0]);
+    else res.json("El mensaje proporcionado NO tiene datos");
   });
 };

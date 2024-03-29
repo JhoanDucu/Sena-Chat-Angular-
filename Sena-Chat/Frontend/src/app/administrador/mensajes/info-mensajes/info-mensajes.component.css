@@ -1,0 +1,41 @@
+.boton {
+  font-family: "Josefin Sans", sans-serif;
+  color: rgb(0, 0, 0);
+  border: none;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-weight: 500;
+  font-size: 1em;
+  margin: 4px auto;
+  cursor: pointer;
+  border-radius: 12px;
+  width: 49%;
+  border: 1px solid rgb(23, 23, 23);
+}
+
+.info {
+  background-color: #c9b47b;
+}
+
+.editar {
+  background-color: #7bc4c9;
+}
+
+.eliminar {
+  background-color: #c9847b;
+  margin-left: 2%;
+}
+
+.eliminar:hover {
+  background-color: #f77c6c;
+}
+
+.editar:hover {
+  background-color: #30b2b9;
+}
+
+.info:hover {
+  background-color: #debd63;
+}

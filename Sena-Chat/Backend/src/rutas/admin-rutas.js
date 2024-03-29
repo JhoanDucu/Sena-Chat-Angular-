@@ -11,6 +11,7 @@ router.get("/grupo/:id_grupo", adminController.obtenerUnGrupo);
 router.get("/miembros/:id_grupo", adminController.obtenerMiembros);
 router.get("/usuario/:numerodoc", adminController.obtenerUnUsuario);
 router.get("/mensaje/:id_mensaje", adminController.obtenerUnMensaje);
+router.get("/ubicacion-mensaje/:id_mensaje", adminController.obtenerDatosMensaje);
 router.get("/ficha/:id_ficha", adminController.obtenerUnaFicha);
 router.get("/grupos/:id_ficha", adminController.obtenerGruposDeFicha);
 router.get("/num-fichas", adminController.obtenerFichasId);

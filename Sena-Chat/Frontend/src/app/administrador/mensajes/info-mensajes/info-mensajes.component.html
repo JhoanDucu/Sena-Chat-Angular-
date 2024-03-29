@@ -4,6 +4,14 @@
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">
-        Aquí estará la información adicional del mensaje
+        @if(mensaje){
+        <h2>ID: </h2>{{mensaje.id_mensaje}}
+        <p><strong>Contenido ({{mensaje.tipo_mensaje}}): </strong> {{mensaje.contenido_mensaje}}</p>
+        <p>{{conversion(mensaje.fecha_hora)}}</p>
+        <p><strong>Enviado por: </strong></p>
+        <img [src]="url+mensaje.foto"> {{mensaje.primer_nom}} {{mensaje.primer_apellido}}
+        <button class="boton editar" (click)="editarMensaje()">Editar</button>
+        <button class="boton eliminar">Eliminar</button>
+        }
     </div>
 </div>

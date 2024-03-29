@@ -1,32 +1,18 @@
 <div class="contenedor-padre">
     @for (m of mensajes; track m) {
-    <div class="contenedor">
-        <div class="header">
-            <h4 class="idMensaje">ID: </h4> <span>{{m.id_mensaje}}</span>
-            <small class="">
-                <div class="btn-group dropup">
-                    <button type="button" class="btn dropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                        <!-- [id]="id" (click)="abrirDrop($event)" -->
-                        <i class='bx bx-dots-vertical-rounded'></i>
-                    </button>
-                    <ul class="dropdown-menu dropdown-menu-end">
-                        <!-- [attr.aria-labelledby]="id" -->
-                        <li><button class="dropdown-item" type="button">Action</button></li>
-                        <li><button class="dropdown-item" type="button">Enviar Mensaje</button></li>
-                        <li><button class="dropdown-item" type="button">Eliminar del grupo</button></li>
-                    </ul>
-                </div>
-            </small>
-        </div>
-        <div class="parrafos">
-            <p class="contenidoMensaje"><span>{{m.contenido_mensaje}}</span></p>
-            <p class="fechaHoraEnvio"><span>{{conversion(m.fecha_hora)}}</span></p>
-            <!-- <p class="ubicacion">Ubicación: <span>Ubicación de ejemplo</span></p> -->
-            <!-- <p class="tipoMensaje">Tipo de mensaje: <span>{{m.tipo_mensaje}}</span></p> -->
-        </div>
-        <!-- <button class="boton info" type="button" (click)="abrirInfo(m)">Más Información</button>
-        <button class="boton editar" (click)="mostrar.emit(['editarMensaje', m.id_mensaje])">Editar</button>
-        <button class="boton eliminar">Eliminar</button> -->
-    </div>
+    <button class="contenedor" [ngClass]="$even ? 'even' : 'odd'" (click)="abrirInfo(m)">
+            <div [ngClass]="$even ? 'header-even' : 'header-odd'">
+                <h4 class="idMensaje">ID: </h4> <span>{{m.id_mensaje}}</span>
+            </div>
+            <div [ngClass]="$even ? 'parrafo-even' : 'parrafo-odd'">
+                <p class="contenidoMensaje">
+                    <span>
+                        @if (m.id_tipo == 1) { {{m.contenido_mensaje}} }
+                        @if (m.id_tipo == 2) { <i class='bx bxs-image'></i>Imagen }
+                    </span>
+                </p>
+                <p class="fechaHoraEnvio">{{ conversion(m.fecha_hora) }}</p>
+            </div>
+    </button>
     }
 </div>

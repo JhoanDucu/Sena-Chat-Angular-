@@ -3,11 +3,12 @@ import { MensajesService } from '../../Servicios/mensajes.service';
 import { MensajeMostrar } from '../../../Modelos/mensaje';
 import { BootstrapService } from '../../Servicios/bootstrap.service';
 import { Fecha } from '../../../Modelos/fechas';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-vis-mensaje',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './vis-mensaje.component.html',
   styleUrl: './vis-mensaje.component.css'
 })

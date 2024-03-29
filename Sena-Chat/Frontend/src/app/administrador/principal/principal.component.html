@@ -88,7 +88,8 @@
             @if (opcion === 'editarFicha') { <app-editar-ficha (volver)="mostrar()" [id_ficha]="id" /> }
             <app-info-grupos [grupo]="info"></app-info-grupos>
             <app-info-usuarios [usuario]="info"></app-info-usuarios>
-            <app-info-mensajes [mensaje]="info"></app-info-mensajes>
+            <app-info-mensajes [mensaje]="info" (mostrar)="seleccionarOpcion($event[0], $event[1])">
+            </app-info-mensajes>
             <app-info-fichas [ficha]="info"></app-info-fichas>
         </div>
     </div>

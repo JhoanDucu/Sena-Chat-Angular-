@@ -73,10 +73,7 @@
 .mensaje2 {
   background: #3d803d;
   padding: 1.4rem;
-  border-top-left-radius: 6vh;
-  border-bottom-left-radius: 6vh;
-  border-top-right-radius: 5vh;
-  border-bottom-right-radius: 1vh;
+  border-radius: 6vh 5vh 1vh 6vh;
   min-height: 30vh;
   width: 58%;
   margin-bottom: 8vh;
