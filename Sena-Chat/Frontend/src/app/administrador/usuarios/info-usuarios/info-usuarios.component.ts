@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { urlImagenes } from '../../../../servidor';
+import { Usuario } from '../../../Modelos/usuarios';
 
 @Component({
   selector: 'app-info-usuarios',
@@ -10,6 +11,6 @@ import { urlImagenes } from '../../../../servidor';
   styleUrl: './info-usuarios.component.css'
 })
 export class InfoUsuariosComponent {
-  @Input() usuario: any;
+  @Input() usuario: Usuario = {};
   url = urlImagenes;
 }

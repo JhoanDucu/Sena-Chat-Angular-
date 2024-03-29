@@ -8,9 +8,9 @@
         </div>
         <div class="parrafos">
             <p class="parrafo">Num. Documento: <span>{{u.numerodoc}}</span></p>
-            <p class="parrafo">Ficha: <span>{{u.id_fichas}}</span></p>
+            <p class="parrafo">Ficha: <span>{{u.id_fichas != '0000000' ? u.id_fichas : 'Sin ficha'}}</span></p>
         </div>
-        <button class="boton info" type="button" (click)="abrirInfo()">Mas Información</button>
+        <button class="boton info" type="button" (click)="abrirInfo(u)">Mas Información</button>
         <button class="boton editar" (click)="mostrar.emit(['editarUsuario', u.numerodoc])">Editar</button>
         <button class="boton eliminar">Eliminar</button>
     </div>

@@ -12,6 +12,7 @@ router.get("/miembros/:id_grupo", adminController.obtenerMiembros);
 router.get("/usuario/:numerodoc", adminController.obtenerUnUsuario);
 router.get("/mensaje/:id_mensaje", adminController.obtenerUnMensaje);
 router.get("/ficha/:id_ficha", adminController.obtenerUnaFicha);
+router.get("/grupos/:id_ficha", adminController.obtenerGruposDeFicha);
 router.get("/num-fichas", adminController.obtenerFichasId);
 router.post("/agregar-ficha", adminController.insertarFicha);
 router.post("/agregar-grupo", adminController.insertarGrupo);

@@ -1,0 +1,16 @@
+.img-usuario {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  img {
+    width: 50vh;
+    height: 50vh;
+    object-fit: cover;
+    border-radius: 50%;
+    margin: 3vh;
+  }
+}
+h2 {
+  text-wrap: balance;
+  text-align: center;
+}

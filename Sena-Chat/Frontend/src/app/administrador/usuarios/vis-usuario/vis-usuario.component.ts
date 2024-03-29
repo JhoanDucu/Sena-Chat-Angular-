@@ -21,6 +21,9 @@ export class VisUsuarioComponent {
     this.servicio.traerUsuarios().subscribe((data: any) => this.usuarios = data);
   }
 
-  abrirInfo = () => this.b.infoUsuarios();
+  abrirInfo = (usuario: any) => {
+    this.b.infoUsuarios();
+    this.mostrar.emit([,,usuario]);
+  }
 
 }

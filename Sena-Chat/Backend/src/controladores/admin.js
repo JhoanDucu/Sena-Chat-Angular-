@@ -15,8 +15,8 @@ exports.obtenerGrupos = (req, res) => {
 
 exports.obtenerUsuarios = (req, res) => {
   const query = 
-  `SELECT primer_nom, segundo_nom, primer_apellido, segundo_apellido, u.numerodoc, 
-  nombre_usuario, fk_id_tipodoc, id_fichas, foto, fk_id_rol FROM usuarios u
+  `SELECT correo, primer_nom, segundo_nom, primer_apellido, segundo_apellido, u.numerodoc, 
+  nombre_usuario, fk_id_tipodoc, id_fichas, foto, fk_id_rol, descripcion FROM usuarios u
   INNER JOIN usuarios_fichas uf ON u.numerodoc = uf.numerodoc WHERE uf.principal = 1;`;
 
   conexion.query(query, (error, resultado) => {
@@ -216,13 +216,25 @@ exports.actualizarUsuario = (req, res) => {
 
 exports.obtenerMiembros = (req, res) => {
   const { id_grupo } = req.params;
-  const query = `SELECT primer_nom, segundo_nom, primer_apellido, segundo_apellido, ug.numerodoc, 
-          u.fk_id_rol, foto, descripcion FROM usuarios_grupos ug INNER JOIN usuarios u 
+  const query = `SELECT primer_nom, segundo_nom, primer_apellido, segundo_apellido, u.fk_id_rol,
+          ug.numerodoc, foto, descripcion FROM usuarios_grupos ug INNER JOIN usuarios u 
           ON u.numerodoc = ug.numerodoc WHERE ug.id_grupos = ? ORDER BY u.fk_id_rol`;
 
   conexion.query(query, id_grupo, (error, result) => {
     if (error) console.error(error.message);
     if (result.length > 0) res.json(result); 
     else res.json("No hay miembros aun");
+  });
+};
+
+exports.obtenerGruposDeFicha = (req, res) => {
+  const { id_ficha } = req.params;
+  console.log(id_ficha);
+  const query = `SELECT * FROM grupos WHERE fk_tipo_grupo = 2 AND id_ficha = ?`;
+
+  conexion.query(query, id_ficha, (error, resultado) => {
+    if (error) console.error(error.message);
+    if (resultado.length > 0) res.json(resultado);
+    else res.json("No hay grupos aun");
   });
 };

@@ -23,7 +23,10 @@ export class InfoGruposComponent {
     if (changes['grupo'] && !changes['grupo'].firstChange)
       this.servicio.traerMiembros(this.grupo.id_grupos).subscribe((data: any) => {
         if (data !== 'No hay miembros aun') this.miembros = data;
-        else this.aviso = data;
+        else {
+          this.aviso = data;
+          this.miembros = [];
+        }
       });
   }
 }

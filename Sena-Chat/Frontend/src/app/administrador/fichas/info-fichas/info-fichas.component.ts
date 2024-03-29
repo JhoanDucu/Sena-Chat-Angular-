@@ -20,10 +20,13 @@ export class InfoFichasComponent {
   aviso: any;
 
   ngOnChanges(changes: SimpleChanges) {
-    if (changes['grupo'] && !changes['grupo'].firstChange)
+    if (changes['ficha'] && !changes['ficha'].firstChange)
       this.servicio.traerGrupos(this.ficha.id_ficha).subscribe((data: any) => {
         if (data !== 'No hay grupos aun') this.grupos = data;
-        else this.aviso = data;
+        else {
+          this.aviso = data;
+          this.grupos = [];
+        }
       });
   }
 }
