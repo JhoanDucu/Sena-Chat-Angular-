@@ -4,12 +4,38 @@
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">
-        @if(mensaje){
-        <h2>ID: </h2>{{mensaje.id_mensaje}}
-        <p><strong>Contenido ({{mensaje.tipo_mensaje}}): </strong> {{mensaje.contenido_mensaje}}</p>
+        @if(mensaje !== undefined){
+        <h2>ID: <span>{{mensaje.id_mensaje}}</span> </h2>
+        <p>{{mensaje.tipo_mensaje}}</p>
+        <h4>Contenido: </h4>
+        <p>{{mensaje.contenido_mensaje}}</p>
+        <h4>Fecha y hora del envio: </h4>
         <p>{{conversion(mensaje.fecha_hora)}}</p>
-        <p><strong>Enviado por: </strong></p>
-        <img [src]="url+mensaje.foto"> {{mensaje.primer_nom}} {{mensaje.primer_apellido}}
+        <h4>Enviado por: </h4>
+        <div class="contenedor">
+            <img [src]="url+mensaje.foto">
+            <div class="parrafos">
+                <p>
+                    {{mensaje.primer_nom}} {{mensaje.segundo_nom}}
+                    {{mensaje.primer_apellido}} {{mensaje.segundo_apellido}}
+                </p>
+                <p>
+                    @if (mensaje.fk_id_tipodoc == 1) { C.C }
+                    @if (mensaje.fk_id_tipodoc == 2) { T.I }
+                    {{mensaje.numerodoc}}
+                </p>
+            </div>
+        </div>
+        <h4>Enviado a: </h4>
+        <div class="contenedor">
+            @if (mensaje.foto_grupo) { <img [src]="url+mensaje.foto_grupo"> }
+            <div class="parrafos">
+                <p>
+                    {{mensaje.nom_grupos}}
+                </p>
+                <p> {{mensaje.id_ficha}} </p>
+            </div>
+        </div>
         <button class="boton editar" (click)="editarMensaje()">Editar</button>
         <button class="boton eliminar">Eliminar</button>
         }

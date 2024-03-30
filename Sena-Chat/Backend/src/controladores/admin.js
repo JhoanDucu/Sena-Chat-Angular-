@@ -14,8 +14,7 @@ exports.obtenerGrupos = (req, res) => {
 };
 
 exports.obtenerUsuarios = (req, res) => {
-  const query = 
-  `SELECT correo, primer_nom, segundo_nom, primer_apellido, segundo_apellido, u.numerodoc, 
+  const query = `SELECT correo, primer_nom, segundo_nom, primer_apellido, segundo_apellido, u.numerodoc, 
   nombre_usuario, fk_id_tipodoc, id_fichas, foto, fk_id_rol, descripcion FROM usuarios u
   INNER JOIN usuarios_fichas uf ON u.numerodoc = uf.numerodoc WHERE uf.principal = 1;`;
 
@@ -195,14 +194,14 @@ exports.actualizarMensaje = (req, res) => {
   conexion.query(query, [mensaje, id_mensaje], (error, resultado) => {
     if (error) return console.error(error.message);
     if (resultado.affectedRows) res.json(id_mensaje);
-    else res.json('Mensaje no actualizado');
+    else res.json("Mensaje no actualizado");
   });
 };
 
 exports.actualizarUsuario = (req, res) => {
   const { numerodoc } = req.params;
   const usuario = req.body;
-  usuario['u.numerodoc'] = usuario.numerodoc;
+  usuario["u.numerodoc"] = usuario.numerodoc;
   delete usuario.numerodoc;
 
   const query = `UPDATE usuarios_fichas f INNER JOIN usuarios u ON
@@ -222,7 +221,7 @@ exports.obtenerMiembros = (req, res) => {
 
   conexion.query(query, id_grupo, (error, result) => {
     if (error) console.error(error.message);
-    if (result.length > 0) res.json(result); 
+    if (result.length > 0) res.json(result);
     else res.json("No hay miembros aun");
   });
 };
@@ -240,15 +239,26 @@ exports.obtenerGruposDeFicha = (req, res) => {
 
 exports.obtenerDatosMensaje = (req, res) => {
   const { id_mensaje } = req.params;
-  const query = 
-  `SELECT u.primer_nom, u.primer_apellido, u.foto, g.nom_grupos, g.id_ficha, g.foto_grupo, 
+  const query = `SELECT u.primer_nom, u.primer_apellido, u.foto, g.nom_grupos, g.id_ficha, g.foto_grupo,
+  u.numerodoc, u.segundo_apellido, u.segundo_nom, u.fk_id_tipodoc, g.fk_tipo_grupo, g.id_grupos 
   FROM mensaje m INNER JOIN usuarios_grupos ug ON m.fk_destino = ug.id_usuarios_grupos 
   INNER JOIN usuarios u ON ug.numerodoc = u.numerodoc INNER JOIN grupos g 
   ON ug.id_grupos = g.id_grupos WHERE id_mensaje = ?;`;
 
   conexion.query(query, id_mensaje, (error, resultado) => {
     if (error) console.error(error.message);
-    if (resultado.length > 0) res.json(resultado[0]);
-    else res.json("El mensaje proporcionado NO tiene datos");
+    if (resultado.length > 0) {
+      if (!resultado[0].foto_grupo && resultado[0].fk_tipo_grupo == 1) {
+        let mensaje = resultado[0];
+        const query2 = `SELECT u.foto FROM usuarios_grupos ug INNER JOIN usuarios u 
+        ON u.numerodoc = ug.numerodoc INNER JOIN grupos g ON g.id_grupos = ug.id_grupos
+        WHERE u.numerodoc <> ? AND g.id_grupos = ?;`;
+        conexion.query(query2, [mensaje.numerodoc, mensaje.id_grupos], (error, resultado) => {
+          if (error) console.error(error.message);
+          if (resultado.length > 0) mensaje.foto_grupo = resultado[0].foto;
+          res.json(mensaje);
+        });
+      } else res.json(resultado[0]);
+    } else res.json("El mensaje proporcionado NO existe");
   });
 };

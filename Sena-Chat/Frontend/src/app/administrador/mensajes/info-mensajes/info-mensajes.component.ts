@@ -21,7 +21,6 @@ export class InfoMensajesComponent {
   ngOnChanges(changes: SimpleChanges) {
     if (!changes['mensaje'].firstChange) this.servicio.datosMensaje(this.mensaje.id_mensaje).subscribe((data) => {
       Object.assign(this.mensaje, data);
-      console.log(this.mensaje);
     });
   }
 
