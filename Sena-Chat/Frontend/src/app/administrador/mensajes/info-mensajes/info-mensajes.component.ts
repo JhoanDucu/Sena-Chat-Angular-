@@ -4,11 +4,12 @@ import { urlImagenes } from '../../../../servidor';
 import { MensajesService } from '../../Servicios/mensajes.service';
 import { BootstrapService } from '../../Servicios/bootstrap.service';
 import { Fecha } from '../../../Modelos/fechas';
+import { ImagenDirective } from '../../Directivas/imagen.directive';
 
 @Component({
   selector: 'app-info-mensajes',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, ImagenDirective],
   templateUrl: './info-mensajes.component.html',
   styleUrl: './info-mensajes.component.css'
 })

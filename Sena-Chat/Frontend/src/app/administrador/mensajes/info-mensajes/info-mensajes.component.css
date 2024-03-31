@@ -18,12 +18,30 @@ span {
   }
 }
 
-img {
+.usuario-img {
   width: 10vh;
   height: 10vh;
   object-fit: cover;
   border-radius: 50%;
   margin-right: 1vh;
+}
+
+.contenido-horizontal {
+  height: 34vh;
+  border: 2px solid;
+  margin-bottom: 1rem;
+}
+
+.contenido-cuadrado {
+  width: 34vh;
+  border: 2px solid;
+  margin-bottom: 1rem;
+}
+
+.contenido-vertical {
+  width: 40vh;
+  border: 2px solid;
+  margin-bottom: 1rem;
 }
 
 .boton {

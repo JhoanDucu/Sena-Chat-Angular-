@@ -8,12 +8,13 @@
         <h2>ID: <span>{{mensaje.id_mensaje}}</span> </h2>
         <p>{{mensaje.tipo_mensaje}}</p>
         <h4>Contenido: </h4>
-        <p class="contenido">{{mensaje.contenido_mensaje}}</p>
+        @if(mensaje.id_tipo == 1) { <p class="contenido">{{mensaje.contenido_mensaje}}</p> }
+        @if(mensaje.id_tipo == 2) { <img [src]="url+mensaje.contenido_mensaje" appImagen> }
         <h4>Fecha y hora del envio: </h4>
         <p>{{conversion(mensaje.fecha_hora)}}</p>
         <h4>Enviado por: </h4>
         <div class="contenedor">
-            <img [src]="url+mensaje.foto">
+            <img class="usuario-img" [src]="url+mensaje.foto">
             <div class="parrafos">
                 <p>
                     {{mensaje.primer_nom}} {{mensaje.segundo_nom}}
@@ -28,7 +29,7 @@
         </div>
         <h4>Enviado a: </h4>
         <div class="contenedor">
-            @if (mensaje.foto_grupo) { <img [src]="url+mensaje.foto_grupo"> }
+            @if (mensaje.foto_grupo) { <img class="usuario-img" [src]="url+mensaje.foto_grupo"> }
             <div class="parrafos">
                 <p>{{mensaje.nom_grupos}}</p>
                 <p>
