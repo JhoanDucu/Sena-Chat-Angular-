@@ -1,18 +1,16 @@
 <div class="contenedor-padre">
     @for (m of mensajes; track m) {
     <button class="contenedor" [ngClass]="$even ? 'even' : 'odd'" (click)="abrirInfo(m)">
-            <div [ngClass]="$even ? 'header-even' : 'header-odd'">
-                <h4 class="idMensaje">ID: </h4> <span>{{m.id_mensaje}}</span>
-            </div>
-            <div [ngClass]="$even ? 'parrafo-even' : 'parrafo-odd'">
-                <p class="contenidoMensaje">
-                    <span>
-                        @if (m.id_tipo == 1) { {{m.contenido_mensaje}} }
-                        @if (m.id_tipo == 2) { <i class='bx bxs-image'></i>Imagen }
-                    </span>
-                </p>
-                <p class="fechaHoraEnvio">{{ conversion(m.fecha_hora) }}</p>
-            </div>
+        <div [ngClass]="$even ? 'header-even' : 'header-odd'">
+            <h4 class="idMensaje">ID: </h4> <span>{{m.id_mensaje}}</span>
+        </div>
+        <div [ngClass]="$even ? 'parrafo-even' : 'parrafo-odd'">
+            <p class="contenidoMensaje">
+                @if (m.id_tipo == 1) { {{m.contenido_mensaje}} }
+                @if (m.id_tipo == 2) { Imagen<i class='bx bxs-image'></i> }
+            </p>
+            <!-- <p class="fechaHoraEnvio">{{ conversion(m.fecha_hora) }}</p> -->
+        </div>
     </button>
     }
 </div>

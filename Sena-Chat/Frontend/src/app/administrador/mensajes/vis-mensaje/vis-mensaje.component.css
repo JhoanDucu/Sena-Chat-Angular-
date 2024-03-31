@@ -56,19 +56,18 @@
   text-align: end;
 }
 
-p {
+.contenidoMensaje {
   margin: 0;
   font-size: 3vh;
-  font-weight: bolder;
-  font-family: "Josefin Sans", sans-serif;
-}
-
-p span {
   font-weight: normal;
-}
-
-.contenidoMensaje span {
+  font-family: "Josefin Sans", sans-serif;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+i {
+  vertical-align: middle;
+  margin-left: 0.5vh;
+  font-size: larger;
 }

@@ -21,8 +21,6 @@ export class VisMensajeComponent {
     this.servicio.traerMensajes().subscribe((data: any) => this.mensajes = data);
   }
 
-  conversion = (date: any) => Fecha.fechaAdmin(new Date(date));
-
   abrirInfo = (mensaje: any) => {
     this.b.infoMensajes();
     this.mostrar.emit([,,mensaje]);

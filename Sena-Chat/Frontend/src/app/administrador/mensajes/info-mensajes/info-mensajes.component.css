@@ -2,6 +2,10 @@ span {
   font-weight: lighter;
 }
 
+.contenido {
+  word-wrap: break-word;
+}
+
 .contenedor {
   display: flex;
   align-items: center;
@@ -39,10 +43,6 @@ img {
   border: 1px solid rgb(23, 23, 23);
 }
 
-.info {
-  background-color: #c9b47b;
-}
-
 .editar {
   background-color: #7bc4c9;
 }
@@ -58,8 +58,4 @@ img {
 
 .editar:hover {
   background-color: #30b2b9;
-}
-
-.info:hover {
-  background-color: #debd63;
 }

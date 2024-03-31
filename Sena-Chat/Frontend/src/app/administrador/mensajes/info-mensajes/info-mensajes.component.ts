@@ -19,9 +19,7 @@ export class InfoMensajesComponent {
   url = urlImagenes;
 
   ngOnChanges(changes: SimpleChanges) {
-    if (!changes['mensaje'].firstChange) this.servicio.datosMensaje(this.mensaje.id_mensaje).subscribe((data) => {
-      Object.assign(this.mensaje, data);
-    });
+    if (!changes['mensaje'].firstChange) this.servicio.datosMensaje(this.mensaje.id_mensaje).subscribe((data) => Object.assign(this.mensaje, data));
   }
 
   conversion = (date: Date) => Fecha.fechaAdmin(new Date(date));

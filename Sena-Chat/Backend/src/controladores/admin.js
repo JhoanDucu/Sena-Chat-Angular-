@@ -250,14 +250,22 @@ exports.obtenerDatosMensaje = (req, res) => {
     if (resultado.length > 0) {
       if (!resultado[0].foto_grupo && resultado[0].fk_tipo_grupo == 1) {
         let mensaje = resultado[0];
-        const query2 = `SELECT u.foto FROM usuarios_grupos ug INNER JOIN usuarios u 
-        ON u.numerodoc = ug.numerodoc INNER JOIN grupos g ON g.id_grupos = ug.id_grupos
-        WHERE u.numerodoc <> ? AND g.id_grupos = ?;`;
-        conexion.query(query2, [mensaje.numerodoc, mensaje.id_grupos], (error, resultado) => {
-          if (error) console.error(error.message);
-          if (resultado.length > 0) mensaje.foto_grupo = resultado[0].foto;
-          res.json(mensaje);
-        });
+        const query2 = `SELECT u.foto, u.primer_nom, u.segundo_nom, u.primer_apellido, u.segundo_apellido 
+        FROM usuarios_grupos ug INNER JOIN usuarios u ON u.numerodoc = ug.numerodoc INNER 
+        JOIN grupos g ON g.id_grupos = ug.id_grupos WHERE u.numerodoc <> ? AND g.id_grupos = ?;`;
+        conexion.query(
+          query2,
+          [mensaje.numerodoc, mensaje.id_grupos],
+          (error, resultado) => {
+            if (error) console.error(error.message);
+            if (resultado.length > 0) {
+              mensaje.foto_grupo = resultado[0].foto;
+              mensaje.nom_grupos = `${resultado[0].primer_nom} ${resultado[0].segundo_nom ?? ''} 
+              ${resultado[0].primer_apellido} ${resultado[0].segundo_apellido ?? ''}`;
+            }
+            res.json(mensaje);
+          }
+        );
       } else res.json(resultado[0]);
     } else res.json("El mensaje proporcionado NO existe");
   });
