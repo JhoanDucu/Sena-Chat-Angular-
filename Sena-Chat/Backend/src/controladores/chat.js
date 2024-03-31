@@ -19,7 +19,7 @@ const subconsultaPrivados =
 `( SELECT ug.id_grupos, u.foto as foto_grupo, u.numerodoc as doc, COALESCE(MAX(m.fecha_hora), '') as fecha_reciente
 FROM usuarios_grupos ug INNER JOIN usuarios u ON u.numerodoc = ug.numerodoc
 LEFT JOIN mensaje m ON m.fk_destino = ug.id_usuarios_grupos
-WHERE u.numerodoc <> '1131104356' GROUP BY ug.id_grupos, u.foto, u.numerodoc)`;
+WHERE u.numerodoc <> ? GROUP BY ug.id_grupos, u.foto, u.numerodoc)`;
 
 exports.obtenerGrupos = (req, res) => {
   const numerodoc = req.params.usuario;
@@ -44,9 +44,9 @@ exports.obtenerMiembros = (req, res) => {
   const grupo = req.params.grupo;
   const query = `SELECT primer_nom, segundo_nom, primer_apellido, segundo_apellido, ug.numerodoc, 
           u.fk_id_rol, foto, descripcion FROM usuarios_grupos ug INNER JOIN usuarios u 
-          ON u.numerodoc = ug.numerodoc WHERE ug.id_grupos = ${grupo} ORDER BY u.fk_id_rol`;
+          ON u.numerodoc = ug.numerodoc WHERE ug.id_grupos = ? ORDER BY u.fk_id_rol`;
 
-  conexion.query(query, (error, result) => {
+  conexion.query(query, grupo, (error, result) => {
     if (error) console.error(error.message);
 
     if (result.length > 0) {
@@ -169,8 +169,6 @@ exports.reiniciarSinLeer = (req, res) => {
 
 exports.subirImagen = (req, res) => {
   const file = req.file;
-  if(!file) {
-    res.json('No hay archivos');
-  }
+  if(!file) res.json('No hay archivos');
   res.json(file.filename);
 }
