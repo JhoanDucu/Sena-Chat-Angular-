@@ -49,12 +49,18 @@
     letter-spacing: 0.3px;
   }
   p {
+    display: flex;
     font-weight: normal;
     margin: 0;
     font-size: 14px;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+  }
+  i {
+    align-self: center;
+    font-size: large;
+    margin-right: 0.4vh;
   }
   span {
     background-color: white;

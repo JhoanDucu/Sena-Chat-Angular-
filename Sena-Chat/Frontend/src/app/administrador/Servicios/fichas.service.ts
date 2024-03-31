@@ -16,4 +16,13 @@ export class FichasService {
   agregarFicha(datos: any){
     return this.http.post(`${url}/admin/agregar-ficha`, datos);
   }
+  traerFichaPorId(id: any){
+    return this.http.get(`${url}/admin/ficha/${id}`);
+  }
+  editarFicha(datos: any, id: any){
+    return this.http.put(`${url}/admin/editar-ficha/${id}`, datos);
+  }
+  traerGrupos(id: any) {
+    return this.http.get(`${url}/admin/grupos/${id}`);
+  }
 }

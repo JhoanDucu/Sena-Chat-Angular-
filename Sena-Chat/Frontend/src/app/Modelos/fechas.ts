@@ -30,6 +30,8 @@ export class Fecha {
     static horaActual = () => `${format(new Date(), 'hh:mm a')}`;
 
     static obtenerHora = (date: Date) => format(date, 'hh:mm a');
+    
+    static fechaAdmin = (date: Date) => format(date, "EEEE d 'de' MMMM 'de' yyyy, 'a las' h:mm aaaa", { locale: es });
 
     private diaSemana = () => `${format(this.date, 'EEEE', { locale: es })}`;
 

@@ -2,7 +2,7 @@
     @for (g of grupos; track g.id_grupos) {
     <div class="contenedor">
         <div class="header">
-            <img [src]="'../../../../assets/img/'+g.foto_grupo" alt="Imagen del grupos" class="imagen">
+            <img [src]="url+g.foto_grupo" alt="Imagen del grupos" class="imagen">
             <h2 class="titulo">{{g.nom_grupos}}</h2>
         </div>
         <p class="texto-completo">{{g.descripcion_grupos}}</p>
@@ -10,62 +10,9 @@
             <p class="parrafo">Num. Miembros: <span>{{g.num_usuarios}}</span></p>
             <p class="parrafo">Ficha: <span>{{g.id_ficha}}</span></p>
         </div>
-        <button class="boton info" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
-            aria-controls="offcanvasRight">Más Información</button>
-        <button class="boton editar">Editar</button>
+        <button class="boton info" type="button" (click)="abrirInfo(g)">Más Información</button>
+        <button class="boton editar" (click)="mostrar.emit(['editarGrupo', g.id_grupos])">Editar</button>
         <button class="boton eliminar">Eliminar</button>
     </div>
     }
-</div>
-
-<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-    <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="offcanvasRightLabel">Información adicional</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-    </div>
-    <div class="offcanvas-body">
-        <span>Nombre del grupo</span>
-        <p class="parrafo">Nombre del grupo</p>
-        <p class="texto-completo">Tu texto largo aquí</p>
-        <p class="parrafo">Num. Miembros: <span>20</span></p>
-        <p class="parrafo">Ficha: <span>22558104</span></p>
-        <p class="parrafo">Miembros:</p>
-
-        <div class="miembro">
-            <img src="../../../../assets/img/perfil3.jpg" alt="Imagen del miembro" class="miembro-imagen">
-            <div class="miembro-info">
-                <h5 class="miembro-nombre">Juan David Cardenas Perez</h5>
-                <p class="miembro-detalle">Detalle del miembro</p>
-            </div>
-            <button class="btn-eliminar-miembro">Eliminar</button>
-        </div>
-        <!-- Mas de ejemplo -->
-
-        <div class="miembro">
-            <img src="../../../../assets/img/perfil3.jpg" alt="Imagen del miembro" class="miembro-imagen">
-            <div class="miembro-info">
-                <h5 class="miembro-nombre">Juan David Cardenas Perez</h5>
-                <p class="miembro-detalle">Detalle del miembro</p>
-            </div>
-            <button class="btn-eliminar-miembro">Eliminar</button>
-        </div>
-
-        <div class="miembro">
-            <img src="../../../../assets/img/perfil3.jpg" alt="Imagen del miembro" class="miembro-imagen">
-            <div class="miembro-info">
-                <h5 class="miembro-nombre">Juan David Cardenas Perez</h5>
-                <p class="miembro-detalle">Detalle del miembro</p>
-            </div>
-            <button class="btn-eliminar-miembro">Eliminar</button>
-        </div>
-
-        <div class="miembro">
-            <img src="../../../../assets/img/perfil3.jpg" alt="Imagen del miembro" class="miembro-imagen">
-            <div class="miembro-info">
-                <h5 class="miembro-nombre">Juan David Cardenas Perez</h5>
-                <p class="miembro-detalle">Detalle del miembro</p>
-            </div>
-            <button class="btn-eliminar-miembro">Eliminar</button>
-        </div>
-    </div>
 </div>

@@ -1,23 +1,29 @@
-import { Component } from '@angular/core';
-import { CrearUsuarioComponent } from '../crear-usuario/crear-usuario.component';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { UsuariosService } from '../../Servicios/usuarios.service';
 import { Usuario } from '../../../Modelos/usuarios';
+import { urlImagenes } from '../../../../servidor';
+import { BootstrapService } from '../../Servicios/bootstrap.service';
 
 @Component({
   selector: 'app-vis-usuario',
   standalone: true,
-  imports: [
-    CrearUsuarioComponent,
-  ],
+  imports: [],
   templateUrl: './vis-usuario.component.html',
   styleUrl: './vis-usuario.component.css'
 })
 export class VisUsuarioComponent {
-  constructor (private servicio: UsuariosService) {}
+  constructor (private servicio: UsuariosService, private b: BootstrapService) {}
+  @Output() mostrar = new EventEmitter();
   usuarios: Usuario[] = [];
-  mostrar = false;
-  mostrarCrear = () => this.mostrar = !this.mostrar;
+  url = urlImagenes;
+  
   ngOnInit(){
     this.servicio.traerUsuarios().subscribe((data: any) => this.usuarios = data);
   }
+
+  abrirInfo = (usuario: any) => {
+    this.b.infoUsuarios();
+    this.mostrar.emit([,,usuario]);
+  }
+
 }

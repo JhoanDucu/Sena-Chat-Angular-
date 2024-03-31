@@ -1,6 +1,6 @@
 <div class="form-container">
     <h1 class="form-title">CREAR USUARIO</h1>
-    <form>
+    <form (ngSubmit)="validar()" [formGroup]="formRegistro">
         <div class="form-group">
             <input type="text" class="form-control" id="groupName" placeholder="Primer nombre"
                 formControlName="primer_nom">
@@ -10,7 +10,7 @@
                 formControlName="primer_apellido">
             <input type="text" class="form-control" id="groupName" placeholder="Segundo apellido"
                 formControlName="segundo_apellido">
-            <select class="form-control" id="groupCards" formControlName="">
+            <select class="form-control" id="groupCards" formControlName="fk_id_tipodoc">
                 <option value="1">Cedula de ciudadania</option>
                 <option value="2">Tarjeta de identidad</option>
                 <option value="3">Cédula de Extranjería</option>
@@ -23,20 +23,25 @@
                 formControlName="correo">
             <input type="text" class="form-control" id="groupName" placeholder="Nombre de usuario"
                 formControlName="nombre_usuario">
-            <!-- <input type="text" class="form-control" id="groupName" placeholder="Contraseña"
+            <input type="text" class="form-control" id="groupName" placeholder="Contraseña"
                 formControlName="contrasena">
-            <input type="text" class="form-control" id="groupName" placeholder="Confirmar contraseña"
+            <!-- <input type="text" class="form-control" id="groupName" placeholder="Confirmar contraseña"
                 formControlName="confirmar"> -->
         </div>
+        <select class="form-control" id="groupCards" formControlName="fk_id_rol">
+            <option value="1">Instructor</option>
+            <option value="2">Aprendiz</option>
+            <option value="3">Administrador</option>
+        </select>
         <div class="form-group">
-            <select class="form-control" id="groupCards">
-                <option selected>Fichas</option>
-                <br>
+            <select class="form-control" id="groupCards" formControlName="id_fichas">
+                @for (f of fichas; track f) {
+                    <option [value]="f.id_ficha">{{f.id_ficha}}</option> 
+                }
             </select>
         </div>
         <div class="form-group">
             <button type="submit" class="btn btn-create">Crear</button>
-            <br>
             <button (click)="cancelar()" type="button" class="btn btn-cancel">Cancelar</button>
         </div>
     </form>

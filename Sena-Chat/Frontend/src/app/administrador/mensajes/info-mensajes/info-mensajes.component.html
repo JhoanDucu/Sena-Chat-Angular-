@@ -1,0 +1,46 @@
+<div class="offcanvas offcanvas-end" tabindex="-1" id="mensajes" aria-labelledby="offcanvasRightLabel">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasRightLabel">Información adicional</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        @if(mensaje !== undefined){
+        <h2>ID: <span>{{mensaje.id_mensaje}}</span> </h2>
+        <p>{{mensaje.tipo_mensaje}}</p>
+        <h4>Contenido: </h4>
+        @if(mensaje.id_tipo == 1) { <p class="contenido">{{mensaje.contenido_mensaje}}</p> }
+        @if(mensaje.id_tipo == 2) { <img [src]="url+mensaje.contenido_mensaje" appImagen> }
+        <h4>Fecha y hora del envio: </h4>
+        <p>{{conversion(mensaje.fecha_hora)}}</p>
+        <h4>Enviado por: </h4>
+        <div class="contenedor">
+            <img class="usuario-img" [src]="url+mensaje.foto">
+            <div class="parrafos">
+                <p>
+                    {{mensaje.primer_nom}} {{mensaje.segundo_nom}}
+                    {{mensaje.primer_apellido}} {{mensaje.segundo_apellido}}
+                </p>
+                <p>
+                    @if (mensaje.fk_id_tipodoc == 1) { C.C }
+                    @if (mensaje.fk_id_tipodoc == 2) { T.I }
+                    {{mensaje.numerodoc}}
+                </p>
+            </div>
+        </div>
+        <h4>Enviado a: </h4>
+        <div class="contenedor">
+            @if (mensaje.foto_grupo) { <img class="usuario-img" [src]="url+mensaje.foto_grupo"> }
+            <div class="parrafos">
+                <p>{{mensaje.nom_grupos}}</p>
+                <p>
+                    {{mensaje.id_ficha}}
+                    @if (mensaje.fk_tipo_grupo == 1) { (Chat Privado) }
+                    @if (mensaje.fk_tipo_grupo == 2) { (Chat Grupal) }
+                </p>
+            </div>
+        </div>
+        <button class="boton editar" (click)="editarMensaje()">Editar</button>
+        <button class="boton eliminar">Eliminar</button>
+        }
+    </div>
+</div>

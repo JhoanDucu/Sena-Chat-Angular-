@@ -7,10 +7,19 @@ import { url } from '../../../servidor';
 })
 export class UsuariosService {
   constructor(private http: HttpClient) { }
-  traerUsuarios(){
+  traerUsuarios() {
     return this.http.get(`${url}/admin/usuarios`);
   }
-  agregarUsuario(datos: any){
+  traerIdFichas() {
+    return this.http.get(`${url}/admin/num-fichas`);
+  }
+  agregarUsuario(datos: any) {
     return this.http.post(`${url}/admin/agregar-usuario`, datos);
+  }
+  traerUsuarioPorId(numdoc: any){
+    return this.http.get(`${url}/admin/usuario/${numdoc}`);
+  }
+  editarUsuario(datos: any, numdoc: any){
+    return this.http.put(`${url}/admin/editar-usuario/${numdoc}`, datos);
   }
 }

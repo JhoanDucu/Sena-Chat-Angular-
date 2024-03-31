@@ -1,0 +1,24 @@
+<div class="offcanvas offcanvas-end" tabindex="-1" id="fichas" aria-labelledby="offcanvasRightLabel">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasRightLabel">Información adicional</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        @if (ficha) {
+        <h3>{{ficha.id_ficha}}</h3>
+        <p> <strong>Programa de formacion: </strong></p>
+        <p>{{ficha.nombre_programa}}</p>
+        <p><strong>Grupos que pertenecen a la ficha:</strong></p>
+        @for (g of grupos; track g.id_grupos) {
+        <div class="miembro">
+            <img [src]="url+g.foto_grupo" alt="Imagen del miembro" class="miembro-imagen">
+            <div class="miembro-info">
+                <h5 class="miembro-nombre">{{g.nom_grupos}}</h5>
+                <p class="miembro-detalle">Detalle del grupo</p>
+            </div>
+            <button class="btn-eliminar-miembro">Eliminar</button>
+        </div>
+        } @empty { {{aviso}} }
+        }
+    </div>
+</div>

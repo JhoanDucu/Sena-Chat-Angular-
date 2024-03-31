@@ -1,16 +1,16 @@
 @if (grupoSeleccionado) {
 <nav class="container navbar bg-body-tertiary" id="cabeceraChat">
     <div id="info-basica">
-        <img [src]="'../../../assets/img/'+grupoSeleccionado.foto_grupo" id="img-grupo" />
+        <img [src]="url+grupoSeleccionado.foto_grupo" id="img-grupo" />
         <span id="nombre-grupo">{{ grupoSeleccionado.nom_grupos }}</span>
     </div>
     <div id="botones-grupo">
-        <button id="info-boton">
+        <!-- <button id="info-boton">
             <i class='bx bx-calendar-alt'></i>
         </button>
         <button id="info-boton">
             <i class='bx bx-search-alt-2 bx-flip-horizontal'></i>
-        </button>
+        </button> -->
         <button id="info-boton" (click)="abrirInformacion()">
             <i class='bx bx-dots-horizontal-rounded'></i>
         </button>
@@ -23,14 +23,9 @@
         <button id="cerrarEditar" (click)="cerrar()"><i class='bx bx-right-arrow-alt'></i></button>
     </div>
     <div class="offcanvas-body">
-        <!-- <div class="">
-            <div class="d-flex justify-content-center">
-                <img src="../../assets/img/User-elim.png" class="img-thumbnail" alt="Eliminar" />
-            </div>
-        </div> -->
         <div id="presentacion">
             <div class="flex-shrink-0">
-                <img [src]="'../../assets/img/'+grupoSeleccionado.foto_grupo" id="imagenGrupo" alt="Agregar" />
+                <img [src]="url+grupoSeleccionado.foto_grupo" id="imagenGrupo" alt="imagenGrupo" />
             </div>
             <div class="d-flex flex-column bd-highlight">
                 <div id="nomGrupo">{{ grupoSeleccionado.nom_grupos }}</div>
@@ -62,7 +57,7 @@
             @for (m of miembros; track m.numerodoc) {
             <button class="list-group-item list-group-item-action" aria-current="true" (mouseenter)="hover(m.numerodoc)"
                 (click)="consultarPerfil(m.numerodoc)">
-                <img [src]="'../../../assets/img/' + m.foto" class="fotoUsuario">
+                <img [src]="url+m.foto" class="fotoUsuario">
                 <span class="resumenUsuario">
                     <h5 class="nomUsuario">
                         {{ m.primer_nom }} {{ m.segundo_nom }} {{ m.primer_apellido }} {{ m.segundo_apellido }}

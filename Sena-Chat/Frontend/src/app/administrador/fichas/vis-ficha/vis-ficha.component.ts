@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FichasService } from '../../Servicios/fichas.service';
 import { Ficha } from '../../../Modelos/fichas';
+import { BootstrapService } from '../../Servicios/bootstrap.service';
 
 @Component({
   selector: 'app-vis-ficha',
@@ -11,9 +12,17 @@ import { Ficha } from '../../../Modelos/fichas';
   styleUrl: './vis-ficha.component.css'
 })
 export class VisFichaComponent {
-  constructor(private servicio: FichasService){ }
+  constructor(private servicio: FichasService, private b: BootstrapService){ }
+  @Output() mostrar = new EventEmitter();
   fichas: Ficha[] = [];
+
   ngOnInit(){
     this.servicio.traerFichas().subscribe((data: any) => this.fichas = data);
   }
+
+  abrirInfo = (ficha: Ficha) => {
+    this.b.infoFichas();
+    this.mostrar.emit([,,ficha]);
+  };
+
 }

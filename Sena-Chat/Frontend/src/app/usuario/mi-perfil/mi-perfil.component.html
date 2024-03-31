@@ -1,6 +1,6 @@
 <div id="perfil-box">
     <div id="imagen-box">
-        <img [src]="perfil.foto ? '../../../assets/img/'+perfil.foto : '../../../assets/img/perfil3.jpg'" id="user">
+        <img [src]="url+perfil.foto" id="user">
         <div id="text">
             <span id="nombre-usuario">{{ perfil.nombre_usuario }}</span>
             @if (rol()) { <p id="ficha">Instructor</p> }
@@ -33,7 +33,7 @@
     </div>
 </div>
 
-<div class="position-fixed bottom-0 start-0 p-3" style="z-index: 11">
+<!-- <div class="position-fixed bottom-0 start-0 p-3" style="z-index: 11">
     <div id="liveToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
         <div class="toast-header">
             <img src="../../../assets/img/Usuario3.jpg" class="rounded me-2" id="toastImg">
@@ -45,4 +45,4 @@
             Hello, world! This is a toast message.
         </div>
     </div>
-</div>
+</div> -->

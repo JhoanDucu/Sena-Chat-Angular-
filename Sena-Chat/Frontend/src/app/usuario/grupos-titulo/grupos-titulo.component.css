@@ -11,11 +11,18 @@ span {
   width: 70%;
 }
 
-a {
+button {
   display: flex;
   font-size: 30px;
   width: 10%;
   justify-content: end;
   align-self: center;
   cursor: pointer;
+  border:none;
+  background-color: #dfdfdf;
+  border-radius: 10px;
+}
+
+button:hover {
+  background-color: #aeaeae;
 }

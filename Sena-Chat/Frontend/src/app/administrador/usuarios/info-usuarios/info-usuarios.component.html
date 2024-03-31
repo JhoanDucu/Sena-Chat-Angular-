@@ -1,0 +1,24 @@
+<div class="offcanvas offcanvas-end" tabindex="-1" id="usuarios" aria-labelledby="offcanvasRightLabel">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasRightLabel">Información adicional</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        @if (usuario) {
+        <div class="img-usuario">
+            <img [src]="url+usuario.foto">
+        </div>
+        <h2>
+            {{usuario.primer_nom}} {{usuario.segundo_nom}} {{usuario.primer_apellido}} {{usuario.segundo_apellido}}
+        </h2>
+        <p>{{usuario.descripcion}}</p>
+        <p> <strong>Nombre de usuario: </strong><span>{{usuario.nombre_usuario}}</span></p>
+        <p> <strong>Correo: </strong><span>{{usuario.correo}}</span></p>
+        <p><strong>Rol: </strong>
+            @if (usuario.fk_id_rol == '1') { Instructor de la ficha {{usuario.id_fichas}} }
+            @if (usuario.fk_id_rol == '2') { Aprendiz de la ficha {{usuario.id_fichas}} }
+            @if (usuario.fk_id_rol == '3') { Administrador } 
+        </p>
+        }
+    </div>
+</div>

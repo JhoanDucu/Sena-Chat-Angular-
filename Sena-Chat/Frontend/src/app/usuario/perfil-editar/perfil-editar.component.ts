@@ -6,6 +6,7 @@ import { Usuario } from '../../Modelos/usuarios';
 import { ConfigurarService } from '../Servicios/configurar.service';
 import { BootstrapService } from '../Servicios/bootstrap.service';
 import { Fecha } from '../../Modelos/fechas';
+import { urlImagenes } from '../../../servidor';
 
 @Component({
   selector: 'app-perfil-editar',
@@ -54,6 +55,9 @@ export class PerfilEditarComponent {
     foto: new FormControl('', Validators.required),
     fk_id_rol: new FormControl('', Validators.required),
   });
+  url = urlImagenes;
+  fotoPerfil: any;
+  fotoSeleccionada: any;
 
   ngOnInit() {
     this.cancelar();
@@ -79,15 +83,39 @@ export class PerfilEditarComponent {
 
   comprobarCambios = (prop: keyof Usuario) => this.usuario[prop] != this.formEditar.value[prop];
 
-  editar() {
-    this.Configurar.actualizarUsuario(this.formEditar.value, this.usuario.numerodoc).subscribe((data: any) => {
-      if (data == 'Actualizado') {
-        this.b.toastPerfil();
-        this.actualizar.emit(this.formEditar.value);
-      } else alert('No actualizado');
-      this.cambios = false;
+  validar() {
+    this.editar(this.formEditar.value, this.usuario.numerodoc);
+  }
+
+  editar(datos: any, numdoc: any) {
+    const formData = new FormData();
+    formData.append('file', this.fotoSeleccionada);
+    this.Configurar.subirImagen(formData).subscribe((data) => {
+      if (data !== 'No hay archivos')
+        datos.foto = data;
+      this.Configurar.actualizarUsuario(datos, numdoc).subscribe((data: any) => {
+        if (data == 'Actualizado') {
+          this.b.toastPerfil();
+          this.actualizar.emit(this.formEditar.value);
+        } else alert('No actualizado');
+        this.cambios = false;
+      });
     });
   }
+
+  cambiarPerfil(event: any) {
+    this.fotoSeleccionada = event.files[0];
+    this.convertFile(event.files[0]).then((image: any) => this.fotoPerfil = 'url(' + image + ')');
+    this.cambios = true;
+  }
+
+  convertFile = async (file: File) => new Promise((resolve, reject) => {
+    try {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => { resolve(reader.result) };
+    } catch (error) { console.error(error); }
+  });
 
   cancelar() {
     this.cambios = false;
@@ -103,9 +131,10 @@ export class PerfilEditarComponent {
       numerodoc: this.usuario.numerodoc,
       fk_id_tipodoc: this.usuario.fk_id_tipodoc as string,
       id_fichas: this.usuario.id_fichas,
-      foto: this.usuario.foto,
+      foto: '',
       fk_id_rol: this.usuario.fk_id_rol,
     });
+    this.fotoPerfil = `url('${this.url}${this.usuario.foto}')`;
   }
 
   fecha = () => Fecha.momentoAhora();

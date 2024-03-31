@@ -11,4 +11,7 @@ export class ConfigurarService {
   actualizarUsuario(Datos: any, numerodoc: any) {
     return this.http.put(`${url}/usuario/configurar/${numerodoc}`, Datos);
   }
+  subirImagen(datos: FormData) {
+    return this.http.post(`${url}/chat/subir-imagen`, datos);
+  }
 }

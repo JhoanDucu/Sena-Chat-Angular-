@@ -1,22 +1,34 @@
 <div class="form-container">
     <h2 class="form-title">Editar Ficha</h2>
-    <form>
+    <form (ngSubmit)="validar()" [formGroup]="formFicha">
         <div class="form-group">
             <label for="idFicha">Numero de ficha</label>
-            <input type="text" class="form-control" id="idFicha" value="123424212312">
+            <input type="text" class="form-control" id="idFicha" formControlName="id_ficha">
         </div>
         <div class="form-group">
-            <label for="NameFicha">Nombre</label>
-            <input type="text" class="form-control" id="NameFicha" value="Análisis y desarrollo de software">
+            <label for="NameFicha">Programa</label>
+            <select class="form-control" id="NameFicha" formControlName="fk_programa">
+                @for (p of programas; track p) {
+                <option [value]="p.id_programa">{{p.nombre_programa}}</option>
+                }
+            </select>
         </div>
         <div class="form-group">
-            <label for="cantGrupos">Cantidad de grupos</label>
-            <input type="number" class="form-control" id="cantGrupos" value="30">
+            <label for="NameFicha">Trimestre</label>
+            <select class="form-control" id="NameFicha" formControlName="trimestre">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+            </select>
         </div>
         <div class="form-group">
             <button type="submit" class="btn btn-create">Guardar Cambios</button>
             <br>
-            <button type="button" class="btn btn-cancel">Cancelar</button>
+            <button type="button" class="btn btn-cancel" (click)="cancelar()">Cancelar</button>
         </div>
     </form>
 </div>

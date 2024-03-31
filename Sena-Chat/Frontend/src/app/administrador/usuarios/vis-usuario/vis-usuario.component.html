@@ -1,32 +1,18 @@
-@if(mostrar){
-<app-crear-usuario (mostrar)="mostrarCrear()"></app-crear-usuario>
-}@else{
 <div class="contenedor-padre">
     @for (u of usuarios; track u.numerodoc) {
     <div class="contenedor">
         <div class="header">
-            <img [src]="'../../../../assets/img/'+u.foto" alt="Imagen del grupos" class="imagen">
-            <h2 class="nameUser">Nombre de usuario</h2>
+            <img [src]="url+u.foto" alt="Imagen del grupos" class="imagen">
+            <!-- <h2 class="nameUser">{{u.nombre_usuario}}</h2> -->
+            <p class="name">{{u.primer_nom}} {{u.segundo_nom}} {{u.primer_apellido}} {{u.segundo_apellido}}</p>
         </div>
-        <p class="name">{{u.primer_nom}} {{u.segundo_nom}} {{u.primer_apellido}} {{u.segundo_apellido}}</p>
         <div class="parrafos">
             <p class="parrafo">Num. Documento: <span>{{u.numerodoc}}</span></p>
-            <p class="parrafo">Ficha: <span>{{u.id_fichas}}</span></p>
+            <p class="parrafo">Ficha: <span>{{u.id_fichas != '0000000' ? u.id_fichas : 'Sin ficha'}}</span></p>
         </div>
-        <button class="boton info" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
-            aria-controls="offcanvasRight">Mas Información</button>
-        <button class="boton editar">Editar</button>
+        <button class="boton info" type="button" (click)="abrirInfo(u)">Mas Información</button>
+        <button class="boton editar" (click)="mostrar.emit(['editarUsuario', u.numerodoc])">Editar</button>
         <button class="boton eliminar">Eliminar</button>
     </div>
     }
-</div>
-}
-<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-    <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="offcanvasRightLabel">Offcanvas right</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-    </div>
-    <div class="offcanvas-body">
-
-    </div>
 </div>

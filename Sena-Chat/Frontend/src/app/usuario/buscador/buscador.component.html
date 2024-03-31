@@ -14,16 +14,18 @@
                 @if (coincidencias.Grupos.length) {
                 <span class="subtitulo">Grupos</span>
                 @for (G of coincidencias.Grupos; track G) {
-                <app-grupo [grupo]="G" (click)="seleccionarEnBuscador(G.id_grupos, $index, 'grupos')"
-                    [tiempo]="tiene(G, 'fecha_hora')" [reciente]="tiene(G, 'contenido_mensaje')">
+                <app-grupo (click)="seleccionarEnBuscador(G.id_grupos, $index, 'grupos')" [grupo]="G"
+                    [tiempo]="tiene(G)?.fecha_hora" [tipo]="tiene(G)?.id_tipo"
+                    [contenido]="tiene(G)?.contenido_mensaje">
                 </app-grupo>
                 }
                 }
                 @if(coincidencias.Privados.length){
                 <span class="subtitulo">Privados</span>
                 @for (P of coincidencias.Privados; track P) {
-                <app-grupo [grupo]="P" (click)="seleccionarEnBuscador(P.id_grupos, $index, 'privados')"
-                    [tiempo]="tiene(P, 'fecha_hora')" [reciente]="tiene(P, 'contenido_mensaje')">
+                <app-grupo (click)="seleccionarEnBuscador(P.id_grupos, $index, 'privados')" [grupo]="P"
+                    [tiempo]="tiene(P)?.fecha_hora" [tipo]="tiene(P)?.id_tipo"
+                    [contenido]="tiene(P)?.contenido_mensaje">
                 </app-grupo>
                 }
                 }

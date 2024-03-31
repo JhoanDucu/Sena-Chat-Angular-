@@ -2,11 +2,13 @@ import { Component, ElementRef, EventEmitter, Input, Output, SimpleChanges, View
 import { CommonModule } from '@angular/common';
 import { MensajeMostrar } from '../../Modelos/mensaje';
 import { SesionService } from '../Sesiones/sesion.service';
+import { ImagenDirective } from '../Directivas/imagen.directive';
+import { url } from '../../../servidor';
 
 @Component({
   selector: 'app-mensajes',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, ImagenDirective],
   templateUrl: './mensajes.component.html',
   styleUrl: './mensajes.component.css'
 })
@@ -22,6 +24,7 @@ export class MensajesComponent {
   grupoSeleccionado = this.Sesion.get('grupos');
   fichaSeleccionada = this.Sesion.get('ficha');
   usuario = this.Sesion.get('documento');
+  url = url + '/imagenes/';
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['mensajeFinal'] && !changes['mensajeFinal'].firstChange) setTimeout(() => this.hacerScroll(2), 0);

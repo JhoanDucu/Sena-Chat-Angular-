@@ -22,6 +22,7 @@
 .header {
   display: flex;
   align-items: center;
+  margin-bottom: 3%;
 }
 
 .imagen {
@@ -35,11 +36,11 @@
 }
 
 .name {
-  margin-top: 5px;
+  margin: 0;
+  margin-left: 3%;
   width: 100%;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  text-wrap: balance;
+  font-weight: bold;
 }
 
 span {
@@ -53,7 +54,7 @@ span {
 
 .parrafo {
   font-weight: bold;
-  margin-bottom: 1%;
+  margin-bottom: 2%;
 }
 
 .boton {
@@ -69,7 +70,7 @@ span {
   margin: 4px auto;
   cursor: pointer;
   border-radius: 12px;
-  width: 80%;
+  width: 85%;
   border: 1px solid rgb(23, 23, 23);
 }
 

@@ -29,9 +29,10 @@ export class CrearFichaComponent {
   cancelar = () => this.volver.emit();
 
   validar(){
-    if (this.formFicha.get('id_ficha')?.hasError('required')) this.ficha = 'Este campo es obligatorio';
-    if (this.formFicha.get('programa')?.hasError('required')) this.programa = 'Este campo es obligatorio';
-    if (this.formFicha.get('id_ficha')?.hasError('required')) this.trimestre = 'Este campo es obligatorio';
+    // if (this.formFicha.get('id_ficha')?.hasError('required')) this.ficha = 'Este campo es obligatorio';
+    // if (this.formFicha.get('programa')?.hasError('required')) this.programa = 'Este campo es obligatorio';
+    // if (this.formFicha.get('id_ficha')?.hasError('required')) this.trimestre = 'Este campo es obligatorio';
+    this.nuevaFicha();
   }
 
   nuevaFicha() {

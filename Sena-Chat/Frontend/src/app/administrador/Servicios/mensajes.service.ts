@@ -13,4 +13,13 @@ export class MensajesService {
   agregarMensaje(datos: any){
     return this.http.post(`${url}/admin/agregar-mensaje`, datos);
   }
+  traerMensajePorId(id: any){
+    return this.http.get(`${url}/admin/mensaje/${id}`);
+  }
+  editarMensaje(datos: any, id: any){
+    return this.http.put(`${url}/admin/editar-mensaje/${id}`, datos);
+  }
+  datosMensaje(id: any){
+    return this.http.get(`${url}/admin/ubicacion-mensaje/${id}`);
+  }
 }

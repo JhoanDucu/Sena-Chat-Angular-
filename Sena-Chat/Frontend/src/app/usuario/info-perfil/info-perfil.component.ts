@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Usuario } from '../../Modelos/usuarios';
+import { urlImagenes } from '../../../servidor';
 
 @Component({
   selector: 'app-info-perfil',
@@ -11,4 +12,5 @@ import { Usuario } from '../../Modelos/usuarios';
 })
 export class InfoPerfilComponent {
   @Input() usuario: Usuario = {};
+  url = urlImagenes;
 }

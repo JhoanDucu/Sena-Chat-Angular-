@@ -11,6 +11,7 @@ import { GruposTituloComponent } from '../grupos-titulo/grupos-titulo.component'
 import { GruposPanelComponent } from '../grupos-panel/grupos-panel.component';
 import { BootstrapService } from '../Servicios/bootstrap.service';
 import { Usuario } from '../../Modelos/usuarios';
+import { urlImagenes } from '../../../servidor';
 
 @Component({
   selector: 'app-grupos',
@@ -47,6 +48,7 @@ export class GruposComponent {
     otra2: { class: false, new: false }
   }
   enBusqueda = false;
+  url = urlImagenes;
 
   ngOnInit(): void { this.B.iniciarInstanciasChat(); }
 
@@ -71,6 +73,6 @@ export class GruposComponent {
     this.datos[type].unshift(this.datos[type].splice(index, 1)[0]);
   }
 
-  tiene = (g: any, propiedad: string) => ChatDirective.contieneMensajes(g, propiedad);
+  tiene = (objeto: any) => ChatDirective.contieneMensajes(objeto);
 
 }

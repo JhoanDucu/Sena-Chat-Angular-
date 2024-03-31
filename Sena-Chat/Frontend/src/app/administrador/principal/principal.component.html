@@ -10,44 +10,28 @@
             <!-- Menu -->
             <div class="accordion" id="sidebarAccordion">
                 <!-- Grupo 1: Grupos -->
-                <div class="accordion-item" style="border: none;">
-                    <h2 class="accordion-header" id="headingOne">
-                        <button class="accordion-button collapsed" type="button" (click)="seleccionarOpcion('grupos')"
-                            data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false"
-                            aria-controls="collapseOne">
-                            <i class='bx bx-group'></i> Grupos
-                        </button>
-                    </h2>
+                <div>
+                    <button class="accordion-button collapsed" type="button" (click)="seleccionarOpcion('grupos')">
+                        <i class='bx bx-group'></i> Grupos
+                    </button>
                 </div>
                 <!-- Grupo 2: Usuarios -->
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="headingThree">
-                        <button class="accordion-button collapsed" type="button" (click)="seleccionarOpcion('usuarios')"
-                            data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false"
-                            aria-controls="collapseThree">
-                            <i class='bx bx-user'></i> Usuarios
-                        </button>
-                    </h2>
+                <div>
+                    <button class="accordion-button collapsed" type="button" (click)="seleccionarOpcion('usuarios')">
+                        <i class='bx bx-user'></i> Usuarios
+                    </button>
                 </div>
                 <!-- Grupo 3: Mensajes -->
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="headingTwo">
-                        <button class="accordion-button collapsed" type="button" (click)="seleccionarOpcion('mensajes')"
-                            data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false"
-                            aria-controls="collapseTwo">
-                            <i class='bx bx-chat'></i> Mensajes
-                        </button>
-                    </h2>
+                <div>
+                    <button class="accordion-button collapsed" type="button" (click)="seleccionarOpcion('mensajes')">
+                        <i class='bx bx-chat'></i> Mensajes
+                    </button>
                 </div>
                 <!-- Grupo 4: Fichas -->
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="headingFour">
-                        <button class="accordion-button collapsed" type="button" (click)="seleccionarOpcion('fichas')"
-                            data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false"
-                            aria-controls="collapseFour">
-                            <i class='bx bx-folder'></i> Fichas
-                        </button>
-                    </h2>
+                <div>
+                    <button class="accordion-button collapsed" type="button" (click)="seleccionarOpcion('fichas')">
+                        <i class='bx bx-folder'></i> Fichas
+                    </button>
                 </div>
             </div>
         </div>
@@ -56,22 +40,41 @@
         <div class="contenido">
             <!-- Contenido dinámico -->
             <div class="botones">
-                @if (!opcion.includes('crear')) {
-                <button (click)="mostrarCrear()" class="btn-crear">Crear nuevo</button>
+                @if (!opcion.includes('crear') && !opcion.includes('editar')) {
+                <button (click)="mostrar()" class="btn-crear" [disabled]="opcion.includes('mensajes')">
+                    Crear nuevo
+                </button>
                 <div class="search-container">
                     <input class="form-control" type="search" placeholder="Busca">
                     <i class="bi bi-search"></i>
                 </div>
                 }
             </div>
-            @if (opcion === 'grupos') { <app-vis-grupos /> }
-            @if (opcion === 'usuarios') { <app-vis-usuario /> }
-            @if (opcion === 'mensajes') { <app-vis-mensaje /> }
-            @if (opcion === 'fichas') { <app-vis-ficha /> }
-            @if (opcion === 'crearGrupo') { <app-crear-grupo (volver)="mostrarCrear()" /> }
-            @if (opcion === 'crearUsuario') { <app-crear-usuario (volver)="mostrarCrear()" /> }
-            @if (opcion === 'crearMensaje') { <app-crear-mensaje (volver)="mostrarCrear()" /> }
-            @if (opcion === 'crearFicha') { <app-crear-ficha (volver)="mostrarCrear()" /> }
+            @if (opcion === 'grupos') {
+            <app-vis-grupos (mostrar)="seleccionarOpcion($event[0], $event[1], $event[2])" />
+            }
+            @if (opcion === 'usuarios') {
+            <app-vis-usuario (mostrar)="seleccionarOpcion($event[0], $event[1], $event[2])" />
+            }
+            @if (opcion === 'mensajes') {
+            <app-vis-mensaje (mostrar)="seleccionarOpcion($event[0], $event[1], $event[2])" />
+            }
+            @if (opcion === 'fichas') {
+            <app-vis-ficha (mostrar)="seleccionarOpcion($event[0], $event[1], $event[2])" />
+            }
+            @if (opcion === 'crearGrupo') { <app-crear-grupo (volver)="mostrar()" /> }
+            @if (opcion === 'crearUsuario') { <app-crear-usuario (volver)="mostrar()" /> }
+            @if (opcion === 'crearMensaje') { <app-crear-mensaje (volver)="mostrar()" /> }
+            @if (opcion === 'crearFicha') { <app-crear-ficha (volver)="mostrar()" /> }
+            @if (opcion === 'editarGrupo') { <app-editar-grupo (volver)="mostrar()" [id_grupo]="id" /> }
+            @if (opcion === 'editarUsuario') { <app-editar-usuario (volver)="mostrar()" [numerodoc]="id" /> }
+            @if (opcion === 'editarMensaje') { <app-editar-mensaje (volver)="mostrar()" [id_mensaje]="id" /> }
+            @if (opcion === 'editarFicha') { <app-editar-ficha (volver)="mostrar()" [id_ficha]="id" /> }
+            <app-info-grupos [grupo]="info"></app-info-grupos>
+            <app-info-usuarios [usuario]="info"></app-info-usuarios>
+            <app-info-mensajes [mensaje]="info" (mostrar)="seleccionarOpcion($event[0], $event[1])">
+            </app-info-mensajes>
+            <app-info-fichas [ficha]="info"></app-info-fichas>
         </div>
     </div>
 </div>

@@ -1,0 +1,29 @@
+<div class="offcanvas offcanvas-end" tabindex="-1" id="grupos" aria-labelledby="offcanvasRightLabel">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasRightLabel">Información adicional</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        @if (grupo) {
+        <div class="img-grupo"><img [src]="url+grupo.foto_grupo"></div>
+        <h3>{{grupo.nom_grupos}}</h3>
+        <p>{{grupo.descripcion_grupos}}</p>
+        <p> <strong>Ficha: </strong><span>{{grupo.id_ficha}}</span></p>
+        <p> <strong>Num. Miembros: </strong><span>{{grupo.num_usuarios}}</span></p>
+        <p><strong>Miembros:</strong></p>
+
+        @for (m of miembros; track m.numerodoc) {
+        <div class="miembro">
+            <img [src]="url+m.foto" alt="Imagen del miembro" class="miembro-imagen">
+            <div class="miembro-info">
+                <h5 class="miembro-nombre">
+                    {{m.primer_nom}} {{m.segundo_nom}} {{m.primer_apellido}} {{m.segundo_apellido}}
+                </h5>
+                <p class="miembro-detalle">Detalle del miembro</p>
+            </div>
+            <button class="btn-eliminar-miembro">Eliminar</button>
+        </div>
+        } @empty { {{aviso}} }
+        }
+    </div>
+</div>

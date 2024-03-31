@@ -13,7 +13,7 @@
 .contenedorGrupos {
   margin: 0;
   padding: 0px;
-  width: 38%;
+  width: 35%;
   height: 100vh;
   border-right: 1px solid #000000;
   -webkit-user-select: none;
@@ -22,7 +22,7 @@
 
 .contenedorChat {
   padding: 0;
-  width: 62%;
+  width: 65%;
 }
 
 /* Mensajes */
@@ -31,7 +31,7 @@
   padding: 0;
   margin: 0;
   position: absolute;
-  width: 62%;
+  width: 65%;
   top: 70px;
   bottom: 0;
   background-color: #dfdfdf;

@@ -1,11 +1,7 @@
 @if (Sesion.get('pestaña') == 'grupos' || Sesion.get('pestaña') == 'privados') {
 <div id="panel">
-    <button id="iniciarChat"><i class='bx bx-note'></i></button>
-    <button id="iniciarChat"><i class='bx bx-mail-send bx-tada'></i></button>
-    <button id="iniciarChat"><i class='bx bx-slider'></i></button>
-    <button id="iniciarChat" (click)="abrirCerrar()">
+    <button id="iniciarChat" (click)="abrirCerrar()" >
         <i class='bx bx-log-out'></i>
     </button>
 </div>
 }
-
