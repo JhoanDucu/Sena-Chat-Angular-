@@ -2,7 +2,7 @@
   height: 70px;
   margin: 0;
   padding: 0.5rem 15px;
-  border-bottom: 1px solid #000000;
+  border-bottom: 1px solid black;
 }
 
 #info-basica {
@@ -34,7 +34,7 @@
     width: 18%;
   }
   #info-boton:hover {
-    background: #d3d3d3;
+    background-color: #d3d3d3;
     border-radius: 10px;
   }
 }

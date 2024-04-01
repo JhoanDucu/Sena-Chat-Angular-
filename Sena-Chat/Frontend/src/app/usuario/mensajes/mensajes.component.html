@@ -1,4 +1,4 @@
-<div class="card-body" #componente>
+<div class="card-body" #componente (scroll)="onScroll($event)">
     @for ( m of mensajes; track m.id_mensaje) {
     <div [ngClass]="m.numerodoc == usuario ? 'Propio' : 'Ajeno'">
         <div [ngClass]="m.numerodoc == usuario ? 'mensajesPropios' : 'mensajesAjenos'">
@@ -17,5 +17,10 @@
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     </div>
+    }
+    @if (mostrarBotonScroll) {
+    <button (click)="hacerScroll(1)" class="boton-scroll" [ngClass]="{'mostrar': mostrarBotonScroll}">
+        <i class='bx bxs-chevron-down'></i>
+    </button>
     }
 </div>

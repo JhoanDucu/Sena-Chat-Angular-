@@ -18,11 +18,16 @@ button {
   justify-content: end;
   align-self: center;
   cursor: pointer;
-  border:none;
+  border: none;
   background-color: #dfdfdf;
   border-radius: 10px;
 }
 
 button:hover {
   background-color: #aeaeae;
+}
+
+.oculto {
+  border: none;
+  background: none;
 }

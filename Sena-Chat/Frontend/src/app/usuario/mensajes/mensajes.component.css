@@ -103,3 +103,22 @@ span {
     object-fit: cover;
   }
 }
+
+.boton-scroll {
+  position: absolute;
+  top: 66vh;
+  right: 4vh;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  z-index: 1000;
+  background: black;
+  color: white;
+  width: 9vh;
+  height: 9vh;
+  border-radius: 38%;
+  font-size: x-large;
+}
+
+.mostrar {
+  opacity: 1; /* establece la opacidad a 1 para mostrar el botón */
+}
