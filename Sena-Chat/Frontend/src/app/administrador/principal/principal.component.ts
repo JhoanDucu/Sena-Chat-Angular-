@@ -47,14 +47,19 @@ export class PrincipalComponent implements OnInit {
   constructor( private b: BootstrapService) { }
   opcion: string = 'grupos';
   id: any;
-  info: any;
+  info: any = {
+    grupos: undefined,
+    usuarios: undefined,
+    mensajes: undefined,
+    fichas: undefined
+  };
 
   ngOnInit() { this.b.iniciarInstanciasAdmin(); }
 
   seleccionarOpcion(opcion?: any, idBuscar?: any, objeto?: any) {
-    if (opcion) this.opcion = opcion;
+    if (opcion && this.opcion != opcion) this.opcion = opcion;
     if (idBuscar) this.id = idBuscar;
-    if (objeto) this.info = objeto;
+    if (objeto) this.info[opcion] = objeto;
   };
 
   mostrar() {

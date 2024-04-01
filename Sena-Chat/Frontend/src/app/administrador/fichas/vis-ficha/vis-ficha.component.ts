@@ -22,7 +22,7 @@ export class VisFichaComponent {
 
   abrirInfo = (ficha: Ficha) => {
     this.b.infoFichas();
-    this.mostrar.emit([,,ficha]);
+    this.mostrar.emit(['fichas', undefined, ficha]);
   };
 
 }

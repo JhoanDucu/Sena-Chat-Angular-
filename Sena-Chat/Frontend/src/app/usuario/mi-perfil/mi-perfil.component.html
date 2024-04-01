@@ -3,8 +3,7 @@
         <img [src]="url+perfil.foto" id="user">
         <div id="text">
             <span id="nombre-usuario">{{ perfil.nombre_usuario }}</span>
-            @if (rol()) { <p id="ficha">Instructor</p> }
-            @else { <p id="ficha">Aprendiz de la ficha {{perfil.id_fichas}} </p>}
+            <p id="ficha">{{ nombreRol() }} de la ficha {{ perfil.id_fichas }}</p>
             <p id="descripcion">{{ perfil.descripcion }}</p>
         </div>
     </div>

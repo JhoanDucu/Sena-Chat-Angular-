@@ -10,10 +10,10 @@ export class BootstrapService {
   private infoUsuariosOffCanvas: any;
   private infoMensajesOffcanvas: any;
   private infoFichasOffCanvas: any;
-  private infoAgregarOffCanvas: any;
-  private toastEl: any;
-  private toastPerfilEditar: any;
-  private infoDropdown: any;
+  private infoGruposDropdown: any;
+  // private infoAgregarOffCanvas: any;
+  // private toastEl: any;
+  // private toastPerfilEditar: any;
 
   constructor() { }
 
@@ -26,9 +26,9 @@ export class BootstrapService {
 
   iniciarInstanciasInfo() {
     this.gruposModal = new Modal(document.getElementById('staticBackdrop') as HTMLElement);
-    this.toastEl = new Toast(document.getElementById('liveToast') as HTMLElement);
-    this.toastPerfilEditar = new Toast(document.getElementById('actualizado') as HTMLElement);
-    this.infoAgregarOffCanvas = new Offcanvas(document.getElementById('offcanvasRight2') as HTMLElement);
+    // this.toastEl = new Toast(document.getElementById('liveToast') as HTMLElement);
+    // this.toastPerfilEditar = new Toast(document.getElementById('actualizado') as HTMLElement);
+    // this.infoAgregarOffCanvas = new Offcanvas(document.getElementById('offcanvasRight2') as HTMLElement);
   }
 
   modal = () => this.gruposModal.toggle();
@@ -43,14 +43,14 @@ export class BootstrapService {
 
   // infoCanvaCerrar = () => this.infoGruposOffCanvas.hide();
 
-  agregarCanva = () => this.infoAgregarOffCanvas.toggle();
+  // agregarCanva = () => this.infoAgregarOffCanvas.toggle();
 
-  toast = () => this.toastEl.show();
+  // toast = () => this.toastEl.show();
 
-  toastPerfil = () => this.toastPerfilEditar.show();
+  // toastPerfil = () => this.toastPerfilEditar.show();
 
-  drop = () => {
-    this.infoDropdown = new Dropdown(document.getElementById('dropdown') as HTMLElement);
-    this.infoDropdown.show();
+  drop = (id: string) => {
+    this.infoGruposDropdown = new Dropdown(document.getElementById(id) as HTMLElement);
+    this.infoGruposDropdown.show();
   }
 }

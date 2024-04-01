@@ -23,6 +23,6 @@ export class VisMensajeComponent {
 
   abrirInfo = (mensaje: any) => {
     this.b.infoMensajes();
-    this.mostrar.emit([,,mensaje]);
+    this.mostrar.emit(['mensajes', undefined, mensaje]);
   }
 }

@@ -70,11 +70,13 @@
             @if (opcion === 'editarUsuario') { <app-editar-usuario (volver)="mostrar()" [numerodoc]="id" /> }
             @if (opcion === 'editarMensaje') { <app-editar-mensaje (volver)="mostrar()" [id_mensaje]="id" /> }
             @if (opcion === 'editarFicha') { <app-editar-ficha (volver)="mostrar()" [id_ficha]="id" /> }
-            <app-info-grupos [grupo]="info"></app-info-grupos>
-            <app-info-usuarios [usuario]="info"></app-info-usuarios>
-            <app-info-mensajes [mensaje]="info" (mostrar)="seleccionarOpcion($event[0], $event[1])">
+
+            <app-info-grupos [grupo]="info.grupos"></app-info-grupos>
+            <app-info-usuarios [usuario]="info.usuarios"></app-info-usuarios>
+            <app-info-mensajes [mensaje]="info.mensajes"
+                (mostrar)="seleccionarOpcion($event[0], $event[1])">
             </app-info-mensajes>
-            <app-info-fichas [ficha]="info"></app-info-fichas>
+            <app-info-fichas [ficha]="info.fichas"></app-info-fichas>
         </div>
     </div>
 </div>

@@ -12,12 +12,12 @@
             {{usuario.primer_nom}} {{usuario.segundo_nom}} {{usuario.primer_apellido}} {{usuario.segundo_apellido}}
         </h2>
         <p>{{usuario.descripcion}}</p>
+        <p> <strong>Tipo de documento: </strong> {{ tipodoc.nombre(usuario.fk_id_tipodoc) }}</p>
+        <p> <strong>Numero de documento: </strong> {{ usuario.numerodoc }}</p>
         <p> <strong>Nombre de usuario: </strong><span>{{usuario.nombre_usuario}}</span></p>
         <p> <strong>Correo: </strong><span>{{usuario.correo}}</span></p>
-        <p><strong>Rol: </strong>
-            @if (usuario.fk_id_rol == '1') { Instructor de la ficha {{usuario.id_fichas}} }
-            @if (usuario.fk_id_rol == '2') { Aprendiz de la ficha {{usuario.id_fichas}} }
-            @if (usuario.fk_id_rol == '3') { Administrador } 
+        <p><strong>Rol: </strong> {{ rol.nombre(usuario.fk_id_rol) }}
+            @if (usuario.fk_id_rol != '3') { de la ficha {{usuario.id_fichas}} }
         </p>
         }
     </div>

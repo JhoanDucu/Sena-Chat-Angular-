@@ -10,18 +10,26 @@
         <p>{{grupo.descripcion_grupos}}</p>
         <p> <strong>Ficha: </strong><span>{{grupo.id_ficha}}</span></p>
         <p> <strong>Num. Miembros: </strong><span>{{grupo.num_usuarios}}</span></p>
-        <p><strong>Miembros:</strong></p>
+        <h4>Miembros: </h4>
 
         @for (m of miembros; track m.numerodoc) {
         <div class="miembro">
             <img [src]="url+m.foto" alt="Imagen del miembro" class="miembro-imagen">
             <div class="miembro-info">
-                <h5 class="miembro-nombre">
+                <p class="miembro-nombre">
                     {{m.primer_nom}} {{m.segundo_nom}} {{m.primer_apellido}} {{m.segundo_apellido}}
-                </h5>
-                <p class="miembro-detalle">Detalle del miembro</p>
+                </p>
+                <p class="miembro-detalle">Detalle del miembro {{rol.nombre(m.fk_id_rol)}} {{m.numerodoc}} </p>
             </div>
-            <button class="btn-eliminar-miembro">Eliminar</button>
+            <div class="btn-group dropup">
+                <button class="boton" type="button" [id]="m.numerodoc" data-bs-toggle="dropdown" aria-expanded="false"
+                    (click)="abrirDrop(m.numerodoc)">
+                    <i class='bx bx-dots-vertical-rounded'></i>
+                </button>
+                <ul class="dropdown-menu" [attr.aria-labelledby]="m.numerodoc">
+                    <li><button class="btn-eliminar">Eliminar</button></li>
+                </ul>
+            </div>
         </div>
         } @empty { {{aviso}} }
         }

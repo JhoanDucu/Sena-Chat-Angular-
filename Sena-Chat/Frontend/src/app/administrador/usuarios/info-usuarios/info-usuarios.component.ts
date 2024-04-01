@@ -2,6 +2,8 @@ import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { urlImagenes } from '../../../../servidor';
 import { Usuario } from '../../../Modelos/usuarios';
+import { Rol } from '../../../Modelos/roles';
+import { TipoDocumento } from '../../../Modelos/tipodoc';
 
 @Component({
   selector: 'app-info-usuarios',
@@ -13,4 +15,6 @@ import { Usuario } from '../../../Modelos/usuarios';
 export class InfoUsuariosComponent {
   @Input() usuario: Usuario = {};
   url = urlImagenes;
+  rol = new Rol();
+  tipodoc = new TipoDocumento();
 }

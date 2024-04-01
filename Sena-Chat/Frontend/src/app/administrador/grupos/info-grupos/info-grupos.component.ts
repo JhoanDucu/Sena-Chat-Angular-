@@ -4,6 +4,8 @@ import { urlImagenes } from '../../../../servidor';
 import { Grupo } from '../../../Modelos/grupos';
 import { GruposService } from '../../Servicios/grupos.service';
 import { Usuario } from '../../../Modelos/usuarios';
+import { BootstrapService } from '../../Servicios/bootstrap.service';
+import { Rol } from '../../../Modelos/roles';
 
 @Component({
   selector: 'app-info-grupos',
@@ -13,10 +15,11 @@ import { Usuario } from '../../../Modelos/usuarios';
   styleUrl: './info-grupos.component.css'
 })
 export class InfoGruposComponent {
-  constructor(private servicio: GruposService) { }
+  constructor(private servicio: GruposService, private b: BootstrapService) { }
   @Input() grupo: Grupo = {};
   url = urlImagenes;
   miembros: Usuario[] = [];
+  rol = new Rol();
   aviso: any;
 
   ngOnChanges(changes: SimpleChanges) {
@@ -28,5 +31,9 @@ export class InfoGruposComponent {
           this.miembros = [];
         }
       });
+  }
+
+  abrirDrop(id: any){
+    this.b.drop(id);
   }
 }

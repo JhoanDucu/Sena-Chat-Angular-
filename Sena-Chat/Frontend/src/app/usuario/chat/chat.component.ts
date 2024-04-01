@@ -115,7 +115,7 @@ export class ChatComponent {
     mensaje.primer_nom = primer_nom;
     mensaje.primer_apellido = primer_apellido;
     mensaje.fecha_hora = new Date();
-    
+
 
     if (!grupo) this.grupoElegido.mensajes.push(mensaje);
     else {

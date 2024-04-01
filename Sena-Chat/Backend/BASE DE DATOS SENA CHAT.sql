@@ -52,7 +52,7 @@ CREATE TABLE tipo_mensaje
 CREATE TABLE grupos
 (
 	id_grupos INT NOT NULL AUTO_INCREMENT,
-	nom_grupos VARCHAR(20) NOT NULL,
+	nom_grupos VARCHAR(20) NULL,
 	descripcion_grupos VARCHAR(110) NOT NULL,
 	id_ficha VARCHAR(10) NOT NULL,
 	foto_grupo VARCHAR(100) NULL DEFAULT 'Grupo.png',
@@ -247,19 +247,19 @@ INSERT INTO grupos VALUES
 ('5','Grupo de Wendy','Análisis de tendencias culturales en la industria del entretenimiento.','2558102', 'Grupo5.png', 2),
 ('6','Grupo de Javier','Exploración de la relación entre arte y tecnología en la era digital.','2558102', 'Grupo6.jpg', 2),
 ('7','Grupo de Alejandra','Gestión financiera en organizaciones sin fines de lucro.','2558103', 'Grupo7.jpg', 2),
-('8', 'nicolas_rincon', 'Privado', '2558101', NULL, 1),
-('9', 'carlosperez', 'Privado', '2558101', NULL, 1),
-('10', 'Isaura-Juan', 'Privado', '2558101', NULL, 1),
-('11', 'Isaura-Nicolas', 'Privado', '2558101', NULL, 1),
-('12', 'Sebastian', 'Privado', '2558102', NULL, 1),
-('13', 'Isabella', 'Privado', '2558102', NULL, 1),
-('14', 'Ethan', 'Privado', '2558102', NULL, 1),
-('15', 'Sophia', 'Privado', '2558102', NULL, 1),
-('16', 'Alexander', 'Privado', '2558102', NULL, 1),
-('17', 'Olivia', 'Privado', '2558102', NULL, 1),
-('18', 'Mia Parker', 'Privado', '2558102', NULL, 1),
-('19', 'Javier', 'Privado', '2558102', NULL, 1),
-('20', 'Wendy', 'Privado', '2558102', NULL, 1);
+('8', NULL, 'Privado', '2558101', NULL, 1),
+('9', NULL, 'Privado', '2558101', NULL, 1),
+('10', NULL, 'Privado', '2558101', NULL, 1),
+('11', NULL, 'Privado', '2558101', NULL, 1),
+('12', NULL, 'Privado', '2558102', NULL, 1),
+('13', NULL, 'Privado', '2558102', NULL, 1),
+('14', NULL, 'Privado', '2558102', NULL, 1),
+('15', NULL, 'Privado', '2558102', NULL, 1),
+('16', NULL, 'Privado', '2558102', NULL, 1),
+('17', NULL, 'Privado', '2558102', NULL, 1),
+('18', NULL, 'Privado', '2558102', NULL, 1),
+('19', NULL, 'Privado', '2558102', NULL, 1),
+('20', NULL, 'Privado', '2558102', NULL, 1);
 
 INSERT INTO usuarios_grupos VALUES
 ('1', '1', '12345678019', NULL),	 	# Heiver - Grupo 1

@@ -64,7 +64,7 @@
                         @if (m.numerodoc == Sesion.get('documento')) { (tu) }
                     </h5>
                     <p class="descUsuario">{{ m.descripcion }}</p>
-                    <small class="">{{m.fk_id_rol == '2' ? 'Aprendiz' : 'Instructor'}}</small>
+                    <small class="">{{ rol.nombre(m.fk_id_rol) }}</small>
                 </span>
                 @if (mostrarDropdown == m.numerodoc) {
                 <small class="position-absolute top-50 end-0 translate-middle-y">

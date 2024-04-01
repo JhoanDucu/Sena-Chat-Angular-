@@ -23,7 +23,7 @@ export class VisUsuarioComponent {
 
   abrirInfo = (usuario: any) => {
     this.b.infoUsuarios();
-    this.mostrar.emit([,,usuario]);
+    this.mostrar.emit(['usuarios', undefined, usuario]);
   }
 
 }

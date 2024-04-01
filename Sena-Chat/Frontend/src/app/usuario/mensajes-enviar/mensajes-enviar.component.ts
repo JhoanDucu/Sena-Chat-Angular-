@@ -33,7 +33,7 @@ export class MensajesEnviarComponent {
 
   longitud() {
     this.form.get('contenido_mensaje')?.value?.trim().length ?
-    this.noEnviar = false : this.noEnviar = true;
+      this.noEnviar = false : this.noEnviar = true;
   }
 
   emitirEnvio(formValue: any) {
@@ -46,7 +46,7 @@ export class MensajesEnviarComponent {
         this.Chat.subirImagen(formData).subscribe((data) => {
           formValue.id_tipo = 2;
           formValue.contenido_mensaje = data;
-          this.emitir.emit(formValue);
+          this.emitir.emit({ ...formValue });
         });
       });
     } else {
@@ -75,6 +75,7 @@ export class MensajesEnviarComponent {
   });
 
   cerrar() {
+    this.imagenes = [];
     this.archivos = [];
     this.form.reset();
   }
