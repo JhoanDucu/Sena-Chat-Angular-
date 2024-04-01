@@ -4,7 +4,7 @@ const md5 = require("md5");
 exports.obtenerGrupos = (req, res) => {
   const query = `SELECT g.*, COUNT(ug.numerodoc) AS num_usuarios FROM grupos g
   LEFT JOIN usuarios_grupos ug ON g.id_grupos = ug.id_grupos 
-  WHERE g.fk_tipo_grupo = 2 GROUP BY g.id_grupos;`;
+  WHERE g.fk_tipo_grupo = 2 AND ug.activo = TRUE GROUP BY g.id_grupos;`;
 
   conexion.query(query, (error, resultado) => {
     if (error) console.error(error.message);
@@ -270,5 +270,16 @@ exports.obtenerDatosMensaje = (req, res) => {
         );
       } else res.json(resultado[0]);
     } else res.json("El mensaje proporcionado NO existe");
+  });
+};
+
+exports.eliminarMiembro = (req, res) => {
+  const datos = req.body;
+  const { id_ug } = req.params;
+  const query = "UPDATE usuarios_grupos SET ? WHERE id_usuarios_grupos = ?;";
+  conexion.query(query, [datos, id_ug], (error, resultado) => {
+    if (error) return console.error(error.message);
+    if (resultado.affectedRows) res.json('Se elimino correctamente');
+    else res.json("La relacion de usuario y grupo no se afecto");
   });
 };

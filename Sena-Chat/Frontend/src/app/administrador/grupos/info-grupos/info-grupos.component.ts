@@ -35,7 +35,7 @@ export class InfoGruposComponent {
       });
   }
 
-  abrirDrop(id: any){
+  abrirDrop(id: any) {
     this.b.drop(id);
   }
 
@@ -43,7 +43,9 @@ export class InfoGruposComponent {
 
   abrirDetalles = (numdoc: any) => this.detalles = this.detalles !== numdoc ? numdoc : undefined;
 
-  eliminar(id: any){
-    this.servicio
+  eliminar(id: any) {
+    this.servicio.eliminarMiembro({ activo: false, fecha_union: Fecha.fechaActual() }, id).subscribe((data) => {
+      // console.log(data)
+    });
   }
 }

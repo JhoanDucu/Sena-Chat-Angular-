@@ -24,7 +24,7 @@ exports.obtenerGrupos = (req, res) => {
   const query = `SELECT ${selectGrupos} g.nom_grupos, g.foto_grupo FROM grupos g
                   LEFT JOIN ${subconsultaGrupos} subquery ON g.id_grupos = subquery.id_grupos
                   LEFT JOIN usuarios_grupos ug ON g.id_grupos = ug.id_grupos
-                  WHERE numerodoc = ? AND fk_tipo_grupo <> 1
+                  WHERE numerodoc = ? AND fk_tipo_grupo <> 1 AND ug.activo = TRUE
                   ORDER BY fecha_reciente DESC`;
 
   conexion.query(query, [numerodoc], (error, result) => {

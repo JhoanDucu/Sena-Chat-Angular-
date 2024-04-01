@@ -7,22 +7,28 @@ import { url } from '../../../servidor';
 })
 export class GruposService {
   constructor(private http: HttpClient) { }
-  traerGrupos(){
+  traerGrupos() {
     return this.http.get(`${url}/admin/grupos`);
   }
-  traerIdFichas(){
+  traerIdFichas() {
     return this.http.get(`${url}/admin/num-fichas`);
   }
-  agregarGrupo(datos: any){
+  agregarGrupo(datos: any) {
     return this.http.post(`${url}/admin/agregar-grupo`, datos);
   }
-  traerGrupoPorId(id: any){
+  traerGrupoPorId(id: any) {
     return this.http.get(`${url}/admin/grupo/${id}`);
   }
-  editarGrupo(datos: any, id: any){
+  editarGrupo(datos: any, id: any) {
     return this.http.put(`${url}/admin/editar-grupo/${id}`, datos);
   }
   traerMiembros(id: any) {
     return this.http.get(`${url}/admin/miembros/${id}`);
+  }
+  agregarMiembro(datos: any, id: any) {
+    return this.http.post(`${url}/admin/agregar-miembro/${id}`, datos);
+  }
+  eliminarMiembro(datos: any, id: any) {
+    return this.http.put(`${url}/admin/eliminar-miembro/${id}`, datos);
   }
 }
