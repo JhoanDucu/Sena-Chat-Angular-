@@ -19,7 +19,12 @@
                 <p class="miembro-nombre">
                     {{m.primer_nom}} {{m.segundo_nom}} {{m.primer_apellido}} {{m.segundo_apellido}}
                 </p>
-                <p class="miembro-detalle">Detalle del miembro {{rol.nombre(m.fk_id_rol)}} {{m.numerodoc}} </p>
+                <p class="miembro-detalle"> {{rol.nombre(m.fk_id_rol)}} </p>
+                @if (detalles === m.numerodoc) {
+                <p class="miembro-detalle"> <strong>Documento: </strong> {{m.numerodoc}} </p>
+                <p class="miembro-detalle"> <strong>En el grupo desde: </strong> {{ conversion(m.fecha_union) }} </p>
+                <p class="miembro-detalle"> <strong>Mensajes enviados: </strong> {{ m.num_mensajes }} </p>
+                }
             </div>
             <div class="btn-group dropup">
                 <button class="boton" type="button" [id]="m.numerodoc" data-bs-toggle="dropdown" aria-expanded="false"
@@ -27,7 +32,14 @@
                     <i class='bx bx-dots-vertical-rounded'></i>
                 </button>
                 <ul class="dropdown-menu" [attr.aria-labelledby]="m.numerodoc">
-                    <li><button class="btn-eliminar">Eliminar</button></li>
+                    <li class="detalles">
+                        <button class="btn-detalles" (click)="abrirDetalles(m.numerodoc)">
+                            @if (detalles === m.numerodoc) { Ocultar detalles } @else { Detalles }
+                        </button>
+                    </li>
+                    <li class="eliminar">
+                        <button class="btn-eliminar" (click)="eliminar(m.id_usuarios_grupos)">Eliminar</button>
+                    </li>
                 </ul>
             </div>
         </div>

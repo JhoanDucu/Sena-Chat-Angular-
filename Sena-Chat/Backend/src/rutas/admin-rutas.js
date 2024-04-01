@@ -23,5 +23,9 @@ router.put("/editar-ficha/:id_ficha", adminController.actualizarFicha);
 router.put("/editar-grupo/:id_grupo", adminController.actualizarGrupo);
 router.put("/editar-mensaje/:id_mensaje", adminController.actualizarMensaje);
 router.put("/editar-usuario/:numerodoc", adminController.actualizarUsuario);
+router.put("/eliminar-ficha/:id_ficha", adminController.actualizarFicha);
+router.put("/eliminar-grupo/:id_grupo", adminController.actualizarGrupo);
+router.put("/eliminar-mensaje/:id_mensaje", adminController.actualizarMensaje);
+router.put("/eliminar-usuario/:numerodoc", adminController.actualizarUsuario);
 
 module.exports = router;

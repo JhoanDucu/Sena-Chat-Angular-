@@ -6,6 +6,7 @@ import { GruposService } from '../../Servicios/grupos.service';
 import { Usuario } from '../../../Modelos/usuarios';
 import { BootstrapService } from '../../Servicios/bootstrap.service';
 import { Rol } from '../../../Modelos/roles';
+import { Fecha } from '../../../Modelos/fechas';
 
 @Component({
   selector: 'app-info-grupos',
@@ -18,9 +19,10 @@ export class InfoGruposComponent {
   constructor(private servicio: GruposService, private b: BootstrapService) { }
   @Input() grupo: Grupo = {};
   url = urlImagenes;
-  miembros: Usuario[] = [];
+  miembros: Usuario[] | any = [];
   rol = new Rol();
   aviso: any;
+  detalles = false;
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['grupo'] && !changes['grupo'].firstChange)
@@ -35,5 +37,13 @@ export class InfoGruposComponent {
 
   abrirDrop(id: any){
     this.b.drop(id);
+  }
+
+  conversion = (date: any) => Fecha.fechaAdmin(new Date(date));
+
+  abrirDetalles = (numdoc: any) => this.detalles = this.detalles !== numdoc ? numdoc : undefined;
+
+  eliminar(id: any){
+    this.servicio
   }
 }

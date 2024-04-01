@@ -42,7 +42,7 @@ exports.obtenerMiembros = (req, res) => {
   const grupo = req.params.grupo;
   const query = `SELECT primer_nom, segundo_nom, primer_apellido, segundo_apellido, ug.numerodoc, 
           u.fk_id_rol, foto, descripcion FROM usuarios_grupos ug INNER JOIN usuarios u 
-          ON u.numerodoc = ug.numerodoc WHERE ug.id_grupos = ? ORDER BY u.fk_id_rol`;
+          ON u.numerodoc = ug.numerodoc WHERE ug.id_grupos = ? AND ug.activo = TRUE ORDER BY u.fk_id_rol`;
 
   conexion.query(query, grupo, (error, result) => {
     if (error) console.error(error.message);

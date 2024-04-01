@@ -42,13 +42,20 @@
 .miembro-detalle {
   font-size: 0.9em;
   color: #666;
-  margin-bottom: 0.5rem;
+  margin: 0;
 }
 
 .boton {
   border: none;
   background: none;
   font-size: x-large;
+}
+
+.eliminar:hover {
+  background-color: #f77c6c;
+  .btn-eliminar {
+  color: white;
+  }
 }
 
 .btn-eliminar {
@@ -58,3 +65,16 @@
   border: none;
 }
 
+.detalles:hover {
+  background-color: #debd63;
+  .btn-detalles {
+    color: white;
+  }
+}
+
+.btn-detalles {
+  width: 100%;
+  background: transparent;
+  color: #c9b47b;
+  border: none;
+}

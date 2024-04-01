@@ -11,7 +11,8 @@ interface DatosGrupo {
    mensajes: Array<MensajeMostrar>,
    sin_leer: number,
    doc?: string,
-   num_usuarios?: number
+   num_usuarios?: number,
+   fecha_union: string
 }
 
 export type Grupo = Partial<DatosGrupo>;

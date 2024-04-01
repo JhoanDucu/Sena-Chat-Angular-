@@ -216,8 +216,10 @@ exports.actualizarUsuario = (req, res) => {
 exports.obtenerMiembros = (req, res) => {
   const { id_grupo } = req.params;
   const query = `SELECT primer_nom, segundo_nom, primer_apellido, segundo_apellido, u.fk_id_rol,
-          ug.numerodoc, foto, descripcion FROM usuarios_grupos ug INNER JOIN usuarios u 
-          ON u.numerodoc = ug.numerodoc WHERE ug.id_grupos = ? ORDER BY u.fk_id_rol`;
+          ug.numerodoc, foto, descripcion, ug.fecha_union, (SELECT COUNT(*) FROM mensaje m 
+          WHERE m.fk_destino = ug.id_usuarios_grupos) AS num_mensajes, ug.id_usuarios_grupos
+          FROM usuarios_grupos ug INNER JOIN usuarios u ON u.numerodoc = ug.numerodoc 
+          WHERE ug.id_grupos = ? AND ug.activo = TRUE ORDER BY u.fk_id_rol`;
 
   conexion.query(query, id_grupo, (error, result) => {
     if (error) console.error(error.message);
