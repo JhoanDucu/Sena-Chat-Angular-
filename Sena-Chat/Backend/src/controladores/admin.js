@@ -1,100 +1,157 @@
 const conexion = require("./conexion");
 const md5 = require("md5");
 
-exports.obtenerGrupos = (req, res) => {
-  const query = `SELECT g.*, COUNT(ug.numerodoc) AS num_usuarios FROM grupos g
-  LEFT JOIN usuarios_grupos ug ON g.id_grupos = ug.id_grupos 
-  WHERE g.fk_tipo_grupo = 2 AND ug.activo = TRUE GROUP BY g.id_grupos;`;
+exports.obtenerGrupos = async (req, res) => {
+  try {
+    const query = `SELECT g.*, COUNT(ug.numerodoc) AS num_usuarios FROM grupos g
+      LEFT JOIN usuarios_grupos ug ON g.id_grupos = ug.id_grupos 
+      WHERE g.fk_tipo_grupo = 2 AND ug.activo = TRUE GROUP BY g.id_grupos;`;
 
-  conexion.query(query, (error, resultado) => {
-    if (error) console.error(error.message);
-    if (resultado.length > 0) res.json(resultado);
-    else res.json("No hay grupos aun");
-  });
+    const [rows] = await conexion.execute(query);
+
+    if (rows.length > 0) res.json(rows);
+    else {
+      res.json("No hay grupos aun");
+    }
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).json({ error: "Error al obtener grupos" });
+  }
 };
 
-exports.obtenerUsuarios = (req, res) => {
-  const query = `SELECT correo, primer_nom, segundo_nom, primer_apellido, segundo_apellido, u.numerodoc, 
-  nombre_usuario, fk_id_tipodoc, id_fichas, foto, fk_id_rol, descripcion FROM usuarios u
-  INNER JOIN usuarios_fichas uf ON u.numerodoc = uf.numerodoc WHERE uf.principal = 1;`;
+exports.obtenerUsuarios = async (req, res) => {
+  try {
+    const query = `SELECT correo, primer_nom, segundo_nom, primer_apellido, segundo_apellido, u.numerodoc, 
+      nombre_usuario, fk_id_tipodoc, id_fichas, foto, fk_id_rol, descripcion FROM usuarios u
+      INNER JOIN usuarios_fichas uf ON u.numerodoc = uf.numerodoc WHERE uf.principal = 1;`;
 
-  conexion.query(query, (error, resultado) => {
-    if (error) console.error(error.message);
-    if (resultado.length > 0) res.json(resultado);
-    else res.json("No hay usuarios aun");
-  });
+    const [rows] = await conexion.execute(query);
+
+    if (rows.length > 0) res.json(rows);
+    else {
+      res.json("No hay usuarios aun");
+    }
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).json({ error: "Error al obtener usuarios" });
+  }
 };
 
-exports.obtenerMensajes = (req, res) => {
-  const query = `SELECT m.*, ug.id_grupos AS destino, tm.Nom_tipo AS tipo_mensaje 
-  FROM mensaje m INNER JOIN tipo_mensaje tm ON m.id_tipo = tm.id_tipo
-  LEFT JOIN usuarios_grupos ug ON m.fk_destino = ug.id_usuarios_grupos LEFT JOIN usuarios u 
-  ON m.fk_destino = u.numerodoc OR ug.id_usuarios_grupos IS NULL ORDER BY m.id_mensaje DESC;`;
+exports.obtenerMensajes = async (req, res) => {
+  try {
+    const query = `SELECT m.*, ug.id_grupos AS destino, tm.Nom_tipo AS tipo_mensaje 
+      FROM mensaje m INNER JOIN tipo_mensaje tm ON m.id_tipo = tm.id_tipo
+      LEFT JOIN usuarios_grupos ug ON m.fk_destino = ug.id_usuarios_grupos LEFT JOIN usuarios u 
+      ON m.fk_destino = u.numerodoc OR ug.id_usuarios_grupos IS NULL ORDER BY m.id_mensaje DESC;`;
 
-  conexion.query(query, (error, resultado) => {
-    if (error) console.error(error.message);
-    if (resultado.length > 0) res.json(resultado);
-    else res.json("No hay mensajes aun");
-  });
+    const [rows] = await conexion.execute(query);
+
+    if (rows.length > 0) res.json(rows);
+    else {
+      res.json("No hay mensajes aun");
+    }
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).json({ error: "Error al obtener mensajes" });
+  }
 };
 
-exports.obtenerFichas = (req, res) => {
-  const query = `SELECT f.*, COUNT(DISTINCT g.id_grupos) AS cantidad_grupos, p.nombre_programa FROM ficha f 
-  LEFT JOIN grupos g ON f.id_ficha = g.id_ficha AND g.fk_tipo_grupo = 2 INNER JOIN programa_formacion p 
-  ON f.fk_programa = p.id_programa WHERE f.id_ficha <> '0000000' GROUP BY f.id_ficha;`;
+exports.obtenerFichas = async (req, res) => {
+  try {
+    const query = `SELECT f.*, COUNT(DISTINCT g.id_grupos) AS cantidad_grupos, p.nombre_programa FROM ficha f 
+      LEFT JOIN grupos g ON f.id_ficha = g.id_ficha AND g.fk_tipo_grupo = 2 INNER JOIN programa_formacion p 
+      ON f.fk_programa = p.id_programa WHERE f.id_ficha <> '0000000' GROUP BY f.id_ficha;`;
 
-  conexion.query(query, (error, resultado) => {
-    if (error) console.error(error.message);
-    if (resultado.length > 0) res.json(resultado);
-    else res.json("No hay fichas aun");
-  });
+    const [rows] = await conexion.execute(query);
+
+    if (rows.length > 0) res.json(rows);
+    else {
+      res.json("No hay fichas aun");
+    }
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).json({ error: "Error al obtener fichas" });
+  }
 };
 
-exports.obtenerProgramas = (req, res) => {
-  const query = ` SELECT * FROM programa_formacion; `;
+exports.obtenerProgramas = async (req, res) => {
+  try {
+    const query = ` SELECT * FROM programa_formacion; `;
 
-  conexion.query(query, (error, resultado) => {
-    if (error) console.error(error.message);
-    if (resultado.length > 0) res.json(resultado);
-    else res.json("No hay programas aun");
-  });
+    const [rows] = await conexion.execute(query);
+
+    if (rows.length > 0) res.json(rows);
+    else {
+      res.json("No hay programas aun");
+    }
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).json({ error: "Error al obtener programas" });
+  }
 };
 
-exports.obtenerFichasId = (req, res) => {
-  const query = ` select id_ficha FROM ficha WHERE id_ficha <> '0000000'; `;
+exports.obtenerFichasId = async (req, res) => {
+  try {
+    const query = ` SELECT id_ficha FROM ficha WHERE id_ficha <> '0000000';`;
 
-  conexion.query(query, (error, resultado) => {
-    if (error) console.error(error.message);
-    if (resultado.length > 0) res.json(resultado);
-    else res.json("No hay fichas aun");
-  });
+    const [rows] = await conexion.execute(query);
+
+    if (rows.length > 0) res.json(rows);
+    else {
+      res.json("No hay fichas aun");
+    }
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).json({ error: "Error al obtener fichas" });
+  }
 };
 
-exports.insertarFicha = (req, res) => {
-  const ficha = req.body;
-  const query = "INSERT INTO ficha SET ?;";
-  conexion.query(query, ficha, (error, resultado) => {
-    if (error) return console.error(error.message);
+exports.insertarFicha = async (req, res) => {
+  try {
+    const ficha = req.body;
+    const query = `INSERT INTO ficha SET ?`;
+    const [resultado] = await conexion.execute(query, ficha);
+
     if (resultado.affectedRows) res.json(ficha.id_ficha);
-  });
+    else {
+      res.status(500).json({ error: "Error al insertar la ficha" });
+    }
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).json({ error: "Error al insertar la ficha" });
+  }
 };
 
-exports.insertarGrupo = (req, res) => {
-  const grupo = req.body;
-  const query = "INSERT INTO grupos SET ?";
-  conexion.query(query, grupo, (error, resultado) => {
-    if (error) return console.error(error.message);
-    res.json(resultado.insertId);
-  });
+exports.insertarGrupo = async (req, res) => {
+  try {
+    const grupo = req.body;
+    const query = `INSERT INTO grupos SET ?`;
+    const resultado = await conexion.execute(query, grupo);
+
+    if (resultado[0] && resultado[0].affectedRows) res.json(resultado[0].insertId);
+    else {
+      res.status(500).json({ error: "Error al insertar el grupo" });
+    }
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).json({ error: "Error al insertar el grupo" });
+  }
 };
 
-exports.insertarMensaje = (req, res) => {
-  const mensaje = req.body;
-  const query = "INSERT INTO mensaje SET ?";
-  conexion.query(query, mensaje, (error, resultado) => {
-    if (error) return console.error(error.message);
-    res.json(resultado.insertId);
-  });
+exports.insertarMensaje = async (req, res) => {
+  try {
+    const mensaje = req.body;
+    const query = "INSERT INTO mensaje SET ?";
+    const resultado = await conexion.execute(query, mensaje);
+
+    if (resultado[0] && resultado[0].affectedRows) res.json(resultado[0].insertId);
+    else {
+      res.status(500).json({ error: "Error al insertar el mensaje" });
+    }
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).json({ error: "Error al insertar el mensaje" });
+  }
 };
 
 exports.insertarUsuario = (req, res) => {
@@ -262,8 +319,12 @@ exports.obtenerDatosMensaje = (req, res) => {
             if (error) console.error(error.message);
             if (resultado.length > 0) {
               mensaje.foto_grupo = resultado[0].foto;
-              mensaje.nom_grupos = `${resultado[0].primer_nom} ${resultado[0].segundo_nom ?? ''} 
-              ${resultado[0].primer_apellido} ${resultado[0].segundo_apellido ?? ''}`;
+              mensaje.nom_grupos = `${resultado[0].primer_nom} ${
+                resultado[0].segundo_nom ?? ""
+              } 
+              ${resultado[0].primer_apellido} ${
+                resultado[0].segundo_apellido ?? ""
+              }`;
             }
             res.json(mensaje);
           }
@@ -279,7 +340,7 @@ exports.eliminarMiembro = (req, res) => {
   const query = "UPDATE usuarios_grupos SET ? WHERE id_usuarios_grupos = ?;";
   conexion.query(query, [datos, id_ug], (error, resultado) => {
     if (error) return console.error(error.message);
-    if (resultado.affectedRows) res.json('Se elimino correctamente');
+    if (resultado.affectedRows) res.json("Se elimino correctamente");
     else res.json("La relacion de usuario y grupo no se afecto");
   });
 };
