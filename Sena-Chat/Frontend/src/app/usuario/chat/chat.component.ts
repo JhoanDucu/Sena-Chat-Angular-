@@ -62,7 +62,7 @@ export class ChatComponent {
       this.Chat.traerUsuario(this.usuario).subscribe((usuario: any) => this.datos.datosUsuario = usuario);
       this.Chat.traerGrupos(this.fichaSeleccionada, this.usuario).subscribe((grupos: any) => grupos != 'No hay grupos aun' ? this.extraerMensajes(grupos, 'grupos') : undefined);
       this.Chat.traerPrivados(this.fichaSeleccionada, this.usuario).subscribe((privados: any) => {
-        if (privados != 'No hay grupos aun') this.extraerMensajes(privados, 'privados');
+        if (privados != 'No hay privados aun') this.extraerMensajes(privados, 'privados');
         this.finalizarCarga();
       });
     }

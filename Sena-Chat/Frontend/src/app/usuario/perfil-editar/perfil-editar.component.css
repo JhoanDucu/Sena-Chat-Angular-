@@ -127,4 +127,6 @@
 
 #toastImg {
   height: 20px;
+  width: 20px;
+  object-fit: cover;
 }

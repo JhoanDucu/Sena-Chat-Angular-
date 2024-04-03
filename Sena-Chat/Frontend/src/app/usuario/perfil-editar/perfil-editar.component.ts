@@ -88,18 +88,28 @@ export class PerfilEditarComponent {
   }
 
   editar(datos: any, numdoc: any) {
-    const formData = new FormData();
-    formData.append('file', this.fotoSeleccionada);
-    this.Configurar.subirImagen(formData).subscribe((data) => {
-      if (data !== 'No hay archivos')
-        datos.foto = data;
-      this.Configurar.actualizarUsuario(datos, numdoc).subscribe((data: any) => {
-        if (data == 'Actualizado') {
-          this.b.toastPerfil();
-          this.actualizar.emit(this.formEditar.value);
-        } else alert('No actualizado');
-        this.cambios = false;
+    if (this.fotoSeleccionada) {
+      const formData = new FormData();
+      formData.append('file', this.fotoSeleccionada);
+      this.Configurar.subirImagen(formData).subscribe((data) => {
+        if (data !== 'No hay archivos') datos.foto = data;
+        else datos.foto = this.usuario.foto;
+        this.actualizarUsuario(datos, numdoc);
       });
+    } else {
+      datos.foto = this.usuario.foto;
+      this.actualizarUsuario(datos, numdoc);
+    }
+    this.fotoSeleccionada = undefined;
+  }
+
+  actualizarUsuario(datos: any, numdoc: any) {
+    this.Configurar.actualizarUsuario(datos, numdoc).subscribe((data: any) => {
+      if (data == 'Actualizado') {
+        this.b.toastPerfil();
+        this.actualizar.emit(datos);
+      } else alert('No actualizado');
+      this.cambios = false;
     });
   }
 
@@ -131,7 +141,6 @@ export class PerfilEditarComponent {
       numerodoc: this.usuario.numerodoc,
       fk_id_tipodoc: this.usuario.fk_id_tipodoc as string,
       id_fichas: this.usuario.id_fichas,
-      foto: '',
       fk_id_rol: this.usuario.fk_id_rol,
     });
     this.fotoPerfil = `url('${this.url}${this.usuario.foto}')`;

@@ -88,9 +88,7 @@ export class RegistroComponent {
         this.Sesion.set('documento', respuesta[1]);
         this.Sesion.set('ficha', '0000000');
         this.router.navigate(['chat']);
-      } else {
-        alert('No se agrego el usuario');
-      }
+      } else alert(respuesta);
     }) : alert('Las contraseñas no son iguales');
   }
 }
