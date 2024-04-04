@@ -16,11 +16,19 @@ import { ImagenDirective } from '../../Directivas/imagen.directive';
 export class InfoMensajesComponent {
   constructor(private servicio: MensajesService, private b: BootstrapService) { }
   @Input() mensaje: any;
+  @Input() confirmar: any;
   @Output() mostrar = new EventEmitter();
   url = urlImagenes;
+  idBorrar: any;
+  index: any;
 
   ngOnChanges(changes: SimpleChanges) {
-    if (!changes['mensaje'].firstChange) this.servicio.datosMensaje(this.mensaje.id_mensaje).subscribe((data) => Object.assign(this.mensaje, data));
+    if (changes['mensaje'] && !changes['mensaje'].firstChange) 
+    this.servicio.datosMensaje(this.mensaje.id_mensaje).subscribe((data) => Object.assign(this.mensaje, data));
+    if (changes['confirmar'] && !changes['confirmar'].isFirstChange()) 
+    this.servicio.eliminarMensaje(this.idBorrar).subscribe((data) => {
+      if (data === 'Mensaje eliminado correctamente') this.b.modal();
+    });
   }
 
   conversion = (date: Date) => Fecha.fechaAdmin(new Date(date));
@@ -28,5 +36,11 @@ export class InfoMensajesComponent {
   editarMensaje() {
     this.mostrar.emit(['editarMensaje', this.mensaje.id_mensaje]);
     this.b.infoMensajes();
+  }
+
+  abrirModal(id?: any) {
+    this.idBorrar = id ? id : undefined;
+    this.b.infoMensajes();
+    this.b.modal();
   }
 }

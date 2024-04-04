@@ -12,7 +12,7 @@
         </div>
         <button class="boton info" type="button" (click)="abrirInfo(g)">Más Información</button>
         <button class="boton editar" (click)="mostrar.emit(['editarGrupo', g.id_grupos])">Editar</button>
-        <button class="boton eliminar">Eliminar</button>
+        <button class="boton eliminar" (click)="abrirModal(g.id_grupos, $index)">Eliminar</button>
     </div>
     }
 </div>

@@ -25,4 +25,7 @@ export class FichasService {
   traerGrupos(id: any) {
     return this.http.get(`${url}/admin/grupos/${id}`);
   }
+  eliminarFicha(id: any) {
+    return this.http.delete(`${url}/admin/eliminar-ficha/${id}`);
+  }
 }

@@ -22,4 +22,7 @@ export class MensajesService {
   datosMensaje(id: any){
     return this.http.get(`${url}/admin/ubicacion-mensaje/${id}`);
   }
+  eliminarMensaje(id: any) {
+    return this.http.delete(`${url}/admin/eliminar-mensaje/${id}`);
+  }
 }

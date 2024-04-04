@@ -28,13 +28,12 @@ export class InfoGruposComponent {
   ngOnChanges(changes: SimpleChanges) {
     if (changes['grupo'] && !changes['grupo'].firstChange)
       this.servicio.traerMiembros(this.grupo.id_grupos).subscribe((data: any) => {
-        if (data !== 'No hay miembros aun') {
-          this.miembros = data;
-          this.faltantes = undefined;
-        } else {
+        if (data !== 'No hay miembros aun') this.miembros = data;
+        else {
           this.aviso = data;
           this.miembros = [];
         }
+        this.faltantes = undefined;
       });
   }
 
@@ -46,9 +45,10 @@ export class InfoGruposComponent {
 
   abrirDetalles = (numdoc: any) => this.detalles = this.detalles !== numdoc ? numdoc : undefined;
 
-  eliminar(id: any) {
+  eliminar(id: any, index: any) {
     this.servicio.eliminarMiembro({ activo: false, fecha_union: Fecha.fechaActual() }, id).subscribe((data) => {
-      // console.log(data)
+      if (data === "Se eliminó correctamente") this.miembros!.splice(index, 1);
+      if (this.grupo.num_usuarios) this.grupo.num_usuarios--;
     });
   }
 
@@ -64,20 +64,36 @@ export class InfoGruposComponent {
     });
   }
 
-  agregar(numdoc: any) {
-    this.servicio.comprobarMiembro(numdoc, this.grupo.id_grupos).subscribe((data) => {
+  agregar(numdoc: any, index: any) {
+    this.servicio.comprobarMiembro(numdoc, this.grupo.id_grupos).subscribe((data: any) => {
       const datos = {
         sin_leer: null,
         activo: true,
         fecha_union: Fecha.fechaActual()
       };
       if (data) {
-        this.servicio.actualizarMiembro(datos, data).subscribe((data) => console.log(data));
+        const { id_usuarios_grupos } = data;
+        this.servicio.actualizarMiembro(datos, id_usuarios_grupos).subscribe((data) => {
+          if (data === 'Actualizado') this.añadirMiembros(index, id_usuarios_grupos, datos.fecha_union);
+        });
       } else {
         this.servicio.agregarMiembro(
           Object.assign(datos, { id_grupos: this.grupo.id_grupos, numerodoc: numdoc })
-        ).subscribe((data) => console.log(data));
+        ).subscribe((data) => {
+          if (data) this.añadirMiembros(index, data, datos.fecha_union);
+        });
       }
+      if (this.grupo.num_usuarios) this.grupo.num_usuarios++;
+    });
+  }
+
+  añadirMiembros(...values: any) {
+    const [i, id_ug, f] = values;
+    this.miembros.push({
+      ...this.faltantes!.splice(i, 1)[0],
+      id_usuarios_grupos: id_ug,
+      num_mensajes: 0,
+      fecha_union: f
     });
   }
 }

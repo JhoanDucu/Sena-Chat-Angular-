@@ -61,6 +61,13 @@ export class PrincipalComponent implements OnInit {
     fichas: undefined
   };
 
+  eliminar: any = {
+    grupos: false,
+    usuarios: false,
+    mensajes: false,
+    fichas: false
+  };
+
   ngOnInit() {
     this.b.iniciarInstanciasAdmin();
     if (this.usuario == undefined) {
@@ -69,7 +76,7 @@ export class PrincipalComponent implements OnInit {
     }
   }
 
-  seleccionarOpcion(opcion?: any, idBuscar?: any, objeto?: any) {
+  seleccionarOpcion(opcion?: any, idBuscar?: any, objeto?: any, idBorrar?: any) {
     if (opcion && this.opcion != opcion) this.opcion = opcion;
     if (idBuscar) this.id = idBuscar;
     if (objeto) this.info[opcion] = objeto;
@@ -86,4 +93,13 @@ export class PrincipalComponent implements OnInit {
     else if (this.opcion == 'crearFicha' || this.opcion == 'editarFicha') this.opcion = 'fichas';
   };
 
+  cerrar = () => this.b.modal();
+
+  aceptar = () => this.eliminar[this.opcion] = !this.eliminar[this.opcion];
+
+  cerrarSesion(){
+    this.Sesion.clear();
+    this.router.navigate(['login']);
+  }
+  
 }

@@ -33,6 +33,11 @@
                         <i class='bx bx-folder'></i> Fichas
                     </button>
                 </div>
+                <div>
+                    <button class="accordion-button collapsed" type="button" (click)="cerrarSesion()">
+                        <i class='bx bx-log-out'></i> Cerrar Sesión
+                    </button>
+                </div>
             </div>
         </div>
 
@@ -51,16 +56,19 @@
                 }
             </div>
             @if (opcion === 'grupos') {
-            <app-vis-grupos (mostrar)="seleccionarOpcion($event[0], $event[1], $event[2])" />
+            <app-vis-grupos (mostrar)="seleccionarOpcion($event[0], $event[1], $event[2])"
+                [confirmar]="eliminar.grupos" />
             }
             @if (opcion === 'usuarios') {
-            <app-vis-usuario (mostrar)="seleccionarOpcion($event[0], $event[1], $event[2])" />
+            <app-vis-usuario (mostrar)="seleccionarOpcion($event[0], $event[1], $event[2])"
+                [confirmar]="eliminar.usuarios" />
             }
             @if (opcion === 'mensajes') {
             <app-vis-mensaje (mostrar)="seleccionarOpcion($event[0], $event[1], $event[2])" />
             }
             @if (opcion === 'fichas') {
-            <app-vis-ficha (mostrar)="seleccionarOpcion($event[0], $event[1], $event[2])" />
+            <app-vis-ficha (mostrar)="seleccionarOpcion($event[0], $event[1], $event[2])"
+                [confirmar]="eliminar.fichas" />
             }
             @if (opcion === 'crearGrupo') { <app-crear-grupo (volver)="mostrar()" /> }
             @if (opcion === 'crearUsuario') { <app-crear-usuario (volver)="mostrar()" /> }
@@ -73,10 +81,27 @@
 
             <app-info-grupos [grupo]="info.grupos"></app-info-grupos>
             <app-info-usuarios [usuario]="info.usuarios"></app-info-usuarios>
-            <app-info-mensajes [mensaje]="info.mensajes"
-                (mostrar)="seleccionarOpcion($event[0], $event[1])">
-            </app-info-mensajes>
+            <app-info-mensajes [mensaje]="info.mensajes" (mostrar)="seleccionarOpcion($event[0], $event[1])"
+                [confirmar]="eliminar.mensajes"></app-info-mensajes>
             <app-info-fichas [ficha]="info.fichas"></app-info-fichas>
+        </div>
+    </div>
+
+    <div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Confirmar acción</h5>
+                </div>
+                <div class="modal-body">
+                    ¿Esta seguro de que desea eliminar?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" (click)="cerrar()">Cancelar</button>
+                    <button type="button" class="btn btn-outline-danger" (click)="aceptar()">Eliminar
+                        Permanentemente</button>
+                </div>
+            </div>
         </div>
     </div>
 </div>

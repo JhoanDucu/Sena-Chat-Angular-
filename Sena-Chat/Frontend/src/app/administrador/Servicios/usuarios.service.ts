@@ -22,4 +22,7 @@ export class UsuariosService {
   editarUsuario(datos: any, numdoc: any){
     return this.http.put(`${url}/admin/editar-usuario/${numdoc}`, datos);
   }
+  eliminarUsuario(id: any) {
+    return this.http.delete(`${url}/admin/eliminar-usuario/${id}`);
+  }
 }

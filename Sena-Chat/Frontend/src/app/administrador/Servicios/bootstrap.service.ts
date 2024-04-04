@@ -5,7 +5,7 @@ import { Dropdown, Modal, Offcanvas, Toast } from 'bootstrap';
   providedIn: 'root'
 })
 export class BootstrapService {
-  private gruposModal: any;
+  private modalConfirmar: any;
   private infoGruposOffcanvas: any;
   private infoUsuariosOffCanvas: any;
   private infoMensajesOffcanvas: any;
@@ -22,16 +22,16 @@ export class BootstrapService {
     this.infoUsuariosOffCanvas = new Offcanvas(document.getElementById('usuarios') as HTMLElement);
     this.infoMensajesOffcanvas = new Offcanvas(document.getElementById('mensajes') as HTMLElement);
     this.infoFichasOffCanvas = new Offcanvas(document.getElementById('fichas') as HTMLElement);
+    this.modalConfirmar = new Modal(document.getElementById('confirmModal') as HTMLElement);
   }
 
   iniciarInstanciasInfo() {
-    this.gruposModal = new Modal(document.getElementById('staticBackdrop') as HTMLElement);
     // this.toastEl = new Toast(document.getElementById('liveToast') as HTMLElement);
     // this.toastPerfilEditar = new Toast(document.getElementById('actualizado') as HTMLElement);
     // this.infoAgregarOffCanvas = new Offcanvas(document.getElementById('offcanvasRight2') as HTMLElement);
   }
 
-  modal = () => this.gruposModal.toggle();
+  modal = () => this.modalConfirmar.toggle();
 
   infoGrupos = () => this.infoGruposOffcanvas.toggle();
 

@@ -1,6 +1,5 @@
 <div class="contenedor-padre">
     @for (f of fichas; track f) {
-    <!-- Tus contenedores aquí -->
     <div class="contenedor">
         <div class="header">
             <h5 class="idFicha">Num. Ficha: <span>{{f.id_ficha}}</span></h5>
@@ -11,7 +10,7 @@
         </div>
         <button class="boton info" type="button" (click)="abrirInfo(f)">Más Información</button>
         <button class="boton editar" (click)="mostrar.emit(['editarFicha', f.id_ficha])">Editar</button>
-        <button class="boton eliminar">Eliminar</button>
+        <button class="boton eliminar" (click)="abrirModal(f.id_ficha, $index)">Eliminar</button>
     </div>
     }
 </div>

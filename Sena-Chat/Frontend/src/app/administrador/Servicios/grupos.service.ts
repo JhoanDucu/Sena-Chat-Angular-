@@ -40,4 +40,7 @@ export class GruposService {
   actualizarMiembro(datos: any, id: any){
     return this.http.put(`${url}/admin/actualizar-miembro/${id}`, datos);
   }
+  eliminarGrupo(id: any) {
+    return this.http.delete(`${url}/admin/eliminar-grupo/${id}`);
+  }
 }

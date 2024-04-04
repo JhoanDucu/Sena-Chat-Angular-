@@ -24,7 +24,7 @@
                 </p>
                 <p class="miembro-detalle"> {{rol.nombre(f.fk_id_rol)}} </p>
             </div>
-            <button class="boton" (click)="agregar(f.numerodoc)"><i class='bx bxs-user-plus'></i></button>
+            <button class="boton" (click)="agregar(f.numerodoc, $index)"><i class='bx bxs-user-plus'></i></button>
         </div>
         } @empty { <p>No hay miembros para añadir</p> }
         }
@@ -55,7 +55,7 @@
                         </button>
                     </li>
                     <li class="eliminar">
-                        <button class="btn-eliminar" (click)="eliminar(m.id_usuarios_grupos)">Eliminar</button>
+                        <button class="btn-eliminar" (click)="eliminar(m.id_usuarios_grupos, $index)">Eliminar</button>
                     </li>
                 </ul>
             </div>

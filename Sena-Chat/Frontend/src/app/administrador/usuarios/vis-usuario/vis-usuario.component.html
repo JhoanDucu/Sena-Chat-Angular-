@@ -12,7 +12,7 @@
         </div>
         <button class="boton info" type="button" (click)="abrirInfo(u)">Mas Información</button>
         <button class="boton editar" (click)="mostrar.emit(['editarUsuario', u.numerodoc])">Editar</button>
-        <button class="boton eliminar">Eliminar</button>
+        <button class="boton eliminar" (click)="abrirModal(u.numerodoc, $index)">Eliminar</button>
     </div>
     }
 </div>
