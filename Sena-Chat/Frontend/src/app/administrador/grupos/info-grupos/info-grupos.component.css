@@ -49,12 +49,18 @@
   border: none;
   background: none;
   font-size: x-large;
+  border-radius: 50%;
+}
+
+.boton:hover {
+  color: white;
+  background-color: #0e882d;
 }
 
 .eliminar:hover {
   background-color: #f77c6c;
   .btn-eliminar {
-  color: white;
+    color: white;
   }
 }
 
@@ -77,4 +83,17 @@
   background: transparent;
   color: #c9b47b;
   border: none;
+}
+
+.info-boton {
+  border: 0.1px solid gray;
+  margin: 0 1vh;
+  border-radius: 2vh;
+  padding: 0.6rem 1rem;
+  width: 46%;
+  margin-bottom: 3vh;
+}
+
+.info-boton:hover {
+  background-color: lightgray;
 }

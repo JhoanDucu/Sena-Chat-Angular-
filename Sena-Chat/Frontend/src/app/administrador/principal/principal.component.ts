@@ -17,6 +17,8 @@ import { InfoUsuariosComponent } from '../usuarios/info-usuarios/info-usuarios.c
 import { InfoMensajesComponent } from '../mensajes/info-mensajes/info-mensajes.component';
 import { InfoFichasComponent } from '../fichas/info-fichas/info-fichas.component';
 import { BootstrapService } from '../Servicios/bootstrap.service';
+import { SesionService } from '../../usuario/Sesiones/sesion.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-principal',
@@ -44,7 +46,12 @@ import { BootstrapService } from '../Servicios/bootstrap.service';
   styleUrls: ['./principal.component.css']
 })
 export class PrincipalComponent implements OnInit {
-  constructor( private b: BootstrapService) { }
+  constructor(
+    private router: Router,
+    private b: BootstrapService,
+    private Sesion: SesionService
+  ) { }
+  usuario = this.Sesion.get('documento');
   opcion: string = 'grupos';
   id: any;
   info: any = {
@@ -54,7 +61,13 @@ export class PrincipalComponent implements OnInit {
     fichas: undefined
   };
 
-  ngOnInit() { this.b.iniciarInstanciasAdmin(); }
+  ngOnInit() {
+    this.b.iniciarInstanciasAdmin();
+    if (this.usuario == undefined) {
+      this.router.navigate(['login']);
+      this.Sesion.set('error', 'No has iniciado sesion');
+    }
+  }
 
   seleccionarOpcion(opcion?: any, idBuscar?: any, objeto?: any) {
     if (opcion && this.opcion != opcion) this.opcion = opcion;

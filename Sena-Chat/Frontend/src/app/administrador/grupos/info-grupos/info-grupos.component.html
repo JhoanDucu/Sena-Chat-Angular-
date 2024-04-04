@@ -11,6 +11,23 @@
         <p> <strong>Ficha: </strong><span>{{grupo.id_ficha}}</span></p>
         <p> <strong>Num. Miembros: </strong><span>{{grupo.num_usuarios}}</span></p>
         <h4>Miembros: </h4>
+        <button class="info-boton" (click)="consultar(2)">Agregar aprendiz</button>
+        <button class="info-boton" (click)="consultar(1)">Agregar Instructor</button>
+
+        @if (faltantes) {
+        @for (f of faltantes; track f.numerodoc) {
+        <div class="miembro">
+            <img [src]="url+f.foto" alt="Imagen del miembro" class="miembro-imagen">
+            <div class="miembro-info">
+                <p class="miembro-nombre">
+                    {{f.primer_nom}} {{f.segundo_nom}} {{f.primer_apellido}} {{f.segundo_apellido}}
+                </p>
+                <p class="miembro-detalle"> {{rol.nombre(f.fk_id_rol)}} </p>
+            </div>
+            <button class="boton" (click)="agregar(f.numerodoc)"><i class='bx bxs-user-plus'></i></button>
+        </div>
+        } @empty { <p>No hay miembros para añadir</p> }
+        }
 
         @for (m of miembros; track m.numerodoc) {
         <div class="miembro">
@@ -43,7 +60,7 @@
                 </ul>
             </div>
         </div>
-        } @empty { {{aviso}} }
+        } @empty { <p> {{aviso}} </p> }
         }
     </div>
 </div>

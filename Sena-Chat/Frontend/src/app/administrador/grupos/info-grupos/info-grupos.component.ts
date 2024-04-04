@@ -20,6 +20,7 @@ export class InfoGruposComponent {
   @Input() grupo: Grupo = {};
   url = urlImagenes;
   miembros: Usuario[] | any = [];
+  faltantes: Usuario[] | undefined;
   rol = new Rol();
   aviso: any;
   detalles = false;
@@ -27,8 +28,10 @@ export class InfoGruposComponent {
   ngOnChanges(changes: SimpleChanges) {
     if (changes['grupo'] && !changes['grupo'].firstChange)
       this.servicio.traerMiembros(this.grupo.id_grupos).subscribe((data: any) => {
-        if (data !== 'No hay miembros aun') this.miembros = data;
-        else {
+        if (data !== 'No hay miembros aun') {
+          this.miembros = data;
+          this.faltantes = undefined;
+        } else {
           this.aviso = data;
           this.miembros = [];
         }
@@ -46,6 +49,35 @@ export class InfoGruposComponent {
   eliminar(id: any) {
     this.servicio.eliminarMiembro({ activo: false, fecha_union: Fecha.fechaActual() }, id).subscribe((data) => {
       // console.log(data)
+    });
+  }
+
+  consultar(rol: any) {
+    const datos = {
+      id_ficha: this.grupo.id_ficha,
+      rol: rol,
+      id_grupo: this.grupo.id_grupos
+    };
+    this.servicio.traerFaltantes(datos).subscribe((data: any) => {
+      if (data) this.faltantes = data;
+      else this.faltantes = [];
+    });
+  }
+
+  agregar(numdoc: any) {
+    this.servicio.comprobarMiembro(numdoc, this.grupo.id_grupos).subscribe((data) => {
+      const datos = {
+        sin_leer: null,
+        activo: true,
+        fecha_union: Fecha.fechaActual()
+      };
+      if (data) {
+        this.servicio.actualizarMiembro(datos, data).subscribe((data) => console.log(data));
+      } else {
+        this.servicio.agregarMiembro(
+          Object.assign(datos, { id_grupos: this.grupo.id_grupos, numerodoc: numdoc })
+        ).subscribe((data) => console.log(data));
+      }
     });
   }
 }

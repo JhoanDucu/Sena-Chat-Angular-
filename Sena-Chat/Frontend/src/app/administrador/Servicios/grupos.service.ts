@@ -25,10 +25,19 @@ export class GruposService {
   traerMiembros(id: any) {
     return this.http.get(`${url}/admin/miembros/${id}`);
   }
-  agregarMiembro(datos: any, id: any) {
-    return this.http.post(`${url}/admin/agregar-miembro/${id}`, datos);
+  traerFaltantes(datos: any) {
+    return this.http.post(`${url}/admin/miembros-faltantes`, datos);
+  }
+  agregarMiembro(datos: any) {
+    return this.http.post(`${url}/admin/agregar-miembro`, datos);
   }
   eliminarMiembro(datos: any, id: any) {
     return this.http.put(`${url}/admin/eliminar-miembro/${id}`, datos);
+  }
+  comprobarMiembro(usuario: any, grupo: any){
+    return this.http.get(`${url}/admin/miembro/${usuario}/${grupo}`);
+  }
+  actualizarMiembro(datos: any, id: any){
+    return this.http.put(`${url}/admin/actualizar-miembro/${id}`, datos);
   }
 }
